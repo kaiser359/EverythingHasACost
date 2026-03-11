@@ -1,104 +1,179 @@
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class VirtualMouse : MonoBehaviour
 {
-    // imma add comments so u understand what this script does. its  pretty big.
-    // this script became a "screen" which creates a cursor for most abilities.
-    // this now only manages the virtual mouse / reticle. it can be called for power ups, in fact u might find it useful. 
-
     public Camera playerCamera;
+    public GraphicRaycaster uiRaycaster;
+    public EventSystem eventSystem;
+    public Sprite reticle;
+    public float reticleWorldZ = 0f;
+    public float reticleScale = 1f;
+    public CinemachineConfiner2D confiner;
 
     private Vector2 aimDelta;
     public Vector2 aimPosition;
-
-    public Sprite reticle;
-
-    public float reticleWorldZ = 0f;
-
-    public float reticleScale = 1f;
-    private GameObject _reticleInstance;
-    private SpriteRenderer _reticleSR; // this is the sprite for the mouse, that is if u want personalized mouse, if not u can just set the reticle to a blank sprite and it will work as a normal mouse.
-
-    public CinemachineConfiner2D confiner; // if we do not use cinemachine, we can just use a collider and set the confiner to it, but this is more flexible for now. if we want to change the confiner at runtime, we can do that easily with this setup.
+    private GameObject _reticle;
+    private GameObject _hover;
 
     private void Awake()
-    {// confiner 
-        GameObject boundingObject = GameObject.Find("Dark background vr3_0");
-        if (boundingObject != null)
+    {
+        var bound = GameObject.Find("Dark background vr3_0");
+        if (bound != null) confiner.BoundingShape2D = bound.GetComponent<Collider2D>();
+
+        eventSystem ??= EventSystem.current;
+        if (uiRaycaster == null)
         {
-            confiner.BoundingShape2D = boundingObject.GetComponent<Collider2D>();
+            var c = FindObjectOfType<Canvas>();
+            if (c != null)
+            {
+                uiRaycaster = c.GetComponent<GraphicRaycaster>();
+                if (c.renderMode == RenderMode.WorldSpace && c.worldCamera == null)
+                    c.worldCamera = playerCamera;
+            }
         }
 
         aimPosition = new Vector2(Screen.width, Screen.height) / 2;
-
         if (reticle != null)
         {
-            _reticleInstance = new GameObject("Reticle");
-            _reticleSR = _reticleInstance.AddComponent<SpriteRenderer>();
-            _reticleSR.sprite = reticle;
-            _reticleSR.sortingOrder = 1000;
-            _reticleInstance.transform.localScale = Vector3.one * reticleScale;
+            _reticle = new GameObject("Reticle");
+            var sr = _reticle.AddComponent<SpriteRenderer>();
+            sr.sprite = reticle;
+            sr.sortingOrder = 1000;
+            _reticle.transform.localScale = Vector3.one * reticleScale;
         }
 
-        ClampAimToCamera();
+        ClampAim();
     }
-
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
     {
+       // Mouse.current.WarpCursorPosition(aimPosition); //if u wanna make everything simpler, just use this. but it will be harder to move the cursor outside the game. but it will allow multiple canvas to work
+        
         aimPosition += aimDelta;
-        ClampAimToCamera();
-        UpdateReticlePosition();
+        ClampAim();
+        UpdateReticle();
+        UpdateHover();
     }
 
-    private void ClampAimToCamera()
+    private void ClampAim()
     {
         if (playerCamera == null)
         {
-            aimPosition.x = Mathf.Clamp(aimPosition.x, 0f, Screen.width);
-            aimPosition.y = Mathf.Clamp(aimPosition.y, 0f, Screen.height);
+            aimPosition.x = Mathf.Clamp(aimPosition.x, 0, Screen.width);
+            aimPosition.y = Mathf.Clamp(aimPosition.y, 0, Screen.height);
+            return;
+        }
+        var r = playerCamera.pixelRect;
+        aimPosition.x = Mathf.Clamp(aimPosition.x, r.xMin, r.xMax);
+        aimPosition.y = Mathf.Clamp(aimPosition.y, r.yMin, r.yMax);
+    }
+
+    private void UpdateReticle()
+    {
+        if (_reticle == null || playerCamera == null) return;
+        float z = Mathf.Abs(playerCamera.transform.position.z - reticleWorldZ);
+        var world = playerCamera.ScreenToWorldPoint(new Vector3(aimPosition.x, aimPosition.y, z));
+        world.z = reticleWorldZ;
+        _reticle.transform.position = world;
+    }
+
+    // returns topmost UI GameObject under aimPosition (or null)
+    private GameObject RaycastUI(out RaycastResult topResult)
+    {
+        topResult = new RaycastResult();
+        if (uiRaycaster == null || (eventSystem ?? EventSystem.current) == null) return null;
+        var ped = new PointerEventData(eventSystem ?? EventSystem.current) { position = aimPosition };
+        var list = new List<RaycastResult>();
+        uiRaycaster.Raycast(ped, list);
+        if (list.Count == 0) return null;
+        topResult = list[0];
+        return topResult.gameObject;
+    }
+
+    private void UpdateHover()
+    {
+        var es = eventSystem ?? EventSystem.current;
+        var top = RaycastUI(out _);
+        if (top == _hover) return;
+
+        if (_hover != null)
+            ExecuteEvents.ExecuteHierarchy(_hover, new PointerEventData(es) { position = aimPosition }, ExecuteEvents.pointerExitHandler);
+
+        if (top != null)
+        {
+            ExecuteEvents.ExecuteHierarchy(top, new PointerEventData(es) { position = aimPosition }, ExecuteEvents.pointerEnterHandler);
+            var s = top.GetComponentInParent<Selectable>();
+            if (s != null && es != null) es.SetSelectedGameObject(s.gameObject);
+        }
+        else if (es != null) es.SetSelectedGameObject(null);
+
+        _hover = top;
+    }
+
+    public void Click(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        var es = eventSystem ?? EventSystem.current;
+
+        // UI click
+        var top = RaycastUI(out var r);
+        if (top != null && es != null)
+        {
+            // prefer Button.onClick on parent
+            var btn = top.GetComponentInParent<Button>();
+            if (btn != null) { btn.onClick.Invoke(); return; }
+
+            var ped = new PointerEventData(es)
+            {
+                position = aimPosition,
+                pressPosition = aimPosition,
+                clickCount = 1,
+                button = PointerEventData.InputButton.Left,
+                pointerId = -1,
+                pointerCurrentRaycast = r,
+                pointerPressRaycast = r
+            };
+            ExecuteEvents.ExecuteHierarchy(top, ped, ExecuteEvents.pointerDownHandler);
+            ExecuteEvents.ExecuteHierarchy(top, ped, ExecuteEvents.pointerUpHandler);
+            ExecuteEvents.ExecuteHierarchy(top, ped, ExecuteEvents.pointerClickHandler);
             return;
         }
 
-        Rect pr = playerCamera.pixelRect;
-        aimPosition.x = Mathf.Clamp(aimPosition.x, pr.xMin, pr.xMax);
-        aimPosition.y = Mathf.Clamp(aimPosition.y, pr.yMin, pr.yMax);
+        // world-space 2D fallback
+        if (playerCamera != null)
+        {
+            float z = Mathf.Abs(playerCamera.transform.position.z - reticleWorldZ);
+            var world = playerCamera.ScreenToWorldPoint(new Vector3(aimPosition.x, aimPosition.y, z));
+            var col = Physics2D.OverlapPoint((Vector2)world);
+            if (col != null)
+            {
+                var go = col.gameObject;
+                var b = go.GetComponentInParent<Button>();
+                if (b != null) { b.onClick.Invoke(); return; }
+                if (es != null)
+                {
+                    var ped = new PointerEventData(es) { position = aimPosition, pointerId = -1 };
+                    ExecuteEvents.ExecuteHierarchy(go, ped, ExecuteEvents.pointerDownHandler);
+                    ExecuteEvents.ExecuteHierarchy(go, ped, ExecuteEvents.pointerUpHandler);
+                    ExecuteEvents.ExecuteHierarchy(go, ped, ExecuteEvents.pointerClickHandler);
+                    return;
+                }
+                go.SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
+            }
+        }
     }
 
-    private void UpdateReticlePosition()
-    {
-        if (_reticleInstance == null || playerCamera == null)
-            return;
+    public void Aim(InputAction.CallbackContext ctx) => aimDelta = ctx.ReadValue<Vector2>();
 
-        float zDistance = Mathf.Abs(playerCamera.transform.position.z - reticleWorldZ);
-        Vector3 screenPoint = new Vector3(aimPosition.x, aimPosition.y, zDistance);
-        Vector3 world = playerCamera.ScreenToWorldPoint(screenPoint);
-        world.z = reticleWorldZ;
-        _reticleInstance.transform.position = world;
-    }
-
-    public void Teleport(InputAction.CallbackContext ctx)
-    {
-        // Intentionally empty, i was thinking one of the power ups to be teleportation into fire, we in hekk so it would be pretty cool. i may or may not to somethign with it later. ur choice george
-        return;
-    }
-
-    public void Aim(InputAction.CallbackContext ctx)
-    {
-        Vector2 delta = ctx.ReadValue<Vector2>();
-        aimDelta = delta;
-    }
-
-    private void OnDestroy()
-    {
-        if (_reticleInstance != null)
-            Destroy(_reticleInstance);
-    }
+    private void OnDestroy() { if (_reticle != null) Destroy(_reticle); }
 }
