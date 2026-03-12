@@ -28,7 +28,7 @@ public class VirtualMouse : MonoBehaviour
         eventSystem ??= EventSystem.current;
         if (uiRaycaster == null)
         {
-            var c = FindObjectOfType<Canvas>();
+            var c = FindAnyObjectByType<Canvas>();
             if (c != null)
             {
                 uiRaycaster = c.GetComponent<GraphicRaycaster>();
@@ -52,7 +52,7 @@ public class VirtualMouse : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
