@@ -5,3 +5,5 @@
 [GDD](https://docs.google.com/document/d/1S3M4GR3f7NpjWBvjw71yflHuzc7FsrY7K3z0Uq3fq4s/edit?usp=sharing)
 
 [Jira](https://mukilteo-team-everythingcosts.atlassian.net/jira/software/projects/DEV/summary?atlOrigin=eyJpIjoiOTdjNWU2NGYzYjM1NDk1NmIxN2ZhNDkyYzgwNmU5MmUiLCJwIjoiaiJ9)
+
+[Itch](https://phobiagaming.itch.io/escape-from-hekk-blood-tax)
