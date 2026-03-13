@@ -4,11 +4,12 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField]private float timeAlive = 5;
     public EnemyStats stats;
-    public PlayerHealthTEST playerHealth;
+    public Money money;
+   // public PlayerHealthTEST playerHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealthTEST>();
+      
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerHealth.health -= stats.atkDamage;
+            money.money -= stats.atkDamage + (money.money/100);
             Destroy(gameObject);
         }
     }

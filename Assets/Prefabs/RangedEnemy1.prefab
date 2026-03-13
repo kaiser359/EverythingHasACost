@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1880765463373544506}
   m_Layer: 0
   m_Name: RangedEnemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,8 +199,8 @@ MonoBehaviour:
   projectileSpeed: 2
   spawnRadius: 0.5
   angleIncrementPerShot: 15
-  detectionRange: 3
-  chaseRange: 5
+  detectionRange: 5
+  chaseRange: 7
   chaseSpeed: 2.5
   wanderRadius: 1
   wanderSpeed: 0.8

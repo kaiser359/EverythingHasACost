@@ -5,6 +5,7 @@ public class Enemy1RangedScript : MonoBehaviour
     [Header("References")]
     public EnemyStats stats;
     public GameObject bulletPrefab;
+   
 
     [Header("Projectile")]
     public int bulletsCount = 12;

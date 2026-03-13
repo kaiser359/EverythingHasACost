@@ -2,27 +2,31 @@ using UnityEngine;
 
 public class Enemy2Ranged : MonoBehaviour
 {
+    //inspired by miku bean scirpt. i will do huge changes in the future but for now i just want to get a basic lazer enemy working.
     [Header("References")]
     public EnemyStats stats;
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
-    public GameObject beanPrefab;
+    public Money money;
 
     [Header("Ranges & Movement")]
-    public float detectionRange = 8f; // when to stop and fire laser/throw beans
-    public float chaseRange = 14f; // when to start chasing
+    public float detectionRange = 8f; 
+    public float chaseRange = 14f; 
     public float chaseSpeed = 2.5f;
     public float wanderRadius = 2f;
     public float wanderSpeed = 0.8f;
     public float idleMin = 0.5f;
     public float idleMax = 2f;
 
-    [Header("Shooting")]
-    public float throwForce = 6f;
-    public float throwInterval = 2f;
-    public float throwSpreadDegrees = 12f;
+    [Header("Laser")]
     public float laserDistance = 12f;
-    public float aimSpeed = 3f; // how fast laser aims toward player
+    public float aimSpeed = 3f; // might remove
+    public int damagePerTick = 5;
+    public float damageCooldown = 0.5f; 
+    public float knockbackForce = 5f;
+    public float oscillationAmplitude = 0.6f; 
+    public float oscillationSpeed = 3f; 
+    public float rotationSpeed = 360f; 
 
     private Transform playerTransform;
     private Vector3 originPosition;
@@ -31,7 +35,7 @@ public class Enemy2Ranged : MonoBehaviour
     private bool isIdling = false;
 
     private Vector2 _currentAimDir = Vector2.right;
-    private float shootTimer = 0f;
+    private float damageTimer = 0f;
 
     void Start()
     {
@@ -50,11 +54,14 @@ public class Enemy2Ranged : MonoBehaviour
 
     void Update()
     {
-        shootTimer -= Time.deltaTime;
+        damageTimer -= Time.deltaTime;
+
+        if (lineRenderer != null)
+            lineRenderer.enabled = false;
 
         float dist = playerTransform != null ? Vector2.Distance(transform.position, playerTransform.position) : Mathf.Infinity;
 
-        // Update aim direction smoothly toward player when available
+       
         if (playerTransform != null)
         {
             Vector2 targetDir = (playerTransform.position - transform.position);
@@ -65,48 +72,64 @@ public class Enemy2Ranged : MonoBehaviour
             }
         }
 
-        // Laser visualization
-        if (lineRenderer != null)
+      
+        if (dist <= detectionRange)
         {
-            if (dist <= detectionRange)
+            // Laser active
+            if (lineRenderer != null)
             {
                 lineRenderer.enabled = true;
                 Vector3 origin = laserFirePoint != null ? laserFirePoint.position : transform.position;
-                Vector3 end = origin + (Vector3)(_currentAimDir.normalized * laserDistance);
 
-                // Raycast to hit obstacles and/or player
-                RaycastHit2D hit = Physics2D.Raycast(origin, _currentAimDir, laserDistance);
+                // oscillation  up and down
+                Vector2 aim = _currentAimDir.normalized;
+                Vector2 perp = new Vector2(-aim.y, aim.x);
+                float osc = Mathf.Sin(Time.time * oscillationSpeed) * oscillationAmplitude;
+                Vector2 oscillatedAim = (aim + perp * osc).normalized;
+
+                Vector3 end = origin + (Vector3)(oscillatedAim * laserDistance);
+
+                // see if lazer hits
+                RaycastHit2D hit = Physics2D.Raycast(origin, oscillatedAim, laserDistance);
                 if (hit.collider != null)
+                {
                     end = hit.point;
 
+                    // KnockBAck
+
+                    if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
+                    {
+                        money.money -= damagePerTick+ (money.money /100);
+
+                        var prb = hit.collider.GetComponent<Rigidbody2D>();
+                        if (prb != null)
+                        {
+                            // knockback away from laser origin
+                            Vector2 kbDir = (hit.collider.transform.position - origin).normalized;
+                            prb.AddForce(kbDir * knockbackForce, ForceMode2D.Impulse);
+                        }
+
+                        damageTimer = damageCooldown;
+                    }
+                }
+
+                // Rotate enemy smoothly
+                float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
+                Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
                 lineRenderer.SetPosition(0, origin);
                 lineRenderer.SetPosition(1, end);
-            }
-            else
-            {
-                lineRenderer.enabled = false;
-            }
-        }
-
-        // Behavior: stop and shoot if in detectionRange, else chase if within chaseRange, else wander
-        if (dist <= detectionRange)
-        {
-            // stationary: fire beans at intervals
-            if (shootTimer <= 0f)
-            {
-                ThrowBean();
-                shootTimer = throwInterval;
             }
         }
         else if (playerTransform != null && dist <= chaseRange)
         {
-            // Chase player
+            // Chase
             Vector3 dir = (playerTransform.position - transform.position).normalized;
             transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, chaseSpeed * Time.deltaTime);
         }
         else
         {
-            // Wander around origin
+            // Wandering
             if (isIdling)
             {
                 wanderIdleTimer -= Time.deltaTime;
@@ -132,26 +155,5 @@ public class Enemy2Ranged : MonoBehaviour
     {
         Vector2 offset = Random.insideUnitCircle * wanderRadius;
         wanderTarget = originPosition + (Vector3)offset;
-    }
-
-    void ThrowBean()
-    {
-        if (beanPrefab == null) return;
-
-        Vector3 spawnPos = laserFirePoint != null ? laserFirePoint.position : transform.position;
-
-        Vector2 aim = _currentAimDir.normalized;
-        float halfSpread = throwSpreadDegrees * 0.5f;
-        float randomAngle = Random.Range(-halfSpread, halfSpread);
-        float rad = randomAngle * Mathf.Deg2Rad;
-        Vector2 spreadDir = new Vector2(
-            aim.x * Mathf.Cos(rad) - aim.y * Mathf.Sin(rad),
-            aim.x * Mathf.Sin(rad) + aim.y * Mathf.Cos(rad)
-        ).normalized;
-
-        GameObject b = Instantiate(beanPrefab, spawnPos, Quaternion.identity);
-        Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
-        if (rb != null)
-            rb.linearVelocity = spreadDir * throwForce;
     }
 }

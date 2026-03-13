@@ -167,4 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeAlive: 3
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
-  playerHealth: {fileID: 0}
+  money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
