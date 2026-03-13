@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3764445888960542923}
   - component: {fileID: 8887275930113267766}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7334512444518484569}
   m_Father: {fileID: 6312081341111227493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3764445888960542923
@@ -123,6 +124,7 @@ GameObject:
   - component: {fileID: 6184708575772166664}
   - component: {fileID: -162195868218585035}
   - component: {fileID: 1331867843519053722}
+  - component: {fileID: 916216769600913967}
   m_Layer: 0
   m_Name: Dimmy
   m_TagString: Untagged
@@ -405,3 +407,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
+--- !u!114 &916216769600913967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033939270907055523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d076f877b34394c81eadbeeb5f20f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gS: {fileID: 0}
+  firePos: {fileID: 7623468906257632544}
+--- !u!1 &7623468906257632544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7334512444518484569}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7334512444518484569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623468906257632544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8708292004090814460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
