@@ -2,22 +2,18 @@ using UnityEngine;
 
 public class RotateToMouse : MonoBehaviour
 {
-    [Tooltip("Camera used to convert screen -> world. If null, Camera.main is used.")]
-    public Camera cam;
 
-    [Tooltip("Degrees per second used for smoothing. Set to a very large value for effectively instant rotation.")]
-    public float rotationSpeed = 720f;
-
-    [Tooltip("Add an offset (degrees) to the computed angle.")]
-    public float rotationOffset = 0f;
-
-    [Tooltip("When true, rotation will be smoothed; when false, it will snap instantly.")]
-    public bool smooth = true;
+    public GlobalPlayerInfo gS;
+    private Camera cam;
+    private float rotationSpeed;
+    private float rotationOffset;
 
     void Start()
     {
-        if (cam == null)
-            cam = Camera.main;
+        gS = FindAnyObjectByType<GlobalPlayerInfo>();
+        cam = gS.mainCamera;
+        rotationOffset = gS.rotationOffset;
+        rotationSpeed = gS.rotationSpeed;
     }
 
     void Update()
@@ -34,9 +30,7 @@ public class RotateToMouse : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + rotationOffset;
         Quaternion target = Quaternion.Euler(0f, 0f, angle);
 
-        if (smooth)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
-        else
-            transform.rotation = target;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+
     }
 }
