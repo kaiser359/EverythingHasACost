@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03640356c494203829717c3f2127a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 20
   attackCooldown: 0.5
   bulletPrefab: {fileID: 0}
   mainCamera: {fileID: 0}
@@ -1436,7 +1436,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.96
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1824,11 +1824,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4131553321552813515, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.94
+      value: 7.38
       objectReference: {fileID: 0}
     - target: {fileID: 4131553321552813515, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 4131553321552813515, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_LocalPosition.z
