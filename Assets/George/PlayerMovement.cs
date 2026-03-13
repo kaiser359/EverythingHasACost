@@ -10,8 +10,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector2 desiredVelocity;
     private float moveSpeed;
-    void Awake()
+    void Start()
     {
+        gS = FindAnyObjectByType<GlobalPlayerInfo>();
         moveSpeed = gS.moveSpeed;
         rb = GetComponent<Rigidbody2D>();
     }
