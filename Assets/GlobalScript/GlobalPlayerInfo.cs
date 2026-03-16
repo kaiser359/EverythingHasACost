@@ -9,4 +9,7 @@ public class GlobalPlayerInfo : MonoBehaviour
     public float rotationSpeed = 720f;
     public float rotationOffset = 0f;
     public float bulletSpeed = 10f;
+    public GameObject BloodBag1;
+    public GameObject BloodBag2;
+    public GameObject BloodBag3;
 }

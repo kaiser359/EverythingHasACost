@@ -4,8 +4,6 @@ public class MainGun : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
     private float cooldownInstance = 0f;
-    public GameObject firePos;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,20 +16,13 @@ public class MainGun : MonoBehaviour
         cooldownInstance -= Time.deltaTime;
     }
 
-    public void Attack()
-    {
+    public void Attack() { 
         if (cooldownInstance > 0f) return;
-
-        // Instantiate a bullet at every child transform that has the tag "AttackPoint"
-        foreach (Transform child in GetComponentsInChildren<Transform>(includeInactive: false))
+        GameObject[] attackPoints = GameObject.FindGameObjectsWithTag("AttackPoint");
+        foreach (GameObject point in attackPoints)
         {
-            if (child == transform) continue;
-            if (child.CompareTag("AttackPoint"))
-            {
-                Instantiate(gS.bulletPrefab, child.position, child.rotation);
-            }
+            Instantiate(gS.bulletPrefab, point.transform.position, point.transform.rotation);
         }
-
         cooldownInstance = gS.attackCooldown;
     }
 }
