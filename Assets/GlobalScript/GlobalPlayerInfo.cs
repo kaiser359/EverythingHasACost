@@ -12,4 +12,5 @@ public class GlobalPlayerInfo : MonoBehaviour
     public GameObject BloodBag1;
     public GameObject BloodBag2;
     public GameObject BloodBag3;
+    public GameObject Store;
 }
