@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StoreInteract : MonoBehaviour
 {
-    public GlobalPlayerInfo gS;
+    public GameObject Store;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +15,22 @@ public class StoreInteract : MonoBehaviour
     }
     public void Interact()
     {
-        gS.Store.SetActive(true);
+        if(Store != null)
+        {
+            Store.GetComponent<Store>().StartStore();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Shop"))
+        {
+            Store = collision.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+        {
+         
+                Store = null;
+         
     }
 }
