@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - AttackPoint
+  - Shop
   layers:
   - Default
   - TransparentFX
