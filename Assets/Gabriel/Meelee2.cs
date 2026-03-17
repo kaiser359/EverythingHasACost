@@ -4,6 +4,7 @@ public class Meelee2 : MonoBehaviour
 {
     public Money money;
     public GameObject atkLocation;
+    public GameObject atkplace;
     [Header("Detection & Movement")]
     public float detectionRange = 10f;
     public float chaseRange = 15f;
@@ -16,11 +17,17 @@ public class Meelee2 : MonoBehaviour
     private Transform playerTransform;
     private float timerForNextAtk=0;
     private float timerForAtkDisapear=0;
-
+    private Vector3 originPosition;
+    private Vector3 wanderTarget;
+    private float wanderIdleTimer = 0f;
+    private bool isIdling = false;
     private void Start()
     {
 
-        atkLocation.SetActive(false) ;
+        // initialize wander origin and target
+        originPosition = transform.position;
+        PickNewWanderTarget();
+        atkplace.SetActive(false);
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) playerTransform = p.transform;
 
@@ -43,9 +50,25 @@ public class Meelee2 : MonoBehaviour
         }
         else
         {
-
-            
-            // Implement wandering behavior here if desired
+            // Wandering behavior
+            if (isIdling)
+            {
+                wanderIdleTimer -= Time.deltaTime;
+                if (wanderIdleTimer <= 0f)
+                {
+                    isIdling = false;
+                    PickNewWanderTarget();
+                }
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, wanderTarget) < 0.1f)
+                {
+                    isIdling = true;
+                    wanderIdleTimer = Random.Range(idleMin, idleMax);
+                }
+            }
         }
         if (timerForNextAtk >= 0)
         {
@@ -56,13 +79,23 @@ public class Meelee2 : MonoBehaviour
             timerForAtkDisapear -= Time.deltaTime;
             if (timerForAtkDisapear <= 0f)
             {
-                atkLocation.SetActive(false) ;
+                atkplace.SetActive(false) ;
             }
         }
     }
     private void Attack()
     {
-        atkLocation.SetActive(true) ;
+        atkplace.SetActive(true) ;
+        // rotate the attack location to face the player (top-down: rotate around Z)
+        if (playerTransform != null && atkLocation != null)
+        {
+            Vector2 dir = (playerTransform.position - atkLocation.transform.position);
+            if (dir.sqrMagnitude > 0.0001f)
+            {
+                float desiredAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                atkLocation.transform.rotation = Quaternion.Euler(0f, 0f, desiredAngle);
+            }
+        }
         timerForAtkDisapear = 0.1f;
         // Implement attack logic here (e.g., deal damage to the player)
         // For demonstration, we'll just print a message
@@ -79,5 +112,10 @@ public class Meelee2 : MonoBehaviour
             return true; // Player is in line of sight
         }
         return false; // Player is not in line of sight
+    }
+    void PickNewWanderTarget()
+    {
+        Vector2 offset = Random.insideUnitCircle * wanderRadius;
+        wanderTarget = originPosition + (Vector3)offset;
     }
 }
