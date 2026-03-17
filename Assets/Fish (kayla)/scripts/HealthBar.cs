@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     private UnityEngine.UI.Image healthBar;
     private TMPro.TextMeshProUGUI healthText;
     private Animator coinHeart;
+    public SpriteRenderer dimmySR;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +30,17 @@ public class HealthBar : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        coinHeart.SetTrigger("hurt");
         healthBar.rectTransform.anchoredPosition = new Vector2(healthBar.rectTransform.anchoredPosition.x - damageAmount * 7, healthBar.rectTransform.anchoredPosition.y); // Move the health bar slightly to the right
+        StartCoroutine(FlashRed());
+    }
+
+    private IEnumerator FlashRed()
+    {     
+        coinHeart.SetTrigger("hurt");
+        dimmySR.color = Color.red;
+        healthText.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        dimmySR.color = Color.white;
+        healthText.color = Color.black;
     }
 }
