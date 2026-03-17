@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b01d61ed7174974289121941dab110b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 1000
 --- !u!4 &771724951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6312081341111227493, guid: 4a7687a87a4464de2921280c87da157f, type: 3}

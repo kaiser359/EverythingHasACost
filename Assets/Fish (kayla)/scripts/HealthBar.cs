@@ -5,16 +5,20 @@ using System.Collections;
 
 public class HealthBar : MonoBehaviour
 {
-    public int health;
     private UnityEngine.UI.Image healthBar;
     private TMPro.TextMeshProUGUI healthText;
     private Animator coinHeart;
     public SpriteRenderer dimmySR;
+    public Money money;
+    //public float adjust;
 
+    private void Awake()
+    {
+        money.money = 10000;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = 100;
         healthBar = GetComponentInChildren<UnityEngine.UI.Image>();
         healthText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         coinHeart = GetComponentInChildren<Animator>();
@@ -23,14 +27,14 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health = Mathf.Clamp(health, 0, 100);
-        healthText.text = health.ToString();
-        healthBar.fillAmount = health / 100f;
+        money.money = Mathf.Clamp(money.money, 0, 10000);
+        healthText.text = money.money.ToString();
+        healthBar.fillAmount = money.money / 10000f;
     }
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
-        healthBar.rectTransform.anchoredPosition = new Vector2(healthBar.rectTransform.anchoredPosition.x - damageAmount * 7, healthBar.rectTransform.anchoredPosition.y); // Move the health bar slightly to the right
+        money.money -= damageAmount;
+        //healthBar.rectTransform.anchoredPosition = new Vector2(healthBar.rectTransform.anchoredPosition.x - damageAmount * adjust, healthBar.rectTransform.anchoredPosition.y); // Move the health bar slightly to the right
         StartCoroutine(FlashRed());
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     private HealthBar healthBar;
+    public int damageAmount = 10;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +17,6 @@ public class Damage : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        healthBar.TakeDamage(10);
+        healthBar.TakeDamage(damageAmount);
     }
 }
