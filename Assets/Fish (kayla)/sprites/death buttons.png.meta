@@ -1,0 +1,313 @@
+fileFormatVersion: 2
+guid: ab50eefa7fd64b4428161df64347fa8d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 371287103044982903
+    second: death buttons_0
+  - first:
+      213: -1194301676046426349
+    second: death buttons_1
+  - first:
+      213: -4582851087070477439
+    second: death buttons_2
+  - first:
+      213: 4618284966804963048
+    second: death buttons_3
+  - first:
+      213: 7553227195994822957
+    second: death buttons_4
+  - first:
+      213: 1609498440950446914
+    second: death buttons_5
+  - first:
+      213: 347673922768050401
+    second: death buttons_6
+  - first:
+      213: 2128737701677096076
+    second: death buttons_7
+  - first:
+      213: -2032718380271582040
+    second: death buttons_8
+  - first:
+      213: -4980395884766627290
+    second: death buttons_9
+  - first:
+      213: -8212198864393269034
+    second: death buttons_10
+  - first:
+      213: -5685546463682949888
+    second: death buttons_11
+  - first:
+      213: 1869773042319365469
+    second: death buttons_12
+  - first:
+      213: 1541432498487984009
+    second: death buttons_13
+  - first:
+      213: -7226609447582552334
+    second: death buttons_14
+  - first:
+      213: -5540968445097914958
+    second: death buttons_15
+  - first:
+      213: 895188971319335919
+    second: death buttons_16
+  - first:
+      213: 4552282382585089123
+    second: death buttons_17
+  - first:
+      213: 1381176715573270284
+    second: death buttons_18
+  - first:
+      213: -2444014018710614142
+    second: death buttons_19
+  - first:
+      213: 2173308880466868869
+    second: death buttons_20
+  - first:
+      213: 456771515382246211
+    second: death buttons_21
+  - first:
+      213: -3208310763552564037
+    second: death buttons_22
+  - first:
+      213: -5966571922607760578
+    second: death buttons_23
+  - first:
+      213: 3025989652999355534
+    second: death buttons_24
+  - first:
+      213: 298036555685846565
+    second: death buttons_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: death buttons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 166
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7781eae27a3172500800000000000000
+      internalID: 371287103044982903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death buttons_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 51
+        width: 166
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f599c04fcfc6fe0800000000000000
+      internalID: -1194301676046426349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death buttons_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 166
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 183c6a0a7317660c0800000000000000
+      internalID: -4582851087070477439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death buttons_3
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1
+        width: 166
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eebfe565b1771040800000000000000
+      internalID: 4618284966804963048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8ba4297e8c6ce7e4fac551c7dcbb9ba1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      death buttons_0: 371287103044982903
+      death buttons_1: -1194301676046426349
+      death buttons_2: -4582851087070477439
+      death buttons_3: 4618284966804963048
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

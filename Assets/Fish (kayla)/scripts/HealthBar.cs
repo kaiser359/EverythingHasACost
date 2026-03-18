@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class HealthBar : MonoBehaviour
         money.money = Mathf.Clamp(money.money, 0, 10000);
         healthText.text = money.money.ToString();
         healthBar.fillAmount = money.money / 10000f;
+        if (money.money <= 0)
+        {
+            SceneManager.LoadScene("death");
+        }
     }
     public void TakeDamage(int damageAmount)
     {
