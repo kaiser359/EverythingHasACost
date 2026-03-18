@@ -14,4 +14,5 @@ public class GlobalPlayerInfo : MonoBehaviour
     public GameObject BloodBag3;
     public GameObject Store;
     public GameObject[] BloodBagOptions;
+    public Money Money;
 }
