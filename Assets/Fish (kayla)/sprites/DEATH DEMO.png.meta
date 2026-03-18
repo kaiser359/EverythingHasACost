@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 677aeb35dbe805a42a286114ae982de9
+guid: 8aa620c2cbb68b84db2605dc81564799
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1908788284259789754
-    second: OIP (1)_0
+      213: 5180990539537057700
+    second: DEATH DEMO_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OIP (1)_0
+      name: DEATH DEMO_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 474
-        height: 266
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 644944d2b2f9285e0800000000000000
-      internalID: -1908788284259789754
+      spriteID: 4a704c5127396e740800000000000000
+      internalID: 5180990539537057700
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      OIP (1)_0: -1908788284259789754
+      DEATH DEMO_0: 5180990539537057700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
