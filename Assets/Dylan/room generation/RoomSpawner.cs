@@ -9,7 +9,7 @@ public class RoomSpawner : MonoBehaviour
 {
     // openingDirection indicates which door is needed
     public int openingDirection;
-    [NonSerialized] public List<int> otherOpeningDirections = new();
+    public List<int> otherOpeningDirections = new();
     /*
      * 1 --> need bottom door
      * 2 --> need top door
@@ -58,7 +58,7 @@ public class RoomSpawner : MonoBehaviour
     {
         // Wait until the objectToWaitFor is not null
         yield return new WaitUntil(() => templates.dictionaryIsBuilt);
-        yield return new WaitForSeconds(0.1f); // small delay to ensure everything is set up
+        //yield return new WaitForSeconds(0.1f); // small delay to ensure everything is set up
 
         // the rooms are now available, you can safely access it here
         Debug.Log("rooms set up :3c");
@@ -144,6 +144,8 @@ public class RoomSpawner : MonoBehaviour
         // assign room class to spawnable rooms based on assigned opening direction
         roomsSpawnable = roomClass[openingDirection - 1];
 
+        Debug.Log(transform.position + " ROOMS SPAWNABLE BEFORE CHECKS: " + roomsSpawnable.Length);
+
         if (roomClass == templates.caps && otherOpeningDirections.Count != 0)
         {
             // cap requires more than one door
@@ -174,6 +176,11 @@ public class RoomSpawner : MonoBehaviour
             {
                 Debug.Log("WALL CHECK MISSED: " + transform.position + " / DIRECTION: " + (i + 1));
             }
+        }
+
+        if (roomsSpawnable.Length == 0)
+        {
+            roomsSpawnable = templates.caps[openingDirection - 1];
         }
 
         foreach (int otherOpeningDirection in otherOpeningDirections)
