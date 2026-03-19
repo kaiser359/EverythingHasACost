@@ -3,15 +3,24 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using Image = UnityEngine.UI.Image;
 
 public class HealthBar : MonoBehaviour
 {
     private UnityEngine.UI.Image healthBar;
     private TMPro.TextMeshProUGUI healthText;
     private Animator coinHeart;
-    public SpriteRenderer dimmySR;
     public Money money;
-    //public float adjust;
+    private CinemachineCamera cam;
+    //private Volume postProcess;
+    private VolumeProfile postProcessProfile;
+    private float ogVignetteIntensity;
+    public float fadeDuration = 1f;
+    public GameObject dimmy;
+    public Image blackOverlay;
 
     private void Awake()
     {
@@ -23,6 +32,16 @@ public class HealthBar : MonoBehaviour
         healthBar = GetComponentInChildren<UnityEngine.UI.Image>();
         healthText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         coinHeart = GetComponentInChildren<Animator>();
+        cam = FindObjectOfType<CinemachineCamera>();
+        cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
+        //postProcess = FindObjectOfType<Volume>();
+        postProcessProfile = FindObjectOfType<Volume>().profile;
+        postProcessProfile.TryGet(out Vignette vignette);
+        postProcessProfile.TryGet(out MotionBlur mb);
+        blackOverlay.enabled = false;
+        vignette.intensity.overrideState = false;
+        mb.intensity.overrideState = false;
+        ogVignetteIntensity = vignette.intensity.value;
     }
 
     // Update is called once per frame
@@ -33,23 +52,51 @@ public class HealthBar : MonoBehaviour
         healthBar.fillAmount = money.money / 10000f;
         if (money.money <= 0)
         {
-            SceneManager.LoadScene("death");
+            StartCoroutine(Death());
+            
         }
     }
     public void TakeDamage(int damageAmount)
     {
-        money.money -= damageAmount;
-        //healthBar.rectTransform.anchoredPosition = new Vector2(healthBar.rectTransform.anchoredPosition.x - damageAmount * adjust, healthBar.rectTransform.anchoredPosition.y); // Move the health bar slightly to the right
+        money.money -= damageAmount;     
         StartCoroutine(FlashRed());
     }
 
     private IEnumerator FlashRed()
     {     
         coinHeart.SetTrigger("hurt");
-        dimmySR.color = Color.red;
+        dimmy.GetComponent<SpriteRenderer>().color = Color.red;
         healthText.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        dimmySR.color = Color.white;
+        cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = true;
+        postProcessProfile.TryGet(out Vignette vignette);
+        postProcessProfile.TryGet(out MotionBlur mb);
+        vignette.intensity.overrideState = true;
+        mb.intensity.overrideState = true;
+        yield return new WaitForSeconds(0.15f);
+        dimmy.GetComponent<SpriteRenderer>().color = Color.white;
         healthText.color = Color.black;
+        cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
+        vignette.intensity.overrideState = false;
+        mb.intensity.overrideState = false;
+    }
+
+    private IEnumerator Death()
+    {
+        dimmy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        postProcessProfile.TryGet(out Vignette vignette);
+        vignette.intensity.overrideState = true;
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / fadeDuration;           
+            vignette.intensity.value = Mathf.Lerp(0f, 1f, t);
+            yield return null;
+        }
+        vignette.intensity.overrideState = false;
+        vignette.intensity.value = ogVignetteIntensity;
+        blackOverlay.enabled = true;
+        yield return new WaitForSeconds(0.75f);
+        SceneManager.LoadScene("death");
     }
 }
