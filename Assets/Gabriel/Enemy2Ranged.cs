@@ -8,6 +8,7 @@ public class Enemy2Ranged : MonoBehaviour
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
     public Money money;
+    public HealthBar healthBar;
 
     [Header("Ranges & Movement")]
     public float detectionRange = 8f; 
@@ -27,15 +28,23 @@ public class Enemy2Ranged : MonoBehaviour
     public float oscillationAmplitude = 0.6f; 
     public float oscillationSpeed = 3f; 
     public float rotationSpeed = 360f; 
+    // Warmup before the laser actually becomes active (seconds)
+    public float laserActivationCooldown = 0.55f;
+    // Movement while warming up (before laser becomes active)
+    public float preFireMoveSpeed = 1.2f;
+    public float preFireMoveAmount = 0.25f;
 
     private Transform playerTransform;
     private Vector3 originPosition;
     private Vector3 wanderTarget;
     private float wanderIdleTimer = 0f;
     private bool isIdling = false;
+    [SerializeField]private float timerTohit;
 
     private Vector2 _currentAimDir = Vector2.right;
     private float damageTimer = 0f;
+    private float activationTimer = 0f;
+    private bool laserActive = false;
 
     void Start()
     {
@@ -72,63 +81,98 @@ public class Enemy2Ranged : MonoBehaviour
             }
         }
 
+        // compute oscillated aim continuously so the enemy can move/face while warming up
+        Vector2 oscillatedAim = _currentAimDir.normalized;
+        {
+            Vector2 aim = _currentAimDir.normalized;
+            Vector2 perp = new Vector2(-aim.y, aim.x);
+            float osc = Mathf.Sin(Time.time * oscillationSpeed) * oscillationAmplitude;
+            oscillatedAim = (aim + perp * osc).normalized;
+        }
+
       
         if (dist <= detectionRange)
         {
-            // Laser active
-            if (lineRenderer != null)
+            activationTimer += Time.deltaTime;
+
+            // Laser becomes active after warmup
+            if (activationTimer >= laserActivationCooldown)
             {
-                lineRenderer.enabled = true;
-                Vector3 origin = laserFirePoint != null ? laserFirePoint.position : transform.position;
+                laserActive = true;
+            }
 
-                // oscillation  up and down
-                Vector2 aim = _currentAimDir.normalized;
-                Vector2 perp = new Vector2(-aim.y, aim.x);
-                float osc = Mathf.Sin(Time.time * oscillationSpeed) * oscillationAmplitude;
-                Vector2 oscillatedAim = (aim + perp * osc).normalized;
+            // While warming up (not yet active), move slightly along the oscillated aim and face it
+            if (!laserActive)
+            {
+                // move a small amount in the oscillated aim direction to telegraph the attack
+                Vector3 moveTarget = transform.position + (Vector3)(oscillatedAim * preFireMoveAmount);
+                transform.position = Vector3.MoveTowards(transform.position, moveTarget, preFireMoveSpeed * Time.deltaTime);
 
-                Vector3 end = origin + (Vector3)(oscillatedAim * laserDistance);
-
-                // see if lazer hits
-                RaycastHit2D hit = Physics2D.Raycast(origin, oscillatedAim, laserDistance);
-                if (hit.collider != null)
-                {
-                    end = hit.point;
-
-                    // KnockBAck
-
-                    if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
-                    {
-                        money.money -= damagePerTick+ (money.money /100);
-
-                        var prb = hit.collider.GetComponent<Rigidbody2D>();
-                        if (prb != null)
-                        {
-                            // knockback away from laser origin
-                            Vector2 kbDir = (hit.collider.transform.position - origin).normalized;
-                            prb.AddForce(kbDir * knockbackForce, ForceMode2D.Impulse);
-                        }
-
-                        damageTimer = damageCooldown;
-                    }
-                }
-
-                // Rotate enemy smoothly
+                // rotate to face the aim direction
                 float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
                 Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
-                lineRenderer.SetPosition(0, origin);
-                lineRenderer.SetPosition(1, end);
+
+                if (lineRenderer != null)
+                    lineRenderer.enabled = false;
+            }
+            else // laser active: perform raycast and render
+            {
+                if (lineRenderer != null)
+                {
+                    lineRenderer.enabled = true;
+                    Vector3 origin = laserFirePoint != null ? laserFirePoint.position : transform.position;
+
+                    Vector3 end = origin + (Vector3)(oscillatedAim * laserDistance);
+                    timerTohit += Time.deltaTime;
+
+                    // see if laser hits
+                    RaycastHit2D hit = Physics2D.Raycast(origin, oscillatedAim, laserDistance);
+                    if (hit.collider != null)
+                    {
+                        end = hit.point;
+
+                        // KnockBAck
+                        if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
+                        {
+                            money.money -= damagePerTick + (money.money / 100);
+
+                            var prb = hit.collider.GetComponent<Rigidbody2D>();
+                            if (prb != null)
+                            {
+                                // knockback away from laser origin
+                                Vector2 kbDir = (hit.collider.transform.position - origin).normalized;
+                                prb.AddForce(kbDir * knockbackForce, ForceMode2D.Impulse);
+                            }
+
+                            damageTimer = damageCooldown;
+                        }
+                    }
+
+                    // Rotate enemy smoothly while firing as well
+                    float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
+                    Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
+                    lineRenderer.SetPosition(0, origin);
+                    lineRenderer.SetPosition(1, end);
+                }
             }
         }
         else if (playerTransform != null && dist <= chaseRange)
         {
+            timerTohit = 0f;
+            // reset laser warmup/state when leaving detection range
+            activationTimer = 0f;
+            laserActive = false;
             // Chase
             Vector3 dir = (playerTransform.position - transform.position).normalized;
             transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, chaseSpeed * Time.deltaTime);
         }
         else
         {
+            timerTohit = 0;
+            activationTimer = 0f;
+            laserActive = false;
             // Wandering
             if (isIdling)
             {

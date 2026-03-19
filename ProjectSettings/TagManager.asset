@@ -6,9 +6,7 @@ TagManager:
   tags:
   - Enemy
   - AttackPoint
-  - SpawnPoint
-  - StartPoint
-  - Dungeon
+  - Shop
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Walls
+  - 
   - 
   - 
   - 
