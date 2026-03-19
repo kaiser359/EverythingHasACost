@@ -19,7 +19,7 @@ public class DungeonController : MonoBehaviour
         roomsSpawned = 0;
         enemiesSpawned = 0;
 
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 1; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
         }

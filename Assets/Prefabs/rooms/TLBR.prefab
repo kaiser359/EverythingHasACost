@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 628220351599970686, guid: 12c89a5bcb433114a8ece844225f8b59, type: 3}
       propertyPath: m_Name
-      value: BASE Variant
+      value: TLBR
       objectReference: {fileID: 0}
     - target: {fileID: 2319915415909313878, guid: 12c89a5bcb433114a8ece844225f8b59, type: 3}
       propertyPath: m_LocalPosition.x

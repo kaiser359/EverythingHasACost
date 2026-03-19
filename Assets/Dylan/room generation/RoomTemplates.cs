@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class RoomSet
 {
+    public GameObject start;
     public RoomCluster normalCluster;
     public RoomCluster endCluster;
     public RoomCluster winCluster;
@@ -46,7 +47,12 @@ public class RoomTemplates : MonoBehaviour
 {
     // reference to the starting room prefab
     [Header("Starting Room")]
-    public GameObject startingRoom;
+    private GameObject _startingRoom;
+    public GameObject startingRoom
+    {
+        get { return _startingRoom; }
+        private set { _startingRoom = value; }
+    }
 
     [Header("Room Sets")]
     [Tooltip("room sets :3")]
@@ -85,7 +91,7 @@ public class RoomTemplates : MonoBehaviour
     {
         // build the runtime dictionary from the serialized entries as early as possible
         BuildRoomSetDictionary();
-        AssignRoomSet("LEVEL1");
+        AssignRoomSet("EMPTY");
     }
 
     private void Start()
@@ -166,6 +172,7 @@ public class RoomTemplates : MonoBehaviour
 
         RoomSet set = roomSets[setName];
 
+        startingRoom = set.start;
         rooms = set.normalCluster.rooms;
         caps = set.endCluster.rooms;
         winRooms = set.winCluster.rooms;

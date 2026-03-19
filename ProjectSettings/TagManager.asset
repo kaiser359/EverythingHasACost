@@ -8,6 +8,7 @@ TagManager:
   - AttackPoint
   - SpawnPoint
   - StartPoint
+  - Dungeon
   layers:
   - Default
   - TransparentFX

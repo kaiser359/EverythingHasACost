@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -40,10 +41,10 @@ public class RoomSpawner : MonoBehaviour
         // generate wall checks based on room dimensions
         wallChecks = new List<Vector2>
         {
-            new (0, -roomHeight / 2), // bottom
-            new (0, roomHeight / 2), // top
-            new (-roomWidth / 2, 0), // left
-            new (roomWidth / 2, 0), // right
+            new (0, -roomHeight / 2f), // bottom
+            new (0, roomHeight / 2f), // top
+            new (-roomWidth / 2f, 0), // left
+            new (roomWidth / 2f, 0), // right
         };
 
         // find the RoomTemplates object in the scene
@@ -129,7 +130,11 @@ public class RoomSpawner : MonoBehaviour
         {
             // starting spawner
             room = Instantiate(templates.startingRoom, transform.position, Quaternion.identity, dungeon.transform);
-            room.GetComponent<RoomController>().AssignOrigins(gameObject);
+
+            RoomController roomController = room.GetComponent<RoomController>();
+
+            roomController.AssignOrigins(gameObject);
+            dungeon.transform.GetChild(0).transform.GetChild(0).GetComponent<Tilemap>().SetTilesBlock(roomController.GetWallBounds(true), roomController.GetWalls());
 
             // terminate early since it's the starting room
             return;
@@ -157,7 +162,7 @@ public class RoomSpawner : MonoBehaviour
         for (int i = 0; i < wallChecks.Count; i++)
         {
             // exclude rooms that have a door in the direction of an adjacent wall
-            if (Physics2D.Raycast((Vector2)transform.position + 0.5f * wallChecks[i], wallChecks[i], 0.01f, LayerMask.GetMask("Walls")))
+            if (Physics2D.Raycast((Vector2)transform.position + 0.49f * wallChecks[i], wallChecks[i], 0.02f, LayerMask.GetMask("Walls")))
             {
                 roomsSpawnable = roomsSpawnable.Except(roomClass[i]).ToArray();
             }
@@ -179,7 +184,10 @@ public class RoomSpawner : MonoBehaviour
         Debug.Log("RANDOM DOOR INDEX: " + randomDoorIndex);
         room = Instantiate(roomType[randomDoorIndex], transform.position, Quaternion.identity, dungeon.transform);
 
-        dungeonController.enemiesSpawned += room.GetComponent<RoomController>().EnemyCount();
+        RoomController roomController = room.GetComponent<RoomController>();
+
+        dungeonController.enemiesSpawned += roomController.EnemyCount();
+        dungeon.transform.GetChild(0).transform.GetChild(0).GetComponent<Tilemap>().SetTilesBlock(roomController.GetWallBounds(true), roomController.GetWalls());
 
         // assign the origin of the room to this spawn point so that it can be accessed by the room's spawn points
         room.GetComponent<RoomController>().AssignOrigins(gameObject);
