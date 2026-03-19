@@ -58,6 +58,7 @@ public class RoomSpawner : MonoBehaviour
     {
         // Wait until the objectToWaitFor is not null
         yield return new WaitUntil(() => templates.dictionaryIsBuilt);
+        yield return new WaitForSeconds(0.1f); // small delay to ensure everything is set up
 
         // the rooms are now available, you can safely access it here
         Debug.Log("rooms set up :3c");
@@ -161,10 +162,17 @@ public class RoomSpawner : MonoBehaviour
 
         for (int i = 0; i < wallChecks.Count; i++)
         {
+            Debug.Log("CHECKING WALL: " + transform.position + " / DIRECTION: " + wallChecks[i]);
+
             // exclude rooms that have a door in the direction of an adjacent wall
-            if (Physics2D.Raycast((Vector2)transform.position + 0.49f * wallChecks[i], wallChecks[i], 0.02f, LayerMask.GetMask("Walls")))
+            if (Physics2D.Raycast((Vector2)transform.position + wallChecks[i], wallChecks[i], 0.02f, LayerMask.GetMask("Walls")))
             {
+                Debug.Log("WALL CHECK HIT: " + transform.position + " / DIRECTION: " + (i + 1));
                 roomsSpawnable = roomsSpawnable.Except(roomClass[i]).ToArray();
+            }
+            else
+            {
+                Debug.Log("WALL CHECK MISSED: " + transform.position + " / DIRECTION: " + (i + 1));
             }
         }
 
