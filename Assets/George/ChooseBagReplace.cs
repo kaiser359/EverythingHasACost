@@ -6,6 +6,7 @@ public class ChooseBagReplace : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GlobalPlayerInfo gS;
     private Image image;
+    public GameObject BloodBag;
     public bool isFirstBag;
     public bool isSecondBag;
     public bool isThirdBag;
@@ -28,12 +29,13 @@ public class ChooseBagReplace : MonoBehaviour
         image.sprite = chosenBag.GetComponent<BloodBagData>().BloodBagSprite;
 
     }
-    public void ReplaceBag(GameObject BloodBag) {
+    public void ReplaceBag() {
         if (isFirstBag)
             gS.BloodBag1 = BloodBag;
         else if (isSecondBag)
             gS.BloodBag2 = BloodBag;
         else if (isThirdBag)
             gS.BloodBag3 = BloodBag;
+        gameObject.transform.parent.gameObject.SetActive(false);
     } 
 }

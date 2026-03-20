@@ -20,6 +20,10 @@ public class StoreInteract : MonoBehaviour
             Store.GetComponent<Store>().StartStore();
         }
     }
+    public void LeaveStore() { 
+        Store.transform.GetChild(0).gameObject.SetActive(false);
+        Time.timeScale = 1f;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Shop"))
