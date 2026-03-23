@@ -7,24 +7,22 @@ public class PurchaseBloodBag : MonoBehaviour
     public GlobalPlayerInfo gS;
     public GameObject thisBag;
     private Image image;
-    private TextMeshProUGUI priceText;
     public GameObject RP;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
-        thisBag = gS.BloodBagOptions[Random.Range(0, gS.BloodBagOptions.Length)];
-        priceText = GetComponentInChildren<TextMeshProUGUI>();
-        image = GetComponent<Image>();
-        var bagData = thisBag.GetComponent<BloodBagData>();
-        priceText.text = "$" + bagData.BloodBagPrice;
-        image.sprite = bagData.BloodBagSprite;
+        image = GetComponentInChildren<Image>();
     }
     // Update is called once per frame after the MonoBehaviour is created
     void Update()
     {
-
+        if (thisBag != null) {
+            var bagData = thisBag.GetComponent<BloodBagData>();
+            image.sprite = bagData.ZoomedBloodBagSprite;
+            image.color = new Color(1, 1, 1, 1f);
+        }
     }
     public void Interact()
     {

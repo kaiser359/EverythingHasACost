@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -9,6 +10,7 @@ public class RoomSet
     public RoomCluster normalCluster;
     public RoomCluster endCluster;
     public RoomCluster winCluster;
+    public RoomCluster shopCluster;
 }
 
 [Serializable]
@@ -62,36 +64,47 @@ public class RoomTemplates : MonoBehaviour
     public Dictionary<string, RoomSet> roomSets = new();
 
     private List<GameObject[]> _rooms;
-    public List<GameObject[]> rooms
+    public List<GameObject[]> Rooms
     {
         get { return _rooms; }
         private set { _rooms = value; }
     }
 
     private List<GameObject[]> _caps;
-    public List<GameObject[]> caps
+    public List<GameObject[]> Caps
     {
         get { return _caps; }
         private set { _caps = value; }
     }
 
     private List<GameObject[]> _winRooms;
-    public List<GameObject[]> winRooms
+    public List<GameObject[]> WinRooms
     {
         get { return _winRooms; }
         private set { _winRooms = value; }
     }
 
+    private List<GameObject[]> _shopRooms;
+    public List<GameObject[]> ShopRooms
+    {
+        get { return _shopRooms; }
+        private set { _shopRooms = value; }
+    }
+
+    // verify that the dictionary has been built to prevent null reference errors when assigning room sets
     [NonSerialized] public bool dictionaryIsBuilt = false;
 
+    // tracking whether we've already spawned a win room or shop room to prevent duplicates
     public static bool winSpawned = false;
-    public static GameObject winSpawner;
+    public static bool shopSpawned = false;
+
+    // --------------------------------------------------------------
 
     private void Awake()
     {
         // build the runtime dictionary from the serialized entries as early as possible
         BuildRoomSetDictionary();
-        AssignRoomSet("EMPTY");
+        AssignRoomSet("EMPTYY");
     }
 
     private void Start()
@@ -99,18 +112,18 @@ public class RoomTemplates : MonoBehaviour
         // ensure dictionary is built (safe to call multiple times)
         BuildRoomSetDictionary();
 
-        Debug.Log($"RoomTemplates: Awake and Start completed.");
-        foreach (GameObject[] roomArray in rooms)
+        //Debug.Log($"RoomTemplates: Awake and Start completed.");
+        foreach (GameObject[] roomArray in Rooms)
         {
             foreach (GameObject room in roomArray)
             {
                 if (room == null)
                 {
-                    Debug.LogWarning("RoomTemplates: Found null prefab in rooms array.");
+                    //Debug.LogWarning("RoomTemplates: Found null prefab in rooms array.");
                 }
                 else
                 {
-                    Debug.Log($"RoomTemplates: Room prefab '{room.name}' is assigned.");
+                    //Debug.Log($"RoomTemplates: Room prefab '{room.name}' is assigned.");
                 }
             }
         }
@@ -154,7 +167,7 @@ public class RoomTemplates : MonoBehaviour
             dict[key] = entry.set;
         }
 
-        Debug.Log($"RoomTemplates: Built roomSets dictionary with {dict.Count} entries from roomSetEntries.");
+        //Debug.Log($"RoomTemplates: Built roomSets dictionary with {dict.Count} entries from roomSetEntries.");
 
         roomSets = dict;
         dictionaryIsBuilt = true;
@@ -162,19 +175,23 @@ public class RoomTemplates : MonoBehaviour
 
     public void AssignRoomSet(string setName)
     {
+        RoomSet set;
+
         if (!roomSets.ContainsKey(setName))
         {
             Debug.LogError($"RoomTemplates: Room set '{setName}' not found in roomSets dictionary.");
-            return;
+            set = roomSets.Values.FirstOrDefault();
+        }
+        else
+        {
+            Debug.Log($"RoomTemplates: Assigning room set '{setName}'.");
+            set = roomSets[setName];
         }
 
-        Debug.Log($"RoomTemplates: Assigning room set '{setName}'.");
-
-        RoomSet set = roomSets[setName];
-
         startingRoom = set.start;
-        rooms = set.normalCluster.rooms;
-        caps = set.endCluster.rooms;
-        winRooms = set.winCluster.rooms;
+        Rooms = set.normalCluster.rooms;
+        Caps = set.endCluster.rooms;
+        WinRooms = set.winCluster.rooms;
+        ShopRooms = set.shopCluster.rooms;
     }
 }
