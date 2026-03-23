@@ -82,10 +82,14 @@ public class RoomTemplates : MonoBehaviour
         private set { _winRooms = value; }
     }
 
+    // verify that the dictionary has been built to prevent null reference errors when assigning room sets
     [NonSerialized] public bool dictionaryIsBuilt = false;
 
+    // tracking whether we've already spawned a win room or shop room to prevent duplicates
     public static bool winSpawned = false;
-    public static GameObject winSpawner;
+    public static bool shopSpawned = false;
+
+    // --------------------------------------------------------------
 
     private void Awake()
     {
