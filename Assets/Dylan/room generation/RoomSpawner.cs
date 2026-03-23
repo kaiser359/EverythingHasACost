@@ -65,17 +65,17 @@ public class RoomSpawner : MonoBehaviour
         //yield return new WaitForSeconds(0.1f); // small delay to ensure everything is set up
 
         // the rooms are now available, you can safely access it here
-        Debug.Log("rooms set up :3c");
+        //Debug.Log("rooms set up :3c");
 
         // if under the spawn requirement, spawn normal rooms
         if (dungeonController.roomsSpawned < dungeonController.minRooms || otherOpeningDirections.Count > 0)
         {
-            roomClass = templates.rooms;
+            roomClass = templates.Rooms;
         }
         // once the spawn requirement is reached, only spawn cap rooms
         else
         {
-            roomClass = templates.caps;
+            roomClass = templates.Caps;
         }
 
         // spawn after delay
@@ -114,19 +114,27 @@ public class RoomSpawner : MonoBehaviour
 
         // by this point, this spawn point is spawning a room, so
         // if win room has not been spawned yet and this is a cap room spawn point
-        if (!RoomTemplates.winSpawned && roomClass == templates.caps)
+        if (!RoomTemplates.winSpawned && roomClass == templates.Caps)
         {
             RoomTemplates.winSpawned = true;
 
-            roomClass = templates.winRooms;
-            Debug.Log("WIN ROOM SPAWNER SET AT: " + transform.position);
+            roomClass = templates.WinRooms;
+            //Debug.Log("WIN ROOM SPAWNER SET AT: " + transform.position);
+        }
+
+        if (!RoomTemplates.shopSpawned && roomClass == templates.Caps)
+        {
+            RoomTemplates.shopSpawned = true;
+
+            roomClass = templates.ShopRooms;
+            //Debug.Log("WIN ROOM SPAWNER SET AT: " + transform.position);
         }
 
         // increment rooms spawned count
         dungeonController.roomsSpawned++;
 
         // room spawning debugging
-        Debug.Log(dungeonController.roomsSpawned);
+        //Debug.Log(dungeonController.roomsSpawned);
 
         // indicate that a room has been spawned
         spawned = true;
@@ -148,12 +156,12 @@ public class RoomSpawner : MonoBehaviour
         // assign room class to spawnable rooms based on assigned opening direction
         roomsSpawnable = roomClass[openingDirection - 1];
 
-        Debug.Log(transform.position + " ROOMS SPAWNABLE BEFORE CHECKS: " + roomsSpawnable.Length);
+        //Debug.Log(transform.position + " ROOMS SPAWNABLE BEFORE CHECKS: " + roomsSpawnable.Length);
 
-        if (roomClass == templates.caps && otherOpeningDirections.Count != 0)
+        if (roomClass == templates.Caps && otherOpeningDirections.Count != 0)
         {
             // cap requires more than one door
-            roomClass = templates.rooms;
+            roomClass = templates.Rooms;
             roomsSpawnable = roomClass[openingDirection - 1];
 
             for (int i = 0; i < 4; i++)
@@ -168,23 +176,23 @@ public class RoomSpawner : MonoBehaviour
 
         for (int i = 0; i < wallChecks.Count; i++)
         {
-            Debug.Log("CHECKING WALL: " + transform.position + " / DIRECTION: " + wallChecks[i]);
+            //Debug.Log("CHECKING WALL: " + transform.position + " / DIRECTION: " + wallChecks[i]);
 
             // exclude rooms that have a door in the direction of an adjacent wall
             if (Physics2D.Raycast((Vector2)transform.position + wallChecks[i], wallChecks[i], 0.02f, LayerMask.GetMask("Walls")))
             {
-                Debug.Log("WALL CHECK HIT: " + transform.position + " / DIRECTION: " + (i + 1));
+                //Debug.Log("WALL CHECK HIT: " + transform.position + " / DIRECTION: " + (i + 1));
                 roomsSpawnable = roomsSpawnable.Except(roomClass[i]).ToArray();
             }
             else
             {
-                Debug.Log("WALL CHECK MISSED: " + transform.position + " / DIRECTION: " + (i + 1));
+                //Debug.Log("WALL CHECK MISSED: " + transform.position + " / DIRECTION: " + (i + 1));
             }
         }
 
         if (roomsSpawnable.Length == 0)
         {
-            roomsSpawnable = templates.caps[openingDirection - 1];
+            roomsSpawnable = templates.Caps[openingDirection - 1];
         }
 
         foreach (int otherOpeningDirection in otherOpeningDirections)
@@ -200,7 +208,7 @@ public class RoomSpawner : MonoBehaviour
     private void SpawnRoom(GameObject[] roomType)
     {
         randomDoorIndex = UnityEngine.Random.Range(0, roomType.Length);
-        Debug.Log("RANDOM DOOR INDEX: " + randomDoorIndex);
+        //Debug.Log("RANDOM DOOR INDEX: " + randomDoorIndex);
         room = Instantiate(roomType[randomDoorIndex], transform.position, Quaternion.identity, dungeon.transform);
 
         RoomController roomController = room.GetComponent<RoomController>();
@@ -212,7 +220,7 @@ public class RoomSpawner : MonoBehaviour
         room.GetComponent<RoomController>().AssignOrigins(gameObject);
 
         // room spawning debugging
-        Debug.Log("SPAWNED ROOM" + transform.position + roomType[randomDoorIndex].name);
+        //Debug.Log("SPAWNED ROOM" + transform.position + roomType[randomDoorIndex].name);
     }
 
     // called when another collider enters this trigger
@@ -230,7 +238,7 @@ public class RoomSpawner : MonoBehaviour
         // the other spawn point is the point is generated from, so this spawn point is redundant and should be destroyed
         if (other.gameObject == origin.GetComponent<RoomSpawner>().origin)
         {
-            Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: ALREADY SPAWNED");
+            //Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: ALREADY SPAWNED");
 
             Destroy(gameObject);
         }
@@ -238,14 +246,15 @@ public class RoomSpawner : MonoBehaviour
         // the other spawn point has already spawned a room, so this spawn point is redundant and should be destroyed
         else if (other.GetComponent<RoomSpawner>().spawned)
         {
-            Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: COLLIDED WITH SPAWN THAT HAS ALREADY SPAWNED");
+            //Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: COLLIDED WITH SPAWN THAT HAS ALREADY SPAWNED");
+            
             Destroy(gameObject);
         }
 
         // this spawn point has a higher opening direction value than the other
         else if (GetComponent<RoomSpawner>().openingDirection > other.GetComponent<RoomSpawner>().openingDirection)
         {
-            Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: HIGHER OPENING DIRECTION");
+            //Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: HIGHER OPENING DIRECTION");
 
             other.GetComponent<RoomSpawner>().otherOpeningDirections.Add(openingDirection);
             Destroy(gameObject);

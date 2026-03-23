@@ -9,26 +9,26 @@ public class RoomController : MonoBehaviour
     {
         if (!toWorld)
         {
-            Debug.Log("skip");
+            //Debug.Log("skip");
             return Walls.cellBounds;
         }
 
         Vector2 halfextents = new(Walls.cellBounds.size.x/2f, Walls.cellBounds.size.y/2f);
-        Debug.Log($"Room Size: {halfextents}");
+        //Debug.Log($"Room Size: {halfextents}");
 
         Vector2 blPos = new(
             Walls.gameObject.transform.position.x - halfextents.x,
             Walls.gameObject.transform.position.y - halfextents.y
         );
-        Debug.Log($"Bottom Left Position: {blPos}");
+        //Debug.Log($"Bottom Left Position: {blPos}");
 
         BoundsInt bounds = new(
             new Vector3Int((int)blPos.x, (int)blPos.y, 0),
             Walls.cellBounds.size
         );
 
-        Debug.Log($"Original wall bounds: {Walls.cellBounds}");
-        Debug.Log($"Calculated wall bounds: {bounds}");
+        //Debug.Log($"Original wall bounds: {Walls.cellBounds}");
+        //Debug.Log($"Calculated wall bounds: {bounds}");
 
         return bounds;
     }
@@ -58,7 +58,7 @@ public class RoomController : MonoBehaviour
         {
             if (child.CompareTag("SpawnPoint"))
             {
-                Debug.Log($"assigned {origin.transform.position} to {child.position}");
+                //Debug.Log($"assigned {origin.transform.position} to {child.position}");
 
                 var spawner = child.GetComponent<RoomSpawner>();
                 if (spawner != null)
