@@ -62,7 +62,10 @@ public class RoomController : MonoBehaviour
 
                 var spawner = child.GetComponent<RoomSpawner>();
                 if (spawner != null)
+                {
                     spawner.origin = origin;
+                    spawner.spawnDistance = origin.GetComponent<RoomSpawner>().spawnDistance + 1;
+                }
             }
         }
     }

@@ -349,8 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 0
+  otherOpeningDirections: 
   origin: {fileID: 0}
-  roomWidth: 20
+  spawnDistance: 0
+  roomWidth: 40
   roomHeight: 14
 --- !u!50 &485494419
 Rigidbody2D:
