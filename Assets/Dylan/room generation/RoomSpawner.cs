@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 public class RoomSpawner : MonoBehaviour
 {
     // openingDirection indicates which door is needed
+    [Header("Opening Directions")]
     public int openingDirection;
     public List<int> otherOpeningDirections = new();
     /*
@@ -23,7 +24,9 @@ public class RoomSpawner : MonoBehaviour
     private DungeonController dungeonController;
     private int randomDoorIndex;
 
+    [Header("Dungeon Relationships")]
     public GameObject origin;
+    public int spawnDistance;
     private GameObject room;
 
     private List<GameObject[]> roomClass;
@@ -31,6 +34,7 @@ public class RoomSpawner : MonoBehaviour
 
     private bool spawned = false;
 
+    [Header("Room Dimensions")]
     public float roomWidth = 72;
     public float roomHeight = 64;
     private List<Vector2> wallChecks;
