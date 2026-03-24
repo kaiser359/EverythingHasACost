@@ -83,7 +83,6 @@ public class LazerBOOM : MonoBehaviour
             if (beamVfx != null)
             {
                 UpdateVFX(halfLeft.position, halfRight.position);
-                Debug.DrawLine(halfLeft.position, halfRight.position, Color.cyan);
             }
             yield return null;
         }
@@ -98,7 +97,6 @@ public class LazerBOOM : MonoBehaviour
 
             Vector3 worldLeft = halfLeft.position;
             Vector3 worldRight = halfRight.position;
-            Debug.DrawLine(worldLeft, worldRight, Color.cyan);
             Vector2 center = ((Vector2)worldLeft + (Vector2)worldRight) * 0.5f;
             float length = Vector2.Distance(worldLeft, worldRight);
             Vector2 size = new Vector2(Mathf.Max(0.05f, length), beamWidth);
