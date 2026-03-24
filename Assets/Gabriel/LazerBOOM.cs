@@ -10,29 +10,45 @@ public class LazerBOOM : MonoBehaviour
 
     [Header("Beam")]
     public float activateDelay = 0.3f; // wait before animation starts
+    public float connectTime = 0.5f; // time for halves to connect
     public float stayDuration = 3f; // how long beam stays connected
     public float damagePerSecond = 20f;
     public float beamWidth = 0.6f;
-    public float maxRange = 10f; // max beam distance
     public LayerMask enemyLayer;
 
     [Header("References (set in prefab)")]
-    public Transform beamOrigin; // optional: if null uses this.transform.position
+    public Transform halfLeft;
+    public Transform halfRight;
     public VisualEffect beamVfx;
     public Color beamColor = Color.cyan;
     public LineRenderer line;
+
+    // internal positions captured at start
+    private Vector3 leftOpenPos;
+    private Vector3 rightOpenPos;
+    private Vector3 leftClosedPos = new Vector3(-0.25f, 0f, 0f);
+    private Vector3 rightClosedPos = new Vector3(0.25f, 0f, 0f);
 
     private Coroutine activeRoutine;
 
     // track VFX play state because VisualEffect has no 'isPlaying' property
     private bool vfxIsPlaying = false;
 
+    private void Start()
+    {
+        // capture open positions if not explicitly set
+        if (halfLeft != null) leftOpenPos = halfLeft.localPosition;
+        if (halfRight != null) rightOpenPos = halfRight.localPosition;
+    }
+
     private void Update()
     {
         ActivateAbility();
         if (timer > 0f) timer -= Time.deltaTime;
+       
     }
 
+  
     public void ActivateAbility()
     {
         if (timer > 0f) return; // still cooling down
@@ -43,9 +59,9 @@ public class LazerBOOM : MonoBehaviour
 
     private IEnumerator DoBeamSequence()
     {
+        
         yield return new WaitForSeconds(activateDelay);
 
-<<<<<<< HEAD
         // ensure halves exist
         if (halfLeft == null || halfRight == null)
         {
@@ -67,63 +83,28 @@ public class LazerBOOM : MonoBehaviour
             if (beamVfx != null)
             {
                 UpdateVFX(halfLeft.position, halfRight.position);
+                Debug.DrawLine(halfLeft.position, halfRight.position, Color.cyan);
             }
             yield return null;
         }
 
-=======
-        // make sure there's a line renderer or VFX to show something, but still allow behavior without them
->>>>>>> 2b671bac83976a18679a5fdee7c2dc8fd6a24c35
         if (line != null) { line.enabled = true; line.positionCount = 2; }
-
+       
         float activeElapsed = 0f;
         while (activeElapsed < stayDuration)
         {
             activeElapsed += Time.deltaTime;
 
-            // determine beam start point
-            Vector3 start = (beamOrigin != null) ? beamOrigin.position : transform.position;
 
-<<<<<<< HEAD
             Vector3 worldLeft = halfLeft.position;
             Vector3 worldRight = halfRight.position;
+            Debug.DrawLine(worldLeft, worldRight, Color.cyan);
             Vector2 center = ((Vector2)worldLeft + (Vector2)worldRight) * 0.5f;
             float length = Vector2.Distance(worldLeft, worldRight);
-=======
-            // determine mouse world position (2D)
-            Vector3 mouseWorld = start;
-            Camera cam = Camera.main;
-            if (cam != null)
-            {
-                Vector3 mp = cam.ScreenToWorldPoint(Input.mousePosition);
-                mp.z = start.z; // keep same z-plane as start
-                mouseWorld = mp;
-            }
-            else
-            {
-                // fallback direction if no camera available
-                mouseWorld = start + transform.right;
-            }
-
-            Vector3 dir = mouseWorld - start;
-            float distToMouse = dir.magnitude;
-            if (distToMouse > 0.0001f) dir /= distToMouse;
-            else dir = transform.right; // arbitrary default
-
-            Vector3 end = start + dir * maxRange;
-
-            // debug draw
-            Debug.DrawLine(start, end, beamColor);
-
-            // area damage (keeps original behavior but now along beam from start->end)
-            Vector2 wStart = start;
-            Vector2 wEnd = end;
-            Vector2 center = (wStart + wEnd) * 0.5f;
-            float length = Vector2.Distance(wStart, wEnd);
->>>>>>> 2b671bac83976a18679a5fdee7c2dc8fd6a24c35
             Vector2 size = new Vector2(Mathf.Max(0.05f, length), beamWidth);
 
-            Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, enemyLayer);
+            // area damage (keeps original behavior)
+            Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, 0f, enemyLayer);
             foreach (var c in hits)
             {
                 if (c == null) continue;
@@ -132,44 +113,77 @@ public class LazerBOOM : MonoBehaviour
             }
 
             // precise hit detection along beam to report a hit point to VFX (so you can show impact)
-            RaycastHit2D rhit;
-            Vector3 hitPoint = GetHitPosition(start, dir, maxRange, out rhit);
-            if (rhit.collider != null)
+            Vector3 dir = (worldRight - worldLeft);
+            float dist = dir.magnitude;
+            Vector3 hitPoint = worldRight;
+            if (dist > 0.001f)
             {
-                var eh = rhit.collider.GetComponent<EnemyHealth>();
-                if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
+                dir /= dist; // normalize
+                RaycastHit2D rhit = Physics2D.Raycast(worldLeft, dir, dist, enemyLayer);
+                if (rhit.collider != null)
+                {
+                    hitPoint = rhit.point;
+                    // optional: also apply direct hit damage to the first collider (in addition to area damage)
+                    var eh = rhit.collider.GetComponent<EnemyHealth>();
+                    if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
+                }
             }
 
-            // update VFX while beam is active
+            // update VFX while beam is active (use helper to centralize changes)
+
             if (beamVfx != null)
             {
-                UpdateVFX(start, end);
+                UpdateVFX(worldLeft, worldRight);
+                // provide hit point to the VFX graph; expose a Vector3 property named 'HitPosition' in your VFX
                 hitPoint.z = 0f; // ensure 2D
                 beamVfx.SetVector3("HitPosition", hitPoint);
             }
 
             if (line != null)
             {
-                line.SetPosition(0, new Vector3(start.x, start.y, 0f));
-                line.SetPosition(1, new Vector3(end.x, end.y, 0f));
+                // ensure line positions are on Z=0 for 2D
+                line.SetPosition(0, new Vector3(worldLeft.x, worldLeft.y, 0f));
+                line.SetPosition(1, new Vector3(worldRight.x, worldRight.y, 0f));
+                // optional: animate width or color:
+                // line.widthMultiplier = Mathf.Lerp(0.1f, 1f, Mathf.PingPong(Time.time,1f));
             }
 
             yield return null;
         }
 
+        // animate halves opening back to original positions
+        t = 0f;
+        Vector3 endL = halfLeft.localPosition;
+        Vector3 endR = halfRight.localPosition;
+        while (t < connectTime)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / connectTime);
+            halfLeft.localPosition = Vector3.Lerp(endL, leftOpenPos, p);
+            halfRight.localPosition = Vector3.Lerp(endR, rightOpenPos, p);
+            if (beamVfx != null)
+            {
+                UpdateVFX(halfLeft.position, halfRight.position);
+            }
+            yield return null;
+        }
+
+        // stop VFX when fully closed/opened
         StopVFX();
         if (line != null) line.enabled = false;
+
         activeRoutine = null;
     }
 
     // visualize the beam area in editor when selected
     private void OnDrawGizmosSelected()
     {
-        Vector3 start = (beamOrigin != null) ? beamOrigin.position : transform.position;
-        Vector3 end = start + transform.right * maxRange;
+        if (halfLeft == null || halfRight == null) return;
         Gizmos.color = Color.cyan;
-        Vector3 center = (start + end) * 0.5f;
-        float len = Vector3.Distance(start, end);
+        Vector3 a = halfLeft.position;
+        Vector3 b = halfRight.position;
+        Vector3 center = (a + b) * 0.5f;
+        float len = Vector3.Distance(a, b);
         Gizmos.DrawWireCube(center, new Vector3(len, beamWidth, 0.1f));
     }
 
@@ -203,11 +217,5 @@ public class LazerBOOM : MonoBehaviour
         if (beamVfx == null) return;
         beamVfx.Stop();
         vfxIsPlaying = false;
-    }
-
-    private Vector3 GetHitPosition(Vector3 start, Vector3 dir, float range, out RaycastHit2D hit)
-    {
-        hit = Physics2D.Raycast(start, dir, range, enemyLayer);
-        return (hit.collider != null) ? hit.point : start + dir * range;
     }
 }
