@@ -16,6 +16,7 @@ public class AssignBloodBags : MonoBehaviour
         bloodBag = gS.BloodBagOptions[Random.Range(0, gS.BloodBagOptions.Length)];
         bagData = bloodBag.GetComponent<BloodBagData>();
         image = GetComponentInChildren<Image>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
         text.text = "$" + bagData.BloodBagPrice;
         image.sprite = bagData.BloodBagSprite;
     }
@@ -23,6 +24,7 @@ public class AssignBloodBags : MonoBehaviour
     public void Interact()
     {
         zoomedBag.SetActive(true);
+        zoomedBag.GetComponent<PurchaseBloodBag>().SelectedBag = gameObject;
         zoomedBag.GetComponent<PurchaseBloodBag>().thisBag = bloodBag;
     }
 }

@@ -47,3 +47,4 @@ MonoBehaviour:
   BloodBagID: 1
   BloodBagPrice: 500
   BloodBagSprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  ZoomedBloodBagSprite: {fileID: 4160464559918616277, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
