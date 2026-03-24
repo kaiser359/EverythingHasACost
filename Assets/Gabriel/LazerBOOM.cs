@@ -45,35 +45,7 @@ public class LazerBOOM : MonoBehaviour
     {
         yield return new WaitForSeconds(activateDelay);
 
-<<<<<<< HEAD
-        // ensure halves exist
-        if (halfLeft == null || halfRight == null)
-        {
-            Debug.LogWarning("LazerBOOM: halves not assigned (halfLeft/halfRight)");
-            yield break;
-        }
-
-        
-        float t = 0f;
-        Vector3 sL = halfLeft.localPosition;
-        Vector3 sR = halfRight.localPosition;
-        while (t < connectTime)
-        {
-            t += Time.deltaTime;
-            float p = Mathf.Clamp01(t / connectTime);
-            halfLeft.localPosition = Vector3.Lerp(sL, leftClosedPos, p);
-            halfRight.localPosition = Vector3.Lerp(sR, rightClosedPos, p);
-            // update VFX to follow halves during connect (2D: keep Z at 0)
-            if (beamVfx != null)
-            {
-                UpdateVFX(halfLeft.position, halfRight.position);
-            }
-            yield return null;
-        }
-
-=======
         // make sure there's a line renderer or VFX to show something, but still allow behavior without them
->>>>>>> 2b671bac83976a18679a5fdee7c2dc8fd6a24c35
         if (line != null) { line.enabled = true; line.positionCount = 2; }
 
         float activeElapsed = 0f;
@@ -84,12 +56,6 @@ public class LazerBOOM : MonoBehaviour
             // determine beam start point
             Vector3 start = (beamOrigin != null) ? beamOrigin.position : transform.position;
 
-<<<<<<< HEAD
-            Vector3 worldLeft = halfLeft.position;
-            Vector3 worldRight = halfRight.position;
-            Vector2 center = ((Vector2)worldLeft + (Vector2)worldRight) * 0.5f;
-            float length = Vector2.Distance(worldLeft, worldRight);
-=======
             // determine mouse world position (2D)
             Vector3 mouseWorld = start;
             Camera cam = Camera.main;
@@ -120,7 +86,6 @@ public class LazerBOOM : MonoBehaviour
             Vector2 wEnd = end;
             Vector2 center = (wStart + wEnd) * 0.5f;
             float length = Vector2.Distance(wStart, wEnd);
->>>>>>> 2b671bac83976a18679a5fdee7c2dc8fd6a24c35
             Vector2 size = new Vector2(Mathf.Max(0.05f, length), beamWidth);
 
             Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, enemyLayer);
