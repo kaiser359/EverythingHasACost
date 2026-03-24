@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class PurchaseBloodBag : MonoBehaviour
@@ -21,7 +20,6 @@ public class PurchaseBloodBag : MonoBehaviour
         if (thisBag != null) {
             var bagData = thisBag.GetComponent<BloodBagData>();
             image.sprite = bagData.ZoomedBloodBagSprite;
-            image.color = new Color(1, 1, 1, 1f);
         }
     }
     public void Interact()
