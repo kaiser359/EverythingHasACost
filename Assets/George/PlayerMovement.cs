@@ -19,6 +19,11 @@ public class PlayerMovement : MonoBehaviour
     // Called by the Input System. Bind your action to `Move` with a Vector2 control (e.g., WASD or left stick).
     public void Move(InputAction.CallbackContext ctx)
     {
-        rb.linearVelocity = ctx.ReadValue<Vector2>() * moveSpeed;
+        desiredVelocity = ctx.ReadValue<Vector2>() * moveSpeed;
+    }
+
+    private void Update()
+    {
+        rb.linearVelocity = desiredVelocity;
     }
 }
