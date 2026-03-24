@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public GlobalPlayerInfo gS;
     Rigidbody2D rb;
     private float moveSpeed;
+    private Vector2 desiredVelocity;
+
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
