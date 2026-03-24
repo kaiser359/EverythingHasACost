@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 202035827}
   - component: {fileID: 202035826}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ZoomedBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 202035828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 202035826}
+        m_TargetAssemblyTypeName: PurchaseBloodBag, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &202035828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,6 +1952,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caf60538b60ed94889da6b5a1d9582a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gS: {fileID: 0}
+  image: {fileID: 0}
+  text: {fileID: 0}
+  bloodBag: {fileID: 0}
+  bagData: {fileID: 0}
+  zoomedBag: {fileID: 0}
 --- !u!114 &5136194230869577534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2345,6 +2363,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caf60538b60ed94889da6b5a1d9582a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gS: {fileID: 0}
+  image: {fileID: 0}
+  text: {fileID: 0}
+  bloodBag: {fileID: 0}
+  bagData: {fileID: 0}
+  zoomedBag: {fileID: 0}
 --- !u!114 &7143204274546747866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,6 +2637,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caf60538b60ed94889da6b5a1d9582a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gS: {fileID: 0}
+  image: {fileID: 0}
+  text: {fileID: 0}
+  bloodBag: {fileID: 0}
+  bagData: {fileID: 0}
+  zoomedBag: {fileID: 0}
 --- !u!1001 &8378863161701823321
 PrefabInstance:
   m_ObjectHideFlags: 0
