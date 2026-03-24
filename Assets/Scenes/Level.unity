@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3068345002156217361, guid: edb1ad81b83e07f45b8923740fd5e1ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6271690971605065264, guid: edb1ad81b83e07f45b8923740fd5e1ca, type: 3}
       propertyPath: m_Name
       value: Store
@@ -656,7 +660,7 @@ PrefabInstance:
     - target: {fileID: 706031520538693076, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1900362389}
     - target: {fileID: 706031520538693076, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
       propertyPath: BloodBagOptions.Array.size
       value: 2

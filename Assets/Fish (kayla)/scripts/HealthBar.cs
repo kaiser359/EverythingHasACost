@@ -32,10 +32,10 @@ public class HealthBar : MonoBehaviour
         healthBar = GetComponentInChildren<UnityEngine.UI.Image>();
         healthText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         coinHeart = GetComponentInChildren<Animator>();
-        cam = FindObjectOfType<CinemachineCamera>();
+        cam = FindAnyObjectByType<CinemachineCamera>();
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         //postProcess = FindObjectOfType<Volume>();
-        postProcessProfile = FindObjectOfType<Volume>().profile;
+        postProcessProfile = FindAnyObjectByType<Volume>().profile;
         postProcessProfile.TryGet(out Vignette vignette);
         postProcessProfile.TryGet(out MotionBlur mb);
         blackOverlay.enabled = false;

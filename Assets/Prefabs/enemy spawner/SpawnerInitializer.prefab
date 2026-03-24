@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1935077316706043299
+--- !u!1 &3658181271678995485
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9137729114966969189}
-  - component: {fileID: 1439850408102296720}
+  - component: {fileID: 5574719895582612847}
+  - component: {fileID: 7752821256147611024}
   m_Layer: 0
-  m_Name: RedBloodBag
+  m_Name: SpawnerInitializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9137729114966969189
+--- !u!4 &5574719895582612847
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935077316706043299}
+  m_GameObject: {fileID: 3658181271678995485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 409.42117, y: 243.16992, z: -2.5150623}
+  m_LocalPosition: {x: -11.13, y: 2.23, z: 1.7107393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1439850408102296720
+--- !u!114 &7752821256147611024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935077316706043299}
+  m_GameObject: {fileID: 3658181271678995485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d4619483da64947b574e5e7931ec63, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e9dc09a60fec4343a3299aa3d25a249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BloodBagID: 1
-  BloodBagPrice: 500
-  BloodBagSprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
-  ZoomedBloodBagSprite: {fileID: 4160464559918616277, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
+  enemyClusters:
+  - enemies:
+    - {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
+    - {fileID: 1072839590645804042, guid: 7ac1b85f4a19ccf429fc1487c5bf1788, type: 3}
+    - {fileID: 2088363809651864776, guid: abf7a718861584446a6abbe63418ebfa, type: 3}
+    - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
+  - enemies:
+    - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}

@@ -1,19 +1,18 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class PurchaseBloodBag : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
     public GameObject thisBag;
-    private Image image;
+    public Image image;
     public GameObject RP;
+    public GameObject SelectedBag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
-        image = GetComponentInChildren<Image>();
     }
     // Update is called once per frame after the MonoBehaviour is created
     void Update()
@@ -21,7 +20,6 @@ public class PurchaseBloodBag : MonoBehaviour
         if (thisBag != null) {
             var bagData = thisBag.GetComponent<BloodBagData>();
             image.sprite = bagData.ZoomedBloodBagSprite;
-            image.color = new Color(1, 1, 1, 1f);
         }
     }
     public void Interact()
@@ -29,6 +27,7 @@ public class PurchaseBloodBag : MonoBehaviour
         var bagData = thisBag.GetComponent<BloodBagData>();
         if (gS.Money.money >= bagData.BloodBagPrice)
         {
+            Destroy(SelectedBag);
             gS.Money.money -= bagData.BloodBagPrice;
             RP.SetActive(true);
             var bagsToReplace = RP.GetComponentsInChildren<ChooseBagReplace>();

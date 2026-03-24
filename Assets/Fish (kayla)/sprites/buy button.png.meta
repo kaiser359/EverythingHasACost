@@ -1,13 +1,37 @@
 fileFormatVersion: 2
-guid: a320464f173f15343822b29cf34dec9b
+guid: 4f28be56937f72248b77c478d0c06905
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6840857970483876212
-    second: shop_0
+      213: 4209174889460140665
+    second: buy button_0
   - first:
-      213: 7773751018523570969
-    second: shop_1
+      213: -4827219884326835195
+    second: buy button_1
+  - first:
+      213: 9474218840868507
+    second: buy button_2
+  - first:
+      213: 5111069062475516205
+    second: buy button_3
+  - first:
+      213: 8172689082427659559
+    second: buy button_4
+  - first:
+      213: -8489304344655256064
+    second: buy button_5
+  - first:
+      213: -919601024069623746
+    second: buy button_6
+  - first:
+      213: -4668365711995287038
+    second: buy button_7
+  - first:
+      213: 3721468712321686328
+    second: buy button_8
+  - first:
+      213: 4664390272448582119
+    second: buy button_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,13 +153,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shop_0
+      name: buy button_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 64
+        width: 53
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4715799641c9fee50800000000000000
-      internalID: 6840857970483876212
+      spriteID: 97a04c3c24ef96a30800000000000000
+      internalID: 4209174889460140665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shop_1
+      name: buy button_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 53
         y: 0
-        width: 96
-        height: 64
+        width: 53
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 913bd6f3d59e1eb60800000000000000
-      internalID: 7773751018523570969
+      spriteID: 50c2ff54715420db0800000000000000
+      internalID: -4827219884326835195
       vertices: []
       indices: 
       edges: []
@@ -176,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7ab835251337c2f42bcb1f5d1b1de683
+    spriteID: 7b8d73a65f3310c4ab5978c151c198e0
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +210,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shop_0: 6840857970483876212
-      shop_1: 7773751018523570969
+      buy button_0: 4209174889460140665
+      buy button_1: -4827219884326835195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
