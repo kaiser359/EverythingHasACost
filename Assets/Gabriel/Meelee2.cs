@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Meelee2 : MonoBehaviour
 {
+
     public Money money;
     public GameObject atkLocation;
     public GameObject atkplace;

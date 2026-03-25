@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MeeleeDamage : MonoBehaviour
 {
+    public Levels level;
     public int damageAmount = 10;
     public Money money;
     public float knockbackForce = 5f; // impulse force applied to player on hit
@@ -11,7 +12,7 @@ public class MeeleeDamage : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             if (money != null)
-                money.money -= damageAmount + (money.money / 100);
+                money.money -= damageAmount + (money.money / 100) + (level.levelNumber * 15) ;
 
             var rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
