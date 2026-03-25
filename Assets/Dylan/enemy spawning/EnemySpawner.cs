@@ -5,12 +5,13 @@ using System;
 [Serializable]
 public class EnemyCluster
 {
+    public int difficultyLevel;
     public GameObject[] enemies;
 }
 
 public class EnemySpawner : MonoBehaviour
 {
-    private static List<EnemyCluster> enemyClusters = new();
+    private static Dictionary<int, List<GameObject[]>> enemyClusters = new();
     private Cooldown spawnCooldown;
 
     [Header("Spawner Settings")]
@@ -28,10 +29,19 @@ public class EnemySpawner : MonoBehaviour
     // static methods to manage enemy clusters
     public static void AssignClusters(List<EnemyCluster> clusters)
     {
-        enemyClusters = clusters;
+        foreach (EnemyCluster cluster in clusters)
+        {
+            // initialize the list for this difficulty level if it doesn't exist
+            if (!enemyClusters.ContainsKey(cluster.difficultyLevel))
+            {
+                enemyClusters[cluster.difficultyLevel] = new List<GameObject[]>();
+            }
+
+            enemyClusters[cluster.difficultyLevel].Add(cluster.enemies);
+        }
     }
 
-    public static List<EnemyCluster> GetClusters()
+    public static Dictionary<int, List<GameObject[]>> GetClusters()
     {
         return enemyClusters;
     }
@@ -70,12 +80,15 @@ public class EnemySpawner : MonoBehaviour
         // must pass the spawn chance check to spawn enemies
         if (UnityEngine.Random.Range(0f, 1f) > spawnChance) return;
 
-        EnemyCluster clusterToSpawn = enemyClusters[UnityEngine.Random.Range(0, enemyClusters.Count)];
-        foreach (GameObject enemyPrefab in clusterToSpawn.enemies)
-        {
-            Vector2 spawnPosition = (Vector2)transform.position + UnityEngine.Random.insideUnitCircle * spawnRadius;
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            enemy.transform.parent = transform; // parent the enemy to the spawner for organization
-        }
+        //EnemyCluster clusterToSpawn = enemyClusters[UnityEngine.Random.Range(0, enemyClusters.Count)];
+
+
+
+        //foreach (GameObject enemyPrefab in clusterToSpawn.enemies)
+        //{
+        //    Vector2 spawnPosition = (Vector2)transform.position + UnityEngine.Random.insideUnitCircle * spawnRadius;
+        //    GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        //    enemy.transform.parent = transform; // parent the enemy to the spawner for organization
+        //}
     }
 }

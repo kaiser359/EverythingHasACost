@@ -8,7 +8,8 @@ public class Enemy2Ranged : MonoBehaviour
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
     public Money money;
-    public HealthBar healthBar;
+    public Levels level;
+  
 
     [Header("Ranges & Movement")]
     public float detectionRange = 8f; 
@@ -86,12 +87,12 @@ public class Enemy2Ranged : MonoBehaviour
         {
             Vector2 aim = _currentAimDir.normalized;
             Vector2 perp = new Vector2(-aim.y, aim.x);
-            float osc = Mathf.Sin(Time.time * oscillationSpeed) * oscillationAmplitude;
+            float osc = Mathf.Sin(Time.time * (oscillationSpeed + ((float)level.levelNumber/2f))) * oscillationAmplitude;
             oscillatedAim = (aim + perp * osc).normalized;
         }
 
-      
-        if (dist <= detectionRange)
+
+        if (dist <= detectionRange + level.levelNumber)
         {
             activationTimer += Time.deltaTime;
 
@@ -127,22 +128,41 @@ public class Enemy2Ranged : MonoBehaviour
                     timerTohit += Time.deltaTime;
 
                     // see if laser hits
-                    RaycastHit2D hit = Physics2D.Raycast(origin, oscillatedAim, laserDistance);
+                    RaycastHit2D hit = Physics2D.Raycast(origin, oscillatedAim, laserDistance + level.levelNumber);
                     if (hit.collider != null)
                     {
                         end = hit.point;
 
-                        // KnockBAck
+                        // Knockback
                         if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
                         {
-                            money.money -= damagePerTick + (money.money / 100);
+                            money.money -= damagePerTick + (money.money / 100) + (level.levelNumber*10);
 
-                            var prb = hit.collider.GetComponent<Rigidbody2D>();
+                            // prefer the rigidbody reported by the raycast, fall back to parent lookup
+                            Rigidbody2D prb = hit.rigidbody != null ? hit.rigidbody : hit.collider.GetComponentInParent<Rigidbody2D>();
+
+                            // compute knockback direction from impact point for better accuracy
+                            Vector2 kbDir = ((Vector2)hit.point - (Vector2)origin).normalized;
+                            if (kbDir.sqrMagnitude < 0.0001f)
+                                kbDir = ((Vector2)hit.collider.transform.position - (Vector2)origin).normalized;
+
                             if (prb != null)
                             {
-                                // knockback away from laser origin
-                                Vector2 kbDir = (hit.collider.transform.position - origin).normalized;
-                                prb.AddForce(kbDir * knockbackForce, ForceMode2D.Impulse);
+                                // Try to use a KnockbackOverride component so we can bypass the player's movement script.
+                                var kbOverride = prb.GetComponent<KnockbackOverride>();
+                                if (kbOverride == null)
+                                    kbOverride = prb.gameObject.AddComponent<KnockbackOverride>();
+
+                                // convert impulse to velocity approximation: v = impulse / mass
+                                float mass = Mathf.Max(0.0001f, prb.mass);
+                                Vector2 vel = kbDir * (knockbackForce / mass);
+                                kbOverride.Apply(vel, 0.15f);
+                            }
+                            else
+                            {
+                                // last resort: nudge the transform if there's no Rigidbody2D
+                                if (kbDir.sqrMagnitude > 0.0001f)
+                                    hit.collider.transform.position += (Vector3)(kbDir * (knockbackForce * 0.02f));
                             }
 
                             damageTimer = damageCooldown;

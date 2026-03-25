@@ -35,7 +35,7 @@ public class Enemy1RangedScript : MonoBehaviour
 
     float shootTimer = 0f;
     float currentAngleOffset = 0f;
-
+    public Levels level;
     void Start()
     {
         if (stats == null)
@@ -47,6 +47,10 @@ public class Enemy1RangedScript : MonoBehaviour
 
         originPosition = transform.position;
         PickNewWanderTarget();
+    }
+    private void Awake()
+    {
+        bulletsCount = bulletsCount + (level.levelNumber * 2);
     }
 
     void Update()
@@ -111,7 +115,7 @@ public class Enemy1RangedScript : MonoBehaviour
     {
         if (bulletPrefab == null)
             return;
-
+       
         for (int i = 0; i < bulletsCount; i++)
         {
             float angle = currentAngleOffset + i * (360f / bulletsCount);

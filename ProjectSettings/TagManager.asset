@@ -10,7 +10,7 @@ TagManager:
   - Dungeon
   - StartPoint
   - SpawnPoint
-  - NPC
+  - Elevator
   layers:
   - Default
   - TransparentFX

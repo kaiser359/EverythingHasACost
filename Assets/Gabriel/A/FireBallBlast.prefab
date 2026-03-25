@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1072839590645804042
+--- !u!1 &4060213617999041319
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2738467112466192480}
-  - component: {fileID: 9131616577291385924}
-  - component: {fileID: 7768359839635187484}
-  - component: {fileID: 3958107506301483019}
-  - component: {fileID: 5538734300039120166}
-  m_Layer: 2
-  m_Name: EnemyClose1
-  m_TagString: Enemy
+  - component: {fileID: 9218999621103273526}
+  - component: {fileID: 6792213343493237384}
+  m_Layer: 0
+  m_Name: Circle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2738467112466192480
+  m_IsActive: 1
+--- !u!4 &9218999621103273526
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072839590645804042}
+  m_GameObject: {fileID: 4060213617999041319}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 2.13, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.36201283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2208801816227658286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9131616577291385924
+--- !u!212 &6792213343493237384
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072839590645804042}
+  m_GameObject: {fileID: 4060213617999041319}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -58,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5d4be2d6894f45847a30b7017212e515, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,52 +76,86 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7768359839635187484
+--- !u!1 &6472705509876903387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2208801816227658286}
+  - component: {fileID: 6282937388537742988}
+  - component: {fileID: 1349979171382063956}
+  m_Layer: 0
+  m_Name: FireBallBlast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2208801816227658286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472705509876903387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6239033, y: -1.028345, z: 0.36201283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9218999621103273526}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6282937388537742988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072839590645804042}
+  m_GameObject: {fileID: 6472705509876903387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e2ba7480db597408e7eaebc4964922, type: 3}
+  m_Script: {fileID: 11500000, guid: da3475103fecb2b4caff9a2e49e4b31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
-  money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
-  playerWashere: {fileID: 0}
-  level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
-  detectionRange: 15
-  chaseRange: 20
-  chaseSpeed: 3
-  wanderRadius: 2
-  wanderSpeed: 0.8
-  idleMin: 0.5
-  idleMax: 2
-  dashWarmup: 0.75
-  dashDuration: 0.2
-  touchDamageToMoney: 10
-  knockbackForce: 5
-  dashOvershoot: 6
---- !u!61 &3958107506301483019
-BoxCollider2D:
+  speed: 6
+  lifeTime: 8
+  damage: 20
+  aoeRadius: 1.06
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  smallFireballPrefab: {fileID: 2283859209459172700, guid: b0cd017f663baea46976b02cfb05267d, type: 3}
+  numSmallFireballs: 8
+  smallSpeed: 4
+  spawnInterval: 0.03
+  remainingChains: 2
+  spawnInAllDirections: 0
+  spreadVariance: 45
+  spawnRadiusOffset: 2
+  bounceDamping: 1
+--- !u!58 &1349979171382063956
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072839590645804042}
+  m_GameObject: {fileID: 6472705509876903387}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -153,31 +184,4 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
-    newSize: {x: 1, y: 0.8828125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.8828125}
-  m_EdgeRadius: 0
---- !u!114 &5538734300039120166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072839590645804042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b4bd314e2fb794bb8273a69c7bed18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  timer: 5
-  stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
-  maxHealth: 0
-  money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  m_Radius: 0.5

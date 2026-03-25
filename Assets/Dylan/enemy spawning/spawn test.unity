@@ -824,6 +824,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
+      propertyPath: enemyClusters.Array.data[0].difficultyLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
+      propertyPath: enemyClusters.Array.data[1].difficultyLevel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
