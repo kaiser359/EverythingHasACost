@@ -11,7 +11,7 @@ public class RotateToMouse : MonoBehaviour
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
-        cam = gS.mainCamera;
+        cam = Camera.main;
         rotationOffset = gS.rotationOffset;
         rotationSpeed = gS.rotationSpeed;
     }
