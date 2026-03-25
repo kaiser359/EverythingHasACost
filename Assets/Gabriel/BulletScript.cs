@@ -5,6 +5,7 @@ public class BulletScript : MonoBehaviour
     [SerializeField]private float timeAlive = 5;
     public EnemyStats stats;
     public Money money;
+    public Levels level;
    // public PlayerHealthTEST playerHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +26,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            money.money -= stats.atkDamage + (money.money/100);
+            money.money -= stats.atkDamage + (money.money/100) + (level.levelNumber*10);
             Destroy(gameObject);
         }
     }

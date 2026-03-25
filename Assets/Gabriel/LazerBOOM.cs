@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using JetBrains.Annotations;
 
 
 public class LazerBOOM : MonoBehaviour
@@ -32,6 +33,18 @@ public class LazerBOOM : MonoBehaviour
     private Coroutine activeRoutine;
 
     // (VFX removed) track state not needed when using only LineRenderer
+    private void Awake()
+    {
+       GameObject player = GameObject.FindWithTag("Player");
+       if (player != null)
+       {
+           beamOrigin = player.transform;
+       }
+       else if (beamOrigin == null)
+       {
+           beamOrigin = this.transform;
+       }
+    }
 
     private void Update()
     {

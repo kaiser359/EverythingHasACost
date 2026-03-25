@@ -8,6 +8,7 @@ public class EnemyCombat1 : MonoBehaviour
     public EnemyStats stats;
     public Money money;
     public Transform playerWashere; 
+    public Levels level;
 
     [Header("Detection & Movement")]
     public float detectionRange = 10f;
@@ -35,6 +36,7 @@ public class EnemyCombat1 : MonoBehaviour
     private bool isWarmingUp = false;
     private bool isDashing = false;
     private Vector3 markedPosition;
+    
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class EnemyCombat1 : MonoBehaviour
         PickNewWanderTarget();
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) playerTransform = p.transform;
+        
     }
 
     void Update()
@@ -51,24 +54,28 @@ public class EnemyCombat1 : MonoBehaviour
 
         float dist = playerTransform != null ? Vector2.Distance(transform.position, playerTransform.position) : Mathf.Infinity;
 
-  
+        // level-based adjustments (convert int to float)
+        float lvl = level != null ? (float)level.levelNumber : 0f;
+        // decrease warmup by 0.01 per level (level 4 => -0.04)
+        float warmupAdj = Mathf.Max(0.05f, dashWarmup - lvl * 0.01f);
+        // slightly decrease dash duration per level, smaller impact than warmup
+        float dashDurationAdj = Mathf.Max(0.05f, dashDuration - lvl * 0.005f);
+
         if (playerTransform != null && dist <= detectionRange && HasLineOfSight())
         {
             isWarmingUp = true;
             activationTimer += Time.deltaTime;
 
-           
             Vector3 toPlayer = (playerTransform.position - transform.position).normalized;
             float desiredAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg;
             Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, 720f * Time.deltaTime);
 
-            if (activationTimer >= dashWarmup)
+            if (activationTimer >= warmupAdj)
             {
-                
                 Vector3 dashDir = (playerTransform.position - transform.position).normalized;
                 markedPosition = playerTransform.position + dashDir * dashOvershoot;
-                StartCoroutine(DashToMarked(markedPosition));
+                StartCoroutine(DashToMarked(markedPosition, dashDurationAdj));
                 activationTimer = 0f;
                 isWarmingUp = false;
             }
@@ -115,16 +122,17 @@ public class EnemyCombat1 : MonoBehaviour
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
-    IEnumerator DashToMarked(Vector3 target)
+    IEnumerator DashToMarked(Vector3 target, float duration)
     {
         isDashing = true;
         Vector3 start = transform.position;
         float elapsed = 0f;
 
-        while (elapsed < dashDuration)
+        // use provided duration (already adjusted by level)
+        while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / dashDuration);
+            float t = Mathf.Clamp01(elapsed / duration);
             transform.position = Vector3.Lerp(start, target, t);
             yield return null;
         }
@@ -143,15 +151,11 @@ public class EnemyCombat1 : MonoBehaviour
     {
         if (other.collider.CompareTag("Player") && money != null)
         {
-            int dmg = stats != null ? stats.atkDamage : touchDamageToMoney;
+            // scale damage by level (convert int level to float multiplier)
+            float lvl = level != null ? (float)level.levelNumber : 0f;
+            int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
+            int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f); // example: level 4 adds ~40 damage
             money.money = Mathf.Max(0, money.money - dmg);
-            var prb = other.collider.GetComponent<Rigidbody2D>();
-            if (prb != null)
-            {
-       
-                Vector2 kbDir = (other.collider.transform.position - transform.position).normalized;
-                prb.AddForce(kbDir * knockbackForce, ForceMode2D.Impulse);
-            }
         }
     }
 
@@ -159,7 +163,10 @@ public class EnemyCombat1 : MonoBehaviour
     {
         if (other.CompareTag("Player") && money != null)
         {
-            int dmg = stats != null ? stats.atkDamage : touchDamageToMoney;
+            // apply same level-based damage scaling for triggers
+            float lvl = level != null ? (float)level.levelNumber : 0f;
+            int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
+            int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f);
             money.money = Mathf.Max(0, money.money - dmg);
         }
     }
