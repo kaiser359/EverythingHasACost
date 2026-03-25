@@ -27,8 +27,8 @@ public class LazerBOOM : MonoBehaviour
     public Transform beamOrigin; // optional: if null uses this.transform.position
     public Color beamColor = Color.cyan;
     public LineRenderer line;
-    public ParticleSystem beamParticles; // optional particle system to emit along the beam
-    public float particleSpeed = 5f; // speed at which particles move along the beam direction
+   // public ParticleSystem beamParticles; // optional particle system to emit along the beam
+    //public float particleSpeed = 5f; // speed at which particles move along the beam direction
 
     private Coroutine activeRoutine;
 
@@ -66,7 +66,7 @@ public class LazerBOOM : MonoBehaviour
 
         // make sure there's a line renderer to show something
         if (line != null) { line.enabled = true; line.positionCount = 2; line.startWidth = 0f; line.endWidth = 0f; }
-        if (beamParticles != null) beamParticles.Play();
+       // if (beamParticles != null) beamParticles.Play();
 
         float activeElapsed = 0f;
         while (activeElapsed < stayDuration)
@@ -154,37 +154,37 @@ public class LazerBOOM : MonoBehaviour
             }
 
             // update optional particle system to follow the beam
-            if (beamParticles != null)
-            {
-                // use the visual end (with offset) when positioning particles so they align with the rendered line
-                Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
-                Vector3 mid = (start + endVis) * 0.5f;
-                beamParticles.transform.position = mid;
-                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                beamParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                var shape = beamParticles.shape;
-                // stretch the particle system shape along the beam so particles emit along it
-                shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth * 0.5f), 1f);
+            //if (beamParticles != null)
+            //{
+            //    // use the visual end (with offset) when positioning particles so they align with the rendered line
+            //    Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
+            //    Vector3 mid = (start + endVis) * 0.5f;
+            //    beamParticles.transform.position = mid;
+            //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            //    beamParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            //    var shape = beamParticles.shape;
+            //    // stretch the particle system shape along the beam so particles emit along it
+            //    shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth * 0.5f), 1f);
 
-                // ensure particles move along the beam direction (not towards the player)
-                var main = beamParticles.main;
-                main.gravityModifier = 0f;
-                main.simulationSpace = ParticleSystemSimulationSpace.World;
+            //    // ensure particles move along the beam direction (not towards the player)
+            //    var main = beamParticles.main;
+            //    main.gravityModifier = 0f;
+            //    main.simulationSpace = ParticleSystemSimulationSpace.World;
 
-                var vel = beamParticles.velocityOverLifetime;
-                vel.enabled = true;
-                vel.space = ParticleSystemSimulationSpace.World;
-                // set a constant velocity along the beam direction
-                vel.x = new ParticleSystem.MinMaxCurve(dir.x * particleSpeed);
-                vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
-                vel.z = new ParticleSystem.MinMaxCurve(0f);
-            }
+            //    var vel = beamParticles.velocityOverLifetime;
+            //    vel.enabled = true;
+            //    vel.space = ParticleSystemSimulationSpace.World;
+            //    // set a constant velocity along the beam direction
+            //    vel.x = new ParticleSystem.MinMaxCurve(dir.x * particleSpeed);
+            //    vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
+            //    vel.z = new ParticleSystem.MinMaxCurve(0f);
+            //}
 
             yield return null;
         }
 
         // stop particle system and disable line
-        if (beamParticles != null) beamParticles.Stop();
+    //    if (beamParticles != null) beamParticles.Stop();
         if (line != null) line.enabled = false;
         activeRoutine = null;
     }
