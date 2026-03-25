@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public GlobalPlayerInfo gS;
     Rigidbody2D rb;
     private float moveSpeed;
+    private Vector2 desiredVelocity;
+
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
@@ -17,6 +19,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext ctx)
     {
-        rb.linearVelocity = ctx.ReadValue<Vector2>() * moveSpeed;
+        desiredVelocity = ctx.ReadValue<Vector2>() * moveSpeed;
+    }
+
+    private void Update()
+    {
+        rb.linearVelocity = desiredVelocity;
     }
 }

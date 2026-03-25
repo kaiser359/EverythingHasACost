@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GlobalPlayerInfo : MonoBehaviour
 {
+    public Camera mainCamera;
     public float moveSpeed = 5f;
     public float attackCooldown = 0.5f;
     public GameObject bulletPrefab;
@@ -14,4 +15,9 @@ public class GlobalPlayerInfo : MonoBehaviour
     public GameObject Store;
     public GameObject[] BloodBagOptions;
     public Money Money;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
 }
