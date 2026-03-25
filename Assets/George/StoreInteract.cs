@@ -19,6 +19,7 @@ public class StoreInteract : MonoBehaviour
         {
             Store.GetComponent<Store>().StartStore();
         }
+        else { return; }
     }
     public void LeaveStore() { 
         Store.transform.GetChild(0).gameObject.SetActive(false);
