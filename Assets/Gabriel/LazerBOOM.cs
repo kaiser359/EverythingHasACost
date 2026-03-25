@@ -48,7 +48,6 @@ public class LazerBOOM : MonoBehaviour
 
     private void Update()
     {
-        ActivateAbility();
         if (timer > 0f) timer -= Time.deltaTime;
     }
 
