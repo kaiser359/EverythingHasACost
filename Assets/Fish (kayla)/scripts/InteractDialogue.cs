@@ -1,17 +1,29 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InteractDialogue : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject NPC;
     public GameObject dialoguePanel;
+    public GameObject[] characterClose;
     void Start()
     {
         dialoguePanel.SetActive(false);
+        foreach (var character in characterClose)
+        {
+            character.SetActive(false);
+            character.GetComponent<Image>().color = Color.red;
+        }
     }
-    public void InteractWith()
+    public void InteractWith(InputAction.CallbackContext ctx)
     {
+        if (!ctx.started)
+        {
+            return;
+        }
+
         Debug.Log("Interacting");
         if (NPC != null)
         {
@@ -40,9 +52,19 @@ public class InteractDialogue : MonoBehaviour
         NPC = null;
         dialoguePanel.SetActive(false);
         Time.timeScale = 1f;
+        foreach (var character in characterClose)
+        {
+            character.SetActive(false);
+            character.GetComponent<Image>().color = Color.red;
+        }
     }
-    public void NextLine()
+    public void NextLine(InputAction.CallbackContext ctx)
     {
+        if (!ctx.started)
+        {
+            return;
+        }
+
         if (NPC != null)
         {
             NPC.GetComponent<Dialogue>().nextLine();
