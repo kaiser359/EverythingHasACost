@@ -10,7 +10,6 @@ public class RoomSet
     public RoomCluster normalCluster;
     public RoomCluster endCluster;
     public RoomCluster winCluster;
-    public RoomCluster shopCluster;
 }
 
 [Serializable]
@@ -84,19 +83,11 @@ public class RoomTemplates : MonoBehaviour
         private set { _winRooms = value; }
     }
 
-    private List<GameObject[]> _shopRooms;
-    public List<GameObject[]> ShopRooms
-    {
-        get { return _shopRooms; }
-        private set { _shopRooms = value; }
-    }
-
     // verify that the dictionary has been built to prevent null reference errors when assigning room sets
     [NonSerialized] public bool dictionaryIsBuilt = false;
 
     // tracking whether we've already spawned a win room or shop room to prevent duplicates
     public static bool winSpawned = false;
-    public static bool shopSpawned = false;
 
     // --------------------------------------------------------------
 
@@ -192,6 +183,5 @@ public class RoomTemplates : MonoBehaviour
         Rooms = set.normalCluster.rooms;
         Caps = set.endCluster.rooms;
         WinRooms = set.winCluster.rooms;
-        ShopRooms = set.shopCluster.rooms;
     }
 }
