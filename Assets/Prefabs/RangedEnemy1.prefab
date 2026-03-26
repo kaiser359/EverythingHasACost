@@ -14,13 +14,13 @@ GameObject:
   - component: {fileID: 3347025618146597565}
   - component: {fileID: 1160969609961471028}
   - component: {fileID: 1880765463373544506}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RangedEnemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7650785744917939853
 Transform:
   m_ObjectHideFlags: 0
