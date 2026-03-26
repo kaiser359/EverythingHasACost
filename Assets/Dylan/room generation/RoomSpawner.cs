@@ -122,14 +122,6 @@ public class RoomSpawner : MonoBehaviour
             //Debug.Log("WIN ROOM SPAWNER SET AT: " + transform.position);
         }
 
-        if (!RoomTemplates.shopSpawned && roomClass == templates.Caps)
-        {
-            RoomTemplates.shopSpawned = true;
-
-            roomClass = templates.ShopRooms;
-            //Debug.Log("WIN ROOM SPAWNER SET AT: " + transform.position);
-        }
-
         // increment rooms spawned count
         dungeonController.roomsSpawned++;
 
