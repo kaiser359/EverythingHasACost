@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9218999621103273526}
   - component: {fileID: 6792213343493237384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2208801816227658286}
   - component: {fileID: 6282937388537742988}
   - component: {fileID: 1349979171382063956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireBallBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,22 +133,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3475103fecb2b4caff9a2e49e4b31a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  lifeTime: 8
+  speed: 10
+  lifeTime: 4
   damage: 20
   aoeRadius: 1.06
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4
   smallFireballPrefab: {fileID: 2283859209459172700, guid: b0cd017f663baea46976b02cfb05267d, type: 3}
   numSmallFireballs: 8
-  smallSpeed: 4
+  smallSpeed: 8
   spawnInterval: 0.03
-  remainingChains: 2
+  remainingChains: 3
   spawnInAllDirections: 0
   spreadVariance: 45
-  spawnRadiusOffset: 2
-  bounceDamping: 1
+  spawnRadiusOffset: 1
+  bounceDamping: 0.58
 --- !u!58 &1349979171382063956
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -168,3 +168,4 @@ MonoBehaviour:
   timeAlive: 3
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}

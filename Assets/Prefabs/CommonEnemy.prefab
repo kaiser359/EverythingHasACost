@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6197828469562471001
 Transform:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0543e7e01e4794ca2eae10d60f34e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 0}
+  level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
   damageAmount: 10
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   knockbackForce: 5

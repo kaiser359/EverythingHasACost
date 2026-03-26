@@ -31,6 +31,7 @@ public class firaball : MonoBehaviour
 
     Rigidbody2D rb;
     float timer;
+    PhysicsMaterial2D physMat;
 
     void Awake()
     {
@@ -38,10 +39,33 @@ public class firaball : MonoBehaviour
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 0f;
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
         rb.freezeRotation = true;
+        // create a low-friction, high-bounce material to avoid sticking to walls
+        physMat = new PhysicsMaterial2D("firaball_mat") { friction = 0f, bounciness = 1f };
+
+        // Ensure there is a non-trigger collider so collisions are detected
+        Collider2D col = GetComponent<Collider2D>();
+        if (col == null)
+        {
+            var cc = gameObject.AddComponent<CircleCollider2D>();
+            cc.isTrigger = false;
+            cc.sharedMaterial = physMat;
+        }
+        else
+        {
+            // enforce material settings on any existing collider
+            if (col.sharedMaterial == null)
+                col.sharedMaterial = physMat;
+            else
+            {
+                col.sharedMaterial.friction = 0f;
+                col.sharedMaterial.bounciness = 1f;
+            }
+        }
     }
 
     void Start()
@@ -68,11 +92,23 @@ public class firaball : MonoBehaviour
             return;
         }
 
-        // ricochet on non-enemy objects: reflect velocity around the contact normal
-        ContactPoint2D contact = col.GetContact(0);
-        Vector2 inVel = rb.linearVelocity;
-        Vector2 refl = Vector2.Reflect(inVel, contact.normal);
-        rb.linearVelocity = refl.normalized * inVel.magnitude * bounceDamping;
+        // non-enemy collisions: simply destroy the fireball
+        Destroy(gameObject);
+    }
+
+    // Some environment colliders may be triggers; handle those too by approximating a contact normal
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other == null) return;
+
+        if (other.CompareTag("Enemy"))
+        {
+            TryExplode();
+            return;
+        }
+
+        // non-enemy trigger overlap: destroy the fireball
+        Destroy(gameObject);
     }
 
     void TryExplode()
@@ -154,8 +190,21 @@ public class firaball : MonoBehaviour
             }
 
             var r = go.GetComponent<Rigidbody2D>();
-            if (r == null) r = go.AddComponent<Rigidbody2D>();
+            if (r == null)
+            {
+                r = go.AddComponent<Rigidbody2D>();
+                r.bodyType = RigidbodyType2D.Dynamic;
+            }
             r.gravityScale = 0f;
+
+            // ensure child has a non-trigger collider so it collides and ricochets
+            Collider2D childCol = go.GetComponent<Collider2D>();
+            if (childCol == null)
+            {
+                var cc = go.AddComponent<CircleCollider2D>();
+                cc.isTrigger = false;
+            }
+
             r.linearVelocity = dir * smallSpeed;
 
             yield return new WaitForSeconds(spawnInterval);
