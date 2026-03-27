@@ -26,7 +26,7 @@ public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public List<Line> lines;
-    public float speed;
+    public float speed = 0.04f;
     private int index;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,7 +42,10 @@ public class Dialogue : MonoBehaviour
     public void startDialogue()
     {
         index = 0;
-        FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].GetComponent<Image>().color = Color.white;
+        GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
+        FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", false);
+        /*(charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y + 30, 0);
+        FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].GetComponent<Image>().color = Color.white;*/
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
         StartCoroutine(Type());
     }
@@ -70,12 +73,20 @@ public class Dialogue : MonoBehaviour
         if (index < lines.Count - 1)
         {
             int currentChar = (int)lines[index].name;
-            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].GetComponent<Image>().color = Color.red;
+            GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", false);
+            /*charCloseUp.GetComponent<Image>().color = Color.red;
+            charCloseUp.GetComponent<RectTransform>().localScale = new Vector3(0.9f, 0.9f, 0.9f);
+            charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y - 30,0);
+            */
             index++;
             currentChar = (int)lines[index].name;
-
-            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].GetComponent<Image>().color = Color.white;
-            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].SetActive(true);
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
+            /*charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
+            charCloseUp.GetComponent<Image>().color = Color.white;
+            charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y + 30, 0);
+            charCloseUp.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);*/
+            charCloseUp.SetActive(true);
             StartCoroutine(Type());
         }
         else
