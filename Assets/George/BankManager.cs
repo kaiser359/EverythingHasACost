@@ -5,10 +5,12 @@ public class BankManager : MonoBehaviour
     public TextMeshProUGUI AccBalance;
     public TextMeshProUGUI Cash;
     public GlobalPlayerInfo gS;
+    public NEMFade NotEnoughCash;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gS = FindAnyObjectByType<GlobalPlayerInfo>();        
+        gS = FindAnyObjectByType<GlobalPlayerInfo>();
+        NotEnoughCash = FindAnyObjectByType<NEMFade>();
     }
 
     // Update is called once per frame
@@ -19,12 +21,22 @@ public class BankManager : MonoBehaviour
     }
     public void AddMoney()
     {
-        gS.Money.money -= 500;
-        gS.Money.bankMoney += 500;        
+        if (gS.Money.money < 500){
+            NotEnoughCash.fadeDuration = 1f;
+        }
+        else{
+            gS.Money.money -= 500;
+            gS.Money.bankMoney += 500;
+        }
     }
     public void TakeMoney()
     {
-        gS.Money.money += 500;
-        gS.Money.bankMoney -= 500;
+        if (gS.Money.bankMoney < 500){
+            NotEnoughCash.fadeDuration = 1f;
+        }
+        else{
+            gS.Money.money += 500;
+            gS.Money.bankMoney -= 500;
+        }
     }
 }

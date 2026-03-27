@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 148107928}
   - component: {fileID: 148107930}
   - component: {fileID: 148107929}
+  - component: {fileID: 148107931}
   m_Layer: 0
   m_Name: Dimmy
   m_TagString: Untagged
@@ -152,13 +153,13 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1241869261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270.56613, y: -11.471474}
+  m_AnchoredPosition: {x: -270.56613, y: -13.56354}
   m_SizeDelta: {x: 358.633, y: 482.039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148107929
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -199,6 +200,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148107927}
   m_CullTransparentMesh: 1
+--- !u!95 &148107931
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148107927}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e21af22248e070a4bba85e86f519aad4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &252828124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -689,7 +712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269.4535, y: -13.563538}
+  m_AnchoredPosition: {x: 269.4535, y: -43.56354}
   m_SizeDelta: {x: 358.633, y: 482.039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &506242900 stripped
@@ -784,6 +807,7 @@ GameObject:
   - component: {fileID: 617398342}
   - component: {fileID: 617398341}
   - component: {fileID: 617398340}
+  - component: {fileID: 617398343}
   m_Layer: 0
   m_Name: Vinny
   m_TagString: Untagged
@@ -811,8 +835,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8778766502834837931, guid: 6d613d59d57597a40b6135d358c0911e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -845,9 +869,31 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269.4535, y: -13.563538}
+  m_AnchoredPosition: {x: 269.4535, y: -43.56354}
   m_SizeDelta: {x: 358.633, y: 482.039}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &617398343
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617398339}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c80351a445ffaa4e88e49b7e90e68de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &706623450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,13 +1397,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 387270982}
   lines:
+  - name: 1
+    text: the quick brown fox jumps over the lazy dogthe quick brown fox jumps over
+      the lazy dogthe quick brown fox jumps over the lazy dogthe quick brown fox
+      jumps over the lazy dogthe quick brown fox jumps over the lazy dogthe quick
+      brown fox jumps over the lazy dogthe quick brown fox jumps over the lazy dogthe
+      quick brown fox jumps over the lazy dog
   - name: 0
-    text: the quick brown fox jumps over the lazy dog
-  - name: 3
     text: bello
-  - name: 0
+  - name: 1
     text: :3
-  speed: 0.01
+  speed: 0.04
 --- !u!212 &1076606734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1401,7 +1451,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1824,7 +1874,7 @@ PrefabInstance:
     - target: {fileID: 5514509648087562181, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: gS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1941286234}
     - target: {fileID: 5514509648087562181, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: BloodBag
       value: 
@@ -1867,6 +1917,20 @@ MonoBehaviour:
   - {fileID: 617398339}
   - {fileID: 474151733}
   - {fileID: 1961235543}
+  animators:
+  - {fileID: 148107931}
+  - {fileID: 617398343}
+--- !u!114 &1941286234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 706031520538693076, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
+  m_PrefabInstance: {fileID: 252828124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc03640356c494203829717c3f2127a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961235543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,13 +1997,13 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1241869261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269.4535, y: -13.563538}
+  m_AnchoredPosition: {x: 269.4535, y: -43.56354}
   m_SizeDelta: {x: 358.633, y: 482.039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2011644701
@@ -1976,8 +2040,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8822651, y: 0.0045147296}
-  m_SizeDelta: {x: 898, y: 504.99}
+  m_AnchoredPosition: {x: 1.3569, y: -5.2203}
+  m_SizeDelta: {x: 980.1033, y: 554.2519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011644703
 MonoBehaviour:
@@ -1992,15 +2056,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.29803923, g: 0.08627451, b: 0.15294118, a: 0.33333334}
+  m_Color: {r: 0.29803923, g: 0.08627451, b: 0.15294118, a: 0.77254903}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
