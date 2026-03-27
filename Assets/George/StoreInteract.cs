@@ -22,7 +22,7 @@ public class StoreInteract : MonoBehaviour
         else { return; }
     }
     public void LeaveStore() { 
-        Store.transform.GetChild(0).gameObject.SetActive(false);
+        Store.GetComponent<Store>().storePanel.SetActive(false);
         Time.timeScale = 1f;
     }
     private void OnTriggerEnter2D(Collider2D collision)
