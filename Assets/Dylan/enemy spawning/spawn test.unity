@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5321699460384339195, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 944ae7675c72e774a9edbfd1c680664e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1015,18 +1019,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 3949386027232323010, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
-      propertyPath: singleUse
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3949386027232323010, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
-      propertyPath: spawnChance
-      value: 0.452
-      objectReference: {fileID: 0}
-    - target: {fileID: 3949386027232323010, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
-      propertyPath: difficultyLevel
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4793613660573507490, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.004308
@@ -1066,10 +1058,6 @@ PrefabInstance:
     - target: {fileID: 4793613660573507490, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920066616301605746, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1127,14 +1115,6 @@ PrefabInstance:
     - target: {fileID: 5574719895582612847, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
-      propertyPath: enemyClusters.Array.data[0].difficultyLevel
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
-      propertyPath: enemyClusters.Array.data[1].difficultyLevel
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
