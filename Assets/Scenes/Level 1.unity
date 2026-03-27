@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 1429877260}
   - component: {fileID: 1429877259}
   m_Layer: 0
-  m_Name: bank
+  m_Name: Bank
   m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
