@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyClusters:
-  - enemies:
+  - difficultyLevel: 4
+    enemies:
     - {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
     - {fileID: 1072839590645804042, guid: 7ac1b85f4a19ccf429fc1487c5bf1788, type: 3}
     - {fileID: 2088363809651864776, guid: abf7a718861584446a6abbe63418ebfa, type: 3}
     - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-  - enemies:
+  - difficultyLevel: 2
+    enemies:
     - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}

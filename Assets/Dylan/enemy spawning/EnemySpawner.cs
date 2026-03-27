@@ -91,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
             targetDifficultyLevel--;
 
             // if we've gone through all difficulty levels and found nothing, return
-            if (targetDifficultyLevel > enemyClusters.Count)
+            if (targetDifficultyLevel < 0)
             {
                 Debug.LogWarning("No enemy clusters available to spawn.");
                 return;

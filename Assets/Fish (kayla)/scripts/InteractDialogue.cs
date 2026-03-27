@@ -8,6 +8,7 @@ public class InteractDialogue : MonoBehaviour
     private GameObject NPC;
     public GameObject dialoguePanel;
     public GameObject[] characterClose;
+    public Animator[] animators;
     void Start()
     {
         dialoguePanel.SetActive(false);
