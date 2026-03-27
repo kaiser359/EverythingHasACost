@@ -16,6 +16,13 @@ public class ElevatorInteract : MonoBehaviour
         {
             FindFirstObjectByType<DungeonController>().RegenerateDungeon();
             transform.position = Vector3.zero;
+            if (gS.Money.money > 50)
+            {
+                gS.Money.money = Mathf.FloorToInt(gS.Money.money * (1 - gS.levelTax));
+                if (gS.Money.money < 50)
+                    gS.Money.money = 50;
+            }
+            gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

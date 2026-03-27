@@ -1,10 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-// Fireball that ricochets on non-enemy objects, explodes on hitting an enemy
-// and can spawn a short chain of smaller fireballs. Explosion (AOE damage)
-// only occurs when at least one enemy is hit. Chain depth is controlled by
-// `remainingChains` (set to 2 for two chain generations).
 public class firaball : MonoBehaviour
 {
     [Header("Movement")]
@@ -14,17 +10,17 @@ public class firaball : MonoBehaviour
     [Header("Explosion")]
     public int damage = 20;
     public float aoeRadius = 1.6f;
-    public LayerMask enemyLayer; // set to your enemy layer in inspector (optional)
+    public LayerMask enemyLayer; 
 
     [Header("Chain")]
-    public GameObject smallFireballPrefab; // prefab of this same script for chain
+    public GameObject smallFireballPrefab; 
     public int numSmallFireballs = 8;
     public float smallSpeed = 4f;
     public float spawnInterval = 0.03f; // spawn slowly then they KABOOM
-    public int remainingChains = 2; // how many times chain can continue
-    public bool spawnInAllDirections = true; // if true, spawn evenly around 360deg
-    public float spreadVariance = 15f; // random variance applied to each spawn angle
-    public float spawnRadiusOffset = 0f; // spawn slightly away from center if desired
+    public int remainingChains = 2; 
+    public bool spawnInAllDirections = true; 
+    public float spreadVariance = 15f;
+    public float spawnRadiusOffset = 0f; 
 
     [Header("Physics")]
     [Range(0f, 1f)] public float bounceDamping = 0.95f;
@@ -44,10 +40,10 @@ public class firaball : MonoBehaviour
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
         rb.freezeRotation = true;
-        // create a low-friction, high-bounce material to avoid sticking to walls
+        
         physMat = new PhysicsMaterial2D("firaball_mat") { friction = 0f, bounciness = 1f };
 
-        // Ensure there is a non-trigger collider so collisions are detected
+
         Collider2D col = GetComponent<Collider2D>();
         if (col == null)
         {
@@ -57,7 +53,7 @@ public class firaball : MonoBehaviour
         }
         else
         {
-            // enforce material settings on any existing collider
+           
             if (col.sharedMaterial == null)
                 col.sharedMaterial = physMat;
             else
@@ -92,11 +88,11 @@ public class firaball : MonoBehaviour
             return;
         }
 
-        // non-enemy collisions: simply destroy the fireball
+
         Destroy(gameObject);
     }
 
-    // Some environment colliders may be triggers; handle those too by approximating a contact normal
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other == null) return;
@@ -107,20 +103,19 @@ public class firaball : MonoBehaviour
             return;
         }
 
-        // non-enemy trigger overlap: destroy the fireball
+       
         Destroy(gameObject);
     }
 
     void TryExplode()
     {
-        // only explode when at least one enemy is inside the AOE
+      
         Collider2D[] hits;
         if (enemyLayer.value != 0)
             hits = Physics2D.OverlapCircleAll(transform.position, aoeRadius, enemyLayer);
         else
             hits = Physics2D.OverlapCircleAll(transform.position, aoeRadius);
 
-        // filter for enemies by tag if layer not configured
         int enemyCount = 0;
         foreach (var c in hits)
         {
@@ -133,11 +128,11 @@ public class firaball : MonoBehaviour
 
         if (enemyCount == 0)
         {
-            // do not explode if no enemy hit
+         
             return;
         }
 
-        // apply damage to enemies found
+       
         foreach (var c in hits)
         {
             if (c == null) continue;
@@ -146,24 +141,24 @@ public class firaball : MonoBehaviour
             if (eh != null) eh.TakeDamage(damage);
         }
 
-        // spawn chain of smaller fireballs (only if remaining chains available)
+
         if (remainingChains > 0 && smallFireballPrefab != null)
         {
-            // start coroutine that will spawn the chain and then destroy this object
+
             StartCoroutine(ExplodeSequence(transform.position));
             return;
         }
 
-        // no chain to spawn -> destroy immediately
+      
         Destroy(gameObject);
     }
 
     IEnumerator ExplodeSequence(Vector3 explosionPos)
     {
-        // spawn chain (this object remains alive until SpawnChain finishes)
+      
         yield return StartCoroutine(SpawnChain(explosionPos));
 
-        // after spawning children, destroy this fireball
+      
         Destroy(gameObject);
     }
 
@@ -183,7 +178,7 @@ public class firaball : MonoBehaviour
             if (fb != null)
             {
                 fb.remainingChains = childChains;
-                // make child smaller/weaker so chain peters out
+                
                 fb.damage = Mathf.Max(1, Mathf.RoundToInt(damage * 0.5f));
                 fb.aoeRadius = aoeRadius * 0.6f;
                 fb.numSmallFireballs = Mathf.Max(3, Mathf.RoundToInt(numSmallFireballs * 0.5f));
@@ -197,7 +192,7 @@ public class firaball : MonoBehaviour
             }
             r.gravityScale = 0f;
 
-            // ensure child has a non-trigger collider so it collides and ricochets
+           
             Collider2D childCol = go.GetComponent<Collider2D>();
             if (childCol == null)
             {

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BloodBagID: 1
   BloodBagPrice: 500
-  BloodBagSprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
-  ZoomedBloodBagSprite: {fileID: 4160464559918616277, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
+  BloodBagSprite: {fileID: 690601970903285146, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  ZoomedBloodBagSprite: {fileID: 940537995, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
 --- !u!114 &1767345263973746128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,8 +79,6 @@ MonoBehaviour:
   beamOrigin: {fileID: 9137729114966969189}
   beamColor: {r: 0, g: 1, b: 1, a: 1}
   line: {fileID: 6705898168461765549}
-  beamParticles: {fileID: 0}
-  particleSpeed: 5
 --- !u!120 &6705898168461765549
 LineRenderer:
   serializedVersion: 2
@@ -125,7 +123,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Positions:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
