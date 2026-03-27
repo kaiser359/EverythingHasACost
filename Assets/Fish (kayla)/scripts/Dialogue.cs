@@ -8,10 +8,11 @@ using UnityEngine.UI;
 
 public enum Names
 {
-    Dimmy,
-    Vinny,
-    Slim_Shadow,
-    Ivanna,
+    Dimmy = 0,
+    Vinny = 1,
+    Slim_Shadow = 2,
+    Ivanna = 3,
+    Casino_Guy = 4,
 }
 
 [Serializable]
@@ -27,91 +28,61 @@ public class Dialogue : MonoBehaviour
     public List<Line> lines;
     public float speed;
     private int index;
-    private PlayerInput playerInput;
-    //public int character;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerInput = FindAnyObjectByType<PlayerInput>();
-        //dialogueText.text = "";
-        //startDialogue();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if(InputAction.)
-        {
-            if (dialogueText.text == lines[index])
-            {
-                nextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogueText.text = lines[index];
-            }
-        }*/
     }
 
     public void startDialogue()
     {
         index = 0;
+        FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].GetComponent<Image>().color = Color.white;
+        FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
         StartCoroutine(Type());
     }
     IEnumerator Type()
     {
-        Debug.Log(lines[index].text);
-
+        dialogueText.text = "";
+        Names currentChar = lines[index].name;
+        dialogueText.text = currentChar + ": ";
         foreach (char letter in lines[index].text.ToCharArray())
         {
-            Debug.Log(speed);
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(speed);
         }
     }
     public void nextLine()
     {
-        //if (playerInput.actions["Next"].WasPerformedThisFrame())
-        //{
-            //if current dialogue text < length of line, finish line
-            Debug.Log("next line");
-            if (index < lines.Count - 1)
-            {
-                index++;
-                Debug.Log("line # " + index);
-                Names currentChar = lines[index].name;
-                dialogueText.text = currentChar + ": ";
+        //if current dialogue text < length of line, finish line
+        if (dialogueText.text.Length < lines[index].text.Length + lines[index].name.ToString().Length + 2)
+        {
+            StopAllCoroutines();
+            dialogueText.text = lines[index].name + ": " + lines[index].text;
+            return;
+        }
 
-                //turn on character close up based on name of current line, set color to white
-                if (currentChar == Names.Dimmy)
-                {
-                    FindAnyObjectByType<InteractDialogue>().characterClose[0].GetComponent<Image>().color = Color.white;
-                    FindAnyObjectByType<InteractDialogue>().characterClose[0].SetActive(true);
-                }
-                else if (currentChar == Names.Vinny)
-                {
-                    FindAnyObjectByType<InteractDialogue>().characterClose[1].GetComponent<Image>().color = Color.white;
-                    FindAnyObjectByType<InteractDialogue>().characterClose[1].SetActive(true);
-                }
-                else if (currentChar == Names.Slim_Shadow)
-                {
-                    FindAnyObjectByType<InteractDialogue>().characterClose[2].GetComponent<Image>().color = Color.white;
-                    FindAnyObjectByType<InteractDialogue>().characterClose[2].SetActive(true);
-                }
-                else if (currentChar == Names.Ivanna)
-                {
-                    FindAnyObjectByType<InteractDialogue>().characterClose[3].GetComponent<Image>().color = Color.white;
-                    FindAnyObjectByType<InteractDialogue>().characterClose[3].SetActive(true);
-                }
-                StartCoroutine(Type());
-            }
-            else
-            {
-                StopAllCoroutines();
-                FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
-            }
-        //}
+        if (index < lines.Count - 1)
+        {
+            int currentChar = (int)lines[index].name;
+            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].GetComponent<Image>().color = Color.red;
+            index++;
+            currentChar = (int)lines[index].name;
+
+            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].GetComponent<Image>().color = Color.white;
+            FindAnyObjectByType<InteractDialogue>().characterClose[currentChar].SetActive(true);
+            StartCoroutine(Type());
+        }
+        else
+        {
+            StopAllCoroutines();
+            FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
+        }
+        
     }
 }
