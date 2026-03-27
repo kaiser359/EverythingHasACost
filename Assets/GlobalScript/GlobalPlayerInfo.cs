@@ -16,6 +16,7 @@ public class GlobalPlayerInfo : MonoBehaviour
     public GameObject[] BloodBagOptions;
     public Money Money;
     public float levelTax = 0.05f;
+    public float bankRate = 0.03f;
 
     private void Awake()
     {
