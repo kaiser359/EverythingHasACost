@@ -4,4 +4,5 @@ using UnityEngine;
 public class Money : ScriptableObject
 {
     public int money;
+    public int bankMoney;
 }
