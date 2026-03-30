@@ -14,6 +14,7 @@ public class NuclearBomb : MonoBehaviour
     [Header("Timing")]
     public float duration = 3f; // how long lasers orbit
     public float cooldown = 10f; // cooldown between uses
+    public SpriteRenderer spite;
 
     [Header("Lasers")]
     public GameObject laserPrefab; // optional prefab for lasers; if null, simple spheres will be created
@@ -42,6 +43,8 @@ public class NuclearBomb : MonoBehaviour
 
     IEnumerator ActivateRoutine()
     {
+        
+         spite.enabled = true;
         // Apply instant AOE damage to enemies inside radius (2D + 3D)
         var damaged = new HashSet<EnemyHealth>();
 
@@ -293,17 +296,19 @@ public class NuclearBomb : MonoBehaviour
         }
         orbiting.Clear();
         isActive = false;
+        // Hide renderer if assigned
+        spite.enabled = false;
         if (part != null) part.Stop();
     }
     // removed automatic activation from Update so ability must be triggered explicitly
     public void Update()
     {
         // quick test trigger: press 'K' to activate ability
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            if (debugLog) Debug.Log("NuclearBomb: Test key pressed -> ActivateAbility");
-            ActivateAbility();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    if (debugLog) Debug.Log("NuclearBomb: Test key pressed -> ActivateAbility");
+        //    ActivateAbility();
+        //}
         //if (cooldown > 0f)
         //{
         //    float timeSinceUse = Time.time - lastUsedTime;

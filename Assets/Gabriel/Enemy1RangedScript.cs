@@ -32,6 +32,7 @@ public class Enemy1RangedScript : MonoBehaviour
     private Vector3 wanderTarget;
     private float wanderIdleTimer = 0f;
     private bool isIdling = false;
+    private Rigidbody2D rb;
 
     float shootTimer = 0f;
     float currentAngleOffset = 0f;
@@ -47,6 +48,16 @@ public class Enemy1RangedScript : MonoBehaviour
 
         originPosition = transform.position;
         PickNewWanderTarget();
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Ensure dynamic body so collisions with walls are resolved by physics
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            // make enemy heavy so player bangs don't readily move it
+            rb.mass = Mathf.Max(rb.mass, 5f);
+        }
     }
     private void Awake()
     {
@@ -79,7 +90,10 @@ public class Enemy1RangedScript : MonoBehaviour
             // chassing
             chaseRange = 10;
             Vector3 dir = (playerTransform.position - transform.position).normalized;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, chaseSpeed * Time.deltaTime);
+            Vector3 targetPos = transform.position + dir;
+            Vector3 newPos = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+            if (rb != null) rb.MovePosition(newPos);
+            else transform.position = newPos;
         }
         else
         {
@@ -95,7 +109,9 @@ public class Enemy1RangedScript : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                Vector3 newPos = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                if (rb != null) rb.MovePosition(newPos);
+                else transform.position = newPos;
                 if (Vector2.Distance(transform.position, wanderTarget) < 0.1f)
                 {
                     isIdling = true;
@@ -109,6 +125,15 @@ public class Enemy1RangedScript : MonoBehaviour
     {
         Vector2 offset = Random.insideUnitCircle * wanderRadius;
         wanderTarget = originPosition + (Vector3)offset;
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player") && rb != null)
+        {
+            // prevent player from pushing this enemy while keeping collision for damage
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     void ShootRing()

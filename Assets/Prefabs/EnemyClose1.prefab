@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7768359839635187484}
   - component: {fileID: 3958107506301483019}
   - component: {fileID: 5538734300039120166}
+  - component: {fileID: 5003760730399801809}
   m_Layer: 2
   m_Name: EnemyClose1
   m_TagString: Enemy
@@ -181,3 +182,30 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   maxHealth: 0
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+--- !u!50 &5003760730399801809
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072839590645804042}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
