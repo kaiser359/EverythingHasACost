@@ -41,6 +41,7 @@ public class Enemy2Ranged : MonoBehaviour
     private float wanderIdleTimer = 0f;
     private bool isIdling = false;
     [SerializeField]private float timerTohit;
+    private Rigidbody2D rb;
 
     private Vector2 _currentAimDir = Vector2.right;
     private float damageTimer = 0f;
@@ -59,6 +60,14 @@ public class Enemy2Ranged : MonoBehaviour
         {
             lineRenderer.positionCount = 2;
             lineRenderer.enabled = false;
+        }
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.mass = Mathf.Max(rb.mass, 5f);
         }
     }
 
@@ -106,8 +115,10 @@ public class Enemy2Ranged : MonoBehaviour
             if (!laserActive)
             {
                 // move a small amount in the oscillated aim direction to telegraph the attack
-                Vector3 moveTarget = transform.position + (Vector3)(oscillatedAim * preFireMoveAmount);
-                transform.position = Vector3.MoveTowards(transform.position, moveTarget, preFireMoveSpeed * Time.deltaTime);
+                    Vector3 moveTarget = transform.position + (Vector3)(oscillatedAim * preFireMoveAmount);
+                    Vector3 newPos = Vector3.MoveTowards(transform.position, moveTarget, preFireMoveSpeed * Time.deltaTime);
+                    if (rb != null) rb.MovePosition(newPos);
+                    else transform.position = newPos;
 
                 // rotate to face the aim direction
                 float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
@@ -186,7 +197,10 @@ public class Enemy2Ranged : MonoBehaviour
             laserActive = false;
             // Chase
             Vector3 dir = (playerTransform.position - transform.position).normalized;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, chaseSpeed * Time.deltaTime);
+            Vector3 targetPos = transform.position + dir;
+            Vector3 newPos = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+            if (rb != null) rb.MovePosition(newPos);
+            else transform.position = newPos;
         }
         else
         {
@@ -205,7 +219,9 @@ public class Enemy2Ranged : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                Vector3 newPos = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                if (rb != null) rb.MovePosition(newPos);
+                else transform.position = newPos;
                 if (Vector2.Distance(transform.position, wanderTarget) < 0.1f)
                 {
                     isIdling = true;
@@ -219,5 +235,13 @@ public class Enemy2Ranged : MonoBehaviour
     {
         Vector2 offset = Random.insideUnitCircle * wanderRadius;
         wanderTarget = originPosition + (Vector3)offset;
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player") && rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 }

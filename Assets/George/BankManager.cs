@@ -39,4 +39,8 @@ public class BankManager : MonoBehaviour
             gS.Money.bankMoney -= 500;
         }
     }
+    public void StoreBags()
+    {
+        
+    }
 }
