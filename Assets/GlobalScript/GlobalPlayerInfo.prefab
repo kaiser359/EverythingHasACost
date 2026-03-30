@@ -44,15 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03640356c494203829717c3f2127a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   moveSpeed: 5
   attackCooldown: 0.5
   bulletPrefab: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
-  mainCamera: {fileID: 0}
   rotationSpeed: 720
   rotationOffset: 180
   bulletSpeed: 10
-  BloodBag1: {fileID: 0}
-  BloodBag2: {fileID: 0}
-  BloodBag3: {fileID: 0}
+  BloodBag1: {fileID: 1935077316706043299, guid: e324b54d3bbe6db419488039ce1a3942, type: 3}
+  BloodBag2: {fileID: 1935077316706043299, guid: e324b54d3bbe6db419488039ce1a3942, type: 3}
+  BloodBag3: {fileID: 1935077316706043299, guid: e324b54d3bbe6db419488039ce1a3942, type: 3}
   Store: {fileID: 0}
-  BloodBagOptions: []
+  BloodBagOptions:
+  - {fileID: 1935077316706043299, guid: e324b54d3bbe6db419488039ce1a3942, type: 3}
+  - {fileID: 1935077316706043299, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
+  Money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  levelTax: 0.05
+  bankRate: 0.03
