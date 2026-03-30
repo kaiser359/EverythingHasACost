@@ -10,6 +10,7 @@ public class ChooseBagReplace : MonoBehaviour
     public bool isFirstBag;
     public bool isSecondBag;
     public bool isThirdBag;
+    public int bagNum;
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
@@ -37,5 +38,41 @@ public class ChooseBagReplace : MonoBehaviour
         else if (isThirdBag)
             gS.BloodBag3 = BloodBag;
         gameObject.transform.parent.gameObject.SetActive(false);
-    } 
+    }
+    public void Storage() {
+        switch(bagNum) {
+            case 0:
+                if (isFirstBag)
+                    gS.BankBag1 = gS.BloodBag1;
+                else if (isSecondBag)
+                    gS.BankBag1 = gS.BloodBag2;
+                else if (isThirdBag)
+                    gS.BankBag1 = gS.BloodBag3;
+                break;
+            case 1:
+                if (isFirstBag)
+                    gS.BankBag2 = gS.BloodBag1;
+                else if (isSecondBag)
+                    gS.BankBag2 = gS.BloodBag2;
+                else if (isThirdBag)
+                    gS.BankBag2 = gS.BloodBag3;
+                break;
+            case 2:
+                if (isFirstBag)
+                    gS.BankBag3 = gS.BloodBag1;
+                else if (isSecondBag)
+                    gS.BankBag3 = gS.BloodBag2;
+                else if (isThirdBag)
+                    gS.BankBag3 = gS.BloodBag3;
+                break;
+        }
+        if (isFirstBag)
+            gS.BloodBag1 = BloodBag;
+        else if (isSecondBag)
+            gS.BloodBag2 = BloodBag;
+        else if (isThirdBag)
+            gS.BloodBag3 = BloodBag;
+        gameObject.transform.parent.gameObject.SetActive(false);
+        
+    }
 }
