@@ -95,7 +95,7 @@ public class RoomTemplates : MonoBehaviour
     {
         // build the runtime dictionary from the serialized entries as early as possible
         BuildRoomSetDictionary();
-        AssignRoomSet("EMPTYY");
+        AssignRoomSet("STAGE1");
     }
 
     private void Start()
