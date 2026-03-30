@@ -29,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
         if (ctx.started || ctx.performed)
         {
             transform.localScale = new Vector3(Mathf.Sign(desiredVelocity.x), 1, 1);
+            if (transform.localScale.x < 0)
+            {
+                gS.rotationOffset = 0f; // Flip rotation when facing left
+            }else
+            {
+                gS.rotationOffset = 180f; // Normal rotation when facing right
+            }
         }
 
         // control animator

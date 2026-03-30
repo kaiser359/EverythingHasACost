@@ -36,7 +36,9 @@ public class PurchaseBloodBag : MonoBehaviour
                 bagsToReplace[i].BloodBag = thisBag;
             }
             gameObject.SetActive(false);
-            
+
+        }else{
+            FindAnyObjectByType<NEMFade>().fadeDuration = 1f;
         }
     }
 }
