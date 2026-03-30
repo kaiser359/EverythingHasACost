@@ -41,7 +41,7 @@ public class RotateToMouse : MonoBehaviour
         {
             transform.rotation = target; // Instantly rotate to the new target when offset changes
         }else{
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime * Mathf.Abs(angle - transform.rotation.eulerAngles.z) * 0.01f);
         }
     }
 }
