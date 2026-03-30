@@ -10,9 +10,10 @@ public enum Names
 {
     Dimmy = 0,
     Vinny = 1,
-    Slim_Shadow = 2,
+    Slim = 2,
     Ivanna = 3,
     Casino_Guy = 4,
+    Malveina = 5,
 }
 
 [Serializable]
@@ -43,17 +44,16 @@ public class Dialogue : MonoBehaviour
     {
         index = 0;
         GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
-        FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", false);
-        /*(charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y + 30, 0);
-        FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].GetComponent<Image>().color = Color.white;*/
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
+        FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
         StartCoroutine(Type());
     }
     IEnumerator Type()
     {
         dialogueText.text = "";
         Names currentChar = lines[index].name;
-        dialogueText.text = currentChar + ": ";
+        if ((int)currentChar == 5) {dialogueText.text = "Dutchess Malveina: ";}
+        else  {dialogueText.text = currentChar + ": ";}
         foreach (char letter in lines[index].text.ToCharArray())
         {
             dialogueText.text += letter;
@@ -66,27 +66,23 @@ public class Dialogue : MonoBehaviour
         if (dialogueText.text.Length < lines[index].text.Length + lines[index].name.ToString().Length + 2)
         {
             StopAllCoroutines();
-            dialogueText.text = lines[index].name + ": " + lines[index].text;
+            if ((int)lines[index].name == 5) { dialogueText.text = "Dutchess Malveina: " + lines[index].text; }
+            else { dialogueText.text = lines[index].name + ": " + lines[index].text; }
             return;
         }
 
         if (index < lines.Count - 1)
         {
             int currentChar = (int)lines[index].name;
-            GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
             FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", false);
-            /*charCloseUp.GetComponent<Image>().color = Color.red;
-            charCloseUp.GetComponent<RectTransform>().localScale = new Vector3(0.9f, 0.9f, 0.9f);
-            charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y - 30,0);
-            */
+            Debug.Log(currentChar + "now listening" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
+
             index++;
             currentChar = (int)lines[index].name;
-            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
-            /*charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
-            charCloseUp.GetComponent<Image>().color = Color.white;
-            charCloseUp.GetComponent<RectTransform>().position = new Vector3(charCloseUp.GetComponent<Transform>().position.x, charCloseUp.GetComponent<RectTransform>().position.y + 30, 0);
-            charCloseUp.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);*/
+            GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
             charCloseUp.SetActive(true);
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
+            Debug.Log(currentChar + "now talking" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
             StartCoroutine(Type());
         }
         else

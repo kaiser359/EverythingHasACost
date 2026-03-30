@@ -31,6 +31,7 @@ public class EnemyCombat1 : MonoBehaviour
     private Vector3 wanderTarget;
     private float wanderIdleTimer = 0f;
     private bool isIdling = false;
+    private Rigidbody2D rb;
 
     private float activationTimer = 0f;
     private bool isWarmingUp = false;
@@ -44,6 +45,14 @@ public class EnemyCombat1 : MonoBehaviour
         PickNewWanderTarget();
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) playerTransform = p.transform;
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Ensure dynamic body so collisions with walls are resolved by physics
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
         
     }
 
@@ -86,7 +95,10 @@ public class EnemyCombat1 : MonoBehaviour
             activationTimer = 0f;
             isWarmingUp = false;
             Vector3 dir = (playerTransform.position - transform.position).normalized;
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, chaseSpeed * Time.deltaTime);
+            Vector3 targetPos = transform.position + dir;
+            Vector3 newPos = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+            if (rb != null) rb.MovePosition(newPos);
+            else transform.position = newPos;
         }
         else
         {
@@ -104,7 +116,9 @@ public class EnemyCombat1 : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                Vector3 newPos = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                if (rb != null) rb.MovePosition(newPos);
+                else transform.position = newPos;
                 if (Vector2.Distance(transform.position, wanderTarget) < 0.1f)
                 {
                     isIdling = true;
@@ -127,18 +141,97 @@ public class EnemyCombat1 : MonoBehaviour
         isDashing = true;
         Vector3 start = transform.position;
         float elapsed = 0f;
+        // prepare to temporarily ignore collisions with the player so the enemy can pass through
+        Collider2D[] enemyColls = GetComponents<Collider2D>();
+        Collider2D[] playerColls = new Collider2D[0];
+        Rigidbody2D playerRb = null;
+        if (playerTransform != null)
+        {
+            playerColls = playerTransform.GetComponentsInChildren<Collider2D>();
+            playerRb = playerTransform.GetComponent<Rigidbody2D>();
+        }
+        // disable physics collisions between this enemy and the player while dashing
+        foreach (var ec in enemyColls)
+            foreach (var pc in playerColls)
+                if (ec != null && pc != null) Physics2D.IgnoreCollision(ec, pc, true);
 
         // use provided duration (already adjusted by level)
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            transform.position = Vector3.Lerp(start, target, t);
+            Vector3 nextPos = Vector3.Lerp(start, target, t);
+
+            // check for obstacles between current rigidbody position and nextPos
+            if (rb != null)
+            {
+                Vector2 curPos = rb.position;
+                Vector2 moveDir = (nextPos - (Vector3)curPos);
+                float moveDist = moveDir.magnitude;
+                if (moveDist > 0.0001f)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(curPos, moveDir.normalized, moveDist);
+                    if (hit.collider != null)
+                    {
+                        // if we hit the player, apply damage/knockback manually but keep moving
+                        if (hit.collider.CompareTag("Player"))
+                        {
+                            if (money != null)
+                            {
+                                float lvl = level != null ? (float)level.levelNumber : 0f;
+                                int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
+                                int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f);
+                                money.money = Mathf.Max(0, money.money - dmg);
+                            }
+
+                            // do not apply physical knockback so the player won't be pushed out of the level
+                            // any damage/effects are already applied above via money change
+                            // continue moving (do not treat player as an obstacle)
+                        }
+                        else if (!hit.collider.isTrigger)
+                        {
+                            // stop at the collision point (small offset so we don't overlap)
+                            Vector3 stopPos = (Vector3)hit.point - (Vector3)moveDir.normalized * 0.01f;
+                            rb.MovePosition(stopPos);
+                            break;
+                        }
+                    }
+                }
+
+                rb.MovePosition(nextPos);
+                // neutralize external forces so player collisions don't push the enemy
+                rb.linearVelocity = Vector2.zero;
+            }
+            else
+            {
+                transform.position = nextPos;
+            }
+
             yield return null;
         }
 
-        transform.position = target;
+        // final safety: ensure position is set to target if there was no obstacle
+        if (rb != null && !isDashing)
+        {
+            rb.MovePosition(target);
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        // re-enable collisions between enemy and player
+        foreach (var ec in enemyColls)
+            foreach (var pc in playerColls)
+                if (ec != null && pc != null) Physics2D.IgnoreCollision(ec, pc, false);
+
         isDashing = false;
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        // prevent player from pushing this enemy while keeping collision for damage
+        if (other.collider.CompareTag("Player") && rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     void PickNewWanderTarget()

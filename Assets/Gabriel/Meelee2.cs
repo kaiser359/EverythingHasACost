@@ -19,6 +19,7 @@ public class Meelee2 : MonoBehaviour
     public float idleMax = 2f;
     
     private Transform playerTransform;
+    private Rigidbody2D rb;
     private float timerForNextAtk=0;
     private float timerForAtkDisapear=0;
     private Vector3 originPosition;
@@ -34,6 +35,7 @@ public class Meelee2 : MonoBehaviour
         atkplace.SetActive(false);
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) playerTransform = p.transform;
+        rb = GetComponent<Rigidbody2D>();
 
     }
     private void Update()
@@ -54,9 +56,11 @@ public class Meelee2 : MonoBehaviour
             }
             else
             {
-              
                 Vector3 direction = (playerTransform.position - transform.position).normalized;
-                transform.position += direction * chaseSpeed * Time.deltaTime;
+                Vector3 targetPos = transform.position + direction;
+                Vector3 newPos = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+                if (rb != null) rb.MovePosition(newPos);
+                else transform.position = newPos;
             }
         }
         else
@@ -72,7 +76,9 @@ public class Meelee2 : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                Vector3 newPos = Vector3.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+                if (rb != null) rb.MovePosition(newPos);
+                else transform.position = newPos;
                 if (Vector2.Distance(transform.position, wanderTarget) < 0.1f)
                 {
                     isIdling = true;
