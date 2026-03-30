@@ -8,6 +8,9 @@ public class PurchaseBloodBag : MonoBehaviour
     public Image image;
     public GameObject RP;
     public GameObject SelectedBag;
+    public bool isFirstBag;
+    public bool isSecondBag;
+    public bool isThirdBag;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +20,7 @@ public class PurchaseBloodBag : MonoBehaviour
     // Update is called once per frame after the MonoBehaviour is created
     void Update()
     {
+
         if (thisBag != null) {
             var bagData = thisBag.GetComponent<BloodBagData>();
             image.sprite = bagData.ZoomedBloodBagSprite;

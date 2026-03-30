@@ -4,6 +4,7 @@ public class MainGun : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
     private float cooldownInstance = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class MainGun : MonoBehaviour
 
     public void Attack() { 
         if (cooldownInstance > 0f) return;
+
         GameObject[] attackPoints = GameObject.FindGameObjectsWithTag("AttackPoint");
         foreach (GameObject point in attackPoints)
         {

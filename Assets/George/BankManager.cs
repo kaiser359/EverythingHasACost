@@ -6,6 +6,7 @@ public class BankManager : MonoBehaviour
     public TextMeshProUGUI Cash;
     public GlobalPlayerInfo gS;
     public NEMFade NotEnoughCash;
+    public GameObject BagStorage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +42,6 @@ public class BankManager : MonoBehaviour
     }
     public void StoreBags()
     {
-        
+        BagStorage.SetActive(true);
     }
 }
