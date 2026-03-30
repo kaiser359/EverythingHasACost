@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8782508113193553303}
   - component: {fileID: 8523908765569274534}
   - component: {fileID: 6577255518683078053}
+  - component: {fileID: 1236306273054443331}
   m_Layer: 2
   m_Name: 2rangefEnemy
   m_TagString: Enemy
@@ -226,6 +227,33 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   maxHealth: 0
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+--- !u!50 &1236306273054443331
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162974563615339022}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8709090292053484004
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +349,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4131553321552813515}
     m_Modifications:
+    - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Positions.Array.size
       value: 2
