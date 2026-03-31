@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9aac3b0b6524b40997582034e275a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 387270982}
+  dialogueText: {fileID: 1838497667}
   lines:
   - name: 4
     text: lets go gambling!
@@ -558,17 +558,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f3c3624c7a04214abcff7374e9f9c31, type: 3}
---- !u!114 &387270982 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5434812816854899017, guid: 28c342484991be14f900243065eec5ee, type: 3}
-  m_PrefabInstance: {fileID: 1838497665}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &706623450
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9aac3b0b6524b40997582034e275a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 387270982}
+  dialogueText: {fileID: 1838497667}
   lines:
   - name: 2
     text: wanna buy smthn?
@@ -1224,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9aac3b0b6524b40997582034e275a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 387270982}
+  dialogueText: {fileID: 1838497667}
   lines:
   - name: 5
     text: sup im dutchess malveina
@@ -1576,6 +1565,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 832463415712149836, guid: 28c342484991be14f900243065eec5ee, type: 3}
   m_PrefabInstance: {fileID: 1838497665}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1838497667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 193183806457851896, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1838497665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1941286234 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 706031520538693076, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9aac3b0b6524b40997582034e275a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 387270982}
+  dialogueText: {fileID: 1838497667}
   lines:
   - name: 0
     text: who are u?

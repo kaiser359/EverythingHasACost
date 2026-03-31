@@ -61,3 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e355e7763b9194697e133259d72005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashDistance: 6
+  dashDuration: 0.18
+  dashDamage: 25
+  damageRadius: 0.6
+  projectilePrefab: {fileID: 6553432709211792539, guid: 683ee83a7840a8a4381585c6e58dc312, type: 3}
+  projectileSpeed: 14
