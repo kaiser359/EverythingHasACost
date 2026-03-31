@@ -14,7 +14,6 @@ public class FireBallThrower : MonoBehaviour
     void Update()
     {
         // cooldown timer
-        ActivateAbility();
         if (cooldownTimer > 0f) cooldownTimer -= Time.deltaTime;
     }
 

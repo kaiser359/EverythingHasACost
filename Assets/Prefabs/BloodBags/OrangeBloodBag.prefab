@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2566063783955278028}
+  - component: {fileID: 7696589841253648905}
   - component: {fileID: 5125390973889594104}
   m_Layer: 0
   m_Name: OrangeBloodBag
@@ -33,6 +34,22 @@ Transform:
   - {fileID: 8310122109077560587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7696589841253648905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271676446462327855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d4619483da64947b574e5e7931ec63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BloodBagID: 0
+  BloodBagPrice: 0
+  BloodBagSprite: {fileID: 7218632929117509212, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  ZoomedBloodBagSprite: {fileID: -1011619465, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
 --- !u!114 &5125390973889594104
 MonoBehaviour:
   m_ObjectHideFlags: 0
