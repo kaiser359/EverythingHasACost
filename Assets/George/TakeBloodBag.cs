@@ -5,7 +5,7 @@ public class TakeBloodBag : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
     public GameObject thisBag;
-    public Image image;
+    private Image image;
     public GameObject SP;
     public GameObject SelectedBag;
     public int bagNum;
@@ -14,10 +14,17 @@ public class TakeBloodBag : MonoBehaviour
     void Start()
     {
         gS = FindAnyObjectByType<GlobalPlayerInfo>();
+        image = GetComponent<Image>();
     }
     // Update is called once per frame after the MonoBehaviour is created
     void Update()
     {
+        if (bagNum == 0)
+            thisBag = gS.BankBag1;
+        else if (bagNum == 1)
+            thisBag = gS.BankBag2;
+        else if (bagNum == 2)
+            thisBag = gS.BankBag3;
         if (thisBag != null)
         {
             var bagData = thisBag.GetComponent<BloodBagData>();
@@ -33,6 +40,5 @@ public class TakeBloodBag : MonoBehaviour
             bagsToReplace[i].BloodBag = thisBag;
             bagsToReplace[i].bagNum = bagNum;
         }
-        gameObject.SetActive(false);
     }
 }
