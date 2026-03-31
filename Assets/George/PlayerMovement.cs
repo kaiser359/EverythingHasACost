@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private Vector2 desiredVelocity;
 
+    // when true external systems (like dashes) should prevent this script from setting velocity
+    public bool ignoreMovement = false;
+
     private Animator animator;
 
     void Start()
@@ -51,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocity = desiredVelocity;
+        if (!ignoreMovement)
+            rb.linearVelocity = desiredVelocity;
+        else
+            rb.linearVelocity = Vector2.zero;
     }
 }

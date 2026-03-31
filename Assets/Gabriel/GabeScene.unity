@@ -490,6 +490,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548609214}
   m_CullTransparentMesh: 1
+--- !u!1 &580274912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580274914}
+  - component: {fileID: 580274913}
+  - component: {fileID: 580274915}
+  m_Layer: 0
+  m_Name: GreenBloodBag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &580274913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580274912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d4619483da64947b574e5e7931ec63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BloodBagID: 0
+  BloodBagPrice: 0
+  BloodBagSprite: {fileID: 0}
+  ZoomedBloodBagSprite: {fileID: 0}
+--- !u!4 &580274914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580274912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4204807, y: -0.3021566, z: -0.15396763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580274915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580274912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f7d1fd276fa7d48b5a123c3c2529e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 6
+  dashDuration: 0.18
+  cooldown: 0.5
 --- !u!1 &621833346
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +993,10 @@ PrefabInstance:
     - target: {fileID: -4082691559042354583, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4082691559042354583, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -162195868218585035, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_NotificationBehavior
@@ -1418,6 +1486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 960184568}
+  moveSpeed: 0
+  ignoreMovement: 0
 --- !u!4 &960184574
 Transform:
   m_ObjectHideFlags: 0
@@ -1534,7 +1604,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &960184584
 SpriteRenderer:
@@ -3828,18 +3898,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBloodBag
       objectReference: {fileID: 0}
-    - target: {fileID: 8093061293859579485, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
-      propertyPath: dashDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8093061293859579485, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
-      propertyPath: dashDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8093061293859579485, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
-      propertyPath: myColliders.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9137729114966969189, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4082,3 +4140,4 @@ SceneRoots:
   - {fileID: 5549109667961457479}
   - {fileID: 757912241993355748}
   - {fileID: 2366437090170084837}
+  - {fileID: 580274914}
