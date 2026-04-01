@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 541188b366f1f824a850d601ee40efa4
+guid: 493dfa659bc8ca1439837af5a56d89a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6122637300125295055
-    second: Screenshot 2026-03-31 095315_0
+      213: -6722264024765363516
+    second: elevator_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot 2026-03-31 095315_0
+      name: elevator_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1380
-        height: 647
+        width: 64
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13e997d80d5080ba0800000000000000
-      internalID: -6122637300125295055
+      spriteID: 4ca097d4c78b5b2a0800000000000000
+      internalID: -6722264024765363516
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e982ab1aa73fd284bb58a83a1b9747bf
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Screenshot 2026-03-31 095315_0: -6122637300125295055
+      elevator_0: -6722264024765363516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

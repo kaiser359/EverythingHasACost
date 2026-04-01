@@ -299,6 +299,7 @@ MonoBehaviour:
   isFirstBag: 0
   isSecondBag: 1
   isThirdBag: 0
+  bagNum: 0
 --- !u!1 &1345811612361441509
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +528,7 @@ MonoBehaviour:
   isFirstBag: 0
   isSecondBag: 0
   isThirdBag: 1
+  bagNum: 0
 --- !u!1 &2322829820766372295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1209,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 6840857970483876212, guid: a320464f173f15343822b29cf34dec9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1558,6 +1560,9 @@ MonoBehaviour:
   image: {fileID: 4050892091866955975}
   RP: {fileID: 1345811612361441509}
   SelectedBag: {fileID: 0}
+  isFirstBag: 0
+  isSecondBag: 0
+  isThirdBag: 0
 --- !u!1 &6960714927400213605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,6 +1788,7 @@ MonoBehaviour:
   isFirstBag: 1
   isSecondBag: 0
   isThirdBag: 0
+  bagNum: 0
 --- !u!1 &7949734715230272633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,8 +2016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4115c980e8a055e419a4126aa5f6c0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopLayer: {fileID: 0}
-  mainLayer: {fileID: 0}
 --- !u!1 &8656843430843179527
 GameObject:
   m_ObjectHideFlags: 0
