@@ -222,7 +222,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 62831296}
         m_TargetAssemblyTypeName: ChooseBagReplace, Assembly-CSharp
-        m_MethodName: ReplaceBag
+        m_MethodName: Storage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -509,7 +509,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 154166410}
         m_TargetAssemblyTypeName: ChooseBagReplace, Assembly-CSharp
-        m_MethodName: ReplaceBag
+        m_MethodName: Storage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -796,7 +796,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 327530640}
         m_TargetAssemblyTypeName: ChooseBagReplace, Assembly-CSharp
-        m_MethodName: ReplaceBag
+        m_MethodName: Storage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3897,8 +3897,8 @@ Camera:
   m_GameObject: {fileID: 1900362385}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.057137758, g: 0.078942664, b: 0.11320752, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
