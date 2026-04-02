@@ -17,7 +17,7 @@ public class ElevatorProximity : MonoBehaviour
     void Update()
     {
         // testing
-        Debug.Log(((Vector2)transform.position - (Vector2)player.transform.position).magnitude);
+        //Debug.Log(((Vector2)transform.position - (Vector2)player.transform.position).magnitude);
 
         if (((Vector2)transform.position - (Vector2)player.transform.position).magnitude < range)
         {
