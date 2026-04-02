@@ -17,8 +17,8 @@ public class BankManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AccBalance.text = "Account Balance: " + gS.Money.bankMoney;    
-        Cash.text = "Cash Available: " + gS.Money.money;
+        AccBalance.text = gS.Money.bankMoney.ToString();    
+        Cash.text = gS.Money.money.ToString();
     }
     public void AddMoney()
     {

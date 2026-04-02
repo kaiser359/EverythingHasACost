@@ -16,7 +16,10 @@ public class ElevatorProximity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((transform.position - player.transform.position).magnitude < range)
+        // testing
+        //Debug.Log(((Vector2)transform.position - (Vector2)player.transform.position).magnitude);
+
+        if (((Vector2)transform.position - (Vector2)player.transform.position).magnitude < range)
         {
             animator.SetBool("isOpen", true);
         }
