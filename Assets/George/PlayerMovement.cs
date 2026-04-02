@@ -8,8 +8,11 @@ public class PlayerMovement : MonoBehaviour
 
     public GlobalPlayerInfo gS;
     Rigidbody2D rb;
-    [SerializeField] private float moveSpeed;
+    private float moveSpeed;
     private Vector2 desiredVelocity;
+
+    // when true external systems (like dashes) should prevent this script from setting velocity
+    public bool ignoreMovement = false;
 
     private Animator animator;
 
@@ -28,15 +31,6 @@ public class PlayerMovement : MonoBehaviour
         // flip the sprite based on movement direction
         if (ctx.started || ctx.performed)
         {
-            //transform.localScale = new Vector3(Mathf.Sign(desiredVelocity.x), 1, 1);
-            //if (transform.localScale.x < 0)
-            //{
-            //    gS.rotationOffset = 0f; // Flip rotation when facing left
-            //}else
-            //{
-            //    gS.rotationOffset = 180f; // Normal rotation when facing right
-            //}
-
             GetComponent<SpriteRenderer>().flipX = desiredVelocity.x < 0;
         }
 
@@ -51,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocity = desiredVelocity;
+        if (!ignoreMovement)
+            rb.linearVelocity = desiredVelocity;
+        else
+            rb.linearVelocity = Vector2.zero;
     }
 }

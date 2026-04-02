@@ -21,6 +21,10 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3949386027232323010, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
+      propertyPath: spawnRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949386027232323010, guid: 9945fabc09b51444793fee814b98bb0f, type: 3}
       propertyPath: difficultyLevel
       value: 4
       objectReference: {fileID: 0}

@@ -29,6 +29,11 @@ public class BulletScript : MonoBehaviour
             money.money -= stats.atkDamage + (money.money/100) + (level.levelNumber*10);
             Destroy(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+
+            }
     }
 
 

@@ -16,25 +16,25 @@ public class AbilityTrigger : MonoBehaviour
     }
     void Update()
     {
+
         if (BloodBag1 != gS.BloodBag1)
         {
             Destroy(BagToTrigger1);
             BloodBag1 = gS.BloodBag1;
-            BagToTrigger1 = Instantiate(BloodBag1, Vector3.zero, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
-   
+            BagToTrigger1 = Instantiate(BloodBag1, FindFirstObjectByType<MainGun>().transform.position, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
         }
         if (BloodBag2 != gS.BloodBag2)
         {
             Destroy(BagToTrigger2);
             BloodBag2 = gS.BloodBag2;
-            BagToTrigger2 = Instantiate(BloodBag2, Vector3.zero, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
+            BagToTrigger2 = Instantiate(BloodBag2, FindFirstObjectByType<MainGun>().transform.position, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
 
         }
         if (BloodBag3 != gS.BloodBag3)
         {
             Destroy(BagToTrigger3);
             BloodBag3 = gS.BloodBag3;
-            BagToTrigger3 = Instantiate(BloodBag3, Vector3.zero, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
+            BagToTrigger3 = Instantiate(BloodBag3, FindFirstObjectByType<MainGun>().transform.position, Quaternion.identity, FindFirstObjectByType<MainGun>().transform);
 
         }
     }
@@ -56,6 +56,7 @@ public class AbilityTrigger : MonoBehaviour
             BagToTrigger2.SendMessage("ActivateAbility", SendMessageOptions.DontRequireReceiver);
         }
     }
+
     public void TriggerAbility3()
     {
         Debug.Log("Ability 3 Triggered!");
