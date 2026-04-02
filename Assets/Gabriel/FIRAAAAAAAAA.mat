@@ -152,14 +152,14 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _LightingEnabled: 0
-    - _Metallic: 0.024
+    - _Metallic: 0.442
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.0405
     - _QueueOffset: -19
     - _ReceiveShadows: 1
     - _Shininess: 0.2
-    - _Smoothness: 0.777
+    - _Smoothness: 0.526
     - _SmoothnessTextureChannel: 1
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
