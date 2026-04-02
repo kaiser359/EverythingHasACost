@@ -18,13 +18,13 @@ public class LayerSwitch : MonoBehaviour
     void Update()
     {
         // check if the player is outside the horizontal bounds of the shop collider
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) > shopCollider.size.x/2)
+        if (Mathf.Abs(transform.position.x - player.transform.position.x) > shopCollider.size.x/2 + 0.5f)
         {
             return;
         }
 
         // check if the player is above the shop collider
-        if (player.transform.position.y > transform.position.y + shopCollider.offset.y)
+        if (player.transform.position.y + player.GetComponent<Collider2D>().offset.y > transform.position.y + shopCollider.offset.y)
         {
             // player is above the shop
             player.GetComponent<SpriteRenderer>().sortingOrder = shopLayerOrder - 1;
