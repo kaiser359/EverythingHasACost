@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShopLayerSwitch : MonoBehaviour
+public class LayerSwitch : MonoBehaviour
 {
     private GameObject player;
     private BoxCollider2D shopCollider;
