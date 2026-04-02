@@ -1542,7 +1542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
-  moveSpeed: 0
   ignoreMovement: 0
 --- !u!114 &1098391504989512959
 MonoBehaviour:
@@ -2379,7 +2378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8778766502834837931, guid: 6d613d59d57597a40b6135d358c0911e, type: 3}
+  m_Sprite: {fileID: 7814824903320663495, guid: b9c17b206a53d4d459eec8a4ac5c5e0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
