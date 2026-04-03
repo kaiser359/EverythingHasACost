@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 36ce2932d81ea5546a47bba85a5c86d3
+guid: f7443ac2c1db9724594b9c48658638f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8292656959197134909
-    second: bloodbags32_0
+      213: 6213349840971506180
+    second: bloodbags32 1_0
   - first:
-      213: 7218632929117509212
-    second: bloodbags32_1
+      213: -5662394069295113142
+    second: bloodbags32 1_1
   - first:
-      213: 1981449628262766586
-    second: bloodbags32_2
+      213: -4785578298791353333
+    second: bloodbags32 1_2
   - first:
-      213: 4535592640908067272
-    second: bloodbags32_3
+      213: 5669554925732999784
+    second: bloodbags32 1_3
   - first:
-      213: -7573059883750386240
-    second: bloodbags32_4
+      213: -6055288341017821803
+    second: bloodbags32 1_4
   - first:
-      213: 690601970903285146
-    second: bloodbags32_5
+      213: -1815845577999250218
+    second: bloodbags32 1_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,12 +141,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bloodbags32_0
+      name: bloodbags32 1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -156,19 +156,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cf32e69e609aec80800000000000000
-      internalID: -8292656959197134909
+      spriteID: 4022658b2c04a3650800000000000000
+      internalID: 6213349840971506180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodbags32_1
+      name: bloodbags32 1_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 38
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -178,19 +178,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c569cff276cbd2460800000000000000
-      internalID: 7218632929117509212
+      spriteID: a4cd26938922b61b0800000000000000
+      internalID: -5662394069295113142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodbags32_2
+      name: bloodbags32 1_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 72
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,19 +200,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af79ee050f58f7b10800000000000000
-      internalID: 1981449628262766586
+      spriteID: b0429bf64e5369db0800000000000000
+      internalID: -4785578298791353333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodbags32_3
+      name: bloodbags32 1_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 106
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -222,19 +222,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c1833fe979a1fe30800000000000000
-      internalID: 4535592640908067272
+      spriteID: 862b1e69a2e4eae40800000000000000
+      internalID: 5669554925732999784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodbags32_4
+      name: bloodbags32 1_4
       rect:
         serializedVersion: 2
-        x: 136
+        x: 140
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,19 +244,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c51c46d82617e690800000000000000
-      internalID: -7573059883750386240
+      spriteID: 59d711d065b47fba0800000000000000
+      internalID: -6055288341017821803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodbags32_5
+      name: bloodbags32 1_5
       rect:
         serializedVersion: 2
-        x: 170
+        x: 174
         y: 0
-        width: 34
+        width: 26
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -266,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9dffd465d2859900800000000000000
-      internalID: 690601970903285146
+      spriteID: 6dc046c4112dcc6e0800000000000000
+      internalID: -1815845577999250218
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1e17927672a10eb4cac2aaed8a207f5f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bloodbags32_0: -8292656959197134909
-      bloodbags32_1: 7218632929117509212
-      bloodbags32_2: 1981449628262766586
-      bloodbags32_3: 4535592640908067272
-      bloodbags32_4: -7573059883750386240
-      bloodbags32_5: 690601970903285146
+      bloodbags32 1_0: 6213349840971506180
+      bloodbags32 1_1: -5662394069295113142
+      bloodbags32 1_2: -4785578298791353333
+      bloodbags32 1_3: 5669554925732999784
+      bloodbags32 1_4: -6055288341017821803
+      bloodbags32 1_5: -1815845577999250218
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
