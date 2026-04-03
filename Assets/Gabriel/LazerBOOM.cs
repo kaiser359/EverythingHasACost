@@ -113,12 +113,16 @@ public class LazerBOOM : MonoBehaviour
             float shrinkT = (growDuration > 0f) ? Mathf.Clamp01((stayDuration - activeElapsed) / growDuration) : 1f;
             float beamScale = Mathf.Min(growT, shrinkT); // grows, then holds, then shrinks
             float currentRange = Mathf.Lerp(0f, maxRange, beamScale);
-            Vector3 end = start + dir * currentRange;
+
+            // find actual beam end: beam should pass through objects tagged Enemy/Player
+            // but be blocked by the first other collider.
+            RaycastHit2D rhit;
+            Vector3 end = GetHitPosition(start, dir, currentRange, out rhit);
 
             // debug draw
             Debug.DrawLine(start, end, beamColor);
 
-            // area damage (keeps original behavior but now along beam from start->end)
+            // area damage along the actual beam length
             Vector2 wStart = start;
             Vector2 wEnd = end;
             Vector2 center = (wStart + wEnd) * 0.5f;
@@ -133,10 +137,8 @@ public class LazerBOOM : MonoBehaviour
                 if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
             }
 
-            // precise hit detection along beam to report a hit point to VFX (so you can show impact)
-            RaycastHit2D rhit;
-            Vector3 hitPoint = GetHitPosition(start, dir, currentRange, out rhit);
-            if (rhit.collider != null)
+            // if the raycast hit an enemy specifically, also apply damage directly (keeps previous behavior)
+            if (rhit.collider != null && rhit.collider.CompareTag("Enemy") )
             {
                 var eh = rhit.collider.GetComponent<EnemyHealth>();
                 if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
@@ -215,7 +217,40 @@ public class LazerBOOM : MonoBehaviour
 
     private Vector3 GetHitPosition(Vector3 start, Vector3 dir, float range, out RaycastHit2D hit)
     {
-        hit = Physics2D.Raycast(start, dir, range, enemyLayer);
-        return (hit.collider != null) ? hit.point : start + dir * range;
+        // RaycastAll so we can find the first blocking collider that is NOT Enemy or Player
+        var hits = Physics2D.RaycastAll(start, dir, range);
+        RaycastHit2D firstValid = new RaycastHit2D();
+        float bestDist = float.MaxValue;
+        foreach (var h in hits)
+        {
+            if (h.collider == null) continue;
+            float d = h.distance;
+            if (d < bestDist)
+            {
+                // if collider is tagged Enemy or Player, we allow beam to pass through
+                if (h.collider.CompareTag("Enemy") || h.collider.CompareTag("Player"))
+                {
+                    // still record as a hit target candidate but don't block
+                    firstValid = h;
+                    bestDist = d;
+                    continue;
+                }
+
+                // it's a blocker -> return this as the stopping point
+                hit = h;
+                return h.point;
+            }
+        }
+
+        // no blocker found: if we recorded an Enemy/Player hit, return that point
+        if (firstValid.collider != null)
+        {
+            hit = firstValid;
+            return firstValid.point;
+        }
+
+        // nothing hit within range
+        hit = default;
+        return start + dir * range;
     }
 }
