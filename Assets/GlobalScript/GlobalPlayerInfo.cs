@@ -20,6 +20,7 @@ public class GlobalPlayerInfo : MonoBehaviour
     public GameObject BankBag1;
     public GameObject BankBag2;
     public GameObject BankBag3;
+    public float aimDir;
 
     private void Awake()
     {
