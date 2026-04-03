@@ -3706,9 +3706,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175137814970565152, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1829032637269627881, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
       propertyPath: m_Name
       value: bayBlade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913165482743953906, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8254556014449202875, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4034,6 +4042,10 @@ PrefabInstance:
     - target: {fileID: 4131553321552813515, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5390332149918572854, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_Name
