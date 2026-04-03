@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2017235293701636188
+--- !u!114 &-7988101607523160846
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MinimapShader
-  m_Shader: {fileID: -6465566751694194690, guid: 5ea7e1c30f59e3c47873dbfe8e80c771, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 63cd3f0aa5c11a44d82c79ff27fac531, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
