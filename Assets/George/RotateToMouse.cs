@@ -36,7 +36,7 @@ public class RotateToMouse : MonoBehaviour
         Vector3 dir = mouseWorld - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + rotationOffset;
         Quaternion target = Quaternion.Euler(0f, 0f, angle);
-
+        gS.aimDir = angle; // Update the aim direction in GlobalPlayerInfo
         if (shouldSnap)
         {
             transform.rotation = target; // Instantly rotate to the new target when offset changes
