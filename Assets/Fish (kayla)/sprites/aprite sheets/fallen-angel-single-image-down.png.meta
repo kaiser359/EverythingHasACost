@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: 36ce2932d81ea5546a47bba85a5c86d3
+guid: 93dabd3bd05948b44b0e037e167bc8e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8292656959197134909
-    second: bloodbags32_0
-  - first:
-      213: 7218632929117509212
-    second: bloodbags32_1
-  - first:
-      213: 1981449628262766586
-    second: bloodbags32_2
-  - first:
-      213: 4535592640908067272
-    second: bloodbags32_3
-  - first:
-      213: -7573059883750386240
-    second: bloodbags32_4
-  - first:
-      213: 690601970903285146
-    second: bloodbags32_5
+      213: 8730405696210839767
+    second: fallen-angel-single-image-down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bloodbags32_0
+      name: fallen-angel-single-image-down_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 34
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,118 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cf32e69e609aec80800000000000000
-      internalID: -8292656959197134909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodbags32_1
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c569cff276cbd2460800000000000000
-      internalID: 7218632929117509212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodbags32_2
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: af79ee050f58f7b10800000000000000
-      internalID: 1981449628262766586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodbags32_3
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c1833fe979a1fe30800000000000000
-      internalID: 4535592640908067272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodbags32_4
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c51c46d82617e690800000000000000
-      internalID: -7573059883750386240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodbags32_5
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 0
-        width: 34
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a9dffd465d2859900800000000000000
-      internalID: 690601970903285146
+      spriteID: 7d8a1bb99b1a82970800000000000000
+      internalID: 8730405696210839767
       vertices: []
       indices: 
       edges: []
@@ -276,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1e17927672a10eb4cac2aaed8a207f5f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bloodbags32_0: -8292656959197134909
-      bloodbags32_1: 7218632929117509212
-      bloodbags32_2: 1981449628262766586
-      bloodbags32_3: 4535592640908067272
-      bloodbags32_4: -7573059883750386240
-      bloodbags32_5: 690601970903285146
+      fallen-angel-single-image-down_0: 8730405696210839767
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -30,6 +30,8 @@ public class LazerBOOM : MonoBehaviour
    // public ParticleSystem beamParticles; // optional particle system to emit along the beam
     //public float particleSpeed = 5f; // speed at which particles move along the beam direction
 
+    // (render texture UI mapping removed)
+
     private Coroutine activeRoutine;
 
     // (VFX removed) track state not needed when using only LineRenderer
@@ -49,6 +51,10 @@ public class LazerBOOM : MonoBehaviour
     private void Update()
     {
         if (timer > 0f) timer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ActivateAbility();
+        }
     }
 
     public void ActivateAbility()
@@ -81,16 +87,18 @@ public class LazerBOOM : MonoBehaviour
             Camera cam = Camera.main;
             if (cam != null)
             {
-                // ScreenToWorldPoint expects a z distance from the camera. Calculate
-                // the distance from the camera to the beam start's z plane so the
-                // projected mouse position lies on the same z as the beam origin.
-                float zDist = start.z - cam.transform.position.z;
-                Vector3 mp = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zDist));
-                mouseWorld = mp;
+                Plane plane = new Plane(Vector3.forward, start);
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                if (plane.Raycast(ray, out float enter)) mouseWorld = ray.GetPoint(enter);
+                else
+                {
+                    float zDist = start.z - cam.transform.position.z;
+                    mouseWorld = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zDist));
+                    mouseWorld.z = start.z;
+                }
             }
             else
             {
-                // fallback direction if no camera available
                 mouseWorld = start + transform.right;
             }
 
@@ -147,9 +155,12 @@ public class LazerBOOM : MonoBehaviour
                 // taper the beam: start can be larger than the end (end narrower)
                 line.startWidth = currentWidth * startWidthMultiplier;
                 line.endWidth = currentWidth * endWidthMultiplier;
-                line.SetPosition(0, new Vector3(start.x, start.y, 0f));
-                // apply a small visual offset to the end point (index 1)
-                Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
+                // place line vertices on the same z plane as the beam origin to avoid parallax offsets
+                line.SetPosition(0, new Vector3(start.x, start.y, start.z));
+                // apply a small visual offset to the end point relative to the beam
+                Vector3 perp = Vector3.Cross(dir, Vector3.forward).normalized;
+                Vector3 endVis = end + dir * endPositionOffset.x + perp * endPositionOffset.y;
+                endVis.z = start.z;
                 line.SetPosition(1, endVis);
             }
 

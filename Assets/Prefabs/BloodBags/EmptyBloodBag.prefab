@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BloodBagID: 0
   BloodBagPrice: 0
-  BloodBagSprite: {fileID: 0}
-  ZoomedBloodBagSprite: {fileID: 0}
+  BloodBagSprite: {fileID: -5027410267900976444, guid: 4e3afa6ddcd56d74283503a0f1188123, type: 3}
+  ZoomedBloodBagSprite: {fileID: 5683267276705222137, guid: ed242ec04dfcfd348ae89e8e44953767, type: 3}

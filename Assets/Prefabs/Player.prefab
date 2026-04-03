@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  m_Sprite: {fileID: -6055288341017821803, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  m_Sprite: {fileID: -6055288341017821803, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8292656959197134909, guid: 36ce2932d81ea5546a47bba85a5c86d3, type: 3}
+  m_Sprite: {fileID: -5027410267900976444, guid: 4e3afa6ddcd56d74283503a0f1188123, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1542,7 +1542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
-  moveSpeed: 0
   ignoreMovement: 0
 --- !u!114 &1098391504989512959
 MonoBehaviour:
@@ -2379,7 +2378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8778766502834837931, guid: 6d613d59d57597a40b6135d358c0911e, type: 3}
+  m_Sprite: {fileID: 7814824903320663495, guid: b9c17b206a53d4d459eec8a4ac5c5e0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
