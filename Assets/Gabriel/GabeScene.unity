@@ -272,9 +272,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2669,7 +2669,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147484671
+    m_Bits: 2147484031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3520,7 +3520,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 6435c564be3f1504bb1e048ca91de5ed, type: 2}
   m_TargetDisplay: 0
@@ -3706,17 +3706,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 175137814970565152, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1829032637269627881, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
       propertyPath: m_Name
       value: bayBlade
-      objectReference: {fileID: 0}
-    - target: {fileID: 7913165482743953906, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8254556014449202875, guid: 7c4657019fe6c9e4e93f319d4d034fa7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4043,17 +4035,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5390332149918572854, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_Name
       value: 2rangefEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
