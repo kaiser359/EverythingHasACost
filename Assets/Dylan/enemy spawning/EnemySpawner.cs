@@ -83,7 +83,8 @@ public class EnemySpawner : MonoBehaviour
 
         int targetDifficultyLevel = difficultyLevel; // TODO: determine difficulty level based on player progress or other factors
 
-        List<GameObject[]> clustersAtDifficulty = new();
+        List<GameObject[]> clustersAtDifficulty;
+        enemyClusters.TryGetValue(targetDifficultyLevel, out clustersAtDifficulty);
 
         while (clustersAtDifficulty == null || clustersAtDifficulty.Count == 0)
         {

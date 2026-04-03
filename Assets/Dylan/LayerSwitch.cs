@@ -12,6 +12,12 @@ public class LayerSwitch : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         shopCollider = GetComponent<BoxCollider2D>();
         shopLayerOrder = transform.parent.GetComponent<SpriteRenderer>().sortingOrder; // get the sorting order of the shop sprite
+
+        if (player == null)
+        {
+            Debug.LogError("Player object not found in the scene. Please make sure the player has the tag 'Player'.");
+            enabled = false; // disable this script if the player is not found
+        }
     }
 
     // Update is called once per frame
