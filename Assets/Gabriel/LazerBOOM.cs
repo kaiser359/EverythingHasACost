@@ -122,7 +122,7 @@ public class LazerBOOM : MonoBehaviour
             // debug draw
             Debug.DrawLine(start, end, beamColor);
 
-            // area damage along the actual beam length
+            // area damage along the actual beam length (skip Player tag)
             Vector2 wStart = start;
             Vector2 wEnd = end;
             Vector2 center = (wStart + wEnd) * 0.5f;
@@ -133,6 +133,7 @@ public class LazerBOOM : MonoBehaviour
             foreach (var c in hits)
             {
                 if (c == null) continue;
+                if (c.CompareTag("Player")) continue; // don't hit the player
                 var eh = c.GetComponent<EnemyHealth>();
                 if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
             }
@@ -215,11 +216,11 @@ public class LazerBOOM : MonoBehaviour
 
     // (VFX removed) all visual-effect helpers deleted; renderer-only implementation
 
+    // GetHitPosition: ignore Player as a blocking or target hit (beam passes through player)
     private Vector3 GetHitPosition(Vector3 start, Vector3 dir, float range, out RaycastHit2D hit)
     {
-        // RaycastAll so we can find the first blocking collider that is NOT Enemy or Player
         var hits = Physics2D.RaycastAll(start, dir, range);
-        RaycastHit2D firstValid = new RaycastHit2D();
+        RaycastHit2D firstEnemy = new RaycastHit2D();
         float bestDist = float.MaxValue;
         foreach (var h in hits)
         {
@@ -227,29 +228,32 @@ public class LazerBOOM : MonoBehaviour
             float d = h.distance;
             if (d < bestDist)
             {
-                // if collider is tagged Enemy or Player, we allow beam to pass through
-                if (h.collider.CompareTag("Enemy") || h.collider.CompareTag("Player"))
+                if (h.collider.CompareTag("Enemy"))
                 {
-                    // still record as a hit target candidate but don't block
-                    firstValid = h;
+                    // record nearest enemy hit (does not block beam)
+                    firstEnemy = h;
                     bestDist = d;
                     continue;
                 }
 
-                // it's a blocker -> return this as the stopping point
+                if (h.collider.CompareTag("Player"))
+                {
+                    // completely ignore player for blocking/endpoint
+                    continue;
+                }
+
+                // non-enemy, non-player collider blocks the beam
                 hit = h;
                 return h.point;
             }
         }
 
-        // no blocker found: if we recorded an Enemy/Player hit, return that point
-        if (firstValid.collider != null)
+        if (firstEnemy.collider != null)
         {
-            hit = firstValid;
-            return firstValid.point;
+            hit = firstEnemy;
+            return firstEnemy.point;
         }
 
-        // nothing hit within range
         hit = default;
         return start + dir * range;
     }
