@@ -945,6 +945,14 @@ PrefabInstance:
       propertyPath: m_LocalBounds.m_Extent.y
       value: 0.99853027
       objectReference: {fileID: 0}
+    - target: {fileID: 5609087407062410580, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609087407062410580, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5899462158846029909, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -973,6 +981,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -46041589
       objectReference: {fileID: 0}
+    - target: {fileID: 6604503820662579230, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 7476561645412938845, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8105721787952041871, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1241,8 +1257,8 @@ Camera:
   m_GameObject: {fileID: 1656312075}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.057137758, g: 0.078942664, b: 0.11320752, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1266,14 +1282,14 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
+  orthographic: 1
+  orthographic size: 3.8046875
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1950
+    m_Bits: 1664
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 74dc74092e2b2524880a6e34e7bca342, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1423,11 +1439,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.21875
+  orthographic size: 3.8046875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 97
+    m_Bits: 383
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
