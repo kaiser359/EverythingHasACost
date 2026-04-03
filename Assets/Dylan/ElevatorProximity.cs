@@ -11,6 +11,12 @@ public class ElevatorProximity : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
+
+        if (player == null)
+        {
+            Debug.LogError("Player object not found in the scene. Please make sure the player has the tag 'Player'.");
+            enabled = false; // disable this script if the player is not found
+        }
     }
 
     // Update is called once per frame
