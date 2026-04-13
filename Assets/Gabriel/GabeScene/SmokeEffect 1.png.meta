@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: caffbba0bb558d844a4859841ea4a3a5
+guid: 420ef543e10320d40813e9f263658045
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3139035163328251826
-    second: IceShieldWithoutBackGround_0
+      213: 7222012957465065105
+    second: SmokeEffect_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
-    sRGBTexture: 1
+    enableMipMap: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,9 +55,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 1
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IceShieldWithoutBackGround_0
+      name: SmokeEffect_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 97
-        width: 1023
-        height: 1122
+        x: 0
+        y: 102
+        width: 1048
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e48fb587628ef64d0800000000000000
-      internalID: -3139035163328251826
+      spriteID: 19639fc558eb93460800000000000000
+      internalID: 7222012957465065105
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IceShieldWithoutBackGround_0: -3139035163328251826
+      SmokeEffect_0: 7222012957465065105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
