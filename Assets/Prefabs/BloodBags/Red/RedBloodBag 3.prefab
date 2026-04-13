@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1439850408102296720}
   - component: {fileID: 6697504818565085820}
   m_Layer: 0
-  m_Name: RedBloodBag
+  m_Name: RedBloodBag 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,11 +64,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   playerInfo: {fileID: 706031520538693076, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
-  cooldown: 0
-  duration: 0
+  cooldown: 8
+  duration: 5
   normalBullet: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
-  buffedBullet: {fileID: 2860290889472336480, guid: f7d65d3155aa5be4dbad55c6cfbaf901, type: 3}
-  originakmoveSpeed: 0
+  buffedBullet: {fileID: 2860290889472336480, guid: 51c23e79ba703ea42bfebb77f54dc81d, type: 3}
+  originakmoveSpeed: 5
 --- !u!1001 &5525911030616735384
 PrefabInstance:
   m_ObjectHideFlags: 0

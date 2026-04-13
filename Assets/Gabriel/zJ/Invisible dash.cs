@@ -6,7 +6,7 @@ public class Invisibledash : MonoBehaviour
     public float dashDistance = 6f;
     public float dashDuration = 0.18f;
     public float cooldown = 5f;
-
+    public StarRatings star;
     float _cooldownTimer = 0f;
 
     void Update()
@@ -16,7 +16,10 @@ public class Invisibledash : MonoBehaviour
         //    ActivateAbility();
         //}
     }
-
+    private void Start()
+    {
+        cooldown -= star.StartRating;
+    }
     // Public activation entrypoint
     public void ActivateAbility()
     {

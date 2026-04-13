@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
       propertyPath: m_Name
-      value: buffedBulled Variant
+      value: buffedBulled Variant 5
       objectReference: {fileID: 0}
     - target: {fileID: 8221836651151028198, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
       propertyPath: damage
@@ -103,4 +103,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 60
-  star: {fileID: 11400000, guid: fa865554980f30048aad9ac5fdbc68e6, type: 2}
+  star: {fileID: 11400000, guid: 5c558cc83561ce245b9797cd8e684b8c, type: 2}

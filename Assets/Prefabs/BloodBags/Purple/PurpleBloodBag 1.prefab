@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1767345263973746128}
   - component: {fileID: 6705898168461765549}
   m_Layer: 0
-  m_Name: PurpleBloodBag
+  m_Name: PurpleBloodBag 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   beamOrigin: {fileID: 9137729114966969189}
   beamColor: {r: 0, g: 1, b: 1, a: 1}
   line: {fileID: 6705898168461765549}
+  star: {fileID: 11400000, guid: 66d6612321307354596e093e10ed0463, type: 2}
 --- !u!120 &6705898168461765549
 LineRenderer:
   serializedVersion: 2

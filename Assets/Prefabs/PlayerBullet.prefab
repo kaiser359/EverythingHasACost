@@ -182,3 +182,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+  star: {fileID: 11400000, guid: fa865554980f30048aad9ac5fdbc68e6, type: 2}

@@ -65,7 +65,7 @@ MonoBehaviour:
   radius: 5
   damage: 9999
   duration: 3
-  cooldown: 10
+  cooldown: 100
   spite: {fileID: 387884659830574638}
   laserPrefab: {fileID: 1031434165080846609, guid: 3be337482b983534b850f4401f2780b3, type: 3}
   laserCount: 5

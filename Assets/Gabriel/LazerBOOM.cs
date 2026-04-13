@@ -27,6 +27,8 @@ public class LazerBOOM : MonoBehaviour
     public Transform beamOrigin; // optional: if null uses this.transform.position
     public Color beamColor = Color.cyan;
     public LineRenderer line;
+
+    public StarRatings star;
    // public ParticleSystem beamParticles; // optional particle system to emit along the beam
     //public float particleSpeed = 5f; // speed at which particles move along the beam direction
 
@@ -37,7 +39,9 @@ public class LazerBOOM : MonoBehaviour
     // (VFX removed) track state not needed when using only LineRenderer
     private void Awake()
     {
-       GameObject player = GameObject.FindWithTag("Player");
+        stayDuration += star.StartRating;
+        damagePerSecond += star.StartRating * 5; // example scaling: +5 DPS per star
+        GameObject player = GameObject.FindWithTag("Player");
        if (player != null)
        {
            beamOrigin = player.transform;

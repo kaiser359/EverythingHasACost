@@ -11,6 +11,8 @@ public class BlueAbility : MonoBehaviour
     public float damageRadius = 0.6f;
     public Collider2D bluebagcol;
     public float cooldown;
+    public GameObject Shield;
+    public float shieldHealth = 50;
 
     // projectile settings (will fall back to GlobalPlayerInfo if null)
     public GameObject projectilePrefab;

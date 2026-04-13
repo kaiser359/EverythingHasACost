@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8594276861807694793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517937800636247562}
+  - component: {fileID: 8727919621586316822}
+  - component: {fileID: 6030532910096075321}
+  m_Layer: 0
+  m_Name: GreenBloodBagLevel3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517937800636247562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594276861807694793}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4204807, y: -0.3021566, z: -0.15396763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8727919621586316822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594276861807694793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d4619483da64947b574e5e7931ec63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BloodBagID: 0
+  BloodBagPrice: 0
+  BloodBagSprite: {fileID: 5669554925732999784, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
+  ZoomedBloodBagSprite: {fileID: 1003468316, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
+--- !u!114 &6030532910096075321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594276861807694793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f7d1fd276fa7d48b5a123c3c2529e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 6
+  dashDuration: 0.18
+  cooldown: 0.5
+  star: {fileID: 11400000, guid: 4a184a7e473eacc448643992905dd14e, type: 2}
