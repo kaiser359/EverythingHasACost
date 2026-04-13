@@ -60,9 +60,10 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _Subdivisions: 31.58
+    - _Subdivisions: 80
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
+    - _noise: 0
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
