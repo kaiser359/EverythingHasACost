@@ -1,25 +1,49 @@
 fileFormatVersion: 2
-guid: 6d5aa4e864a5d714890ee65bb5324936
+guid: a885a57e2c3497047b6b4bd39ca55209
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8278899667743365357
-    second: angel-spritesheet-south-walk_0
+      213: 4219050442047946838
+    second: Demon-run-up_0
   - first:
-      213: -6950871817234727605
-    second: angel-spritesheet-south-walk_1
+      213: -409525209902931978
+    second: Demon-run-up_1
   - first:
-      213: -69163451338265116
-    second: angel-spritesheet-south-walk_2
+      213: -4640475909162775408
+    second: Demon-run-up_2
   - first:
-      213: -4161672160102808257
-    second: angel-spritesheet-south-walk_3
+      213: 3043189483285576190
+    second: Demon-run-up_3
   - first:
-      213: 2275705740508730742
-    second: angel-spritesheet-south-walk_4
+      213: 723141137679745879
+    second: Demon-run-up_4
   - first:
-      213: 4197814982169999696
-    second: angel-spritesheet-south-walk_5
+      213: -9199856000766584308
+    second: Demon-run-up_5
+  - first:
+      213: -8209687971961584918
+    second: Demon-run-up_6
+  - first:
+      213: 1585034894546963463
+    second: Demon-run-up_7
+  - first:
+      213: -1434864267897581777
+    second: Demon-run-up_8
+  - first:
+      213: -1750500464309746779
+    second: Demon-run-up_9
+  - first:
+      213: -1883844017326000300
+    second: Demon-run-up_10
+  - first:
+      213: -5351233213667429950
+    second: Demon-run-up_11
+  - first:
+      213: -6580942914336107159
+    second: Demon-run-up_12
+  - first:
+      213: 2566229666793325978
+    second: Demon-run-up_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,73 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 317ae0d9d907b1d80800000000000000
-      internalID: -8278899667743365357
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angel-spritesheet-south-walk_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b4d3376d8ea898f90800000000000000
-      internalID: -6950871817234727605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angel-spritesheet-south-walk_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4edea8b15384a0ff0800000000000000
-      internalID: -69163451338265116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angel-spritesheet-south-walk_3
+      name: Demon-run-up_0
       rect:
         serializedVersion: 2
         x: 0
@@ -222,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3580794835ce36c0800000000000000
-      internalID: -4161672160102808257
+      spriteID: 65009b706041d8a30800000000000000
+      internalID: 4219050442047946838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_4
+      name: Demon-run-up_1
       rect:
         serializedVersion: 2
         x: 128
@@ -244,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6751754505ee49f10800000000000000
-      internalID: 2275705740508730742
+      spriteID: 6ff1b29cdf2115af0800000000000000
+      internalID: -409525209902931978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_5
+      name: Demon-run-up_2
       rect:
         serializedVersion: 2
         x: 256
@@ -266,8 +224,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0593e0d3c72a14a30800000000000000
-      internalID: 4197814982169999696
+      spriteID: 09c48953fb7b99fb0800000000000000
+      internalID: -4640475909162775408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon-run-up_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef9f07726b49b3a20800000000000000
+      internalID: 3043189483285576190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon-run-up_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7538fd9880d190a00800000000000000
+      internalID: 723141137679745879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon-run-up_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0adf81d5bb835080800000000000000
+      internalID: -9199856000766584308
       vertices: []
       indices: 
       edges: []
@@ -276,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e13f55dd5f717b44aad94a2371a647e8
+    spriteID: 61707dd7b316813418fee18737a9e030
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +310,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      angel-spritesheet-south-walk_0: -8278899667743365357
-      angel-spritesheet-south-walk_1: -6950871817234727605
-      angel-spritesheet-south-walk_2: -69163451338265116
-      angel-spritesheet-south-walk_3: -4161672160102808257
-      angel-spritesheet-south-walk_4: 2275705740508730742
-      angel-spritesheet-south-walk_5: 4197814982169999696
+      Demon-run-up_0: 4219050442047946838
+      Demon-run-up_1: -409525209902931978
+      Demon-run-up_2: -4640475909162775408
+      Demon-run-up_3: 3043189483285576190
+      Demon-run-up_4: 723141137679745879
+      Demon-run-up_5: -9199856000766584308
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

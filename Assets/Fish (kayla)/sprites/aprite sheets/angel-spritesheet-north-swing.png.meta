@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 6d5aa4e864a5d714890ee65bb5324936
+guid: db5e52013bdc62a46aea38fc40c0c999
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8278899667743365357
-    second: angel-spritesheet-south-walk_0
+      213: -756676070210494838
+    second: angel-spritesheet-north-swing_0
   - first:
-      213: -6950871817234727605
-    second: angel-spritesheet-south-walk_1
+      213: 4642429088623063438
+    second: angel-spritesheet-north-swing_1
   - first:
-      213: -69163451338265116
-    second: angel-spritesheet-south-walk_2
+      213: 81272334081306918
+    second: angel-spritesheet-north-swing_2
   - first:
-      213: -4161672160102808257
-    second: angel-spritesheet-south-walk_3
+      213: -4191485836652056622
+    second: angel-spritesheet-north-swing_3
   - first:
-      213: 2275705740508730742
-    second: angel-spritesheet-south-walk_4
+      213: 6061232775612121646
+    second: angel-spritesheet-north-swing_4
   - first:
-      213: 4197814982169999696
-    second: angel-spritesheet-south-walk_5
+      213: 7256289669981750436
+    second: angel-spritesheet-north-swing_5
+  - first:
+      213: 5076540465553802699
+    second: angel-spritesheet-north-swing_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,7 +144,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_0
+      name: angel-spritesheet-north-swing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 317ae0d9d907b1d80800000000000000
-      internalID: -8278899667743365357
+      spriteID: a8e90198f1fbf75f0800000000000000
+      internalID: -756676070210494838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_1
+      name: angel-spritesheet-north-swing_1
       rect:
         serializedVersion: 2
         x: 128
@@ -178,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4d3376d8ea898f90800000000000000
-      internalID: -6950871817234727605
+      spriteID: e817152d8a83d6040800000000000000
+      internalID: 4642429088623063438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_2
+      name: angel-spritesheet-north-swing_2
       rect:
         serializedVersion: 2
         x: 256
@@ -200,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4edea8b15384a0ff0800000000000000
-      internalID: -69163451338265116
+      spriteID: 621bbfad1ccb02100800000000000000
+      internalID: 81272334081306918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_3
+      name: angel-spritesheet-north-swing_3
       rect:
         serializedVersion: 2
         x: 0
@@ -222,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3580794835ce36c0800000000000000
-      internalID: -4161672160102808257
+      spriteID: 2dfe549c6d9d4d5c0800000000000000
+      internalID: -4191485836652056622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_4
+      name: angel-spritesheet-north-swing_4
       rect:
         serializedVersion: 2
         x: 128
@@ -244,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6751754505ee49f10800000000000000
-      internalID: 2275705740508730742
+      spriteID: e22c05b7813dd1450800000000000000
+      internalID: 6061232775612121646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angel-spritesheet-south-walk_5
+      name: angel-spritesheet-north-swing_5
       rect:
         serializedVersion: 2
         x: 256
@@ -266,8 +269,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0593e0d3c72a14a30800000000000000
-      internalID: 4197814982169999696
+      spriteID: 4a44996620583b460800000000000000
+      internalID: 7256289669981750436
       vertices: []
       indices: 
       edges: []
@@ -276,7 +279,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e13f55dd5f717b44aad94a2371a647e8
+    spriteID: f96bd8ea1992d834bbbc679a237aa053
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +289,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      angel-spritesheet-south-walk_0: -8278899667743365357
-      angel-spritesheet-south-walk_1: -6950871817234727605
-      angel-spritesheet-south-walk_2: -69163451338265116
-      angel-spritesheet-south-walk_3: -4161672160102808257
-      angel-spritesheet-south-walk_4: 2275705740508730742
-      angel-spritesheet-south-walk_5: 4197814982169999696
+      angel-spritesheet-north-swing_0: -756676070210494838
+      angel-spritesheet-north-swing_1: 4642429088623063438
+      angel-spritesheet-north-swing_2: 81272334081306918
+      angel-spritesheet-north-swing_3: -4191485836652056622
+      angel-spritesheet-north-swing_4: 6061232775612121646
+      angel-spritesheet-north-swing_5: 7256289669981750436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
