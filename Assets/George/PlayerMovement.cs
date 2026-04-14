@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     private Vector2 desiredVelocity;
     public GameObject gunScript;
+    public RotateToMouse rotateScript;
 
     // when true external systems (like dashes) should prevent this script from setting velocity
     public bool ignoreMovement = false;
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("xVel", Mathf.Abs(animVel.x));
             animator.SetFloat("yVel", animVel.y); // only enable gun flipping when not moving horizontally
         }
+
+        gunScript.GetComponent<GunFlip>().placement = ctx.ReadValue<Vector2>().y; // pass vertical movement to gun script for layering
         gunScript.GetComponent<GunFlip>().placement = ctx.ReadValue<Vector2>().y; // pass vertical movement to gun script for layering
     }
 

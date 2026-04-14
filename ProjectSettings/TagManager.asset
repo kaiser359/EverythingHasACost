@@ -11,6 +11,7 @@ TagManager:
   - StartPoint
   - SpawnPoint
   - Elevator
+  - NPC
   layers:
   - Default
   - TransparentFX
