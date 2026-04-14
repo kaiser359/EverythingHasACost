@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72fff75df0b557d47bcda0b3f54aa96a
+guid: f4fb94c8b71b3d5498fd36af61024178
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 252244449130807497
-    second: soul-single-image-side_0
+      213: 2124818204400621464
+    second: big vault_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soul-single-image-side_0
+      name: big vault_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 23
-        width: 96
-        height: 78
+        x: 0
+        y: 0
+        width: 240
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c081037df6208300800000000000000
-      internalID: 252244449130807497
+      spriteID: 897159d26eedc7d10800000000000000
+      internalID: 2124818204400621464
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      soul-single-image-side_0: 252244449130807497
+      big vault_0: 2124818204400621464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
