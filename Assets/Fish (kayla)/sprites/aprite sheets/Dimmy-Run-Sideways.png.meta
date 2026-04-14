@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: b982189fde6299c4dbacc04cc554ac51
+guid: 3deabe743d81ddb4f9e9af111ee2b68a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1908295301004360698
-    second: Dimmy-Run-Right-or-Left_0
+      213: 1741820110149150742
+    second: Dimmy-Run-Sideways_0
   - first:
-      213: -2195388303706326571
-    second: Dimmy-Run-Right-or-Left_1
+      213: 9221696594764254727
+    second: Dimmy-Run-Sideways_1
   - first:
-      213: 3196854074964227660
-    second: Dimmy-Run-Right-or-Left_2
+      213: 512216353790918452
+    second: Dimmy-Run-Sideways_2
   - first:
-      213: 4238257681200538598
-    second: Dimmy-Run-Right-or-Left_3
+      213: 6056310084456143407
+    second: Dimmy-Run-Sideways_3
   - first:
-      213: -781669875142986541
-    second: Dimmy-Run-Right-or-Left_4
+      213: -3474692606074583922
+    second: Dimmy-Run-Sideways_4
   - first:
-      213: 125051037517572104
-    second: Dimmy-Run-Right-or-Left_5
+      213: 2984186186934412469
+    second: Dimmy-Run-Sideways_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_0
+      name: Dimmy-Run-Sideways_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
+        x: 1
+        y: 145
+        width: 87
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: afb79e63770ab7a10800000000000000
-      internalID: 1908295301004360698
+      spriteID: 618621069203c2810800000000000000
+      internalID: 1741820110149150742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_1
+      name: Dimmy-Run-Sideways_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
+        x: 129
+        y: 145
+        width: 82
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d9798d28f96881e0800000000000000
-      internalID: -2195388303706326571
+      spriteID: 70e4a5db13c0aff70800000000000000
+      internalID: 9221696594764254727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_2
+      name: Dimmy-Run-Sideways_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
+        x: 257
+        y: 145
+        width: 94
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c46b001f7d18d5c20800000000000000
-      internalID: 3196854074964227660
+      spriteID: 43f7ad75f02cb1700800000000000000
+      internalID: 512216353790918452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_3
+      name: Dimmy-Run-Sideways_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 1
+        y: 17
+        width: 83
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e36782e7e051da30800000000000000
-      internalID: 4238257681200538598
+      spriteID: f2adf912fe55c0450800000000000000
+      internalID: 6056310084456143407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_4
+      name: Dimmy-Run-Sideways_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        x: 129
+        y: 17
+        width: 82
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,20 +244,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d47a78d363f625f0800000000000000
-      internalID: -781669875142986541
+      spriteID: e848f370c7967cfc0800000000000000
+      internalID: -3474692606074583922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimmy-Run-Right-or-Left_5
+      name: Dimmy-Run-Sideways_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
+        x: 257
+        y: 17
+        width: 94
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 808670e81454cb100800000000000000
-      internalID: 125051037517572104
+      spriteID: 5b46adfa685f96920800000000000000
+      internalID: 2984186186934412469
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 15016fd499e13b7479ab1c16f1866f26
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dimmy-Run-Right-or-Left_0: 1908295301004360698
-      Dimmy-Run-Right-or-Left_1: -2195388303706326571
-      Dimmy-Run-Right-or-Left_2: 3196854074964227660
-      Dimmy-Run-Right-or-Left_3: 4238257681200538598
-      Dimmy-Run-Right-or-Left_4: -781669875142986541
-      Dimmy-Run-Right-or-Left_5: 125051037517572104
+      Dimmy-Run-Sideways_0: 1741820110149150742
+      Dimmy-Run-Sideways_1: 9221696594764254727
+      Dimmy-Run-Sideways_2: 512216353790918452
+      Dimmy-Run-Sideways_3: 6056310084456143407
+      Dimmy-Run-Sideways_4: -3474692606074583922
+      Dimmy-Run-Sideways_5: 2984186186934412469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

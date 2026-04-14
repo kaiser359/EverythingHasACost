@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class BlueAbility : MonoBehaviour
 {
+    public StarRatings star;
+
     public float dashDistance = 6f;
     public float dashDuration = 0.18f;
     public float dashDamage = 25f;
     public float damageRadius = 0.6f;
     public Collider2D bluebagcol;
     public float cooldown;
+    public GameObject Shield;
+    public float shieldHealth = 50;
+    public float shieldDuration = 0f;
 
     // projectile settings (will fall back to GlobalPlayerInfo if null)
     public GameObject projectilePrefab;
@@ -45,7 +50,7 @@ public class BlueAbility : MonoBehaviour
         // try to locate the player automatically by tag at startup
         FindPlayerIfNeeded();
         // debug info to help diagnose small movement (run after player lookup)
-        Debug.Log($"BlueAbility: playerObject={playerObject}, playerRb={playerRb}, playerRb.bodyType={(playerRb!=null?playerRb.bodyType.ToString():"null")}, playerMovement={playerMovement}, playerMovement.enabled={(playerMovement!=null?playerMovement.enabled.ToString():"null")}");
+
     }
 
     void FindPlayerIfNeeded()
@@ -110,9 +115,11 @@ public class BlueAbility : MonoBehaviour
     public void ActivateAbility()
     {
         if (cooldown > 0) return;
+        Shield.SetActive(true);
+        shieldDuration = 3f + star.StartRating;
         // ensure we have a reference to the player (ability lives on a bloodbag)
         FindPlayerIfNeeded();
-        Debug.Log("BlueAbility: ActivateAbility called. Player found=" + (playerObject != null));
+        
 
         // determine mouse world position
         Camera cam = Camera.main;
@@ -204,11 +211,18 @@ public class BlueAbility : MonoBehaviour
     }
     private void Update()
     {
-        // for testing: press F to activate ability
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-           // ActivateAbility();
-        if(cooldown > 0) cooldown -= Time.deltaTime;
+        //    for testing: press F to activate ability
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ActivateAbility();
+        }
+            if (cooldown > 0) cooldown -= Time.deltaTime;
+            if (shieldDuration > 0 ) shieldDuration -= Time.deltaTime;
+
+            if (shieldDuration <= 0)
+            {
+                Shield.SetActive(false);
+        }
         //Vector2 dashDir;
         //Camera cam = Camera.main;
         //if (cam == null)

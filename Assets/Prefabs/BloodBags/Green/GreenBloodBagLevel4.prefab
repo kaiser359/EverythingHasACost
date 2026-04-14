@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8727919621586316822}
   - component: {fileID: 6030532910096075321}
   m_Layer: 0
-  m_Name: GreenBloodBag
+  m_Name: GreenBloodBagLevel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,3 +64,4 @@ MonoBehaviour:
   dashDistance: 6
   dashDuration: 0.18
   cooldown: 0.5
+  star: {fileID: 11400000, guid: 0c54ceb4096422a4d9a2cf61e79aafa7, type: 2}

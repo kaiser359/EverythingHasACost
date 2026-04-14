@@ -76,8 +76,31 @@ PrefabInstance:
       propertyPath: damage
       value: 60
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8221836651151028198, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1232210325618054742}
   m_SourcePrefab: {fileID: 100100000, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
+--- !u!1 &2860290889472336480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
+  m_PrefabInstance: {fileID: 5451151227217845675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232210325618054742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860290889472336480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbaadcf82d27ca24daebd2467762631c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 60
+  star: {fileID: 11400000, guid: fa865554980f30048aad9ac5fdbc68e6, type: 2}

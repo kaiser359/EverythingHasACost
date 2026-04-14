@@ -13,7 +13,7 @@ public class NuclearBomb : MonoBehaviour
 
     [Header("Timing")]
     public float duration = 3f; // how long lasers orbit
-    public float cooldown = 10f; // cooldown between uses
+    public float cooldown = 100f; // cooldown between uses
     public SpriteRenderer spite;
 
     [Header("Lasers")]

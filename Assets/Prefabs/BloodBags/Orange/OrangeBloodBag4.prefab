@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7696589841253648905}
   - component: {fileID: 5125390973889594104}
   m_Layer: 0
-  m_Name: OrangeBloodBag
+  m_Name: OrangeBloodBag4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 6472705509876903387, guid: 98375287f2cba814384723480383ba74, type: 3}
+  star: {fileID: 11400000, guid: 0c54ceb4096422a4d9a2cf61e79aafa7, type: 2}
   projectileSpeed: 8
   abilityCooldown: 8
   waveCount: 5

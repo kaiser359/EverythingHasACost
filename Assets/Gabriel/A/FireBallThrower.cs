@@ -3,12 +3,9 @@ using UnityEngine;
 public class FireBallThrower : MonoBehaviour
 {
     public GameObject fireballPrefab;
+    public StarRatings star;
     //= Resources.Load<GameObject>("FireBallBlast");
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -16,7 +13,11 @@ public class FireBallThrower : MonoBehaviour
         // cooldown timer
         if (cooldownTimer > 0f) cooldownTimer -= Time.deltaTime;
     }
-
+   private void Start()
+    {
+        abilityCooldown -= star.StartRating;
+        
+    }
     public void ActivateAbility()
     {
         if (cooldownTimer > 0f) return; 
@@ -56,7 +57,7 @@ public class FireBallThrower : MonoBehaviour
 
     [Header("Ability")]
     public float projectileSpeed = 8f;
-    public float abilityCooldown = 1f;
+    public float abilityCooldown = 8f;
     private float cooldownTimer = 0f;
     [Header("Wave")]
     public int waveCount = 5; // number of fireballs in the wave
