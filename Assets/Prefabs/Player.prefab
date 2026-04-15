@@ -1683,6 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
   gunScript: {fileID: 3793006138868340490}
+  rotateScript: {fileID: 0}
   ignoreMovement: 0
 --- !u!114 &1098391504989512959
 MonoBehaviour:
@@ -2114,7 +2115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 487239003986997975}
@@ -2137,6 +2138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
+  restrictRotation: 0
+  playerMovement: {x: 0, y: 0}
 --- !u!1 &6245634758017959294
 GameObject:
   m_ObjectHideFlags: 0
