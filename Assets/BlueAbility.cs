@@ -38,6 +38,7 @@ public class BlueAbility : MonoBehaviour
 
     void Awake()
     {
+        Shield.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         // include child colliders as well in case colliders are on child objects
         myColliders = GetComponentsInChildren<Collider2D>(true);

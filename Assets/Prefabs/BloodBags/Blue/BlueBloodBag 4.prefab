@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8093061293859579485}
   - component: {fileID: 8124467698411112349}
   m_Layer: 7
-  m_Name: BlueBloodBag
+  m_Name: BlueBloodBag 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e355e7763b9194697e133259d72005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 11400000, guid: fa865554980f30048aad9ac5fdbc68e6, type: 2}
+  star: {fileID: 11400000, guid: 5c558cc83561ce245b9797cd8e684b8c, type: 2}
   dashDistance: 6
   dashDuration: 0.4
   dashDamage: 25
