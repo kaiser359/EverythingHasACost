@@ -6,4 +6,5 @@ public class BloodBagData : MonoBehaviour
     public int BloodBagPrice;
     public Sprite BloodBagSprite;
     public Sprite ZoomedBloodBagSprite;
+    public GameObject NextLevelBag;
 }
