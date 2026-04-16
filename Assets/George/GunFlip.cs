@@ -29,7 +29,7 @@ public class GunFlip : MonoBehaviour
         }
         else if (placement < 0)
         {
-            childSprite.sortingOrder = 6;
+            childSprite.sortingOrder = 7;
         }
         
         if (shouldFlip)

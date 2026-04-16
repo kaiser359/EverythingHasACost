@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2982832985648348497}
   - component: {fileID: 7090718300605700312}
   - component: {fileID: 7324517461590559107}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: start point
   m_TagString: StartPoint
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}

@@ -16,7 +16,10 @@ public class PlayerMovement : MonoBehaviour
     // when true external systems (like dashes) should prevent this script from setting velocity
     public bool ignoreMovement = false;
 
-    private Animator animator;
+    private Animator animatorBody;
+    private Animator animatorHead;
+
+    private int moveSideBody;
 
     void Start()
     {
@@ -24,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = gS.moveSpeed;
         rb = GetComponent<Rigidbody2D>();
 
-        animator = GetComponent<Animator>();
+        animatorBody = GetComponent<Animator>();
+        animatorHead = transform.GetChild(0).GetComponent<Animator>();
+
+        moveSideBody = Animator.StringToHash("moving.moveSide");
     }
     public void Move(InputAction.CallbackContext ctx)
     {
@@ -38,14 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
         // control animator
         Vector2 animVel = ctx.ReadValue<Vector2>().normalized;
-        if (animator != null)
+        if (animatorBody != null)
         {
-            animator.SetFloat("xVel", Mathf.Abs(animVel.x));
-            animator.SetFloat("yVel", animVel.y); // only enable gun flipping when not moving horizontally
+            animatorBody.SetFloat("xVel", Mathf.Abs(animVel.x));
+            animatorBody.SetFloat("yVel", animVel.y); // only enable gun flipping when not moving horizontally
         }
-
-        gunScript.GetComponent<GunFlip>().placement = ctx.ReadValue<Vector2>().y; // pass vertical movement to gun script for layering
-        gunScript.GetComponent<GunFlip>().placement = ctx.ReadValue<Vector2>().y; // pass vertical movement to gun script for layering
     }
 
     private void Update()
@@ -59,5 +62,15 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
 
+        gunScript.GetComponent<GunFlip>().placement = -Mathf.Sin(gS.aimDir * Mathf.Deg2Rad); // pass vertical movement to gun script for layering
+
+        // control head animator
+        if (animatorHead != null)
+        {
+            animatorHead.SetFloat("Angle", Mathf.Sin(gS.aimDir * Mathf.Deg2Rad));
+            animatorHead.SetBool("isMoving", desiredVelocity != Vector2.zero);
+        }
+
+        transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = Mathf.Cos(gS.aimDir * Mathf.Deg2Rad) > 0; // flip head based on aim direction
     }
 }

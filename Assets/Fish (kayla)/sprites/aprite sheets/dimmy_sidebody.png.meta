@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: a41d1a0c4b58d9c419d63fdda1342971
+guid: 44f669bbbef727b4abd7f837235c318d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4594036185987006001
-    second: firefinal_0
+      213: -4589342545198676565
+    second: dimmy_sidebody_0
   - first:
-      213: -1524232106062361271
-    second: firefinal_1
+      213: -355072480534099922
+    second: dimmy_sidebody_1
   - first:
-      213: 1547383790896304939
-    second: firefinal_2
+      213: -7833901896081434640
+    second: dimmy_sidebody_2
   - first:
-      213: -3977470117475481476
-    second: firefinal_3
+      213: 3931206854035642724
+    second: dimmy_sidebody_3
+  - first:
+      213: 6468884543661992678
+    second: dimmy_sidebody_4
+  - first:
+      213: 8691009689079129022
+    second: dimmy_sidebody_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,177 +141,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soulfire_0
+      name: dimmy_sidebody_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0b9cffc1afdb3f74f80d9571d1df1ccf
-      internalID: 716169780
+      spriteID: ba588d045416f40c0800000000000000
+      internalID: -4589342545198676565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soulfire_1
+      name: dimmy_sidebody_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 482bbc670cd7d994a83e47592633b0af
-      internalID: -320207628
+      spriteID: e288f30d577821bf0800000000000000
+      internalID: -355072480534099922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soulfire_2
+      name: dimmy_sidebody_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: eff30ab4a44cfde429b5a608ae1c4adc
-      internalID: -46551620
+      spriteID: 0f79ec63bb3684390800000000000000
+      internalID: -7833901896081434640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soulfire_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb3fe138fa5a2d24eb611be4cb9fa920
-      internalID: -1797166698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soulfire_4
+      name: dimmy_sidebody_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 76c47771fa798d244bc28b40152e60f6
-      internalID: -1666991711
+      spriteID: 46910692ec37e8630800000000000000
+      internalID: 3931206854035642724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soulfire_5
+      name: dimmy_sidebody_4
       rect:
         serializedVersion: 2
-        x: 16
+        x: 128
         y: 0
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fa5c8304f3cd7bc4e92145955caec54c
-      internalID: -2147119281
+      spriteID: 6eaecf5083816c950800000000000000
+      internalID: 6468884543661992678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: soulfire_6
+      name: dimmy_sidebody_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 256
         y: 0
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8cc123293d4ad3e489a0c2cfc0cb3fe0
-      internalID: 351353847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soulfire_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66c42ab3d11b6a449970ba01c62f8cde
-      internalID: -1850125478
+      spriteID: eb32a09e34bac9870800000000000000
+      internalID: 8691009689079129022
       vertices: []
       indices: 
       edges: []
@@ -314,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4c2d80ddb2dcae844978cd3f9013b205
+    spriteID: 3313aba5c88444c488a4d13d250dfc3b
     internalID: 0
     vertices: []
     indices: 
@@ -324,14 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      soulfire_0: 716169780
-      soulfire_1: -320207628
-      soulfire_2: -46551620
-      soulfire_3: -1797166698
-      soulfire_4: -1666991711
-      soulfire_5: -2147119281
-      soulfire_6: 351353847
-      soulfire_7: -1850125478
+      dimmy_sidebody_0: -4589342545198676565
+      dimmy_sidebody_1: -355072480534099922
+      dimmy_sidebody_2: -7833901896081434640
+      dimmy_sidebody_3: 3931206854035642724
+      dimmy_sidebody_4: 6468884543661992678
+      dimmy_sidebody_5: 8691009689079129022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
