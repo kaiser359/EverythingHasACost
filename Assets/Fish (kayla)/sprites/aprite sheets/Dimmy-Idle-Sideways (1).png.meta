@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 9118d610d2ac28e479e27fe19015f3ec
+guid: 18f782f8940fef446ab4e406fd7dde6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3377759346357235508
-    second: dimmy_sidehead_0
+      213: 1376632444077253059
+    second: Dimmy-Idle-Sideways (1)_0
   - first:
-      213: 256036513501233593
-    second: dimmy_sidehead_1
-  - first:
-      213: -4715579693692632941
-    second: dimmy_sidehead_2
-  - first:
-      213: -5532854103383914616
-    second: dimmy_sidehead_3
-  - first:
-      213: -7465796911816221464
-    second: dimmy_sidehead_4
-  - first:
-      213: 3234750017212632121
-    second: dimmy_sidehead_5
+      213: -7685654781813930929
+    second: Dimmy-Idle-Sideways (1)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,133 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dimmy_sidehead_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc01f9745c9cf11d0800000000000000
-      internalID: -3377759346357235508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dimmy_sidehead_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b145cc3adf9d8300800000000000000
-      internalID: 256036513501233593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dimmy_sidehead_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 390c767b045ee8eb0800000000000000
-      internalID: -4715579693692632941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dimmy_sidehead_3
+      name: Dimmy-Idle-Sideways (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8874dbdd18a5733b0800000000000000
-      internalID: -5532854103383914616
+      spriteID: 3c1a0870ae7ca1310800000000000000
+      internalID: 1376632444077253059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dimmy_sidehead_4
+      name: Dimmy-Idle-Sideways (1)_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ec5cf1a349246890800000000000000
-      internalID: -7465796911816221464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dimmy_sidehead_5
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93cc521900424ec20800000000000000
-      internalID: 3234750017212632121
+      spriteID: f44c2bf32b1175590800000000000000
+      internalID: -7685654781813930929
       vertices: []
       indices: 
       edges: []
@@ -276,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2d458f54d2b4584479c314c0dcf8cbb1
+    spriteID: 30183ac0191e1bf42aa2f2a8966e63c6
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dimmy_sidehead_0: -3377759346357235508
-      dimmy_sidehead_1: 256036513501233593
-      dimmy_sidehead_2: -4715579693692632941
-      dimmy_sidehead_3: -5532854103383914616
-      dimmy_sidehead_4: -7465796911816221464
-      dimmy_sidehead_5: 3234750017212632121
+      Dimmy-Idle-Sideways (1)_0: 1376632444077253059
+      Dimmy-Idle-Sideways (1)_1: -7685654781813930929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

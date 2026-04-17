@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 09b4078c6189fad41993145364ebc99d
+guid: afc081d23a99d4a48bbe125b2ffe37f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -895775630566878185
-    second: Dimmy-Idle-Sideways_0
-  - first:
-      213: 4972517249649941100
-    second: Dimmy-Idle-Sideways_1
+      213: -3560698593848636649
+    second: credits_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dimmy-Idle-Sideways_0
+      name: credits_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7141c9d5fc09193f0800000000000000
-      internalID: -895775630566878185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dimmy-Idle-Sideways_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6a13e0d71ee10540800000000000000
-      internalID: 4972517249649941100
+      spriteID: 71b4b698e7bd59ec0800000000000000
+      internalID: -3560698593848636649
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8e45e0c54ceee95498ca0324871f698d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dimmy-Idle-Sideways_0: -895775630566878185
-      Dimmy-Idle-Sideways_1: 4972517249649941100
+      credits_0: -3560698593848636649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
