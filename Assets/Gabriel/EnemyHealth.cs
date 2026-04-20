@@ -11,10 +11,16 @@ public class EnemyHealth : MonoBehaviour
     public EnemyStats stats;
     public float maxHealth;
     public Money money;
+
+    [SerializeField] GameObject damageParticles;
+    private GameObject particles;
+
     void Start()
     {
         maxHealth = stats.maxHealth;
         currentHealth = maxHealth;
+
+        //particles = Instantiate(damageParticles, transform.position, Quaternion.identity, transform);
     }
 
     void Awake()
@@ -47,7 +53,12 @@ public class EnemyHealth : MonoBehaviour
         timer = 0.2f;
        // float randomValue = UnityEngine.Random.Range(0.00f,1f); for crit damage
         currentHealth -= damage;
-        
+
+        // plays pariticles :3c
+        //particles.GetComponent<ParticleSystem>().Play();
+        Instantiate(damageParticles, transform.position, Quaternion.identity, transform);
+        Debug.Log("hhhhnghhng");
+
         if (currentHealth <= 0)
         {
         Die();

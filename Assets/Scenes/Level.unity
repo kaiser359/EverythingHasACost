@@ -668,6 +668,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Generation
       objectReference: {fileID: 0}
+    - target: {fileID: 6734698385380163520, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
+      propertyPath: 'enemyClusters.Array.data[0].enemies.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
+    - target: {fileID: 6734698385380163520, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
+      propertyPath: 'enemyClusters.Array.data[0].enemies.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
+    - target: {fileID: 6734698385380163520, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
+      propertyPath: 'enemyClusters.Array.data[0].enemies.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
     - target: {fileID: 6843776474147511957, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
