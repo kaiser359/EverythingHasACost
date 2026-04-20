@@ -215,7 +215,7 @@ public class BlueAbility : MonoBehaviour
         //    for testing: press F to activate ability
        
         
-            ActivateAbility();
+          //  ActivateAbility();
         
             if (cooldown > 0) cooldown -= Time.deltaTime;
             if (shieldDuration > 0 ) shieldDuration -= Time.deltaTime;
