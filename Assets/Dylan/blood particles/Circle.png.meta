@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 18f782f8940fef446ab4e406fd7dde6c
+guid: 6e2510271a83dfb43b756d5225845a9f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1376632444077253059
-    second: Dimmy-Idle-Sideways (1)_0
-  - first:
-      213: -7685654781813930929
-    second: Dimmy-Idle-Sideways (1)_1
+      213: -2413806693520163455
+    second: Circle
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 28
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -71,14 +68,14 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,6 +110,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,54 +139,96 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dimmy-Idle-Sideways (1)_0
+      name: Circle
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      outline:
+      - - {x: 33, y: 128}
+        - {x: -33, y: 128}
+        - {x: -95, y: 95}
+        - {x: -128, y: 33}
+        - {x: -128, y: -33}
+        - {x: -95, y: -95}
+        - {x: -33, y: -128}
+        - {x: 33, y: -128}
+        - {x: 95, y: -95}
+        - {x: 128, y: -33}
+        - {x: 128, y: 33}
+        - {x: 95, y: 95}
+      physicsShape:
+      - - {x: 0, y: 128}
+        - {x: -39, y: 121}
+        - {x: -75, y: 103}
+        - {x: -103, y: 75}
+        - {x: -121, y: 39}
+        - {x: -128, y: 0}
+        - {x: -121, y: -39}
+        - {x: -103, y: -75}
+        - {x: -75, y: -103}
+        - {x: -39, y: -121}
+        - {x: 0, y: -128}
+        - {x: 39, y: -121}
+        - {x: 75, y: -103}
+        - {x: 103, y: -75}
+        - {x: 121, y: -39}
+        - {x: 128, y: 0}
+        - {x: 121, y: 39}
+        - {x: 103, y: 75}
+        - {x: 75, y: 103}
+        - {x: 39, y: 121}
+      tessellationDetail: 0
       bones: []
-      spriteID: 3c1a0870ae7ca1310800000000000000
-      internalID: 1376632444077253059
+      spriteID: 18d3544e99f608ed0800000000000000
+      internalID: -2413806693520163455
       vertices: []
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Dimmy-Idle-Sideways (1)_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f44c2bf32b1175590800000000000000
-      internalID: -7685654781813930929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline: []
+    outline:
+    - - {x: 33, y: 128}
+      - {x: -33, y: 128}
+      - {x: -95, y: 95}
+      - {x: -128, y: 33}
+      - {x: -128, y: -33}
+      - {x: -95, y: -95}
+      - {x: -33, y: -128}
+      - {x: 33, y: -128}
+      - {x: 95, y: -95}
+      - {x: 128, y: -33}
+      - {x: 128, y: 33}
+      - {x: 95, y: 95}
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: 0, y: 128}
+      - {x: -39, y: 121}
+      - {x: -75, y: 103}
+      - {x: -103, y: 75}
+      - {x: -121, y: 39}
+      - {x: -128, y: 0}
+      - {x: -121, y: -39}
+      - {x: -103, y: -75}
+      - {x: -75, y: -103}
+      - {x: -39, y: -121}
+      - {x: 0, y: -128}
+      - {x: 39, y: -121}
+      - {x: 75, y: -103}
+      - {x: 103, y: -75}
+      - {x: 121, y: -39}
+      - {x: 128, y: 0}
+      - {x: 121, y: 39}
+      - {x: 103, y: 75}
+      - {x: 75, y: 103}
+      - {x: 39, y: 121}
     bones: []
-    spriteID: 30183ac0191e1bf42aa2f2a8966e63c6
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +238,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dimmy-Idle-Sideways (1)_0: 1376632444077253059
-      Dimmy-Idle-Sideways (1)_1: -7685654781813930929
+      Circle: -2413806693520163455
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
