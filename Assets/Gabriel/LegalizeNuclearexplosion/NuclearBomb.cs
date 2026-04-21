@@ -14,7 +14,7 @@ public class NuclearBomb : MonoBehaviour
     [Header("Timing")]
     public float duration = 3f; // how long lasers orbit
     public float cooldown = 100f; // cooldown between uses
-    public SpriteRenderer spite;
+    public GameObject spite;
 
     [Header("Lasers")]
     public GameObject laserPrefab; // optional prefab for lasers; if null, simple spheres will be created
@@ -25,6 +25,8 @@ public class NuclearBomb : MonoBehaviour
     float lastUsedTime = -999f;
     public ParticleSystem part;
     public bool debugLog = true;
+
+
 
     List<GameObject> orbiting = new List<GameObject>();
 
@@ -43,10 +45,15 @@ public class NuclearBomb : MonoBehaviour
 
     IEnumerator ActivateRoutine()
     {
-        
-         spite.enabled = true;
+
+        if (spite != null) spite.SetActive(true);
+        // start particle effect if assigned
+        if (part != null) part.Play(true);
+
         // Apply instant AOE damage to enemies inside radius (2D + 3D)
-        var damaged = new HashSet<EnemyHealth>();
+        // Use instance-id set to avoid relying on Unity's equality semantics for components
+        var damaged = new System.Collections.Generic.List<EnemyHealth>();
+        var addedIds = new System.Collections.Generic.HashSet<int>();
 
         // helper to find the nearest parent with tag "Enemy"
         Transform FindTaggedParent(Transform start)
@@ -79,8 +86,11 @@ public class NuclearBomb : MonoBehaviour
             EnemyHealth eh = c.GetComponent<EnemyHealth>() ?? c.GetComponentInParent<EnemyHealth>() ?? c.GetComponentInChildren<EnemyHealth>();
             if (eh != null)
             {
-                damaged.Add(eh);
-                if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth on collider {c.gameObject.name} -> {eh.gameObject.name}");
+                if (addedIds.Add(eh.GetInstanceID()))
+                {
+                    damaged.Add(eh);
+                    if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth on collider {c.gameObject.name} -> {eh.gameObject.name}");
+                }
                 continue;
             }
 
@@ -94,8 +104,11 @@ public class NuclearBomb : MonoBehaviour
                 EnemyHealth eh2 = tagged.GetComponent<EnemyHealth>() ?? tagged.GetComponentInChildren<EnemyHealth>();
                 if (eh2 != null)
                 {
-                    damaged.Add(eh2);
-                    if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth via tag on {tagged.gameObject.name} -> {eh2.gameObject.name}");
+                    if (addedIds.Add(eh2.GetInstanceID()))
+                    {
+                        damaged.Add(eh2);
+                        if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth via tag on {tagged.gameObject.name} -> {eh2.gameObject.name}");
+                    }
                 }
                 else if (debugLog)
                 {
@@ -111,17 +124,17 @@ public class NuclearBomb : MonoBehaviour
         {
             if (go == null) continue;
             float dist = Vector2.Distance(transform.position, go.transform.position);
-            if (dist <= radius)
-            {
-                EnemyHealth eh = go.GetComponent<EnemyHealth>() ?? go.GetComponentInChildren<EnemyHealth>() ?? go.GetComponentInParent<EnemyHealth>();
-                if (eh != null)
+                if (dist <= radius)
                 {
-                    if (!damaged.Contains(eh))
+                    EnemyHealth eh = go.GetComponent<EnemyHealth>() ?? go.GetComponentInChildren<EnemyHealth>() ?? go.GetComponentInParent<EnemyHealth>();
+                    if (eh != null)
                     {
-                        damaged.Add(eh);
-                        if (debugLog) Debug.Log($"NuclearBomb: Fallback added enemy {go.name} at distance {dist}");
+                        if (addedIds.Add(eh.GetInstanceID()))
+                        {
+                            damaged.Add(eh);
+                            if (debugLog) Debug.Log($"NuclearBomb: Fallback added enemy {go.name} at distance {dist}");
+                        }
                     }
-                }
                 else if (debugLog)
                 {
                     Debug.Log($"NuclearBomb: Fallback enemy {go.name} had no EnemyHealth component");
@@ -166,8 +179,11 @@ public class NuclearBomb : MonoBehaviour
                 EnemyHealth eh2 = tagged.GetComponent<EnemyHealth>() ?? tagged.GetComponentInChildren<EnemyHealth>();
                 if (eh2 != null)
                 {
-                    damaged.Add(eh2);
-                    if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth via tag on {tagged.gameObject.name} -> {eh2.gameObject.name}");
+                    if (addedIds.Add(eh2.GetInstanceID()))
+                    {
+                        damaged.Add(eh2);
+                        if (debugLog) Debug.Log($"NuclearBomb: Found EnemyHealth via tag on {tagged.gameObject.name} -> {eh2.gameObject.name}");
+                    }
                 }
                 else if (debugLog)
                 {
@@ -242,81 +258,89 @@ public class NuclearBomb : MonoBehaviour
         isActive = true;
         float elapsed = 0f;
         // Each laser will complete 360 degrees over the duration (orbit in XY plane for 2D)
-        while (elapsed < duration)
+        try
         {
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            float angleOffset = 360f * t;
-
-            for (int i = 0; i < orbiting.Count; i++)
+            while (elapsed < duration)
             {
-                if (orbiting[i] == null) continue;
-                float baseAngle = (360f / orbiting.Count) * i;
-                float angle = baseAngle + angleOffset;
-                float rad = angle * Mathf.Deg2Rad;
-                // XY plane (z = 0) - use localPosition so children orbit correctly
-                Vector3 localPos = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0f) * orbitRadius;
-                orbiting[i].transform.localPosition = localPos;
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float angleOffset = 360f * t;
 
-                // orient visuals to face outward from center (local rotation)
-                Vector3 dir = localPos.normalized;
-                float angleZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                orbiting[i].transform.localRotation = Quaternion.Euler(0f, 0f, angleZ);
+                for (int i = 0; i < orbiting.Count; i++)
+                {
+                    if (orbiting[i] == null) continue;
+                    float baseAngle = (360f / orbiting.Count) * i;
+                    float angle = baseAngle + angleOffset;
+                    float rad = angle * Mathf.Deg2Rad;
+                    // XY plane (z = 0) - use localPosition so children orbit correctly
+                    Vector3 localPos = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0f) * orbitRadius;
+                    orbiting[i].transform.localPosition = localPos;
 
-                var lr = orbiting[i].GetComponent<LineRenderer>();
-                if (lr != null)
-                {
-                    // if LineRenderer uses world space, update endpoints in world coords
-                    if (lr.useWorldSpace)
+                    // orient visuals to face outward from center (local rotation)
+                    Vector3 dir = localPos.normalized;
+                    float angleZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    orbiting[i].transform.localRotation = Quaternion.Euler(0f, 0f, angleZ);
+
+                    var lr = orbiting[i].GetComponent<LineRenderer>();
+                    if (lr != null)
                     {
-                        Vector3 worldPos = orbiting[i].transform.position;
-                        lr.SetPosition(0, worldPos + (Vector3)dir * 0.05f);
-                        lr.SetPosition(1, worldPos + (Vector3)dir * 0.25f);
+                        // if LineRenderer uses world space, update endpoints in world coords
+                        if (lr.useWorldSpace)
+                        {
+                            Vector3 worldPos = orbiting[i].transform.position;
+                            lr.SetPosition(0, worldPos + (Vector3)dir * 0.05f);
+                            lr.SetPosition(1, worldPos + (Vector3)dir * 0.25f);
+                        }
+                        // if lr is local space we leave its local endpoints as created
                     }
-                    // if lr is local space we leave its local endpoints as created
-                }
-                else
-                {
-                    // if it's a sprite or mesh, align its up to the outward direction for better visuals
-                    var sr = orbiting[i].GetComponent<SpriteRenderer>();
-                    if (sr != null)
+                    else
                     {
-                        orbiting[i].transform.up = dir;
+                        // if it's a sprite or mesh, align its up to the outward direction for better visuals
+                        var sr = orbiting[i].GetComponent<SpriteRenderer>();
+                        if (sr != null)
+                        {
+                            orbiting[i].transform.up = dir;
+                        }
                     }
                 }
+
+                yield return null;
             }
-
-            yield return null;
         }
-
-        // cleanup
-        foreach (var o in orbiting)
+        finally
         {
-            if (o != null) Destroy(o);
+            // cleanup - always run even if coroutine is stopped prematurely
+            foreach (var o in orbiting)
+            {
+                if (o != null) Destroy(o);
+            }
+            orbiting.Clear();
+            isActive = false;
+            if (spite != null) spite.SetActive(false);
+            if (part != null)
+            {
+                part.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                part.Clear(true);
+            }
         }
-        orbiting.Clear();
-        isActive = false;
-        // Hide renderer if assigned
-        spite.enabled = false;
-        if (part != null) part.Stop();
     }
     // removed automatic activation from Update so ability must be triggered explicitly
     public void Update()
     {
         // quick test trigger: press 'K' to activate ability
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    if (debugLog) Debug.Log("NuclearBomb: Test key pressed -> ActivateAbility");
-        //    ActivateAbility();
-        //}
-        //if (cooldown > 0f)
-        //{
-        //    float timeSinceUse = Time.time - lastUsedTime;
-        //    if (timeSinceUse < cooldown)
-        //    {
-        //        // Optionally, you could add visual feedback for cooldown here
-        //    }
-        //}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (debugLog) Debug.Log("NuclearBomb: Test key pressed -> ActivateAbility");
+            ActivateAbility();
+        }
+        if (cooldown > 0f)
+        {
+            float timeSinceUse = Time.time - lastUsedTime;
+            if (timeSinceUse < cooldown)
+            {
+                // Optionally, you could add visual feedback for cooldown here
+            }
+        }
     }
 
     void OnDrawGizmosSelected()

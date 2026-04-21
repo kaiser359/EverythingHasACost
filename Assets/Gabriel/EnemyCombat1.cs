@@ -182,6 +182,11 @@ public class EnemyCombat1 : MonoBehaviour
                                 int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
                                 int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f);
                                 money.money = Mathf.Max(0, money.money - dmg);
+                                var playerHealth = hit.collider.GetComponent<HealthBar>();
+                                if (playerHealth != null)
+                                {
+                                    playerHealth.TakeDamage(5); // just so the effect happens plus extra base damage.
+                                }
                             }
 
                             // do not apply physical knockback so the player won't be pushed out of the level
@@ -249,6 +254,11 @@ public class EnemyCombat1 : MonoBehaviour
             int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
             int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f); // example: level 4 adds ~40 damage
             money.money = Mathf.Max(0, money.money - dmg);
+            var playerHealth = other.collider.GetComponent<HealthBar>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(5); // just so the effect happens plus extra base damage.
+            }
         }
     }
 
@@ -261,6 +271,10 @@ public class EnemyCombat1 : MonoBehaviour
             int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
             int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f);
             money.money = Mathf.Max(0, money.money - dmg);
+            var PlayerHeath = other.GetComponent<HealthBar>();
+            if (PlayerHeath != null) {
+                PlayerHeath.TakeDamage(5);
+            }
         }
     }
 }
