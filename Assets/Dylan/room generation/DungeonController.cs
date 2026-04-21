@@ -53,11 +53,14 @@ public class DungeonController : MonoBehaviour
         enemiesSpawned = 0;
 
         transform.GetChild(0).transform.GetChild(0).GetComponent<Tilemap>().ClearAllTiles();
-
+        
         for (int i = 1; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
+
+        // reset the win condition flag in RoomTemplates
+        RoomTemplates.winSpawned = false;
 
         startSpawner.RegenerateDungeon();
     }

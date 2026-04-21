@@ -182,6 +182,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   maxHealth: 0
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
 --- !u!50 &5003760730399801809
 Rigidbody2D:
   serializedVersion: 5
