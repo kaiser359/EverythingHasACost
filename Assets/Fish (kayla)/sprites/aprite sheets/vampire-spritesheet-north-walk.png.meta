@@ -1,85 +1,25 @@
 fileFormatVersion: 2
-guid: 8c4e3ebae29b72247971be3c60a7e613
+guid: 6ee9a01e2ab1442429580c3d7d7146ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 283917481067356470
-    second: death buttons 1_0
+      213: -5775780464220626420
+    second: vampire-spritesheet-north-walk_0
   - first:
-      213: 125444787931483561
-    second: death buttons 1_1
+      213: 3552861027994266597
+    second: vampire-spritesheet-north-walk_1
   - first:
-      213: -7295741079551256103
-    second: death buttons 1_2
+      213: -2116416649654544182
+    second: vampire-spritesheet-north-walk_2
   - first:
-      213: -7058896389710688336
-    second: death buttons 1_3
+      213: 6266482775115358590
+    second: vampire-spritesheet-north-walk_3
   - first:
-      213: 3396486097288143456
-    second: death buttons 1_4
+      213: -8348469364529403421
+    second: vampire-spritesheet-north-walk_4
   - first:
-      213: 624887239940620919
-    second: death buttons 1_5
-  - first:
-      213: -3415822066981927786
-    second: death buttons 1_6
-  - first:
-      213: 4707619858099351583
-    second: death buttons 1_7
-  - first:
-      213: 3795490308708545508
-    second: death buttons 1_8
-  - first:
-      213: 2891525411252695376
-    second: death buttons 1_9
-  - first:
-      213: 5822894048405595050
-    second: death buttons 1_10
-  - first:
-      213: 5110077666725487354
-    second: death buttons 1_11
-  - first:
-      213: -1056006790043569829
-    second: death buttons 1_12
-  - first:
-      213: 9188997846218360868
-    second: death buttons 1_13
-  - first:
-      213: 5217182982018609497
-    second: death buttons 1_14
-  - first:
-      213: 7864811823537499451
-    second: death buttons 1_15
-  - first:
-      213: 5360594940114570094
-    second: death buttons 1_16
-  - first:
-      213: -4959122641537524882
-    second: death buttons 1_17
-  - first:
-      213: -5609149841272863026
-    second: death buttons 1_18
-  - first:
-      213: -4311791471055408701
-    second: death buttons 1_19
-  - first:
-      213: 6604981873949143503
-    second: death buttons 1_20
-  - first:
-      213: -7532174588262169336
-    second: death buttons 1_21
-  - first:
-      213: 4530730880422703583
-    second: death buttons 1_22
-  - first:
-      213: 5921701513689841936
-    second: death buttons 1_23
-  - first:
-      213: -1337552877808419002
-    second: death buttons 1_24
-  - first:
-      213: 554312726056900193
-    second: death buttons 1_25
+      213: 807769200468793582
+    second: vampire-spritesheet-north-walk_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -201,89 +141,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death buttons_0
+      name: vampire-spritesheet-north-walk_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
-        width: 166
-        height: 50
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1c3d41dae3997404ab3f8c3c0e2b3c64
-      internalID: -462210199
+      spriteID: c022d79e44e48dfa0800000000000000
+      internalID: -5775780464220626420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death buttons_1
+      name: vampire-spritesheet-north-walk_1
       rect:
         serializedVersion: 2
-        x: 166
-        y: 51
-        width: 166
-        height: 50
+        x: 128
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 62e0e1a457f4be04988a21e7c5b0e4aa
-      internalID: 837407106
+      spriteID: 5eb6de5f74c4e4130800000000000000
+      internalID: 3552861027994266597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death buttons_2
+      name: vampire-spritesheet-north-walk_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac85e98354af0a2e0800000000000000
+      internalID: -2116416649654544182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-north-walk_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 166
-        height: 50
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 957383b32def4354f9c9d67c50b3ecca
-      internalID: -1896259231
+      spriteID: e71ead9f1e407f650800000000000000
+      internalID: 6266482775115358590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death buttons_3
+      name: vampire-spritesheet-north-walk_4
       rect:
         serializedVersion: 2
-        x: 166
-        y: 1
-        width: 166
-        height: 50
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5261f6994b7bc7c4baf13168c51d5ffd
-      internalID: 1966204398
+      spriteID: 3e96ef45857442c80800000000000000
+      internalID: -8348469364529403421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-north-walk_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee8917edec5c53b00800000000000000
+      internalID: 807769200468793582
       vertices: []
       indices: 
       edges: []
@@ -292,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d42d1b817bf1134bbb498128e268ac0
+    spriteID: a7c8a3e9c3dd4c74ca8409e2e3bdead5
     internalID: 0
     vertices: []
     indices: 
@@ -302,10 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      death buttons_0: -462210199
-      death buttons_1: 837407106
-      death buttons_2: -1896259231
-      death buttons_3: 1966204398
+      vampire-spritesheet-north-walk_0: -5775780464220626420
+      vampire-spritesheet-north-walk_1: 3552861027994266597
+      vampire-spritesheet-north-walk_2: -2116416649654544182
+      vampire-spritesheet-north-walk_3: 6266482775115358590
+      vampire-spritesheet-north-walk_4: -8348469364529403421
+      vampire-spritesheet-north-walk_5: 807769200468793582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

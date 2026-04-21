@@ -1,10 +1,55 @@
 fileFormatVersion: 2
-guid: cb71f9b2e666f5a45959e76278a50209
+guid: d7309aebe80237345831c41f74a0520b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8632128708475795178
-    second: eletric_0
+      213: 744159249470242456
+    second: resume button_0
+  - first:
+      213: 54874406466041833
+    second: resume button_1
+  - first:
+      213: -3630870214099153581
+    second: resume button_2
+  - first:
+      213: 1929835439006187850
+    second: resume button_3
+  - first:
+      213: -2171776665212249729
+    second: resume button_4
+  - first:
+      213: 4484702245117303289
+    second: resume button_5
+  - first:
+      213: 6886887676660745287
+    second: resume button_6
+  - first:
+      213: 337795559092697335
+    second: resume button_7
+  - first:
+      213: 94561968030664120
+    second: resume button_8
+  - first:
+      213: -2601772282816668472
+    second: resume button_9
+  - first:
+      213: 7293934140113668232
+    second: resume button_10
+  - first:
+      213: -5409751830290114562
+    second: resume button_11
+  - first:
+      213: -8518729964167769362
+    second: resume button_12
+  - first:
+      213: -448148637388540892
+    second: resume button_13
+  - first:
+      213: -6503470767297809257
+    second: resume button_14
+  - first:
+      213: 9158813754921485434
+    second: resume button_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +171,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eletric_0
+      name: resume button_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1640
-        height: 856
+        width: 166
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +186,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61949d3bca4843880800000000000000
-      internalID: -8632128708475795178
+      spriteID: 89ebef805e8c35a00800000000000000
+      internalID: 744159249470242456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: resume button_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 0
+        width: 166
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e73ba06bf3f2c000800000000000000
+      internalID: 54874406466041833
       vertices: []
       indices: 
       edges: []
@@ -151,7 +218,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: baf336b2ab9fec0409753881036ea327
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +228,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      eletric_0: -8632128708475795178
+      resume button_0: 744159249470242456
+      resume button_1: 54874406466041833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
