@@ -81,6 +81,7 @@ public class BEYBLADE : MonoBehaviour
             // if we hit the player, apply damage/knockback on cooldown
             if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
             {
+                var playerHealth = hit.collider.GetComponent<HealthBar>();
                 var prb = hit.rigidbody != null ? hit.rigidbody : hit.collider.GetComponentInParent<Rigidbody2D>();
                 if (prb != null)
                 {
@@ -94,8 +95,8 @@ public class BEYBLADE : MonoBehaviour
                 }
 
                 // apply money/damage or other effects
-                if (money != null) money.money -= damagePerTick;
-
+                //if (money != null) money.money -= damagePerTick;
+                if (playerHealth != null) playerHealth.TakeDamage(damagePerTick);
                 damageTimer = damageCooldown;
             }
         }

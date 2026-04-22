@@ -1,85 +1,55 @@
 fileFormatVersion: 2
-guid: 8c4e3ebae29b72247971be3c60a7e613
+guid: d7309aebe80237345831c41f74a0520b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 283917481067356470
-    second: death buttons 1_0
+      213: 744159249470242456
+    second: resume button_0
   - first:
-      213: 125444787931483561
-    second: death buttons 1_1
+      213: 54874406466041833
+    second: resume button_1
   - first:
-      213: -7295741079551256103
-    second: death buttons 1_2
+      213: -3630870214099153581
+    second: resume button_2
   - first:
-      213: -7058896389710688336
-    second: death buttons 1_3
+      213: 1929835439006187850
+    second: resume button_3
   - first:
-      213: 3396486097288143456
-    second: death buttons 1_4
+      213: -2171776665212249729
+    second: resume button_4
   - first:
-      213: 624887239940620919
-    second: death buttons 1_5
+      213: 4484702245117303289
+    second: resume button_5
   - first:
-      213: -3415822066981927786
-    second: death buttons 1_6
+      213: 6886887676660745287
+    second: resume button_6
   - first:
-      213: 4707619858099351583
-    second: death buttons 1_7
+      213: 337795559092697335
+    second: resume button_7
   - first:
-      213: 3795490308708545508
-    second: death buttons 1_8
+      213: 94561968030664120
+    second: resume button_8
   - first:
-      213: 2891525411252695376
-    second: death buttons 1_9
+      213: -2601772282816668472
+    second: resume button_9
   - first:
-      213: 5822894048405595050
-    second: death buttons 1_10
+      213: 7293934140113668232
+    second: resume button_10
   - first:
-      213: 5110077666725487354
-    second: death buttons 1_11
+      213: -5409751830290114562
+    second: resume button_11
   - first:
-      213: -1056006790043569829
-    second: death buttons 1_12
+      213: -8518729964167769362
+    second: resume button_12
   - first:
-      213: 9188997846218360868
-    second: death buttons 1_13
+      213: -448148637388540892
+    second: resume button_13
   - first:
-      213: 5217182982018609497
-    second: death buttons 1_14
+      213: -6503470767297809257
+    second: resume button_14
   - first:
-      213: 7864811823537499451
-    second: death buttons 1_15
-  - first:
-      213: 5360594940114570094
-    second: death buttons 1_16
-  - first:
-      213: -4959122641537524882
-    second: death buttons 1_17
-  - first:
-      213: -5609149841272863026
-    second: death buttons 1_18
-  - first:
-      213: -4311791471055408701
-    second: death buttons 1_19
-  - first:
-      213: 6604981873949143503
-    second: death buttons 1_20
-  - first:
-      213: -7532174588262169336
-    second: death buttons 1_21
-  - first:
-      213: 4530730880422703583
-    second: death buttons 1_22
-  - first:
-      213: 5921701513689841936
-    second: death buttons 1_23
-  - first:
-      213: -1337552877808419002
-    second: death buttons 1_24
-  - first:
-      213: 554312726056900193
-    second: death buttons 1_25
+      213: 9158813754921485434
+    second: resume button_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -201,11 +171,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death buttons_0
+      name: resume button_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
+        y: 0
         width: 166
         height: 50
       alignment: 0
@@ -214,20 +184,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1c3d41dae3997404ab3f8c3c0e2b3c64
-      internalID: -462210199
+      spriteID: 89ebef805e8c35a00800000000000000
+      internalID: 744159249470242456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death buttons_1
+      name: resume button_1
       rect:
         serializedVersion: 2
         x: 166
-        y: 51
+        y: 0
         width: 166
         height: 50
       alignment: 0
@@ -236,54 +206,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 62e0e1a457f4be04988a21e7c5b0e4aa
-      internalID: 837407106
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death buttons_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 166
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 957383b32def4354f9c9d67c50b3ecca
-      internalID: -1896259231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death buttons_3
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 1
-        width: 166
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5261f6994b7bc7c4baf13168c51d5ffd
-      internalID: 1966204398
+      spriteID: 9e73ba06bf3f2c000800000000000000
+      internalID: 54874406466041833
       vertices: []
       indices: 
       edges: []
@@ -292,7 +218,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d42d1b817bf1134bbb498128e268ac0
+    spriteID: baf336b2ab9fec0409753881036ea327
     internalID: 0
     vertices: []
     indices: 
@@ -302,10 +228,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      death buttons_0: -462210199
-      death buttons_1: 837407106
-      death buttons_2: -1896259231
-      death buttons_3: 1966204398
+      resume button_0: 744159249470242456
+      resume button_1: 54874406466041833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
