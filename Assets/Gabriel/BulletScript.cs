@@ -26,8 +26,11 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            var playerHealth = collision.GetComponent<HealthBar>();
-            playerHealth.TakeDamage(stats.atkDamage + (money.money / 100) + (level.levelNumber * 10));
+            var playerHealth = collision.GetComponentInChildren<HealthBar>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(stats.atkDamage + (money.money / 100) + (level.levelNumber * 10));
+            }
             //money.money -= stats.atkDamage + (money.money/100) + (level.levelNumber*10);
             Destroy(gameObject);
         }
