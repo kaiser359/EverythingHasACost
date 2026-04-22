@@ -182,6 +182,7 @@ MonoBehaviour:
   maxHealth: 10
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
+  deathParticles: {fileID: 8679902715512333001, guid: b36290eb4e2404544882480656587328, type: 3}
 --- !u!114 &1880765463373544506
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public Money money;
 
     [SerializeField] GameObject damageParticles;
-    private GameObject particles;
+    [SerializeField] GameObject deathParticles;
 
     void Start()
     {
@@ -45,7 +45,12 @@ public class EnemyHealth : MonoBehaviour
           
         }
 
-
+        // death
+        if (currentHealth <= 0)
+        {
+            Die();
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+        }
     }
     public void TakeDamage(float damage)
     {
@@ -59,10 +64,6 @@ public class EnemyHealth : MonoBehaviour
         Instantiate(damageParticles, transform.position, Quaternion.identity, transform);
         Debug.Log("hhhhnghhng");
 
-        if (currentHealth <= 0)
-        {
-        Die();
-        }
     }
 
    
