@@ -1,85 +1,85 @@
 fileFormatVersion: 2
-guid: ab50eefa7fd64b4428161df64347fa8d
+guid: 8c4e3ebae29b72247971be3c60a7e613
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 371287103044982903
-    second: death buttons_0
+      213: 283917481067356470
+    second: death buttons 1_0
   - first:
-      213: -1194301676046426349
-    second: death buttons_1
+      213: 125444787931483561
+    second: death buttons 1_1
   - first:
-      213: -4582851087070477439
-    second: death buttons_2
+      213: -7295741079551256103
+    second: death buttons 1_2
   - first:
-      213: 4618284966804963048
-    second: death buttons_3
+      213: -7058896389710688336
+    second: death buttons 1_3
   - first:
-      213: 7553227195994822957
-    second: death buttons_4
+      213: 3396486097288143456
+    second: death buttons 1_4
   - first:
-      213: 1609498440950446914
-    second: death buttons_5
+      213: 624887239940620919
+    second: death buttons 1_5
   - first:
-      213: 347673922768050401
-    second: death buttons_6
+      213: -3415822066981927786
+    second: death buttons 1_6
   - first:
-      213: 2128737701677096076
-    second: death buttons_7
+      213: 4707619858099351583
+    second: death buttons 1_7
   - first:
-      213: -2032718380271582040
-    second: death buttons_8
+      213: 3795490308708545508
+    second: death buttons 1_8
   - first:
-      213: -4980395884766627290
-    second: death buttons_9
+      213: 2891525411252695376
+    second: death buttons 1_9
   - first:
-      213: -8212198864393269034
-    second: death buttons_10
+      213: 5822894048405595050
+    second: death buttons 1_10
   - first:
-      213: -5685546463682949888
-    second: death buttons_11
+      213: 5110077666725487354
+    second: death buttons 1_11
   - first:
-      213: 1869773042319365469
-    second: death buttons_12
+      213: -1056006790043569829
+    second: death buttons 1_12
   - first:
-      213: 1541432498487984009
-    second: death buttons_13
+      213: 9188997846218360868
+    second: death buttons 1_13
   - first:
-      213: -7226609447582552334
-    second: death buttons_14
+      213: 5217182982018609497
+    second: death buttons 1_14
   - first:
-      213: -5540968445097914958
-    second: death buttons_15
+      213: 7864811823537499451
+    second: death buttons 1_15
   - first:
-      213: 895188971319335919
-    second: death buttons_16
+      213: 5360594940114570094
+    second: death buttons 1_16
   - first:
-      213: 4552282382585089123
-    second: death buttons_17
+      213: -4959122641537524882
+    second: death buttons 1_17
   - first:
-      213: 1381176715573270284
-    second: death buttons_18
+      213: -5609149841272863026
+    second: death buttons 1_18
   - first:
-      213: -2444014018710614142
-    second: death buttons_19
+      213: -4311791471055408701
+    second: death buttons 1_19
   - first:
-      213: 2173308880466868869
-    second: death buttons_20
+      213: 6604981873949143503
+    second: death buttons 1_20
   - first:
-      213: 456771515382246211
-    second: death buttons_21
+      213: -7532174588262169336
+    second: death buttons 1_21
   - first:
-      213: -3208310763552564037
-    second: death buttons_22
+      213: 4530730880422703583
+    second: death buttons 1_22
   - first:
-      213: -5966571922607760578
-    second: death buttons_23
+      213: 5921701513689841936
+    second: death buttons 1_23
   - first:
-      213: 3025989652999355534
-    second: death buttons_24
+      213: -1337552877808419002
+    second: death buttons 1_24
   - first:
-      213: 298036555685846565
-    second: death buttons_25
+      213: 554312726056900193
+    second: death buttons 1_25
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -214,10 +214,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7781eae27a3172500800000000000000
-      internalID: 371287103044982903
+      spriteID: 1c3d41dae3997404ab3f8c3c0e2b3c64
+      internalID: -462210199
       vertices: []
       indices: 
       edges: []
@@ -236,10 +236,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 31f599c04fcfc6fe0800000000000000
-      internalID: -1194301676046426349
+      spriteID: 62e0e1a457f4be04988a21e7c5b0e4aa
+      internalID: 837407106
       vertices: []
       indices: 
       edges: []
@@ -258,10 +258,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 183c6a0a7317660c0800000000000000
-      internalID: -4582851087070477439
+      spriteID: 957383b32def4354f9c9d67c50b3ecca
+      internalID: -1896259231
       vertices: []
       indices: 
       edges: []
@@ -280,10 +280,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8eebfe565b1771040800000000000000
-      internalID: 4618284966804963048
+      spriteID: 5261f6994b7bc7c4baf13168c51d5ffd
+      internalID: 1966204398
       vertices: []
       indices: 
       edges: []
@@ -292,7 +292,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8ba4297e8c6ce7e4fac551c7dcbb9ba1
+    spriteID: 6d42d1b817bf1134bbb498128e268ac0
     internalID: 0
     vertices: []
     indices: 
@@ -302,10 +302,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      death buttons_0: 371287103044982903
-      death buttons_1: -1194301676046426349
-      death buttons_2: -4582851087070477439
-      death buttons_3: 4618284966804963048
+      death buttons_0: -462210199
+      death buttons_1: 837407106
+      death buttons_2: -1896259231
+      death buttons_3: 1966204398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

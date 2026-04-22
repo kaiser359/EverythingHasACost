@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.021, y: 0.542, z: 0.45872852}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.26, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73bf5ee6f7f0a2f4ca5e1b44259ea1af, type: 2}
+  - {fileID: -876546973899608171, guid: 61688714ebbfce84a83eea2543454ee9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,13 +82,13 @@ LineRenderer:
   - {x: 5, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1.4487672
+    widthMultiplier: 3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.18918824
+        time: 0.073014975
+        value: 0.07324332
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -132,7 +132,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 1, y: 0.63}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
