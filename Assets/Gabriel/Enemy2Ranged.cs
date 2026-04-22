@@ -148,7 +148,7 @@ public class Enemy2Ranged : MonoBehaviour
                         if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
                         {
                             //money.money -= damagePerTick + (money.money / 100) + (level.levelNumber*10);
-                            var playerHealth = hit.collider.GetComponent<HealthBar>();
+                            var playerHealth = hit.collider.GetComponentInChildren<HealthBar>();
                             if (playerHealth != null) playerHealth.TakeDamage(damagePerTick + (money.money / 100) + (level.levelNumber*10));
 
                             // prefer the rigidbody reported by the raycast, fall back to parent lookup

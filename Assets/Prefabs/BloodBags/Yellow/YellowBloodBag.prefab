@@ -63,12 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5e2680e8a0e82468bef959667d2be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 10
   damage: 9999
   duration: 3
   cooldown: 100
   spite: {fileID: 6922029417730792652, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
-  part: {fileID: 8284342279436481995, guid: 312a312a34540e142a84725dad472e67, type: 3}
   suctionSpeed: 5
   killDistance: 0.1
   debugLog: 1
