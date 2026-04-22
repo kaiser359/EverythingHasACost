@@ -13,8 +13,9 @@ public class MeeleeDamage : MonoBehaviour
         {
         //    if (money != null)
                 //money.money -= damageAmount + (money.money / 100) + (level.levelNumber * 15) ;
-           var playerHealth = collision.GetComponent<HealthBar>();
-            if (playerHealth != null) { 
+            var playerHealth = collision.GetComponentInChildren<HealthBar>();
+            if (playerHealth != null)
+            {
                 playerHealth.TakeDamage(damageAmount + (money.money / 100) + (level.levelNumber * 15));
             }
             var rb = collision.GetComponent<Rigidbody2D>();

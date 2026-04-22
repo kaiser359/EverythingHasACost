@@ -10,7 +10,7 @@ using Image = UnityEngine.UI.Image;
 
 public class HealthBar : MonoBehaviour
 {
-    private UnityEngine.UI.Image healthBar;
+    public UnityEngine.UI.Image healthBar;
     private TMPro.TextMeshProUGUI healthText;
     private Animator coinHeart;
     public Money money;
@@ -29,7 +29,6 @@ public class HealthBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthBar = GetComponentInChildren<UnityEngine.UI.Image>();
         healthText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         coinHeart = GetComponentInChildren<Animator>();
         cam = FindAnyObjectByType<CinemachineCamera>();
