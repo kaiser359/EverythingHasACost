@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bloodiercoin_0: -3508640416726771565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

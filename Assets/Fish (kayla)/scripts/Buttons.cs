@@ -3,7 +3,7 @@ using UnityEngine;
 public class Buttons : MonoBehaviour
 {
 
-    public void StartGame(string scene)
+    public void SwitchScene(string scene)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
@@ -13,5 +13,10 @@ public class Buttons : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.ExitPlaymode();
 #endif
+    }
+
+    public void PlayClick(AudioClip clip)
+    {
+        FindAnyObjectByType<AudioSource>().PlayOneShot(clip);
     }
 }
