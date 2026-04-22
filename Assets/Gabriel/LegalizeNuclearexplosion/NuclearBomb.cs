@@ -18,7 +18,7 @@ public class NuclearBomb : MonoBehaviour
 
     [Header("Suction")]
     public float suctionSpeed = 5f;       // units per second enemies are pulled
-    public float killDistance = 0.1f;     // distance to spite at which enemies are killed
+    public float killDistance = 2f;     // distance to spite at which enemies are killed
     public bool debugLog = true;
 
     float lastUsedTime = -999f;
