@@ -8,6 +8,8 @@ public class LazerBOOM : MonoBehaviour
     [Header("Cooldown")]
     public float abilityCooldown = 10f;
     public float timer = 0f;
+    public ParticleSystem SpecialParticles;
+    public float particleSpeed = 5f; // speed applied to particles along beam direction
 
     [Header("Beam")]
     public float activateDelay = 0.3f; // wait before animation starts
@@ -171,32 +173,42 @@ public class LazerBOOM : MonoBehaviour
                 line.SetPosition(1, endVis);
             }
 
-            // update optional particle system to follow the beam
-            //if (beamParticles != null)
-            //{
-            //    // use the visual end (with offset) when positioning particles so they align with the rendered line
-            //    Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
-            //    Vector3 mid = (start + endVis) * 0.5f;
-            //    beamParticles.transform.position = mid;
-            //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //    beamParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            //    var shape = beamParticles.shape;
-            //    // stretch the particle system shape along the beam so particles emit along it
-            //    shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth * 0.5f), 1f);
+            // update optional particle system to follow the beam (SpecialParticles)
+            if (SpecialParticles != null)
+            {
+                // use the visual end (with offset) when positioning particles so they align with the rendered line
+                Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
+                Vector3 mid = (start + endVis) * 0.5f;
+                SpecialParticles.transform.position = mid;
 
-            //    // ensure particles move along the beam direction (not towards the player)
-            //    var main = beamParticles.main;
-            //    main.gravityModifier = 0f;
-            //    main.simulationSpace = ParticleSystemSimulationSpace.World;
+                // rotate particle system so particles emit along the beam direction
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                SpecialParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-            //    var vel = beamParticles.velocityOverLifetime;
-            //    vel.enabled = true;
-            //    vel.space = ParticleSystemSimulationSpace.World;
-            //    // set a constant velocity along the beam direction
-            //    vel.x = new ParticleSystem.MinMaxCurve(dir.x * particleSpeed);
-            //    vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
-            //    vel.z = new ParticleSystem.MinMaxCurve(0f);
-            //}
+                // configure shape to stretch along beam
+                var shape = SpecialParticles.shape;
+                // prefer box shape stretched along X axis
+                // (some particle systems may be configured differently in editor)
+                shape.shapeType = ParticleSystemShapeType.Box;
+                shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth * 0.5f), 1f);
+
+                // ensure world-space simulation so particles travel correctly along world dir
+                var main = SpecialParticles.main;
+                main.gravityModifier = 0f;
+                main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+                // make particles move along beam direction
+                var vel = SpecialParticles.velocityOverLifetime;
+                vel.enabled = true;
+                vel.space = ParticleSystemSimulationSpace.World;
+                vel.x = new ParticleSystem.MinMaxCurve(dir.x * particleSpeed);
+                vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
+                vel.z = new ParticleSystem.MinMaxCurve(0f);
+
+                // ensure emission is enabled while beam is active
+                var emission = SpecialParticles.emission;
+                emission.enabled = true;
+            }
 
             yield return null;
         }
