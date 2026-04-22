@@ -67,11 +67,10 @@ MonoBehaviour:
   damage: 9999
   duration: 3
   cooldown: 100
-  spite: {fileID: 3678704859319995870}
-  laserPrefab: {fileID: 1031434165080846609, guid: 3be337482b983534b850f4401f2780b3, type: 3}
-  laserCount: 5
-  orbitRadius: 1
-  part: {fileID: 285277295196727448}
+  spite: {fileID: 6922029417730792652, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+  part: {fileID: 8284342279436481995, guid: 312a312a34540e142a84725dad472e67, type: 3}
+  suctionSpeed: 5
+  killDistance: 0.1
   debugLog: 1
 --- !u!1001 &2153836587760529145
 PrefabInstance:
@@ -235,11 +234,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
---- !u!1 &3678704859319995870 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6922029417730792652, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
-  m_PrefabInstance: {fileID: 5981518629586358546}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7315550399173607262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3928425117156503116, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
@@ -301,16 +295,15 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8284342279436481995, guid: 312a312a34540e142a84725dad472e67, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312a312a34540e142a84725dad472e67, type: 3}
---- !u!198 &285277295196727448 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8284342279436481995, guid: 312a312a34540e142a84725dad472e67, type: 3}
-  m_PrefabInstance: {fileID: 8143184709952789843}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8953806292667980528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 954807355659323299, guid: 312a312a34540e142a84725dad472e67, type: 3}
