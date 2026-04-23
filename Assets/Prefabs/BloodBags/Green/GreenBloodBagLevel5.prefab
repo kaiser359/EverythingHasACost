@@ -64,5 +64,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDistance: 6
   dashDuration: 0.18
-  cooldown: 0.5
+  cooldown: 0.66
   star: {fileID: 11400000, guid: 5c558cc83561ce245b9797cd8e684b8c, type: 2}

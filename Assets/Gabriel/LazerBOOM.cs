@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using JetBrains.Annotations;
-
 
 public class LazerBOOM : MonoBehaviour
 {
@@ -9,49 +9,46 @@ public class LazerBOOM : MonoBehaviour
     public float abilityCooldown = 10f;
     public float timer = 0f;
     public ParticleSystem SpecialParticles;
-    public float particleSpeed = 5f; // speed applied to particles along beam direction
+    public float particleSpeed = 5f;
 
     [Header("Beam")]
-    public float activateDelay = 0.3f; // wait before animation starts
-    public float stayDuration = 3f; // how long beam stays connected
+    public float activateDelay = 0.3f;
+    public float stayDuration = 3f;
     public int damagePerSecond = 20;
     public float beamWidth = 0.6f;
-    public float maxRange = 10f; // max beam distance
-    public float growDuration = 0.5f; // time it takes the beam to reach maxRange
+    public float maxRange = 10f;
+    public float growDuration = 0.5f;
     public LayerMask enemyLayer;
-    public float startWidthMultiplier = 1.5f; // how much bigger the start is relative to currentWidth
-    public float endWidthMultiplier = 0.5f;   // how much smaller the end is relative to currentWidth
+    public float startWidthMultiplier = 1.5f;
+    public float endWidthMultiplier = 0.5f;
 
     [Header("Line End Offset")]
-    public Vector2 endPositionOffset = new Vector2(0f, -0.05f); // visual offset applied to line index 1 (x,y)
+    public Vector2 endPositionOffset = new Vector2(0f, -0.05f);
 
     [Header("References (set in prefab)")]
-    public Transform beamOrigin; // optional: if null uses this.transform.position
+    public Transform beamOrigin;
     public Color beamColor = Color.cyan;
     public LineRenderer line;
 
     public StarRatings star;
-   // public ParticleSystem beamParticles; // optional particle system to emit along the beam
-    //public float particleSpeed = 5f; // speed at which particles move along the beam direction
-
-    // (render texture UI mapping removed)
+    public ParticleSystem enemyHitEffectPrefab;
 
     private Coroutine activeRoutine;
+   // private HashSet<int> effectedEnemies = new HashSet<int>();
 
-    // (VFX removed) track state not needed when using only LineRenderer
     private void Awake()
     {
         stayDuration += star.StartRating;
-        damagePerSecond += star.StartRating * 5; // example scaling: +5 DPS per star
+        damagePerSecond += star.StartRating * 5;
         GameObject player = GameObject.FindWithTag("Player");
-       if (player != null)
-       {
-           beamOrigin = player.transform;
-       }
-       else if (beamOrigin == null)
-       {
-           beamOrigin = this.transform;
-       }
+        if (player != null)
+        {
+            beamOrigin = player.transform;
+        }
+        else if (beamOrigin == null)
+        {
+            beamOrigin = this.transform;
+        }
     }
 
     private void Update()
@@ -65,9 +62,9 @@ public class LazerBOOM : MonoBehaviour
 
     public void ActivateAbility()
     {
-        
-        if (timer > 0f) return; // still cooling down
+        if (timer > 0f) return;
         timer = abilityCooldown;
+        SpecialParticles?.Play();
         if (activeRoutine != null) StopCoroutine(activeRoutine);
         activeRoutine = StartCoroutine(DoBeamSequence());
     }
@@ -76,19 +73,18 @@ public class LazerBOOM : MonoBehaviour
     {
         yield return new WaitForSeconds(activateDelay);
 
-        // make sure there's a line renderer to show something
         if (line != null) { line.enabled = true; line.positionCount = 2; line.startWidth = 0f; line.endWidth = 0f; }
-       // if (beamParticles != null) beamParticles.Play();
+
+        // Clear set of effected enemies at start of this activation so effects can be re-applied on subsequent uses
+        //effectedEnemies.Clear();
 
         float activeElapsed = 0f;
         while (activeElapsed < stayDuration)
         {
             activeElapsed += Time.deltaTime;
 
-            // determine beam start point
             Vector3 start = (beamOrigin != null) ? beamOrigin.position : transform.position;
 
-            // determine mouse world position (2D) so the beam follows the player's aim
             Vector3 mouseWorld = start;
             Camera cam = Camera.main;
             if (cam != null)
@@ -111,24 +107,18 @@ public class LazerBOOM : MonoBehaviour
             Vector3 dir = mouseWorld - start;
             float distToMouse = dir.magnitude;
             if (distToMouse > 0.0001f) dir /= distToMouse;
-            else dir = transform.right; // arbitrary default
+            else dir = transform.right;
 
-            // gradually grow the beam over `growDuration` seconds, hold, then shrink
-            // in the final `growDuration` seconds. This gives a smooth in/out behavior.
             float growT = (growDuration > 0f) ? Mathf.Clamp01(activeElapsed / growDuration) : 1f;
             float shrinkT = (growDuration > 0f) ? Mathf.Clamp01((stayDuration - activeElapsed) / growDuration) : 1f;
-            float beamScale = Mathf.Min(growT, shrinkT); // grows, then holds, then shrinks
+            float beamScale = Mathf.Min(growT, shrinkT);
             float currentRange = Mathf.Lerp(0f, maxRange, beamScale);
 
-            // find actual beam end: beam should pass through objects tagged Enemy/Player
-            // but be blocked by the first other collider.
             RaycastHit2D rhit;
             Vector3 end = GetHitPosition(start, dir, currentRange, out rhit);
 
-            // debug draw
             Debug.DrawLine(start, end, beamColor);
 
-            // area damage along the actual beam length (skip Player tag)
             Vector2 wStart = start;
             Vector2 wEnd = end;
             Vector2 center = (wStart + wEnd) * 0.5f;
@@ -139,65 +129,66 @@ public class LazerBOOM : MonoBehaviour
             foreach (var c in hits)
             {
                 if (c == null) continue;
-                if (c.CompareTag("Player")) continue; // don't hit the player
+                if (c.CompareTag("Player")) continue;
                 var eh = c.GetComponent<EnemyHealth>();
-                if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
+                if (eh != null)
+                {
+                    eh.TakeDamage(damagePerSecond * Time.deltaTime);
+                    if (enemyHitEffectPrefab != null)
+                    {
+                        int id = eh.GetInstanceID();
+                    //    if (effectedEnemies.Add(id))
+                     //   {
+                            var target = eh.gameObject;
+                            var ps = Instantiate(enemyHitEffectPrefab, target.transform.position, Quaternion.identity, target.transform);
+                            ps.transform.localPosition = Vector3.zero;
+                            var main = ps.main;
+                            main.simulationSpace = ParticleSystemSimulationSpace.Local;
+                            ps.Play();
+                     //   }
+                    }
+                }
             }
 
-            // if the raycast hit an enemy specifically, also apply damage directly (keeps previous behavior)
-            if (rhit.collider != null && rhit.collider.CompareTag("Enemy") )
+            if (rhit.collider != null && rhit.collider.CompareTag("Enemy"))
             {
                 var eh = rhit.collider.GetComponent<EnemyHealth>();
                 if (eh != null) eh.TakeDamage(damagePerSecond * Time.deltaTime);
             }
 
-            // no VFX: only update line renderer
-
-            // compute current width once so both renderer and particle shape can use it
             float currentWidth = Mathf.Lerp(0.01f, beamWidth, beamScale);
 
             if (line != null)
             {
-                // ensure consistent visual centering relative to the camera
                 line.alignment = LineAlignment.View;
-
-                // taper the beam: start can be larger than the end (end narrower)
                 line.startWidth = currentWidth * startWidthMultiplier;
                 line.endWidth = currentWidth * endWidthMultiplier;
-                // place line vertices on the same z plane as the beam origin to avoid parallax offsets
                 line.SetPosition(0, new Vector3(start.x, start.y, start.z));
-                // apply a small visual offset to the end point relative to the beam
                 Vector3 perp = Vector3.Cross(dir, Vector3.forward).normalized;
                 Vector3 endVis = end + dir * endPositionOffset.x + perp * endPositionOffset.y;
                 endVis.z = start.z;
                 line.SetPosition(1, endVis);
             }
 
-            // update optional particle system to follow the beam (SpecialParticles)
             if (SpecialParticles != null)
             {
-                // use the visual end (with offset) when positioning particles so they align with the rendered line
                 Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
                 Vector3 mid = (start + endVis) * 0.5f;
                 SpecialParticles.transform.position = mid;
 
-                // rotate particle system so particles emit along the beam direction
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 SpecialParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-                // configure shape to stretch along beam
                 var shape = SpecialParticles.shape;
-                // prefer box shape stretched along X axis
-                // (some particle systems may be configured differently in editor)
                 shape.shapeType = ParticleSystemShapeType.Box;
-                shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth * 0.5f), 1f);
+                shape.position = Vector3.zero;
+                shape.rotation = Vector3.zero;
+                shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth), 1f);
 
-                // ensure world-space simulation so particles travel correctly along world dir
                 var main = SpecialParticles.main;
                 main.gravityModifier = 0f;
                 main.simulationSpace = ParticleSystemSimulationSpace.World;
 
-                // make particles move along beam direction
                 var vel = SpecialParticles.velocityOverLifetime;
                 vel.enabled = true;
                 vel.space = ParticleSystemSimulationSpace.World;
@@ -205,7 +196,6 @@ public class LazerBOOM : MonoBehaviour
                 vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
                 vel.z = new ParticleSystem.MinMaxCurve(0f);
 
-                // ensure emission is enabled while beam is active
                 var emission = SpecialParticles.emission;
                 emission.enabled = true;
             }
@@ -213,13 +203,11 @@ public class LazerBOOM : MonoBehaviour
             yield return null;
         }
 
-        // stop particle system and disable line
-    //    if (beamParticles != null) beamParticles.Stop();
+        SpecialParticles?.Stop();
         if (line != null) line.enabled = false;
         activeRoutine = null;
     }
 
-    // visualize the beam area in editor when selected
     private void OnDrawGizmosSelected()
     {
         Vector3 start = (beamOrigin != null) ? beamOrigin.position : transform.position;
@@ -230,9 +218,6 @@ public class LazerBOOM : MonoBehaviour
         Gizmos.DrawWireCube(center, new Vector3(len, beamWidth, 0.1f));
     }
 
-    // (VFX removed) all visual-effect helpers deleted; renderer-only implementation
-
-    // GetHitPosition: ignore Player as a blocking or target hit (beam passes through player)
     private Vector3 GetHitPosition(Vector3 start, Vector3 dir, float range, out RaycastHit2D hit)
     {
         var hits = Physics2D.RaycastAll(start, dir, range);
@@ -246,7 +231,6 @@ public class LazerBOOM : MonoBehaviour
             {
                 if (h.collider.CompareTag("Enemy"))
                 {
-                    // record nearest enemy hit (does not block beam)
                     firstEnemy = h;
                     bestDist = d;
                     continue;
@@ -254,11 +238,9 @@ public class LazerBOOM : MonoBehaviour
 
                 if (h.collider.CompareTag("Player"))
                 {
-                    // completely ignore player for blocking/endpoint
                     continue;
                 }
 
-                // non-enemy, non-player collider blocks the beam
                 hit = h;
                 return h.point;
             }

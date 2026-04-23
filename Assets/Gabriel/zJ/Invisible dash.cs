@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Invisibledash : MonoBehaviour
 {
-    public float dashDistance = 6f;
+    public float dashDistance = 7f;
     public float dashDuration = 0.18f;
     public float cooldown = 5f;
     public StarRatings star;
@@ -18,7 +18,7 @@ public class Invisibledash : MonoBehaviour
     }
     private void Start()
     {
-        cooldown -= star.StartRating;
+        cooldown -= (star.StartRating/100f);
     }
     // Public activation entrypoint
     public void ActivateAbility()

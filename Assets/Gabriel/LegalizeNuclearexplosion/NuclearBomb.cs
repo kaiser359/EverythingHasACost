@@ -137,11 +137,11 @@ public class NuclearBomb : MonoBehaviour
     void Update()
     {
         // quick test trigger: press 'K' to activate ability
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            if (debugLog) Debug.Log("NuclearBomb: Test key pressed -> ActivateAbility");
-            ActivateAbility();
-        }
+
+        
+          
+        //    ActivateAbility();
+        
     }
 
     void OnDrawGizmosSelected()

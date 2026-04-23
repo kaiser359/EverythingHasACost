@@ -130,7 +130,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 6
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -345,6 +345,7 @@ MonoBehaviour:
   maxHealth: 100
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
+  deathParticles: {fileID: 0}
 --- !u!1 &7913165482743953906
 GameObject:
   m_ObjectHideFlags: 0

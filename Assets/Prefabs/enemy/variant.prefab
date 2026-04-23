@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3362324165986314548}
   - component: {fileID: 7060961781959519735}
   - component: {fileID: 7458713898237977544}
+  - component: {fileID: 1844107855131213716}
   m_Layer: 3
   m_Name: variant
   m_TagString: Enemy
@@ -181,3 +182,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1844107855131213716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858801543509427161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b4bd314e2fb794bb8273a69c7bed18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  timer: 0
+  stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
+  maxHealth: 0
+  money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
+  deathParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
