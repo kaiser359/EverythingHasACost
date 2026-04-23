@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,16 +21,19 @@ public class Upgrade : MonoBehaviour
                 GetComponent<Image>().sprite = gS.BloodBag1.GetComponent<BloodBagData>().BloodBagSprite;
                 if (gS.BloodBag1.GetComponent<BloodBagData>().NextLevelBag != null)
                     gameObject.SetActive(false);
+                GetComponentInChildren<TextMeshProUGUI>().text = "$" + gS.BloodBag1.GetComponent<BloodBagData>().BloodBagPrice / 2;
                 break;
             case 1:
                 GetComponent<Image>().sprite = gS.BloodBag2.GetComponent<BloodBagData>().BloodBagSprite;
                 if (gS.BloodBag2.GetComponent<BloodBagData>().NextLevelBag != null)
                     gameObject.SetActive(false);    
+                GetComponentInChildren<TextMeshProUGUI>().text = "$" + gS.BloodBag2.GetComponent<BloodBagData>().BloodBagPrice / 2;
                 break;
             case 2:
                 GetComponent<Image>().sprite = gS.BloodBag3.GetComponent<BloodBagData>().BloodBagSprite;
                 if (gS.BloodBag3.GetComponent<BloodBagData>().NextLevelBag != null)
                     gameObject.SetActive(false);
+                GetComponentInChildren<TextMeshProUGUI>().text = "$" + gS.BloodBag3.GetComponent<BloodBagData>().BloodBagPrice / 2;
                 break;
         }
     }
