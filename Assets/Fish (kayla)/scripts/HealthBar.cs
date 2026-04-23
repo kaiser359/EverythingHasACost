@@ -11,8 +11,8 @@ using Image = UnityEngine.UI.Image;
 public class HealthBar : MonoBehaviour
 {
     public UnityEngine.UI.Image healthBar;
-    private TMPro.TextMeshProUGUI healthText;
-    private Animator coinHeart;
+    public TMPro.TextMeshProUGUI healthText;
+    public Animator coinHeart;
     public Money money;
     private CinemachineCamera cam;
     //private Volume postProcess;
@@ -29,8 +29,7 @@ public class HealthBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        coinHeart = GetComponentInChildren<Animator>();
+
         cam = FindAnyObjectByType<CinemachineCamera>();
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         //postProcess = FindObjectOfType<Volume>();
