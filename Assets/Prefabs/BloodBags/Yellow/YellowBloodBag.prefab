@@ -68,8 +68,8 @@ MonoBehaviour:
   duration: 3
   cooldown: 100
   spite: {fileID: 6922029417730792652, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
-  suctionSpeed: 5
-  killDistance: 0.1
+  suctionSpeed: 20
+  killDistance: 2
   debugLog: 1
 --- !u!1001 &2153836587760529145
 PrefabInstance:
