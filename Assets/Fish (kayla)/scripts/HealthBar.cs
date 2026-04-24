@@ -72,7 +72,7 @@ public class HealthBar : MonoBehaviour
         mb.intensity.overrideState = true;
         yield return new WaitForSeconds(0.15f);
         dimmy.GetComponent<SpriteRenderer>().color = Color.white;
-        healthText.color = Color.black;
+        healthText.color = new Color32(254, 186, 33, 255); // FEBA21
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         vignette.intensity.overrideState = false;
         mb.intensity.overrideState = false;
