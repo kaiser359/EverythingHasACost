@@ -1095,6 +1095,7 @@ GameObject:
   - component: {fileID: 1719442282750320078}
   - component: {fileID: 1762865391336713947}
   - component: {fileID: 5739661078729087872}
+  - component: {fileID: 773318041140766334}
   m_Layer: 5
   m_Name: BloodBag3
   m_TagString: Untagged
@@ -1215,6 +1216,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 773318041140766334}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5739661078729087872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1245,18 @@ MonoBehaviour:
   SP: {fileID: 3215721291667339701}
   SelectedBag: {fileID: 0}
   bagNum: 2
+--- !u!114 &773318041140766334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336851473829208293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524480449348104317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1406,7 @@ GameObject:
   - component: {fileID: 1120690056341656197}
   - component: {fileID: 3998419969276905291}
   - component: {fileID: 8002970994255461994}
+  - component: {fileID: 5859548137140953359}
   m_Layer: 5
   m_Name: BloodBag2
   m_TagString: Untagged
@@ -1503,6 +1529,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5859548137140953359}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8002970994255461994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,6 +1556,18 @@ MonoBehaviour:
   gS: {fileID: 0}
   bloodBag: {fileID: 0}
   zoomedBag: {fileID: 4326657449541849699}
+--- !u!114 &5859548137140953359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955521570210564074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054206120743287948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1808,7 @@ GameObject:
   - component: {fileID: 1443192076866458548}
   - component: {fileID: 5451758717483280340}
   - component: {fileID: 1255453783439286330}
+  - component: {fileID: 604079526458140110}
   m_Layer: 5
   m_Name: BloodBag3
   m_TagString: Untagged
@@ -1878,6 +1929,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 604079526458140110}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1255453783439286330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,6 +1959,18 @@ MonoBehaviour:
   isSecondBag: 0
   isThirdBag: 1
   bagNum: 0
+--- !u!114 &604079526458140110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415309491836016264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2418351988731056123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2120,7 @@ GameObject:
   - component: {fileID: 2547773980337069911}
   - component: {fileID: 8372746410107105275}
   - component: {fileID: 3454194899952284344}
+  - component: {fileID: 8266990677289355168}
   m_Layer: 5
   m_Name: BloodBag1
   m_TagString: Untagged
@@ -2165,6 +2241,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8266990677289355168}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3454194899952284344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,6 +2271,18 @@ MonoBehaviour:
   isSecondBag: 0
   isThirdBag: 0
   bagNum: 0
+--- !u!114 &8266990677289355168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537732625814799664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2605671114078683872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2496,7 @@ GameObject:
   - component: {fileID: 3234039303073751800}
   - component: {fileID: 5771880100714340495}
   - component: {fileID: 5878339121389333921}
+  - component: {fileID: 4878879248774124113}
   m_Layer: 5
   m_Name: BloodBag2
   m_TagString: Untagged
@@ -2516,6 +2617,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4878879248774124113}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5878339121389333921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2534,6 +2647,18 @@ MonoBehaviour:
   isSecondBag: 1
   isThirdBag: 0
   bagNum: 0
+--- !u!114 &4878879248774124113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816679773282425850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2825363506387634355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,6 +3271,7 @@ GameObject:
   - component: {fileID: 551889966056382062}
   - component: {fileID: 7826563370938533858}
   - component: {fileID: 153890171305350031}
+  - component: {fileID: 6005835619139712687}
   m_Layer: 5
   m_Name: AddMoney
   m_TagString: Untagged
@@ -3266,6 +3392,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6005835619139712687}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6005835619139712687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662752085807826286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3851615838748522324
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,6 +3429,7 @@ GameObject:
   - component: {fileID: 2880041901438069776}
   - component: {fileID: 6443759633294105115}
   - component: {fileID: 6964389059728510619}
+  - component: {fileID: 7964852736187848244}
   m_Layer: 5
   m_Name: BloodBag1
   m_TagString: Untagged
@@ -3401,6 +3552,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7964852736187848244}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6964389059728510619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3416,6 +3579,18 @@ MonoBehaviour:
   gS: {fileID: 0}
   bloodBag: {fileID: 0}
   zoomedBag: {fileID: 4326657449541849699}
+--- !u!114 &7964852736187848244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3851615838748522324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3859835860559171230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,6 +3921,7 @@ GameObject:
   - component: {fileID: 2412241240998142558}
   - component: {fileID: 2658903542044688339}
   - component: {fileID: 7644722931982770958}
+  - component: {fileID: 4710586987480894893}
   m_Layer: 5
   m_Name: ZoomedBag
   m_TagString: Untagged
@@ -3867,6 +4043,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4710586987480894893}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 703221ecff6b691428fd0174d680b2d6, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7644722931982770958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3887,6 +4075,18 @@ MonoBehaviour:
   isFirstBag: 0
   isSecondBag: 0
   isThirdBag: 0
+--- !u!114 &4710586987480894893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326657449541849699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4390525034416121188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4793,7 @@ GameObject:
   - component: {fileID: 2605780610273724896}
   - component: {fileID: 3615400726175759676}
   - component: {fileID: 5483549054060106469}
+  - component: {fileID: 8185548844879501433}
   m_Layer: 5
   m_Name: BloodBag2
   m_TagString: Untagged
@@ -4713,6 +4914,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8185548844879501433}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5483549054060106469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4730,6 +4943,18 @@ MonoBehaviour:
   SP: {fileID: 3215721291667339701}
   SelectedBag: {fileID: 0}
   bagNum: 1
+--- !u!114 &8185548844879501433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860882125378547484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5895176458794455109
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,6 +5103,7 @@ GameObject:
   - component: {fileID: 8506737187377220042}
   - component: {fileID: 2597302987633885660}
   - component: {fileID: 6445134257809588808}
+  - component: {fileID: 420670092970014532}
   m_Layer: 5
   m_Name: Store Bags
   m_TagString: Untagged
@@ -4999,6 +5225,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 420670092970014532}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 013c86c7b94e5f14dbff2d26fcf4c09f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &420670092970014532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905019920920800640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5945919185428147845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,6 +5261,7 @@ GameObject:
   - component: {fileID: 367052360943547853}
   - component: {fileID: 6790630339100163992}
   - component: {fileID: 7931423559914356710}
+  - component: {fileID: 847245218111704069}
   m_Layer: 5
   m_Name: TakeMoney
   m_TagString: Untagged
@@ -5131,6 +5382,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 847245218111704069}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &847245218111704069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945919185428147845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6447152902628440307
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,6 +5853,7 @@ GameObject:
   - component: {fileID: 3395169237094420148}
   - component: {fileID: 8055209928382905408}
   - component: {fileID: 4266190605821335932}
+  - component: {fileID: 126268261561894055}
   m_Layer: 5
   m_Name: BloodBag3
   m_TagString: Untagged
@@ -5700,6 +5976,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 126268261561894055}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4266190605821335932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5715,6 +6003,18 @@ MonoBehaviour:
   gS: {fileID: 0}
   bloodBag: {fileID: 0}
   zoomedBag: {fileID: 4326657449541849699}
+--- !u!114 &126268261561894055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772782765261494885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6961467027191604837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6573,6 +6873,7 @@ GameObject:
   - component: {fileID: 9175689953503796639}
   - component: {fileID: 6826758210781128158}
   - component: {fileID: 198440032057065418}
+  - component: {fileID: 3970811672591238265}
   m_Layer: 5
   m_Name: BloodBag1
   m_TagString: Untagged
@@ -6693,6 +6994,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970811672591238265}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2f71c78ac6a92e34d808cd3675d12c01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &198440032057065418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6710,6 +7023,18 @@ MonoBehaviour:
   SP: {fileID: 3215721291667339701}
   SelectedBag: {fileID: 0}
   bagNum: 0
+--- !u!114 &3970811672591238265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950262867937289307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8153292591148864408
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,6 +7682,7 @@ GameObject:
   - component: {fileID: 6636181987230860896}
   - component: {fileID: 7833011977049947407}
   - component: {fileID: 4779480659649982650}
+  - component: {fileID: 3284895144649419953}
   m_Layer: 5
   m_Name: LeaveVault
   m_TagString: Untagged
@@ -7478,6 +7804,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3284895144649419953}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: PlayClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 013c86c7b94e5f14dbff2d26fcf4c09f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3284895144649419953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166142518388594053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d90098c1ff72247bb6e7ddf033b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9203916827147847247
 GameObject:
   m_ObjectHideFlags: 0
