@@ -65,7 +65,7 @@ public class Invisibledash : MonoBehaviour
             }
             else
             {
-                // fallback: move transform directly
+                // use player rb. to prevent teleporting through walls.
                 p.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
             }
 
