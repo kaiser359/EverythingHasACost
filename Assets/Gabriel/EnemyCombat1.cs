@@ -26,6 +26,8 @@ public class EnemyCombat1 : MonoBehaviour
     public float knockbackForce = 5f; 
     public float dashOvershoot = 1f; 
 
+    public AudioClip dashSound;
+
     private Transform playerTransform;
     private Vector3 originPosition;
     private Vector3 wanderTarget;
@@ -138,6 +140,7 @@ public class EnemyCombat1 : MonoBehaviour
 
     IEnumerator DashToMarked(Vector3 target, float duration)
     {
+        FindAnyObjectByType<AudioSource>().PlayOneShot(dashSound);
         isDashing = true;
         Vector3 start = transform.position;
         float elapsed = 0f;

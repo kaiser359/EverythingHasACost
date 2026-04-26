@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5538734300039120166}
   - component: {fileID: 5003760730399801809}
   m_Layer: 2
-  m_Name: EnemyClose1
+  m_Name: vampireEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   touchDamageToMoney: 10
   knockbackForce: 5
   dashOvershoot: 6
+  dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}
 --- !u!61 &3958107506301483019
 BoxCollider2D:
   m_ObjectHideFlags: 0

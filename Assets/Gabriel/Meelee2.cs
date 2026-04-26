@@ -17,6 +17,8 @@ public class Meelee2 : MonoBehaviour
     public float wanderSpeed = 0.8f;
     public float idleMin = 0.5f;
     public float idleMax = 2f;
+
+    public AudioClip sword;
     
     private Transform playerTransform;
     private Rigidbody2D rb;
@@ -98,6 +100,7 @@ public class Meelee2 : MonoBehaviour
     }
     private void Attack()
     {
+        FindAnyObjectByType<AudioSource>().PlayOneShot(sword);
         atkplace.SetActive(true) ;
        
         if (playerTransform != null && atkLocation != null)

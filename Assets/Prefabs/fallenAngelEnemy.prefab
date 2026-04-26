@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4463337730322224857}
   - component: {fileID: 1323421329954941316}
   m_Layer: 2
-  m_Name: CommonEnemy
+  m_Name: fallenAngelEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   wanderSpeed: 0.8
   idleMin: 0.5
   idleMax: 2
+  sword: {fileID: 8300000, guid: d1bb0813700b440478f88e6a7a52f2cd, type: 3}
 --- !u!61 &6624778762221168491
 BoxCollider2D:
   m_ObjectHideFlags: 0
