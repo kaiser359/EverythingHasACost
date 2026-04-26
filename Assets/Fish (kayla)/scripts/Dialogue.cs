@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
+using System.Reflection;
 
 public enum Names
 {
@@ -23,8 +24,10 @@ public class Line
     public string text;
 }
 
+
 public class Dialogue : MonoBehaviour
 {
+    public bool IntroDi;
     public TextMeshProUGUI dialogueText;
     public List<Line> lines;
     public float speed = 0.04f;
@@ -33,6 +36,9 @@ public class Dialogue : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (IntroDi) { 
+            startDialogue();
+        }
     }
 
     // Update is called once per frame
