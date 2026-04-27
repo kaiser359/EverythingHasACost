@@ -1,9 +1,12 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Meelee2 : MonoBehaviour
 {
-
+    [Header("")]
+    public Animator anim;
+    private bool isAttacking = false;
     public Money money;
     public GameObject atkLocation;
     public GameObject atkplace;
@@ -97,10 +100,13 @@ public class Meelee2 : MonoBehaviour
                 atkplace.SetActive(false) ;
             }
         }
+
+
     }
     private void Attack()
     {
         FindAnyObjectByType<AudioSource>().PlayOneShot(sword);
+        anim.SetBool("Swing", true);
         atkplace.SetActive(true) ;
        
         if (playerTransform != null && atkLocation != null)
@@ -124,7 +130,7 @@ public class Meelee2 : MonoBehaviour
             }
         }
         timerForAtkDisapear = 0.1f;
-
+  
     }
     private bool HasLineOfSight()
     {
@@ -191,5 +197,10 @@ public class Meelee2 : MonoBehaviour
     {
         Vector2 offset = Random.insideUnitCircle * wanderRadius;
         wanderTarget = originPosition + (Vector3)offset;
+    }
+    public void OnAnimationComplete()
+    {
+        
+        // or gameObject.SetActive(false);
     }
 }

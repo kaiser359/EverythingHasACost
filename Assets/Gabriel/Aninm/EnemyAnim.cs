@@ -16,6 +16,7 @@ public class EnemyAnim : MonoBehaviour
     private bool Moving;
     private Vector2 oldposition;
     private Vector2 newposition;
+    public SpriteRenderer sr;
     void Start()
     {
     }
@@ -56,18 +57,20 @@ public class EnemyAnim : MonoBehaviour
         if (newposition.x > oldposition.x && Mathf.Abs(newposition.x - oldposition.x) > Mathf.Abs(newposition.y - oldposition.y))
         {
             x = 1;
+            sr.flipX = false;
         }
         else if (newposition.x < oldposition.x && Mathf.Abs(newposition.x - oldposition.x) > Mathf.Abs(newposition.y - oldposition.y))
         {
             x = -1;
+            sr.flipX = true;
         }
         else { x = 0; }
 
-        if(newposition.y > oldposition.y)
+        if(newposition.y > oldposition.y && Mathf.Abs(newposition.y - oldposition.y) > Mathf.Abs(newposition.x - oldposition.x))
         {
             y = 1;
         }
-        else if (newposition.y < oldposition.y)
+        else if (newposition.y < oldposition.y && Mathf.Abs(newposition.y - oldposition.y) > Mathf.Abs(newposition.x - oldposition.x))
         {
             y = -1;
         }
