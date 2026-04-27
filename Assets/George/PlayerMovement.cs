@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gunScript;
     public RotateToMouse rotateScript;
 
+    public AudioClip footstepSound;
+
     // when true external systems (like dashes) should prevent this script from setting velocity
     public bool ignoreMovement = false;
 
@@ -21,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animatorHead;
 
     private int moveSideBody;
+    private bool isMoving = false;
 
     void Start()
     {
@@ -36,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext ctx)
     {
+        if (!isMoving)
+        {
+            StartCoroutine(PlayFootsteps(ctx));
+        }
+        isMoving = true;
         desiredVelocity = ctx.ReadValue<Vector2>() * moveSpeed;
 
         // flip the sprite based on movement direction
@@ -51,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
             animatorBody.SetFloat("xVel", Mathf.Abs(animVel.x));
             animatorBody.SetFloat("yVel", animVel.y); // only enable gun flipping when not moving horizontally
         }
+        if(ctx.canceled)
+        {
+            isMoving = false;
+        }
+
     }
 
     private void Update()
@@ -85,5 +99,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = Mathf.Cos(gS.aimDir * Mathf.Deg2Rad) > 0; // flip head based on aim direction
+    }
+
+    private IEnumerator PlayFootsteps(InputAction.CallbackContext ctx)
+    {
+        while (ctx.ReadValue<Vector2>() != Vector2.zero)
+        {
+            FindAnyObjectByType<AudioSource>().PlayOneShot(footstepSound);
+            yield return new WaitForSeconds(0.2f);
+            if(ctx.ReadValue<Vector2>() == Vector2.zero)
+            {
+                FindAnyObjectByType<AudioSource>().Stop();
+                yield break;
+            }
+        }
     }
 }

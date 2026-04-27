@@ -4,6 +4,7 @@ using UnityEngine;
 public class MainGun : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
+    public AudioClip shoot;
     private float cooldownInstance = 0f;
 
     private CinemachineImpulseSource impulseSource;
@@ -24,6 +25,7 @@ public class MainGun : MonoBehaviour
 
     public void Attack() { 
         if (cooldownInstance > 0f) return;
+        FindAnyObjectByType<AudioSource>().PlayOneShot(shoot);
 
         GameObject[] attackPoints = GameObject.FindGameObjectsWithTag("AttackPoint");
         foreach (GameObject point in attackPoints)
