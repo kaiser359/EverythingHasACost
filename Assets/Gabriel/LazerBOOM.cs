@@ -21,6 +21,7 @@ public class LazerBOOM : MonoBehaviour
     public LayerMask enemyLayer;
     public float startWidthMultiplier = 1.5f;
     public float endWidthMultiplier = 0.5f;
+    public AudioClip lazer;
 
     [Header("Line End Offset")]
     public Vector2 endPositionOffset = new Vector2(0f, -0.05f);
@@ -67,6 +68,7 @@ public class LazerBOOM : MonoBehaviour
         SpecialParticles?.Play();
         if (activeRoutine != null) StopCoroutine(activeRoutine);
         activeRoutine = StartCoroutine(DoBeamSequence());
+        FindAnyObjectByType<AudioSource>().PlayOneShot(lazer);
     }
 
     private IEnumerator DoBeamSequence()

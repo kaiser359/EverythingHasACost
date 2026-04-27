@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6624778762221168491}
   - component: {fileID: 4463337730322224857}
   - component: {fileID: 1323421329954941316}
+  - component: {fileID: 1143039906752764153}
   m_Layer: 2
   m_Name: fallenAngelEnemy
   m_TagString: Enemy
@@ -180,6 +181,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   maxHealth: 0
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  deathCoin: {fileID: 8300000, guid: 703221ecff6b691428fd0174d680b2d6, type: 3}
   damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
   deathParticles: {fileID: 8679902715512333001, guid: b36290eb4e2404544882480656587328, type: 3}
 --- !u!50 &1323421329954941316
@@ -209,6 +211,19 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1143039906752764153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088363809651864776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351e50e287643114894dca6f3a5c66b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 846342728493060690}
 --- !u!1 &5636100384921565291
 GameObject:
   m_ObjectHideFlags: 0
