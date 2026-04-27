@@ -50,6 +50,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: 5669554925732999784, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 1003468316, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 8594276861807694793, guid: af8bdfaea79c26144917dbf82a0faa53, type: 3}
+  BloodBagDamage: 0
+  BloodBagEffect: Teleportation
+  Cooldown: 0.2
 --- !u!114 &6030532910096075321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +69,4 @@ MonoBehaviour:
   dashDuration: 0.18
   cooldown: 0.6
   star: {fileID: 11400000, guid: 0c54ceb4096422a4d9a2cf61e79aafa7, type: 2}
+  _cooldownTimer: 0
