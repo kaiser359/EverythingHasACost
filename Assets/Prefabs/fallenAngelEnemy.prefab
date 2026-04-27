@@ -106,13 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ad78484a1322b45bd679de2b53a828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 846342728493060690}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   atkLocation: {fileID: 8293376146029590169}
   atkplace: {fileID: 5738676907478536790}
   knockbackForce: 5
   detectionRange: 10
-  chaseRange: 15
-  chaseSpeed: 2.5
+  chaseRange: 20
+  chaseSpeed: 10
   wanderRadius: 2
   wanderSpeed: 0.8
   idleMin: 0.5
@@ -223,6 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 846342728493060690}
+  moveSpeed: 0
+  sr: {fileID: 4388268244495783712}
 --- !u!1 &5636100384921565291
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +237,6 @@ GameObject:
   - component: {fileID: 463077007802958851}
   - component: {fileID: 4388268244495783712}
   - component: {fileID: 846342728493060690}
-  - component: {fileID: 5370123111824279809}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -334,33 +336,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &5370123111824279809
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5636100384921565291}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &5738676907478536790
 GameObject:
   m_ObjectHideFlags: 0
