@@ -21,7 +21,7 @@ public enum Names
 public class Line
 {
     public Names name;
-    [TextArea] public string text;
+    [TextArea]  public string text;
 }
 
 
@@ -32,6 +32,8 @@ public class Dialogue : MonoBehaviour
     public List<Line> lines;
     public float speed = 0.04f;
     private int index;
+
+    private bool dialogueActive = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,12 +50,20 @@ public class Dialogue : MonoBehaviour
 
     public void startDialogue()
     {
+        if (dialogueActive) {
+            nextLine();
+            return;
+        }
+
         index = 0;
         GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
         FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
         StartCoroutine(Type());
-    }
+
+        dialogueActive = true;
+    } 
+
     IEnumerator Type()
     {
         dialogueText.text = "";
@@ -66,9 +76,10 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(speed);
         }
     }
+
     public void nextLine()
     {
-        //if current dialogue text < length of line, finish line
+        // if current dialogue text < length of line, finish line
         if (dialogueText.text.Length < lines[index].text.Length + lines[index].name.ToString().Length + 2)
         {
             StopAllCoroutines();
@@ -95,6 +106,7 @@ public class Dialogue : MonoBehaviour
         {
             StopAllCoroutines();
             FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
+            dialogueActive = false;
         }
         
     }
