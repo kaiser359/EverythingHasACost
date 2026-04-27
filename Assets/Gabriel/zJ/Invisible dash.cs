@@ -7,11 +7,11 @@ public class Invisibledash : MonoBehaviour
     public float dashDuration = 0.18f;
     public float cooldown = 5f;
     public StarRatings star;
-    float _cooldownTimer = 0f;
+    public float _cooldownTimer = 0f;
 
     void Update()
     {
-        //if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
+        if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
         //if (Input.GetKey(KeyCode.K)){
         //    ActivateAbility();
         //}
@@ -65,7 +65,7 @@ public class Invisibledash : MonoBehaviour
             }
             else
             {
-                // fallback: move transform directly
+                // use player rb. to prevent teleporting through walls.
                 p.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
             }
 

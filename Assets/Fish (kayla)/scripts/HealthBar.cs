@@ -21,6 +21,7 @@ public class HealthBar : MonoBehaviour
     public float fadeDuration = 1f;
     public GameObject dimmy;
     public Image blackOverlay;
+    public AudioClip hurt;
 
     private void Awake()
     {
@@ -61,7 +62,8 @@ public class HealthBar : MonoBehaviour
     }
 
     private IEnumerator FlashRed()
-    {     
+    {
+        FindAnyObjectByType<AudioSource>().PlayOneShot(hurt);
         coinHeart.SetTrigger("hurt");
         dimmy.GetComponent<SpriteRenderer>().color = Color.red;
         healthText.color = Color.red;
@@ -72,7 +74,7 @@ public class HealthBar : MonoBehaviour
         mb.intensity.overrideState = true;
         yield return new WaitForSeconds(0.15f);
         dimmy.GetComponent<SpriteRenderer>().color = Color.white;
-        healthText.color = Color.black;
+        healthText.color = new Color32(254, 186, 33, 255); // FEBA21
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         vignette.intensity.overrideState = false;
         mb.intensity.overrideState = false;

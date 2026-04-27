@@ -35,6 +35,8 @@ public class Enemy2Ranged : MonoBehaviour
     public float preFireMoveSpeed = 1.2f;
     public float preFireMoveAmount = 0.25f;
 
+    public AudioClip laserSound;
+
     private Transform playerTransform;
     private Vector3 originPosition;
     private Vector3 wanderTarget;
@@ -109,6 +111,7 @@ public class Enemy2Ranged : MonoBehaviour
             if (activationTimer >= laserActivationCooldown)
             {
                 laserActive = true;
+                FindAnyObjectByType<AudioSource>().PlayOneShot(laserSound);
             }
 
             // While warming up (not yet active), move slightly along the oscillated aim and face it

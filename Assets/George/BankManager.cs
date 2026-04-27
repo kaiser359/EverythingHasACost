@@ -7,6 +7,7 @@ public class BankManager : MonoBehaviour
     public GlobalPlayerInfo gS;
     public NEMFade NotEnoughCash;
     public GameObject BagStorage;
+    public AudioClip error;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +24,7 @@ public class BankManager : MonoBehaviour
     public void AddMoney()
     {
         if (gS.Money.money < 500){
+            FindAnyObjectByType<AudioSource>().PlayOneShot(error);
             NotEnoughCash.fadeDuration = 1f;
         }
         else{
@@ -33,6 +35,7 @@ public class BankManager : MonoBehaviour
     public void TakeMoney()
     {
         if (gS.Money.bankMoney < 500){
+            FindAnyObjectByType<AudioSource>().PlayOneShot(error);
             NotEnoughCash.fadeDuration = 1f;
         }
         else{
