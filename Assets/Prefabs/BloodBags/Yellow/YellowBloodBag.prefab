@@ -51,6 +51,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: -4785578298791353333, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 625152594, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 0}
+  BloodBagDamage: 9999
+  BloodBagEffect: Nukes the entire room
+  Cooldown: 60
 --- !u!114 &7568013770025855024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +69,7 @@ MonoBehaviour:
   radius: 10
   damage: 9999
   duration: 3
-  cooldown: 100
+  cooldown: 60
   spite: {fileID: 6922029417730792652, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
   suctionSpeed: 20
   killDistance: 2

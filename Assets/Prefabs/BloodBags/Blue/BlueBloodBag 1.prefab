@@ -52,6 +52,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: -6055288341017821803, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 996195967, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 1935077316706043299, guid: 741da655476a9c74ca141cca35a3089b, type: 3}
+  BloodBagDamage: 30
+  BloodBagEffect: Launches you forward and shoots projectiles, also enables a shield
+  Cooldown: 5
 --- !u!114 &8093061293859579485
 MonoBehaviour:
   m_ObjectHideFlags: 0

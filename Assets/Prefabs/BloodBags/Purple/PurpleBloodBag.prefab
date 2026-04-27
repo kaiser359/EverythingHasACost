@@ -4886,6 +4886,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: -1815845577999250218, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 940537995, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 1935077316706043299, guid: 07eda562e23dadd418d5e99c5e86411b, type: 3}
+  BloodBagDamage: 25
+  BloodBagEffect: Lazer
+  Cooldown: 14
 --- !u!114 &1767345263973746128
 MonoBehaviour:
   m_ObjectHideFlags: 0

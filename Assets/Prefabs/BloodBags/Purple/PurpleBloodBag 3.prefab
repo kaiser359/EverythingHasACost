@@ -51,6 +51,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: -1815845577999250218, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 940537995, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 1935077316706043299, guid: 85454c81267214445a45e00b51348c4a, type: 3}
+  BloodBagDamage: 40
+  BloodBagEffect: Lazer
+  Cooldown: 14
 --- !u!114 &1767345263973746128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityCooldown: 14.07
   timer: 0
+  SpecialParticles: {fileID: 0}
+  particleSpeed: 5
   activateDelay: 0.3
   stayDuration: 3
   damagePerSecond: 20
@@ -81,6 +86,7 @@ MonoBehaviour:
   beamColor: {r: 0, g: 1, b: 1, a: 1}
   line: {fileID: 6705898168461765549}
   star: {fileID: 11400000, guid: 0c54ceb4096422a4d9a2cf61e79aafa7, type: 2}
+  enemyHitEffectPrefab: {fileID: 0}
 --- !u!120 &6705898168461765549
 LineRenderer:
   serializedVersion: 2

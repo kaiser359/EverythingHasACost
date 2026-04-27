@@ -8,7 +8,7 @@ public class firaball : MonoBehaviour
     public float lifeTime = 8f;
 
     [Header("Explosion")]
-    public int damage = 20;
+    public int damage = 30;
     public float aoeRadius = 1.6f;
     public LayerMask enemyLayer; 
 

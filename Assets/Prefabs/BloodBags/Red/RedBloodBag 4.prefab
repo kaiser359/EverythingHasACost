@@ -51,6 +51,9 @@ MonoBehaviour:
   BloodBagSprite: {fileID: 6213349840971506180, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: 4160464559918616277, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 0}
+  BloodBagDamage: 110
+  BloodBagEffect: Sets bullet damage to the damage of the blood bag for 5 seconds
+  Cooldown: 8
 --- !u!114 &6697504818565085820
 MonoBehaviour:
   m_ObjectHideFlags: 0
