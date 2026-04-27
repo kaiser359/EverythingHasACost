@@ -180,6 +180,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   maxHealth: 0
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
+  deathCoin: {fileID: 8300000, guid: 703221ecff6b691428fd0174d680b2d6, type: 3}
   damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
   deathParticles: {fileID: 8679902715512333001, guid: b36290eb4e2404544882480656587328, type: 3}
 --- !u!50 &1323421329954941316

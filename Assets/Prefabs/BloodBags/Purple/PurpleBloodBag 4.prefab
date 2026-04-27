@@ -65,6 +65,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityCooldown: 14.07
   timer: 0
+  SpecialParticles: {fileID: 0}
+  particleSpeed: 5
   activateDelay: 0.3
   stayDuration: 3
   damagePerSecond: 20
@@ -76,11 +78,13 @@ MonoBehaviour:
     m_Bits: 4294967295
   startWidthMultiplier: 0.9
   endWidthMultiplier: 0.5
+  lazer: {fileID: 8300000, guid: 1c9361ccb78f414479a7df862ab84159, type: 3}
   endPositionOffset: {x: 0, y: 0}
   beamOrigin: {fileID: 9137729114966969189}
   beamColor: {r: 0, g: 1, b: 1, a: 1}
   line: {fileID: 6705898168461765549}
   star: {fileID: 11400000, guid: 5c558cc83561ce245b9797cd8e684b8c, type: 2}
+  enemyHitEffectPrefab: {fileID: 0}
 --- !u!120 &6705898168461765549
 LineRenderer:
   serializedVersion: 2

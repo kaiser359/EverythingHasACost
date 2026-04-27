@@ -2204,6 +2204,7 @@ MonoBehaviour:
   gS: {fileID: 0}
   gunScript: {fileID: 3793006138868340490}
   rotateScript: {fileID: 0}
+  footstepSound: {fileID: 8300000, guid: a8ca96fdb7da35a42bf54a5cebf08687, type: 3}
   ignoreMovement: 0
 --- !u!114 &1098391504989512959
 MonoBehaviour:
@@ -2218,6 +2219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
+  shoot: {fileID: 8300000, guid: f869c39a4d11d1a41972da4e8e9c13a7, type: 3}
 --- !u!114 &716872730060299646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,13 +2339,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6716aa76e0f4d94bb5bfcacbbc53025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  healthText: {fileID: 0}
-  coinHeart: {fileID: 0}
+  healthBar: {fileID: 5704893632543651891}
+  healthText: {fileID: 7842535061223324100}
+  coinHeart: {fileID: 7298187959004806808}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   fadeDuration: 1
   dimmy: {fileID: 4490205025231755062}
   blackOverlay: {fileID: 8081734386372666087}
+  hurt: {fileID: 8300000, guid: f938f33d2e7daa8469a98f8701bdaac4, type: 3}
 --- !u!1 &4565122427528731152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,7 +3778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 269, y: -7.6587}
+  m_AnchoredPosition: {x: 213.21, y: -7.6587}
   m_SizeDelta: {x: 509.5764, y: 494.0049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5392696147175436902
@@ -3806,7 +3809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7814824903320663495, guid: b9c17b206a53d4d459eec8a4ac5c5e0b, type: 3}
+  m_Sprite: {fileID: 6699619252651556431, guid: 4d93f6ba050c6294182381b86e5be807, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

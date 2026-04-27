@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public EnemyStats stats;
     public float maxHealth;
     public Money money;
+    public AudioClip deathCoin;
 
     [SerializeField] GameObject damageParticles;
     [SerializeField] GameObject deathParticles;
@@ -48,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
         // death
         if (currentHealth <= 0)
         {
+            FindAnyObjectByType<AudioSource>().PlayOneShot(deathCoin);
             Die();
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
