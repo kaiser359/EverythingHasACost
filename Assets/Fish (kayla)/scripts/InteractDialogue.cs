@@ -18,6 +18,21 @@ public class InteractDialogue : MonoBehaviour
             character.GetComponent<Image>().color = Color.red;
         }
     }
+
+    public void StartDialogue(GameObject startNPC = null)
+    {
+        // initiate dialog without being triggered by collision, used for intro dialogue and cutscenes
+        if (startNPC != null)
+        {
+            NPC = startNPC;
+        }
+
+        Debug.Log("Interacting with NPC");
+        dialoguePanel.SetActive(true);
+        Time.timeScale = 0f;
+        NPC.GetComponent<Dialogue>().startDialogue();
+    }
+
     public void InteractWith(InputAction.CallbackContext ctx)
     {
         if (!ctx.started)
@@ -28,10 +43,7 @@ public class InteractDialogue : MonoBehaviour
         Debug.Log("Interacting");
         if (NPC != null)
         {
-            Debug.Log("Interacting with NPC");
-            dialoguePanel.SetActive(true);
-            Time.timeScale = 0f;
-            NPC.GetComponent<Dialogue>().startDialogue();
+            StartDialogue();
         }
         else { return; }
     }
@@ -70,5 +82,9 @@ public class InteractDialogue : MonoBehaviour
         {
             NPC.GetComponent<Dialogue>().nextLine();
         }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        NPC = null;
     }
 }

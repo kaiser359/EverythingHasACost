@@ -21,24 +21,33 @@ public enum Names
 public class Line
 {
     public Names name;
-    [TextArea]  public string text;
+    [TextArea] public string text;
 }
 
+[Serializable]
+public class DialogueSet
+{
+    // A serializable wrapper so Unity's inspector can display each dialogue set as an editable element.
+    public List<Line> lines;
+}
 
 public class Dialogue : MonoBehaviour
 {
     public bool IntroDi;
     public TextMeshProUGUI dialogueText;
-    public List<Line> lines;
+    //public List<Line> lines;
+    public List<DialogueSet> dialogueSets;
     public float speed = 0.04f;
     private int index;
 
     private bool dialogueActive = false;
+    private int dialogSet = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (IntroDi) { 
+            GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
             startDialogue();
         }
     }
@@ -56,6 +65,8 @@ public class Dialogue : MonoBehaviour
         }
 
         index = 0;
+        List<Line> lines = dialogueSets[dialogSet].lines;
+
         GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
         FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
@@ -66,6 +77,8 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator Type()
     {
+        List<Line> lines = dialogueSets[dialogSet].lines;
+
         dialogueText.text = "";
         Names currentChar = lines[index].name;
         if ((int)currentChar == 5) {dialogueText.text = "Dutchess Malveina: ";}
@@ -79,6 +92,8 @@ public class Dialogue : MonoBehaviour
 
     public void nextLine()
     {
+        List<Line> lines = dialogueSets[dialogSet].lines;
+
         // if current dialogue text < length of line, finish line
         if (dialogueText.text.Length < lines[index].text.Length + lines[index].name.ToString().Length + 2)
         {
@@ -106,8 +121,12 @@ public class Dialogue : MonoBehaviour
         {
             StopAllCoroutines();
             FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
+
+            dialogSet += 1;
             dialogueActive = false;
+            dialogSet = Mathf.Clamp(dialogSet, 0, dialogueSets.Count - 1);
         }
         
     }
+
 }
