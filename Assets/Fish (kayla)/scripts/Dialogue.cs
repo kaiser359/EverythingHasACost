@@ -21,7 +21,7 @@ public enum Names
 public class Line
 {
     public Names name;
-    public string text;
+    [TextArea] public string text;
 }
 
 

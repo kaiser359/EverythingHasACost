@@ -1365,7 +1365,7 @@ MonoBehaviour:
   dialogueText: {fileID: 779891243}
   lines:
   - name: 3
-    text: Hey! Welcome to heck, my names Ivanna, I'm the Devil
+    text: Hey! Welcome to heck! My names Ivanna, I'm the Devil.
   - name: 3
     text: And youuuuu borrowed 20 bucks from me for your gun, now I want my money
       back, with interest.
@@ -1382,9 +1382,9 @@ MonoBehaviour:
   - name: 0
     text: What kind of interest rate does it have for 20$ to turn into 10,000?!?!
   - name: 3
-    text: About 372.9%.
+    text: Abouuuuut... 372.9%.
   - name: 3
-    text: Butttt since I'm so nice ill drop the 99 cents
+    text: Buuuuut, since I'm so nice, I'll drop the 99 cents.
   speed: 0.04
 --- !u!4 &1511107869
 Transform:
@@ -1622,7 +1622,7 @@ Transform:
   - {fileID: 87019733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &2089240097
+--- !u!43 &2063428253
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1787,7 +1787,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &2107051650
+--- !u!43 &2089240097
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
