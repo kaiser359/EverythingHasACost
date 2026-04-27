@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class PurchaseBloodBag : MonoBehaviour
         if (thisBag != null) {
             var bagData = thisBag.GetComponent<BloodBagData>();
             image.sprite = bagData.ZoomedBloodBagSprite;
+            GetComponentInChildren<TextMeshProUGUI>().text = "Description:<br>" + bagData.BloodBagEffect + "<br>Damage: " + bagData.BloodBagDamage + "<br>Cooldown: " + bagData.Cooldown;
         }
     }
     public void Interact()

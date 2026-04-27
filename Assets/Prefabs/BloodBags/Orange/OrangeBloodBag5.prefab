@@ -51,6 +51,10 @@ MonoBehaviour:
   BloodBagSprite: {fileID: -5662394069295113142, guid: f7443ac2c1db9724594b9c48658638f3, type: 3}
   ZoomedBloodBagSprite: {fileID: -1011619465, guid: 421e699f6936d0e49875ac17a1c3b43b, type: 3}
   NextLevelBag: {fileID: 0}
+  BloodBagDamage: 30
+  BloodBagEffect: Fireball that splits into more fireballs (Destroys when touching
+    enemy projectiles)
+  Cooldown: 4
 --- !u!114 &5125390973889594104
 MonoBehaviour:
   m_ObjectHideFlags: 0
