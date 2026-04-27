@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3585087634936023345}
   - component: {fileID: 6500464348860045752}
   - component: {fileID: 8221836651151028198}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,4 +182,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  star: {fileID: 11400000, guid: fa865554980f30048aad9ac5fdbc68e6, type: 2}
