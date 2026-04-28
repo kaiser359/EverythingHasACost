@@ -37,6 +37,9 @@ public class Enemy1RangedScript : MonoBehaviour
     float shootTimer = 0f;
     float currentAngleOffset = 0f;
     public Levels level;
+
+    private Animator animator;
+
     void Start()
     {
         if (stats == null)
@@ -58,6 +61,9 @@ public class Enemy1RangedScript : MonoBehaviour
             // make enemy heavy so player bangs don't readily move it
             rb.mass = Mathf.Max(rb.mass, 5f);
         }
+
+        // animator
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
     private void Awake()
     {
@@ -118,6 +124,13 @@ public class Enemy1RangedScript : MonoBehaviour
                     wanderIdleTimer = Random.Range(idleMin, idleMax);
                 }
             }
+        }
+
+        // animator
+        Vector2 facing = playerTransform.position - transform.position;
+        if (facing.magnitude != 0)
+        {
+            animator.SetFloat("angle", Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg);
         }
     }
 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b9c17b206a53d4d459eec8a4ac5c5e0b
+guid: 1361b3758c4d8fc4582ea064cdc239f0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7814824903320663495
-    second: 1000019450_0
+      213: -8272735436108627377
+    second: IvannaHQStanding_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1000019450_0
+      name: IvannaHQStanding_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 60
         y: 0
-        width: 245
-        height: 248
+        width: 138
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c5fd4848d5d37c60800000000000000
-      internalID: 7814824903320663495
+      spriteID: f4285f1a3f6513d80800000000000000
+      internalID: -8272735436108627377
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1000019450_0: 7814824903320663495
+      IvannaHQStanding_0: -8272735436108627377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
