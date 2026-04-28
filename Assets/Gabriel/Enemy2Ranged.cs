@@ -49,6 +49,8 @@ public class Enemy2Ranged : MonoBehaviour
     private float damageTimer = 0f;
     private float activationTimer = 0f;
     private bool laserActive = false;
+    public float charger = 0;
+    public float timer = 5;
 
     void Start()
     {
@@ -108,11 +110,26 @@ public class Enemy2Ranged : MonoBehaviour
             activationTimer += Time.deltaTime;
 
             // Laser becomes active after warmup
-            if (activationTimer >= laserActivationCooldown)
+            if (activationTimer >= laserActivationCooldown && timer >0)
             {
                 laserActive = true;
                 FindAnyObjectByType<AudioSource>().PlayOneShot(laserSound);
             }
+            else if (timer < 0) { 
+                laserActive = false;
+                charger += Time.deltaTime;
+            }
+            if (laserActive == true)
+            {
+                timer -= Time.deltaTime;
+
+            }
+            if (charger > 5 && timer < 0)
+            {
+                timer = 5;
+                charger = 0;
+            }
+      
 
             // While warming up (not yet active), move slightly along the oscillated aim and face it
             if (!laserActive)
@@ -188,7 +205,7 @@ public class Enemy2Ranged : MonoBehaviour
                     // Rotate enemy smoothly while firing as well
                     float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
                     Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
+                  //  transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
                     lineRenderer.SetPosition(0, origin);
                     lineRenderer.SetPosition(1, end);
                 }
