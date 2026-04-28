@@ -70,3 +70,4 @@ MonoBehaviour:
   cooldown: 0.6
   star: {fileID: 11400000, guid: 66d6612321307354596e093e10ed0463, type: 2}
   _cooldownTimer: 0
+  dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}

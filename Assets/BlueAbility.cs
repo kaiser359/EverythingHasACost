@@ -33,6 +33,8 @@ public class BlueAbility : MonoBehaviour
     PlayerMovement playerMovement;
     List<Behaviour> _disabledBehaviours;
 
+    public AudioClip ice;
+
     // store original collider enabled states if needed
     bool[] _originalColliderStates;
 
@@ -138,6 +140,8 @@ public class BlueAbility : MonoBehaviour
         // throw a burst of 3 projectiles toward mouse (center + two spread)
         if (projectilePrefab != null)
         {
+            FindAnyObjectByType<AudioSource>().PlayOneShot(ice);
+
             Vector3 spawnPos = playerObject != null ? playerObject.transform.position : transform.position;
             Vector2 baseDir = (mouseWorld - spawnPos);
             if (baseDir.sqrMagnitude < 0.0001f) baseDir = transform.right;

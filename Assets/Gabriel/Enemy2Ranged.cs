@@ -113,7 +113,7 @@ public class Enemy2Ranged : MonoBehaviour
             if (activationTimer >= laserActivationCooldown && timer >0)
             {
                 laserActive = true;
-                FindAnyObjectByType<AudioSource>().PlayOneShot(laserSound);
+                GetComponent<AudioSource>().PlayOneShot(laserSound);
             }
             else if (timer < 0) { 
                 laserActive = false;

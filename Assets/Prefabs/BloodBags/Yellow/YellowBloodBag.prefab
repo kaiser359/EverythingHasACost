@@ -74,6 +74,7 @@ MonoBehaviour:
   suctionSpeed: 20
   killDistance: 2
   debugLog: 1
+  explosionSound: {fileID: 8300000, guid: dcd63e30f200bd24f9e152491e276b14, type: 3}
 --- !u!1001 &2153836587760529145
 PrefabInstance:
   m_ObjectHideFlags: 0

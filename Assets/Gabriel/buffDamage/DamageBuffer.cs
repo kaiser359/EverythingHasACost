@@ -9,6 +9,7 @@ public class DamageBuffer : MonoBehaviour
     public GameObject normalBullet;
     public GameObject buffedBullet;
     public float originakmoveSpeed;
+    public AudioClip coin;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
@@ -34,6 +35,7 @@ public class DamageBuffer : MonoBehaviour
     }
     public void ActivateAbility()
     {if (cooldown > 0) return;
+        FindAnyObjectByType<AudioSource>().PlayOneShot(coin);
 
         playerInfo.moveSpeed += 1f;
         money.money -= 100;

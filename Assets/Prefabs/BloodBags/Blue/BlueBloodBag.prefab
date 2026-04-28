@@ -81,6 +81,7 @@ MonoBehaviour:
   projectileSpeed: 14
   myColliders:
   - {fileID: 0}
+  ice: {fileID: 8300000, guid: 7ff3fac1c4753fa41ae58178d5023159, type: 3}
 --- !u!58 &8124467698411112349
 CircleCollider2D:
   m_ObjectHideFlags: 0
