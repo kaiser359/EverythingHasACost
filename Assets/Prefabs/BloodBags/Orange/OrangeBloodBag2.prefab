@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 6472705509876903387, guid: 98375287f2cba814384723480383ba74, type: 3}
   star: {fileID: 11400000, guid: 66d6612321307354596e093e10ed0463, type: 2}
+  fireballSound: {fileID: 8300000, guid: b779ed2a4e8750a4db203e7611ec75e2, type: 3}
   projectileSpeed: 8
   abilityCooldown: 8
   waveCount: 5

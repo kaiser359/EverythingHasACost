@@ -40,6 +40,8 @@ public class Enemy1RangedScript : MonoBehaviour
 
     private Animator animator;
 
+    public AudioClip shootSound;
+
     void Start()
     {
         if (stats == null)
@@ -153,7 +155,8 @@ public class Enemy1RangedScript : MonoBehaviour
     {
         if (bulletPrefab == null)
             return;
-       
+
+        GetComponent<AudioSource>().PlayOneShot(shootSound);
         for (int i = 0; i < bulletsCount; i++)
         {
             float angle = currentAngleOffset + i * (360f / bulletsCount);

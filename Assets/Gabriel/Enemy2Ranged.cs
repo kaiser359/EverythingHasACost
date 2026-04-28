@@ -111,7 +111,7 @@ public class Enemy2Ranged : MonoBehaviour
             if (activationTimer >= laserActivationCooldown)
             {
                 laserActive = true;
-                FindAnyObjectByType<AudioSource>().PlayOneShot(laserSound);
+                GetComponent<AudioSource>().PlayOneShot(laserSound);
             }
 
             // While warming up (not yet active), move slightly along the oscillated aim and face it

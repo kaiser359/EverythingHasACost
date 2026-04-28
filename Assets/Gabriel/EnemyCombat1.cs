@@ -140,7 +140,7 @@ public class EnemyCombat1 : MonoBehaviour
 
     IEnumerator DashToMarked(Vector3 target, float duration)
     {
-        FindAnyObjectByType<AudioSource>().PlayOneShot(dashSound);
+        GetComponent<AudioSource>().PlayOneShot(dashSound);
         isDashing = true;
         Vector3 start = transform.position;
         float elapsed = 0f;
