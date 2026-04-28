@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
 using System.Reflection;
+using UnityEngine.Splines.Interpolators;
 
 public enum Names
 {
@@ -40,14 +41,16 @@ public class Dialogue : MonoBehaviour
     public float speed = 0.04f;
     private int index;
 
-    private bool dialogueActive = false;
+    public bool dialogueActive = false;
     private int dialogSet = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (IntroDi) { 
+        if (IntroDi)
+        {
             GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().ActivatePanel();
             startDialogue();
         }
     }
@@ -68,8 +71,10 @@ public class Dialogue : MonoBehaviour
         List<Line> lines = dialogueSets[dialogSet].lines;
 
         GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
+        //FindAnyObjectByType<InteractDialogue>().ActivatePanel();
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
-        FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
+        //FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
+        FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].gameObject.GetComponent<AnimateDialogue>().StartTalking();
         StartCoroutine(Type());
 
         dialogueActive = true;
@@ -86,7 +91,18 @@ public class Dialogue : MonoBehaviour
         foreach (char letter in lines[index].text.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSecondsRealtime(speed);
+
+            float delay = speed;
+            if (letter == ',')
+            {
+                delay *= 4; // longer pause for commas
+            }
+            if (letter == '.' || letter == '!' || letter == '?')
+            {
+                delay *= 8; // even longer pause for sentence endings
+            }
+
+            yield return new WaitForSecondsRealtime(delay);
         }
     }
 
@@ -106,16 +122,19 @@ public class Dialogue : MonoBehaviour
         if (index < lines.Count - 1)
         {
             int currentChar = (int)lines[index].name;
-            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", false);
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().StartListening();
+            //FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", false);
             Debug.Log(currentChar + "now listening" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
 
             index++;
             currentChar = (int)lines[index].name;
             GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
             charCloseUp.SetActive(true);
-            FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
+            //FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
             Debug.Log(currentChar + "now talking" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
             StartCoroutine(Type());
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().StartTalking();
+            FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().Jump();
         }
         else
         {

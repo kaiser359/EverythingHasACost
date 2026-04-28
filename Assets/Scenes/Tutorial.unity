@@ -672,6 +672,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &609790537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3635119020838283266, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +853,7 @@ MonoBehaviour:
   - {x: -5, y: 1.2, z: 0}
   - {x: -5.2, y: 0, z: 0}
   - {x: -5, y: -1.2, z: 0}
---- !u!43 &779474188
+--- !u!43 &726388415
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1035,6 +1040,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1013690149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3563371082246602536, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1013690154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013690149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6885576f8d276c4ca4313d5db466660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1042352813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1851165236862349391, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042352818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042352813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6885576f8d276c4ca4313d5db466660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1066778129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1173,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1396946960182495232, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396946960182495232, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1775386056533920210, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1172,6 +1219,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775386056533920210, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885226529585502787, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2781349735663604311, guid: 28c342484991be14f900243065eec5ee, type: 3}
@@ -1218,6 +1269,10 @@ PrefabInstance:
       propertyPath: gunScript
       value: 
       objectReference: {fileID: 38809480}
+    - target: {fileID: 4857555829717515582, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5791990824072046008, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_LightVolumeEnabled
       value: 0
@@ -1234,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6393394687816719438, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6896710183566898542, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: coinHeart
       value: 
@@ -1246,12 +1305,24 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 156112138}
+    - target: {fileID: 7224325516891179309, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7476561645412938845, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7476561645412938845, guid: 28c342484991be14f900243065eec5ee, type: 3}
       propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574471918292029350, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 609790537}
+    - target: {fileID: 7806288998291033298, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1264,7 +1335,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8822791587271490409, guid: 28c342484991be14f900243065eec5ee, type: 3}
       insertIndex: 4
       addedObject: {fileID: 670007529}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8997723953225389970, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1876734880}
+    - targetCorrespondingSourceObject: {fileID: 8960040781536330501, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1495182972}
+    - targetCorrespondingSourceObject: {fileID: 3556181243586552379, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1361606062}
+    - targetCorrespondingSourceObject: {fileID: 3563371082246602536, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1013690154}
+    - targetCorrespondingSourceObject: {fileID: 1851165236862349391, guid: 28c342484991be14f900243065eec5ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042352818}
   m_SourcePrefab: {fileID: 100100000, guid: 28c342484991be14f900243065eec5ee, type: 3}
 --- !u!4 &1097030981 stripped
 Transform:
@@ -1496,6 +1582,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04b7842410c22c949872872db1f4a40a, type: 3}
+--- !u!1 &1361606057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3556181243586552379, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1361606062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361606057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6885576f8d276c4ca4313d5db466660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1495182967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8960040781536330501, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1495182972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495182967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6885576f8d276c4ca4313d5db466660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511107867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1652,7 @@ MonoBehaviour:
   dialogueSets:
   - lines:
     - name: 3
-      text: Hey! Welcome to heck! my names Ivanna, I'm the Devil.
+      text: Hey! Welcome to heck! my name's Ivanna, I'm the Devil.
     - name: 3
       text: And youuuuu borrowed 20 bucks from me for your gun. I want my money back,
         with interest.
@@ -1552,7 +1672,22 @@ MonoBehaviour:
       text: Aboooout... 372.9%.
     - name: 3
       text: but since I'm soooo nice, i'll drop the 99 cents.
+    - name: 3
+      text: if you ever need any help, come talk to me.
+  - lines:
+    - name: 3
+      text: ...need help already?
+    - name: 3
+      text: geez...
+    - name: 0
+      text: sorry?
+    - name: 3
+      text: just head to the store and buy something from there.
+    - name: 3
+      text: your health and money are linked, so the fact that you're even alive
+        means you have some money.
   speed: 0.04
+  dialogueActive: 0
 --- !u!4 &1511107869
 Transform:
   m_ObjectHideFlags: 0
@@ -1718,6 +1853,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1876734875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8997723953225389970, guid: 28c342484991be14f900243065eec5ee, type: 3}
+  m_PrefabInstance: {fileID: 1097030979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876734880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876734875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6885576f8d276c4ca4313d5db466660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1900362385
 GameObject:
   m_ObjectHideFlags: 0
