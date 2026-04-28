@@ -23,6 +23,8 @@ public class NuclearBomb : MonoBehaviour
 
     float lastUsedTime = -999f;
 
+    public AudioClip explosionSound;
+
     public void ActivateAbility()
     {
         if (Time.time < lastUsedTime + cooldown)
@@ -31,6 +33,7 @@ public class NuclearBomb : MonoBehaviour
             return;
         }
 
+        FindAnyObjectByType<AudioSource>().PlayOneShot(explosionSound);
         lastUsedTime = Time.time;
         StartCoroutine(ActivateRoutine());
     }

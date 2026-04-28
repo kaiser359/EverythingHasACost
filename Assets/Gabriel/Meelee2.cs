@@ -105,7 +105,7 @@ public class Meelee2 : MonoBehaviour
     }
     private void Attack()
     {
-        FindAnyObjectByType<AudioSource>().PlayOneShot(sword);
+        GetComponent<AudioSource>().PlayOneShot(sword);
         anim.SetBool("Swing", true);
         atkplace.SetActive(true) ;
        

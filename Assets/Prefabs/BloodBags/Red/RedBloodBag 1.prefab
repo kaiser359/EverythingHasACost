@@ -73,6 +73,7 @@ MonoBehaviour:
   normalBullet: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
   buffedBullet: {fileID: 2860290889472336480, guid: 8a74d2cdcd21a6545aee958de3469fae, type: 3}
   originakmoveSpeed: 5
+  coin: {fileID: 8300000, guid: 703221ecff6b691428fd0174d680b2d6, type: 3}
 --- !u!1001 &5525911030616735384
 PrefabInstance:
   m_ObjectHideFlags: 0
