@@ -2158,7 +2158,7 @@ MonoBehaviour:
   gS: {fileID: 0}
   gunScript: {fileID: 3793006138868340490}
   rotateScript: {fileID: 0}
-  footstepSound: {fileID: 8300000, guid: a8ca96fdb7da35a42bf54a5cebf08687, type: 3}
+  footstepSound: {fileID: 8300000, guid: cc2e16e544b9713418a69703d6ecc188, type: 3}
   ignoreMovement: 0
 --- !u!114 &1098391504989512959
 MonoBehaviour:
@@ -2174,6 +2174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gS: {fileID: 0}
   shoot: {fileID: 8300000, guid: f869c39a4d11d1a41972da4e8e9c13a7, type: 3}
+  pitchVariance: 0
 --- !u!114 &716872730060299646
 MonoBehaviour:
   m_ObjectHideFlags: 0
