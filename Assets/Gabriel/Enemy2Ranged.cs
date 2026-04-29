@@ -9,7 +9,7 @@ public class Enemy2Ranged : MonoBehaviour
     public LineRenderer lineRenderer;
     public Money money;
     public Levels level;
-  
+  public Animator animator;
 
     [Header("Ranges & Movement")]
     public float detectionRange = 8f; 
@@ -143,7 +143,7 @@ public class Enemy2Ranged : MonoBehaviour
                 // rotate to face the aim direction
                 float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
                 Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
+               // transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
 
                 if (lineRenderer != null)
                     lineRenderer.enabled = false;
@@ -203,8 +203,8 @@ public class Enemy2Ranged : MonoBehaviour
                     }
 
                     // Rotate enemy smoothly while firing as well
-                    float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
-                    Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
+                   // float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
+                    //Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
                   //  transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
                     lineRenderer.SetPosition(0, origin);
                     lineRenderer.SetPosition(1, end);
