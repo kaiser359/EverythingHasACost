@@ -19,11 +19,12 @@ public class StoreInteract : MonoBehaviour
         {
             Store.GetComponent<Store>().StartStore();
         }
-        else { return; }
     }
-    public void LeaveStore() { 
-        Store.GetComponent<Store>().storePanel.SetActive(false);
-        Time.timeScale = 1f;
+    public void LeaveStore() {
+        if (Store != null) {
+            Store.GetComponent<Store>().storePanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
