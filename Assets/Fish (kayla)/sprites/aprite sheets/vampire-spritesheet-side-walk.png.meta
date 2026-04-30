@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 84e0ae5b9cd034344869b94d1b1d85e4
+guid: f0e5d11487b495c4db15e5883184a388
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 267772228047334665
-    second: demon-single-image-up_0
+      213: -7416320463641691263
+    second: vampire-spritesheet-side-walk_0
   - first:
-      213: 5963628671455879621
-    second: demon-single-image-up_1
+      213: -2618780836222906225
+    second: vampire-spritesheet-side-walk_1
   - first:
-      213: 2765843373533594373
-    second: demon-single-image-up_2
+      213: -5326667624853420381
+    second: vampire-spritesheet-side-walk_2
+  - first:
+      213: 4069759160371557655
+    second: vampire-spritesheet-side-walk_3
+  - first:
+      213: -1997531491194441481
+    second: vampire-spritesheet-side-walk_4
+  - first:
+      213: -2270568701028001980
+    second: vampire-spritesheet-side-walk_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,7 +141,73 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: demon-single-image-up_0
+      name: vampire-spritesheet-side-walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b3d28e4dfe31990800000000000000
+      internalID: -7416320463641691263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-side-walk_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80555054b838abd0800000000000000
+      internalID: -2618780836222906225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-side-walk_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a6c9006400e316b0800000000000000
+      internalID: -5326667624853420381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-side-walk_3
       rect:
         serializedVersion: 2
         x: 0
@@ -147,8 +222,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90de9753c6157b300800000000000000
-      internalID: 267772228047334665
+      spriteID: 715b653d460ba7830800000000000000
+      internalID: 4069759160371557655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-side-walk_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0f2bf21b75744e0800000000000000
+      internalID: -1997531491194441481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vampire-spritesheet-side-walk_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4471b11ebc15d70e0800000000000000
+      internalID: -2270568701028001980
       vertices: []
       indices: 
       edges: []
@@ -157,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1b4139cfac0958a44b4ac2915de07c9a
+    spriteID: 4ee198f52838c6b449190abfd4f52f48
     internalID: 0
     vertices: []
     indices: 
@@ -167,7 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      demon-single-image-up_0: 267772228047334665
+      vampire-spritesheet-side-walk_0: -7416320463641691263
+      vampire-spritesheet-side-walk_1: -2618780836222906225
+      vampire-spritesheet-side-walk_2: -5326667624853420381
+      vampire-spritesheet-side-walk_3: 4069759160371557655
+      vampire-spritesheet-side-walk_4: -1997531491194441481
+      vampire-spritesheet-side-walk_5: -2270568701028001980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

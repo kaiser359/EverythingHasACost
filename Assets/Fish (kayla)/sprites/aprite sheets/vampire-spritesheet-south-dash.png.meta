@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 6ee9a01e2ab1442429580c3d7d7146ac
+guid: 4158990a8eff13942b65ceb484021371
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5775780464220626420
-    second: vampire-spritesheet-north-walk_0
+      213: 3929306256152066204
+    second: vampire-spritesheet-south-dash_0
   - first:
-      213: 3552861027994266597
-    second: vampire-spritesheet-north-walk_1
+      213: -1669850977240687159
+    second: vampire-spritesheet-south-dash_1
   - first:
-      213: -2116416649654544182
-    second: vampire-spritesheet-north-walk_2
+      213: -3203502412736059986
+    second: vampire-spritesheet-south-dash_2
   - first:
-      213: 6266482775115358590
-    second: vampire-spritesheet-north-walk_3
+      213: -3992298784036527985
+    second: vampire-spritesheet-south-dash_3
   - first:
-      213: -8348469364529403421
-    second: vampire-spritesheet-north-walk_4
+      213: -6742512720087732406
+    second: vampire-spritesheet-south-dash_4
   - first:
-      213: 807769200468793582
-    second: vampire-spritesheet-north-walk_5
+      213: 4614049383805045742
+    second: vampire-spritesheet-south-dash_5
+  - first:
+      213: 6320879360019719401
+    second: vampire-spritesheet-south-dash_6
+  - first:
+      213: -7614793966390855673
+    second: vampire-spritesheet-south-dash_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_0
+      name: vampire-spritesheet-south-dash_0
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c022d79e44e48dfa0800000000000000
-      internalID: -5775780464220626420
+      spriteID: c98f9abb833b78630800000000000000
+      internalID: 3929306256152066204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_1
+      name: vampire-spritesheet-south-dash_1
       rect:
         serializedVersion: 2
         x: 128
@@ -178,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5eb6de5f74c4e4130800000000000000
-      internalID: 3552861027994266597
+      spriteID: 9cddab9226f73d8e0800000000000000
+      internalID: -1669850977240687159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_2
+      name: vampire-spritesheet-south-dash_2
       rect:
         serializedVersion: 2
         x: 256
@@ -200,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac85e98354af0a2e0800000000000000
-      internalID: -2116416649654544182
+      spriteID: ea5a2cb478fda83d0800000000000000
+      internalID: -3203502412736059986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_3
+      name: vampire-spritesheet-south-dash_3
       rect:
         serializedVersion: 2
         x: 0
@@ -222,14 +228,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e71ead9f1e407f650800000000000000
-      internalID: 6266482775115358590
+      spriteID: f80674478618898c0800000000000000
+      internalID: -3992298784036527985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_4
+      name: vampire-spritesheet-south-dash_4
       rect:
         serializedVersion: 2
         x: 128
@@ -244,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e96ef45857442c80800000000000000
-      internalID: -8348469364529403421
+      spriteID: a4f2e998768cd62a0800000000000000
+      internalID: -6742512720087732406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vampire-spritesheet-north-walk_5
+      name: vampire-spritesheet-south-dash_5
       rect:
         serializedVersion: 2
         x: 256
@@ -266,8 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee8917edec5c53b00800000000000000
-      internalID: 807769200468793582
+      spriteID: eeb4fc1e775680040800000000000000
+      internalID: 4614049383805045742
       vertices: []
       indices: 
       edges: []
@@ -276,7 +282,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ea910a03754324e488b77425c68f2ade
+    spriteID: fc09f38da8d00474288fb323214d2527
     internalID: 0
     vertices: []
     indices: 
@@ -286,12 +292,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      vampire-spritesheet-north-walk_0: -5775780464220626420
-      vampire-spritesheet-north-walk_1: 3552861027994266597
-      vampire-spritesheet-north-walk_2: -2116416649654544182
-      vampire-spritesheet-north-walk_3: 6266482775115358590
-      vampire-spritesheet-north-walk_4: -8348469364529403421
-      vampire-spritesheet-north-walk_5: 807769200468793582
+      vampire-spritesheet-south-dash_0: 3929306256152066204
+      vampire-spritesheet-south-dash_1: -1669850977240687159
+      vampire-spritesheet-south-dash_2: -3203502412736059986
+      vampire-spritesheet-south-dash_3: -3992298784036527985
+      vampire-spritesheet-south-dash_4: -6742512720087732406
+      vampire-spritesheet-south-dash_5: 4614049383805045742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
