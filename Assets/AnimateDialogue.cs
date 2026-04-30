@@ -96,7 +96,7 @@ public class AnimateDialogue : MonoBehaviour
 
             float y = -4 * t * (t - 1) * jumpHeight; // Parabolic jump formula
 
-            Debug.Log("Jumping: " + gameObject.name + " at time: " + Time.unscaledTime + " with y: " + y);
+            //Debug.Log("Jumping: " + gameObject.name + " at time: " + Time.unscaledTime + " with y: " + y);
 
             //currentChar.GetComponent<RectTransform>().localScale = Vector3.one * (1 + 0.1f * Mathf.Sin(t * Mathf.PI)); // Scale up and down for a bouncing effect
             gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(gameObject.GetComponent<RectTransform>().anchoredPosition.x, originalY + y + yOffset);

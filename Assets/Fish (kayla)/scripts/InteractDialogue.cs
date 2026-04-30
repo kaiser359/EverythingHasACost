@@ -59,8 +59,8 @@ public class InteractDialogue : MonoBehaviour
 
     IEnumerator CActivatePanel()
     {
-        // delay cuz apparently doing it on startup is Bad
-        yield return new WaitForSecondsRealtime(0.1f);
+        //// delay cuz apparently doing it on startup is Bad
+        //yield return new WaitForSecondsRealtime(0.1f);
 
         dialoguePanel.SetActive(true);
         float initialTime = Time.unscaledTime;
@@ -147,6 +147,7 @@ public class InteractDialogue : MonoBehaviour
         //dialoguePanel.SetActive(false);
         Time.timeScale = 1f;
     }
+
     public void NextLine(InputAction.CallbackContext ctx)
     {
         if (!ctx.started)
@@ -159,6 +160,7 @@ public class InteractDialogue : MonoBehaviour
             NPC.GetComponent<Dialogue>().nextLine();
         }
     }
+
     public void OnTriggerExit2D(Collider2D collision)
     {
         NPC = null;
