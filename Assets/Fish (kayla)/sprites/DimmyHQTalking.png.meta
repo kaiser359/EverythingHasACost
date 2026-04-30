@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93dabd3bd05948b44b0e037e167bc8e4
+guid: 01194d30de26e174ba7cc9c2c9bffd98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8730405696210839767
-    second: fallen-angel-single-image-down_0
+      213: 1022602589598674001
+    second: DimmyHQTalking_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fallen-angel-single-image-down_0
+      name: DimmyHQTalking_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 60
         y: 0
-        width: 128
-        height: 128
+        width: 153
+        height: 247
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d8a1bb99b1a82970800000000000000
-      internalID: 8730405696210839767
+      spriteID: 15c6c6323a3013e00800000000000000
+      internalID: 1022602589598674001
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fallen-angel-single-image-down_0: 8730405696210839767
+      DimmyHQTalking_0: 1022602589598674001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

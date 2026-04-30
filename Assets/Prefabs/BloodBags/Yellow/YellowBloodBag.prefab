@@ -74,6 +74,10 @@ MonoBehaviour:
   suctionSpeed: 20
   killDistance: 2
   debugLog: 1
+  vfx: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+  baseColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  increaseSpeed: 2
+  intensity: 2
   explosionSound: {fileID: 8300000, guid: dcd63e30f200bd24f9e152491e276b14, type: 3}
 --- !u!1001 &2153836587760529145
 PrefabInstance:
@@ -183,6 +187,34 @@ PrefabInstance:
     - target: {fileID: 675698345535777022, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Name
+      value: New Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 25.660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 8.265343
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985521269908224154, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3928425117156503116, guid: 3422b39d3bfafe84cb74254c0a1f8851, type: 3}
       propertyPath: m_LocalPosition.x
