@@ -55,10 +55,10 @@ public class LazerBOOM : MonoBehaviour
     private void Update()
     {
         if (timer > 0f) timer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ActivateAbility();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    ActivateAbility();
+        //}
     }
 
     public void ActivateAbility()

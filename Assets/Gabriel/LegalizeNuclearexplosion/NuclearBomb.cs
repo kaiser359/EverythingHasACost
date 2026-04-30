@@ -176,13 +176,13 @@ public class NuclearBomb : MonoBehaviour
         // quick test trigger: press 'K' to activate ability
 
         
-          if(Input.GetKeyDown(KeyCode.K)) {
+          //if(Input.GetKeyDown(KeyCode.K)) {
 
-            print("Nuclear Bomb Activated!"); 
-            ActivateAbility();
+          //  print("Nuclear Bomb Activated!"); 
+          //  ActivateAbility();
             
 
-            }
+          //  }
         
     }
 
