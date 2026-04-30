@@ -9,7 +9,7 @@ public class Enemy2Ranged : MonoBehaviour
     public LineRenderer lineRenderer;
     public Money money;
     public Levels level;
-  
+  public Animator animator;
 
     [Header("Ranges & Movement")]
     public float detectionRange = 8f; 
@@ -36,6 +36,7 @@ public class Enemy2Ranged : MonoBehaviour
     public float preFireMoveAmount = 0.25f;
 
     public AudioClip laserSound;
+    public SpriteRenderer spirets;
 
     private Transform playerTransform;
     private Vector3 originPosition;
@@ -95,7 +96,7 @@ public class Enemy2Ranged : MonoBehaviour
             }
         }
 
-        // compute oscillated aim continuously so the enemy can move/face while warming up
+        
         Vector2 oscillatedAim = _currentAimDir.normalized;
         {
             Vector2 aim = _currentAimDir.normalized;
@@ -107,6 +108,8 @@ public class Enemy2Ranged : MonoBehaviour
 
         if (dist <= detectionRange + level.levelNumber)
         {
+            animator.SetBool("Lazer",true);
+            animator.speed = 0.1f;
             activationTimer += Time.deltaTime;
 
             // Laser becomes active after warmup
@@ -124,14 +127,14 @@ public class Enemy2Ranged : MonoBehaviour
                 timer -= Time.deltaTime;
 
             }
-            if (charger > 5 && timer < 0)
+            if (charger > 1 && timer < 0)
             {
-                timer = 5;
+                timer = 7;
                 charger = 0;
             }
       
 
-            // While warming up (not yet active), move slightly along the oscillated aim and face it
+          
             if (!laserActive)
             {
                 // move a small amount in the oscillated aim direction to telegraph the attack
@@ -140,15 +143,15 @@ public class Enemy2Ranged : MonoBehaviour
                     if (rb != null) rb.MovePosition(newPos);
                     else transform.position = newPos;
 
-                // rotate to face the aim direction
+                
                 float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
                 Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
+               // transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
 
                 if (lineRenderer != null)
                     lineRenderer.enabled = false;
             }
-            else // laser active: perform raycast and render
+            else 
             {
                 if (lineRenderer != null)
                 {
@@ -171,7 +174,7 @@ public class Enemy2Ranged : MonoBehaviour
                             var playerHealth = hit.collider.GetComponentInChildren<HealthBar>();
                             if (playerHealth != null) playerHealth.TakeDamage(damagePerTick + (money.money / 100) + (level.levelNumber*10));
 
-                            // prefer the rigidbody reported by the raycast, fall back to parent lookup
+                           
                             Rigidbody2D prb = hit.rigidbody != null ? hit.rigidbody : hit.collider.GetComponentInParent<Rigidbody2D>();
 
                             // compute knockback direction from impact point for better accuracy
@@ -203,16 +206,46 @@ public class Enemy2Ranged : MonoBehaviour
                     }
 
                     // Rotate enemy smoothly while firing as well
-                    float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
-                    Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
+                   // float desiredAngle = Mathf.Atan2(oscillatedAim.y, oscillatedAim.x) * Mathf.Rad2Deg;
+                    //Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
                   //  transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
                     lineRenderer.SetPosition(0, origin);
                     lineRenderer.SetPosition(1, end);
+                    if (lineRenderer.GetPosition(1).x >= lineRenderer.GetPosition(0).x && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) > Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatX",-1);
+                        animator.SetFloat("FloatY", 0);
+                        spirets.flipX = false;
+                        lineRenderer.sortingLayerID = 0;
+
+                    }
+                    if (lineRenderer.GetPosition(1).x < lineRenderer.GetPosition(0).x && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) > Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatX", 1);
+                        animator.SetFloat("FloatY", 0);
+                        spirets.flipX = true;
+                        lineRenderer.sortingLayerID = 0;
+                    }
+                    if (lineRenderer.GetPosition(1).y < lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatY", -1);
+                        animator.SetFloat("FloatX", 0);
+                        lineRenderer.sortingLayerID = 0;
+                    }
+                    if (lineRenderer.GetPosition(1).y > lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatY", 1);
+                        animator.SetFloat("FloatX", 0);
+                        lineRenderer.sortingLayerID = 1;
+                    }
                 }
             }
         }
         else if (playerTransform != null && dist <= chaseRange)
         {
+
+            animator.SetBool("Lazer", false);
+            animator.speed = 1;
             timerTohit = 0f;
             // reset laser warmup/state when leaving detection range
             activationTimer = 0f;
@@ -226,6 +259,9 @@ public class Enemy2Ranged : MonoBehaviour
         }
         else
         {
+
+            animator.SetBool("Lazer", false);
+            animator.speed = 1;
             timerTohit = 0;
             activationTimer = 0f;
             laserActive = false;

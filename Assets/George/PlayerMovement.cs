@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         while (ctx.ReadValue<Vector2>() != Vector2.zero)
         {
             GetComponent<AudioSource>().PlayOneShot(footstepSound);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             /*if(ctx.ReadValue<Vector2>() == Vector2.zero)
             {
                 GetComponent<AudioSource>().Stop();

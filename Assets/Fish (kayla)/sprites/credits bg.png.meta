@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93dabd3bd05948b44b0e037e167bc8e4
+guid: fcdb8f517866e0d4d9a07f26225b55a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8730405696210839767
-    second: fallen-angel-single-image-down_0
+      213: 4740325537706617535
+    second: credits bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fallen-angel-single-image-down_0
+      name: credits bg_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d8a1bb99b1a82970800000000000000
-      internalID: 8730405696210839767
+      spriteID: fba27b216f409c140800000000000000
+      internalID: 4740325537706617535
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fallen-angel-single-image-down_0: 8730405696210839767
+      credits bg_0: 4740325537706617535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
