@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1972479259449994651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.55, y: 0.83, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,7 +236,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7231387568904963627
@@ -256,7 +256,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 5653735071601092590}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 1564538385612474427}
   detectionRange: 8
   chaseRange: 14
   chaseSpeed: 2.5
@@ -276,6 +276,7 @@ MonoBehaviour:
   preFireMoveSpeed: 1.2
   preFireMoveAmount: 0.25
   laserSound: {fileID: 8300000, guid: 1c9361ccb78f414479a7df862ab84159, type: 3}
+  spirets: {fileID: 8095633374626694735}
   timerTohit: 0
   charger: 0
   timer: 5
@@ -350,9 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351e50e287643114894dca6f3a5c66b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1564538385612474427}
   moveSpeed: 0
-  sr: {fileID: 0}
+  sr: {fileID: 8095633374626694735}
 --- !u!70 &3274424145676556931
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -513,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 8709090292053484004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.08, y: 0.59, z: 0}
   m_LocalScale: {x: 0.9522, y: 0.267, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -604,11 +605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: 5
+      value: 5.41
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Positions.Array.data[2].z
@@ -1432,11 +1433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2798886451372276233, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.48
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 2798886451372276233, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 2798886451372276233, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_LocalPosition.z

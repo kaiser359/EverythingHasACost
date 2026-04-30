@@ -36,6 +36,7 @@ public class Enemy2Ranged : MonoBehaviour
     public float preFireMoveAmount = 0.25f;
 
     public AudioClip laserSound;
+    public SpriteRenderer spirets;
 
     private Transform playerTransform;
     private Vector3 originPosition;
@@ -108,7 +109,7 @@ public class Enemy2Ranged : MonoBehaviour
         if (dist <= detectionRange + level.levelNumber)
         {
             animator.SetBool("Lazer",true);
-            animator.speed = 0;
+            animator.speed = 0.1f;
             activationTimer += Time.deltaTime;
 
             // Laser becomes active after warmup
@@ -126,7 +127,7 @@ public class Enemy2Ranged : MonoBehaviour
                 timer -= Time.deltaTime;
 
             }
-            if (charger > 5 && timer < 0)
+            if (charger > 2 && timer < 0)
             {
                 timer = 5;
                 charger = 0;
@@ -210,15 +211,39 @@ public class Enemy2Ranged : MonoBehaviour
                   //  transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, rotationSpeed * Time.deltaTime);
                     lineRenderer.SetPosition(0, origin);
                     lineRenderer.SetPosition(1, end);
-                    if (lineRenderer.GetPosition(1).x >= 3)
+                    if (lineRenderer.GetPosition(1).x >= lineRenderer.GetPosition(0).x && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) > Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
                     {
+                        animator.SetFloat("FloatX",-1);
+                        animator.SetFloat("FloatY", 0);
+                        spirets.flipX = false;
 
+
+                    }
+                    if (lineRenderer.GetPosition(1).x < lineRenderer.GetPosition(0).x && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) > Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatX", 1);
+                        animator.SetFloat("FloatY", 0);
+                        spirets.flipX = true;
+                    }
+                    if (lineRenderer.GetPosition(1).y < lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatY", -1);
+                        animator.SetFloat("FloatX", 0);
+                    }
+                    if (lineRenderer.GetPosition(1).y > lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
+                    {
+                        animator.SetFloat("FloatY", 1);
+                        animator.SetFloat("FloatX", 0);
+                        lineRenderer.sortingLayerID = 1;
                     }
                 }
             }
         }
         else if (playerTransform != null && dist <= chaseRange)
         {
+
+            animator.SetBool("Lazer", false);
+            animator.speed = 1;
             timerTohit = 0f;
             // reset laser warmup/state when leaving detection range
             activationTimer = 0f;
@@ -232,6 +257,9 @@ public class Enemy2Ranged : MonoBehaviour
         }
         else
         {
+
+            animator.SetBool("Lazer", false);
+            animator.speed = 1;
             timerTohit = 0;
             activationTimer = 0f;
             laserActive = false;
