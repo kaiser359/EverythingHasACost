@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityCooldown: 14.07
   timer: 0
-  SpecialParticles: {fileID: 0}
+  SpecialParticles: {fileID: 6913290969013921000, guid: e324b54d3bbe6db419488039ce1a3942, type: 3}
   particleSpeed: 5
   activateDelay: 0.3
   stayDuration: 3
@@ -87,7 +87,7 @@ MonoBehaviour:
   beamColor: {r: 0, g: 1, b: 1, a: 1}
   line: {fileID: 6705898168461765549}
   star: {fileID: 11400000, guid: 4a184a7e473eacc448643992905dd14e, type: 2}
-  enemyHitEffectPrefab: {fileID: 0}
+  enemyHitEffectPrefab: {fileID: 8198056685216924639, guid: a8a4edc1e38c41c4dac8e97fce029987, type: 3}
 --- !u!120 &6705898168461765549
 LineRenderer:
   serializedVersion: 2

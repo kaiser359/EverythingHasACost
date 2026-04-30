@@ -105,13 +105,13 @@ public class PlayerMovement : MonoBehaviour
     {
         while (ctx.ReadValue<Vector2>() != Vector2.zero)
         {
-            FindAnyObjectByType<AudioSource>().PlayOneShot(footstepSound);
-            yield return new WaitForSeconds(0.2f);
-            if(ctx.ReadValue<Vector2>() == Vector2.zero)
+            GetComponent<AudioSource>().PlayOneShot(footstepSound);
+            yield return new WaitForSeconds(0.4f);
+            /*if(ctx.ReadValue<Vector2>() == Vector2.zero)
             {
-                FindAnyObjectByType<AudioSource>().Stop();
+                GetComponent<AudioSource>().Stop();
                 yield break;
-            }
+            }*/
         }
     }
 }

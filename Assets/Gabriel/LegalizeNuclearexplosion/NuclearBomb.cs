@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.VFX;
 
 public class NuclearBomb : MonoBehaviour
 {
@@ -22,6 +25,13 @@ public class NuclearBomb : MonoBehaviour
     public bool debugLog = true;
 
     float lastUsedTime = -999f;
+    private VisualEffect vfx;
+    public Color baseColor = Color.yellow;
+    private float increaseSpeed = 1f;
+    private float intensity = 4.0f;
+    private float currentIntensity = 1f;
+    public AudioClip explosionSound;
+    
 
     public void ActivateAbility()
     {
@@ -31,6 +41,7 @@ public class NuclearBomb : MonoBehaviour
             return;
         }
 
+        FindAnyObjectByType<AudioSource>().PlayOneShot(explosionSound);
         lastUsedTime = Time.time;
         StartCoroutine(ActivateRoutine());
     }
@@ -43,6 +54,7 @@ public class NuclearBomb : MonoBehaviour
         {
             activeSpite = Instantiate(spite, transform.position, spite.transform.rotation);
             activeSpite.SetActive(true);
+            vfx = activeSpite.GetComponent<VisualEffect>();
         }
         else
         {
@@ -96,7 +108,12 @@ public class NuclearBomb : MonoBehaviour
                     }
                 }
             }
+            // optional: expand spite over time to visualize radius growth
+            currentIntensity += increaseSpeed * (5*Time.deltaTime);
+            activeSpite.transform.localScale += Vector3.one * (radius / duration) * Time.deltaTime;
 
+            // optional: fade color based on size
+            vfx.SetVector4("New Color", baseColor * currentIntensity);
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -124,10 +141,30 @@ public class NuclearBomb : MonoBehaviour
                 }
             }
         }
+        // set final scale and alpha
+        
+            //activeSpite.transform.localScale = Vector3.one * 5f;
+
+
+
 
         // destroy spawned spite if we created one
         if (activeSpite != null && activeSpite != this.gameObject)
         {
+            // Gradually shrink the spite until it reaches zero scale. Compare magnitudes instead of Vector3-to-Vector3.
+            while (activeSpite.transform.localScale.magnitude > 0f)
+            {
+                activeSpite.transform.localScale -= Vector3.one * (radius / duration) * Time.deltaTime;
+                // Clamp to zero to avoid negative scales
+                if (activeSpite.transform.localScale.x <= 0f ||
+                    activeSpite.transform.localScale.y <= 0f ||
+                    activeSpite.transform.localScale.z <= 0f)
+                {
+                    activeSpite.transform.localScale = Vector3.zero;
+                    break;
+                }
+                yield return null;
+            }
             Destroy(activeSpite);
         }
 
@@ -139,8 +176,13 @@ public class NuclearBomb : MonoBehaviour
         // quick test trigger: press 'K' to activate ability
 
         
-          
-        //    ActivateAbility();
+          if(Input.GetKeyDown(KeyCode.K)) {
+
+            print("Nuclear Bomb Activated!"); 
+            ActivateAbility();
+            
+
+            }
         
     }
 

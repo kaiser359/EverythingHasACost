@@ -19,4 +19,10 @@ public class Buttons : MonoBehaviour
     {
         FindAnyObjectByType<AudioSource>().PlayOneShot(clip);
     }
+
+    public void Resume(GameObject pauseMenu)
+    {
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+    }
 }

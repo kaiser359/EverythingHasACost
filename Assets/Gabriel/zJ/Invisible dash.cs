@@ -8,6 +8,7 @@ public class Invisibledash : MonoBehaviour
     public float cooldown = 5f;
     public StarRatings star;
     public float _cooldownTimer = 0f;
+    public AudioClip dashSound;
 
     void Update()
     {
@@ -32,6 +33,9 @@ public class Invisibledash : MonoBehaviour
 
         var prb = player.GetComponent<Rigidbody2D>();
         Vector2 dashDir;
+
+        FindAnyObjectByType<AudioSource>().PlayOneShot(dashSound);
+
         if (prb != null && prb.linearVelocity.sqrMagnitude > 0.0001f)
             dashDir = prb.linearVelocity.normalized;
         else

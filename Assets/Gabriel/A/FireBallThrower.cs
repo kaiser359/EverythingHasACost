@@ -4,6 +4,7 @@ public class FireBallThrower : MonoBehaviour
 {
     public GameObject fireballPrefab;
     public StarRatings star;
+    public AudioClip fireballSound;
     //= Resources.Load<GameObject>("FireBallBlast");
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -28,6 +29,8 @@ public class FireBallThrower : MonoBehaviour
             Debug.LogError("FireballPrefab not found in Resources folder!");
             return;
         }
+
+        FindAnyObjectByType<AudioSource>().PlayOneShot(fireballSound);
 
         // determine aim direction from mouse position (2D)
         Vector3 spawnPos = transform.position;

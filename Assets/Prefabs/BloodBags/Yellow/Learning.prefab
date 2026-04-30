@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3928425117156503116}
   - component: {fileID: 985521269908224154}
   - component: {fileID: 675698345535777022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Learning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -12.75, y: -7.09, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.8443024, y: 1.6996512, z: 0.028930236, w: 1}
+        m_Name: New Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:

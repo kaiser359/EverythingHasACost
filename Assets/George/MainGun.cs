@@ -5,6 +5,7 @@ public class MainGun : MonoBehaviour
 {
     public GlobalPlayerInfo gS;
     public AudioClip shoot;
+    [SerializeField] private float pitchVariance;
     private float cooldownInstance = 0f;
 
     private CinemachineImpulseSource impulseSource;
@@ -23,9 +24,18 @@ public class MainGun : MonoBehaviour
         cooldownInstance -= Time.deltaTime;
     }
 
+    private void AttackSFX()
+    {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        audioSource.pitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
+        audioSource.PlayOneShot(shoot);
+    }
+
     public void Attack() { 
         if (cooldownInstance > 0f) return;
-        FindAnyObjectByType<AudioSource>().PlayOneShot(shoot);
+
+        AttackSFX();
 
         GameObject[] attackPoints = GameObject.FindGameObjectsWithTag("AttackPoint");
         foreach (GameObject point in attackPoints)
