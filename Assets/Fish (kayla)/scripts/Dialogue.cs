@@ -1,12 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
-using System;
-using UnityEngine.UI;
-using System.Reflection;
-using UnityEngine.Splines.Interpolators;
+using UnityEngine.SceneManagement;
 
 public enum Names
 {
@@ -15,7 +12,7 @@ public enum Names
     Slim = 2,
     Ivanna = 3,
     Casino_Guy = 4,
-    Malveina = 5,
+    Duchess_Malveina = 5,
 }
 
 [Serializable]
@@ -49,10 +46,49 @@ public class Dialogue : MonoBehaviour
     {
         if (IntroDi)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().ActivatePanel();
-            startDialogue();
+            // Subscribe so future scene loads trigger dialogue
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            // If this object is created as part of an already-loaded active scene,
+            // the sceneLoaded event has already fired. Manually invoke the handler
+            // to ensure the intro dialogue runs.
+            if (SceneManager.GetActiveScene().isLoaded)
+            {
+                Debug.Log("Dialogue.Start: Active scene already loaded; invoking OnSceneLoaded.");
+                StartCoroutine(StartDialogue());
+            }
+
+            //// Also attempt to start immediately once InteractDialogue is available.
+            //StartCoroutine(StartWhenInteractDialogueReady());
         }
+    }
+
+    IEnumerator StartDialogue()
+    {
+        // delay cuz apparently doing it on startup is Bad
+        yield return new WaitForSecondsRealtime(2f);
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
+        startDialogue();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Unsubscribe from the event to prevent memory leaks (keeps original behaviour)
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        Debug.Log("Dialogue.OnSceneLoaded: Scene loaded, attempting to start dialogue.");
+
+        StartCoroutine(StartDialogue());
+
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
+        //startDialogue();
+    }
+
+    void OnDestroy()
+    {
+        // Ensure we are unsubscribed in case OnSceneLoaded never fired
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Update is called once per frame
@@ -78,19 +114,69 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(Type());
 
         dialogueActive = true;
-    } 
+    }
+
+    private string FilterLine(Line line)
+    {
+        string filteredText = "";
+
+        int letterIndex = line.name.ToString().Length + 2;
+        bool isReadingTag = false;
+        Dictionary<int, char> effectIndicatorLookup = new();
+        foreach (char letter in line.text.ToCharArray())
+        {
+            // filtering tags from the dialogue text so they don't affect the typing effect
+            if (isReadingTag)
+            {
+                switch (letter)
+                {
+                    case '}':
+                        isReadingTag = false;
+                        break;
+                    default:
+                        effectIndicatorLookup[letterIndex] = letter;
+                        break;
+                }
+
+                continue;
+            }
+            if (letter == '{')
+            {
+                Debug.Log("i exist");
+                isReadingTag = true;
+                continue;
+            }
+
+            letterIndex++;
+            filteredText += letter;
+            dialogueText.gameObject.GetComponent<AnimateDialogueText>().effectIndicatorLookup = effectIndicatorLookup; // constantly updating the text component's reference to the tag indicators so that it can trigger effects at the right time
+        }
+
+        //foreach (KeyValuePair<int, char> entry in effectIndicatorLookup)
+        //{
+        //    Debug.Log("effect at " + entry.Key + ": " + entry.Value);
+        //}
+
+        return filteredText;
+    }
 
     IEnumerator Type()
     {
         List<Line> lines = dialogueSets[dialogSet].lines;
+        string filteredText = FilterLine(lines[index]);
 
         dialogueText.text = "";
         Names currentChar = lines[index].name;
-        if ((int)currentChar == 5) {dialogueText.text = "Dutchess Malveina: ";}
-        else  {dialogueText.text = currentChar + ": ";}
-        foreach (char letter in lines[index].text.ToCharArray())
+        dialogueText.text = currentChar.ToString().Replace('_', ' ') + ": ";
+
+        Debug.Log(filteredText);
+
+        foreach (char letter in filteredText.ToCharArray())
         {
             dialogueText.text += letter;
+
+            // update the text before it renders to the screen
+            dialogueText.gameObject.GetComponent<AnimateDialogueText>().UpdateText();
 
             float delay = speed;
             if (letter == ',')
@@ -102,6 +188,7 @@ public class Dialogue : MonoBehaviour
                 delay *= 8; // even longer pause for sentence endings
             }
 
+
             yield return new WaitForSecondsRealtime(delay);
         }
     }
@@ -109,13 +196,17 @@ public class Dialogue : MonoBehaviour
     public void nextLine()
     {
         List<Line> lines = dialogueSets[dialogSet].lines;
+        string filteredText = FilterLine(lines[index]);
 
         // if current dialogue text < length of line, finish line
-        if (dialogueText.text.Length < lines[index].text.Length + lines[index].name.ToString().Length + 2)
+        if (dialogueText.text.Length < filteredText.Length + lines[index].name.ToString().Length + 2)
         {
+            Debug.Log("finish line");
+
             StopAllCoroutines();
-            if ((int)lines[index].name == 5) { dialogueText.text = "Dutchess Malveina: " + lines[index].text; }
-            else { dialogueText.text = lines[index].name + ": " + lines[index].text; }
+            dialogueText.text = lines[index].name.ToString().Replace('_', ' ') + ": " + filteredText;
+            //if ((int)lines[index].name == 5) { dialogueText.text = "Dutchess Malveina: " + lines[index].text; }
+            //else { dialogueText.text = lines[index].name + ": " + lines[index].text; }
             return;
         }
 
@@ -138,6 +229,8 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            Debug.Log("leave dialogue");
+
             StopAllCoroutines();
             FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
 
