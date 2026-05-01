@@ -176,8 +176,28 @@ public class Dialogue : MonoBehaviour
 
         Debug.Log(filteredText);
 
+        bool isReadingRichTextTag = false;
+        string RichTextTag = "";
+
         foreach (char letter in filteredText.ToCharArray())
         {
+            if (isReadingRichTextTag)
+            {
+                RichTextTag += letter;
+                if (letter == '>')
+                {
+                    dialogueText.text += '<' + RichTextTag;
+                    RichTextTag = ""; // reset the tag string for the next tag
+                    isReadingRichTextTag = false;
+                }
+                continue;
+            }
+            else if (letter == '<')
+            {
+                isReadingRichTextTag = true;
+                continue;
+            }
+
             dialogueText.text += letter;
 
             // update the text before it renders to the screen
