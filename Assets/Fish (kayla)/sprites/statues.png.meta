@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 549d27b97c926ad40bf08be3441169b8
+guid: 84b8c0f73bad576489e7c0d18a8fc584
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4718734000705126202
-    second: ivanna tiny idle_0
+      213: -850448590910956077
+    second: statues_0
   - first:
-      213: -9203709032256414614
-    second: ivanna tiny idle_1
+      213: 5854221785500267996
+    second: statues_1
+  - first:
+      213: 292219121494668422
+    second: statues_2
+  - first:
+      213: 4897290056721986670
+    second: statues_3
+  - first:
+      213: 9126695259608078401
+    second: statues_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,7 +138,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ivanna tiny idle_0
+      name: statues_0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3f369d929f4c7140800000000000000
-      internalID: 4718734000705126202
+      spriteID: 3dd550f23899234f0800000000000000
+      internalID: -850448590910956077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ivanna tiny idle_1
+      name: statues_1
       rect:
         serializedVersion: 2
         x: 128
@@ -166,8 +175,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6c5d44066bd54080800000000000000
-      internalID: -9203709032256414614
+      spriteID: cd5b81962bf5e3150800000000000000
+      internalID: 5854221785500267996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: statues_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68434452ebb2e0400800000000000000
+      internalID: 292219121494668422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: statues_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6477f01c5ba6f340800000000000000
+      internalID: 4897290056721986670
       vertices: []
       indices: 
       edges: []
@@ -176,7 +229,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 75ff082f9eaafc94f8105d44eb6d4cdb
+    spriteID: f8e4b06bf6de0ce439c35a6f06cacf4e
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +239,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ivanna tiny idle_0: 4718734000705126202
-      ivanna tiny idle_1: -9203709032256414614
+      statues_0: -850448590910956077
+      statues_1: 5854221785500267996
+      statues_2: 292219121494668422
+      statues_3: 4897290056721986670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
