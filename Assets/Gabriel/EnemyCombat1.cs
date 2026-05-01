@@ -192,9 +192,7 @@ public class EnemyCombat1 : MonoBehaviour
                                 }
                             }
 
-                            // do not apply physical knockback so the player won't be pushed out of the level
-                            // any damage/effects are already applied above via money change
-                            // continue moving (do not treat player as an obstacle)
+        
                         }
                         else if (!hit.collider.isTrigger)
                         {
@@ -278,6 +276,45 @@ public class EnemyCombat1 : MonoBehaviour
             if (PlayerHeath != null) {
                 PlayerHeath.TakeDamage(5);
             }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw the detection ray used by HasLineOfSight
+        Gizmos.color = Color.yellow;
+        Vector3 origin = transform.position;
+        if (playerTransform != null)
+        {
+            Vector3 dir = (playerTransform.position - transform.position).normalized;
+            // draw full ray
+            Vector3 end = origin + dir * detectionRange;
+            // try to perform the same Physics2D.Raycast so the gizmo color can indicate hits
+            RaycastHit2D hit = Physics2D.Raycast(origin, dir, detectionRange);
+            if (hit.collider != null)
+            {
+                if (hit.collider.CompareTag("Player")) Gizmos.color = Color.green;
+                else Gizmos.color = Color.red;
+                // draw line to the hit point
+                Gizmos.DrawLine(origin, hit.point);
+                Gizmos.DrawSphere(hit.point, 0.08f);
+                // draw remaining portion as faded
+                Gizmos.color = new Color(1f, 1f, 1f, 0.15f);
+                Gizmos.DrawLine(hit.point, end);
+            }
+            else
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(origin, end);
+            }
+        }
+
+        // If a dash target was marked, draw the planned dash path
+        if (markedPosition != Vector3.zero)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(origin, markedPosition);
+            Gizmos.DrawWireSphere(markedPosition, 0.12f);
         }
     }
 }

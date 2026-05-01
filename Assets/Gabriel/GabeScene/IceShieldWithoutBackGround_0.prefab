@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5357062928605097221
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01999998, y: 0.18000007, z: 0}
-  m_LocalScale: {x: 0.31758404, y: 0.29434532, z: 0.985088}
+  m_LocalScale: {x: 0.11, y: 0.10195092, z: 0.3412}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.6875, y: 4.6875}
+    oldSize: {x: 37.5, y: 37.5}
     newSize: {x: 10.23, y: 11.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
