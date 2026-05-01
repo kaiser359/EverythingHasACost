@@ -216,6 +216,9 @@ GameObject:
   - component: {fileID: 7124802188120311324}
   - component: {fileID: 1429703251567301261}
   - component: {fileID: 3093107625230186776}
+  - component: {fileID: 7471701967190393429}
+  - component: {fileID: 8829064425206155283}
+  - component: {fileID: 1920974524236656396}
   m_Layer: 6
   m_Name: walls
   m_TagString: Untagged
@@ -360,12 +363,139 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &7471701967190393429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291189673955727909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 1
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0
+  m_ApplyToSortingLayers: 000000000b7641fd
+  m_ShapePath:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 1920974524236656396}
+  m_ShadowShape2DProvider:
+    rid: 3713972670796398669
+  m_ShadowCastingSource: 2
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 2
+  m_PreviousTrimEdge: 0
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 1920974524236656396}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3713972670796398669
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
+--- !u!50 &8829064425206155283
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291189673955727909}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &1920974524236656396
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291189673955727909}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 3093107625230186776}
+    m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 5291189673955727909}
 --- !u!1 &5884789162666216037
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,6 +637,7 @@ MonoBehaviour:
         - {fileID: 2369919671869053935, guid: 52f96e374d519bf4ea02b3af0da17537, type: 3}
         - {fileID: 3845292185135662744, guid: ed0ff5aeccc576344bc25f2ec0f9626c, type: 3}
         - {fileID: 5064670044159974819, guid: d7984340ac09e9042bcfb20d1814c943, type: 3}
+        - {fileID: 3787219449237630783, guid: 47048b2547c4661449dff1bfd3beb513, type: 3}
         bottom:
         - {fileID: 5691321996737459536, guid: 3227e9a85dbc61045a324e5ab35a63e1, type: 3}
         - {fileID: 355891014765817261, guid: 1aa7ed84fbbd1e445b57ceecb33d642d, type: 3}
@@ -515,6 +646,7 @@ MonoBehaviour:
         - {fileID: 5674345883634310832, guid: e761d48ea91d7b445bb5fa13c441e594, type: 3}
         - {fileID: 599374910087519468, guid: 207b7035d6902c54fb72dafc5d3892c7, type: 3}
         - {fileID: 2369919671869053935, guid: 52f96e374d519bf4ea02b3af0da17537, type: 3}
+        - {fileID: 3787219449237630783, guid: 47048b2547c4661449dff1bfd3beb513, type: 3}
         left:
         - {fileID: 355891014765817261, guid: 1aa7ed84fbbd1e445b57ceecb33d642d, type: 3}
         - {fileID: 6522094353325962454, guid: 0c6493043f53aca45a13014e6d049bfc, type: 3}
@@ -523,6 +655,7 @@ MonoBehaviour:
         - {fileID: 599374910087519468, guid: 207b7035d6902c54fb72dafc5d3892c7, type: 3}
         - {fileID: 2369919671869053935, guid: 52f96e374d519bf4ea02b3af0da17537, type: 3}
         - {fileID: 3845292185135662744, guid: ed0ff5aeccc576344bc25f2ec0f9626c, type: 3}
+        - {fileID: 3787219449237630783, guid: 47048b2547c4661449dff1bfd3beb513, type: 3}
         right:
         - {fileID: 5691321996737459536, guid: 3227e9a85dbc61045a324e5ab35a63e1, type: 3}
         - {fileID: 6522094353325962454, guid: 0c6493043f53aca45a13014e6d049bfc, type: 3}
@@ -531,6 +664,7 @@ MonoBehaviour:
         - {fileID: 2369919671869053935, guid: 52f96e374d519bf4ea02b3af0da17537, type: 3}
         - {fileID: 3845292185135662744, guid: ed0ff5aeccc576344bc25f2ec0f9626c, type: 3}
         - {fileID: 5064670044159974819, guid: d7984340ac09e9042bcfb20d1814c943, type: 3}
+        - {fileID: 3787219449237630783, guid: 47048b2547c4661449dff1bfd3beb513, type: 3}
       endCluster:
         top:
         - {fileID: 8880608254688663248, guid: b31767d88c032ca4dbe501221af1a6c7, type: 3}

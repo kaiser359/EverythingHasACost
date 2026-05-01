@@ -55,12 +55,17 @@ public class Dialogue : MonoBehaviour
             if (SceneManager.GetActiveScene().isLoaded)
             {
                 Debug.Log("Dialogue.Start: Active scene already loaded; invoking OnSceneLoaded.");
-                StartCoroutine(StartDialogue());
+                CStartDialogue();
             }
 
             //// Also attempt to start immediately once InteractDialogue is available.
             //StartCoroutine(StartWhenInteractDialogueReady());
         }
+    }
+
+    public void CStartDialogue()
+    {
+        StartCoroutine(StartDialogue());
     }
 
     IEnumerator StartDialogue()
@@ -79,7 +84,7 @@ public class Dialogue : MonoBehaviour
 
         Debug.Log("Dialogue.OnSceneLoaded: Scene loaded, attempting to start dialogue.");
 
-        StartCoroutine(StartDialogue());
+        CStartDialogue();
 
         //GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
         //startDialogue();
@@ -171,8 +176,28 @@ public class Dialogue : MonoBehaviour
 
         Debug.Log(filteredText);
 
+        bool isReadingRichTextTag = false;
+        string RichTextTag = "";
+
         foreach (char letter in filteredText.ToCharArray())
         {
+            if (isReadingRichTextTag)
+            {
+                RichTextTag += letter;
+                if (letter == '>')
+                {
+                    dialogueText.text += '<' + RichTextTag;
+                    RichTextTag = ""; // reset the tag string for the next tag
+                    isReadingRichTextTag = false;
+                }
+                continue;
+            }
+            else if (letter == '<')
+            {
+                isReadingRichTextTag = true;
+                continue;
+            }
+
             dialogueText.text += letter;
 
             // update the text before it renders to the screen
