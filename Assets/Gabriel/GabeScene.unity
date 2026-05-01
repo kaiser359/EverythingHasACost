@@ -9620,7 +9620,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147487742
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 6435c564be3f1504bb1e048ca91de5ed, type: 2}
   m_TargetDisplay: 0
@@ -10119,11 +10119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7650785744917939853, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.28
+      value: -6.63
       objectReference: {fileID: 0}
     - target: {fileID: 7650785744917939853, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.65
+      value: 2.54
       objectReference: {fileID: 0}
     - target: {fileID: 7650785744917939853, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10575,11 +10575,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6239033
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.028345
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10612,6 +10612,14 @@ PrefabInstance:
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.minScalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6472705509876903387, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_Name
