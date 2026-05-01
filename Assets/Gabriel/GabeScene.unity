@@ -7082,7 +7082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6312081341111227493, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.21
+      value: -32.04
       objectReference: {fileID: 0}
     - target: {fileID: 6312081341111227493, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7390,7 +7390,7 @@ Transform:
   m_GameObject: {fileID: 960184566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.21, y: -1.85, z: 0}
+  m_LocalPosition: {x: -32.04, y: -1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8598,7 +8598,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147484031
+    m_Bits: 2147484159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9818,7 +9818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2566063783955278028, guid: 7ec80fc91e86553478f9921b8b2dd6a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2525423
+      value: -32.1
       objectReference: {fileID: 0}
     - target: {fileID: 2566063783955278028, guid: 7ec80fc91e86553478f9921b8b2dd6a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10613,41 +10613,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3458587237348484508, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.minScalar
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6472705509876903387, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_Name
       value: FireBallBlast
-      objectReference: {fileID: 0}
-    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
-      propertyPath: m_Intensity
-      value: 1.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

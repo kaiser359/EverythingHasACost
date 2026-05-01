@@ -127,7 +127,7 @@ public class Enemy2Ranged : MonoBehaviour
                 timer -= Time.deltaTime;
 
             }
-            if (charger > 1 && timer < 0)
+            if (charger > 3 && timer < 0)
             {
                 timer = 7;
                 charger = 0;

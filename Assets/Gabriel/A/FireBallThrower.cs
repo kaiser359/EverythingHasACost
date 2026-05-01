@@ -13,10 +13,10 @@ public class FireBallThrower : MonoBehaviour
     {
         // cooldown timer
         if (cooldownTimer > 0f) cooldownTimer -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.K))
-        {
-            ActivateAbility();
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    ActivateAbility();
+        //}
     }
    private void Start()
     {
@@ -25,7 +25,7 @@ public class FireBallThrower : MonoBehaviour
     }
     public void ActivateAbility()
     {
-      //  if (cooldownTimer > 0f) return;
+        if (cooldownTimer > 0f) return;
 
 
         if (fireballPrefab == null)
