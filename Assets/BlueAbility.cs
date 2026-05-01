@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BlueAbility : MonoBehaviour
 {
     public StarRatings star;
+
+    public float lightCooldown = -0.1f;
+    public bool Did = false;
 
     public float dashDistance = 6f;
     public float dashDuration = 0.18f;
@@ -16,6 +20,7 @@ public class BlueAbility : MonoBehaviour
     public GameObject Shield;
     public float shieldHealth = 50;
     public float shieldDuration = 0f;
+    public Light2D LightShield;
 
     // projectile settings (will fall back to GlobalPlayerInfo if null)
     public GameObject projectilePrefab;
@@ -216,7 +221,22 @@ public class BlueAbility : MonoBehaviour
     }
     private void Update()
     {
+        if ( Did = false && lightCooldown <= 0)
+        {
+            lightCooldown -= Time.deltaTime;
+            LightShield.pointLightInnerRadius = Random.Range(0.5f, 2f);
+            Did = true;
+            Debug.LogError("there will be light");
+        }
+        if (Did == true)
+        {
+            lightCooldown += Time.deltaTime;
 
+        }
+        if(lightCooldown >= 0.1f)
+        {
+            Did = false;
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             ActivateAbility();

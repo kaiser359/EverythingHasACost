@@ -5,6 +5,7 @@ using static UnityEngine.UI.Image;
 public class EnemyCombat1 : MonoBehaviour
 {
     [Header("References")]
+    public Animator animator;
     public EnemyStats stats;
     public Money money;
     public Transform playerWashere; 
@@ -55,7 +56,8 @@ public class EnemyCombat1 : MonoBehaviour
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        
+        // ensure the transform has no rotation so sprite doesn't appear rotated
+        transform.rotation = Quaternion.identity;
     }
 
     void Update()
@@ -78,9 +80,7 @@ public class EnemyCombat1 : MonoBehaviour
             activationTimer += Time.deltaTime;
 
             Vector3 toPlayer = (playerTransform.position - transform.position).normalized;
-            float desiredAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg;
-            Quaternion desiredRot = Quaternion.Euler(0f, 0f, desiredAngle);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRot, 720f * Time.deltaTime);
+            // intentionally do not rotate the transform to keep sprite orientation stable.
 
             if (activationTimer >= warmupAdj)
             {
@@ -90,6 +90,8 @@ public class EnemyCombat1 : MonoBehaviour
                 activationTimer = 0f;
                 isWarmingUp = false;
             }
+        // enforce zero rotation every frame to avoid any accidental sprite rotation
+        transform.rotation = Quaternion.identity;
         }
         else if (playerTransform != null && dist <= chaseRange)
         {
@@ -142,6 +144,7 @@ public class EnemyCombat1 : MonoBehaviour
     {
         GetComponent<AudioSource>().PlayOneShot(dashSound);
         isDashing = true;
+       
         Vector3 start = transform.position;
         float elapsed = 0f;
         // prepare to temporarily ignore collisions with the player so the enemy can pass through
@@ -173,6 +176,7 @@ public class EnemyCombat1 : MonoBehaviour
                 float moveDist = moveDir.magnitude;
                 if (moveDist > 0.0001f)
                 {
+                    
                     RaycastHit2D hit = Physics2D.Raycast(curPos, moveDir.normalized, moveDist);
                     if (hit.collider != null)
                     {
@@ -207,6 +211,7 @@ public class EnemyCombat1 : MonoBehaviour
                 rb.MovePosition(nextPos);
                 // neutralize external forces so player collisions don't push the enemy
                 rb.linearVelocity = Vector2.zero;
+                animator.SetBool("Dashing", true);
             }
             else
             {

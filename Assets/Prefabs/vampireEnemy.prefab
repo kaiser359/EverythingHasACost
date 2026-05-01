@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5538734300039120166}
   - component: {fileID: 5003760730399801809}
   - component: {fileID: 2105940714404815063}
+  - component: {fileID: 6223112351919208491}
   m_Layer: 2
   m_Name: vampireEnemy
   m_TagString: Enemy
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e2ba7480db597408e7eaebc4964922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7335034993930283624}
   stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   playerWashere: {fileID: 0}
@@ -312,6 +314,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6223112351919208491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072839590645804042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351e50e287643114894dca6f3a5c66b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7335034993930283624}
+  moveSpeed: 1
+  sr: {fileID: 7099657114388457023}
 --- !u!1 &8384063112724480883
 GameObject:
   m_ObjectHideFlags: 0
