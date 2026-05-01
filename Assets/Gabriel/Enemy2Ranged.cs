@@ -127,7 +127,7 @@ public class Enemy2Ranged : MonoBehaviour
                 timer -= Time.deltaTime;
 
             }
-            if (charger > 1 && timer < 0)
+            if (charger > 3 && timer < 0)
             {
                 timer = 7;
                 charger = 0;
@@ -216,7 +216,7 @@ public class Enemy2Ranged : MonoBehaviour
                         animator.SetFloat("FloatX",-1);
                         animator.SetFloat("FloatY", 0);
                         spirets.flipX = false;
-                        lineRenderer.sortingLayerID = 0;
+                    //    lineRenderer.sortingLayerID = 0;
 
                     }
                     if (lineRenderer.GetPosition(1).x < lineRenderer.GetPosition(0).x && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) > Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
@@ -224,19 +224,19 @@ public class Enemy2Ranged : MonoBehaviour
                         animator.SetFloat("FloatX", 1);
                         animator.SetFloat("FloatY", 0);
                         spirets.flipX = true;
-                        lineRenderer.sortingLayerID = 0;
+                       // lineRenderer.sortingLayerID = 0;
                     }
                     if (lineRenderer.GetPosition(1).y < lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
                     {
                         animator.SetFloat("FloatY", -1);
                         animator.SetFloat("FloatX", 0);
-                        lineRenderer.sortingLayerID = 0;
+                        //lineRenderer.sortingLayerID = 0;
                     }
                     if (lineRenderer.GetPosition(1).y > lineRenderer.GetPosition(0).y && Mathf.Abs(lineRenderer.GetPosition(1).x - lineRenderer.GetPosition(0).x) < Mathf.Abs(lineRenderer.GetPosition(1).y - lineRenderer.GetPosition(0).y))
                     {
                         animator.SetFloat("FloatY", 1);
                         animator.SetFloat("FloatX", 0);
-                        lineRenderer.sortingLayerID = 1;
+                       // lineRenderer.sortingLayerID = 1;
                     }
                 }
             }

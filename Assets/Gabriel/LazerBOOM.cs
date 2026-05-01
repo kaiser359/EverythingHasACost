@@ -1,7 +1,7 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEngine;
 
 public class LazerBOOM : MonoBehaviour
 {
@@ -131,7 +131,11 @@ public class LazerBOOM : MonoBehaviour
             foreach (var c in hits)
             {
                 if (c == null) continue;
+
+                // ignore player or anything attached to the beam origin (so the beam passes through the player)
                 if (c.CompareTag("Player")) continue;
+                if (beamOrigin != null && c.transform.IsChildOf(beamOrigin)) continue;
+
                 var eh = c.GetComponent<EnemyHealth>();
                 if (eh != null)
                 {
@@ -174,28 +178,30 @@ public class LazerBOOM : MonoBehaviour
 
             if (SpecialParticles != null)
             {
-                Vector3 endVis = end + new Vector3(endPositionOffset.x, endPositionOffset.y, 0f);
-                Vector3 mid = (start + endVis) * 0.5f;
-                SpecialParticles.transform.position = mid;
+                // Place the particle system at the beam start and rotate it to face the beam direction.
+                SpecialParticles.transform.position = start;
 
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 SpecialParticles.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
+                // Configure the shape so emission box sits in front of the start (half the range forward)
                 var shape = SpecialParticles.shape;
                 shape.shapeType = ParticleSystemShapeType.Box;
-                shape.position = Vector3.zero;
+                shape.position = new Vector3(currentRange * 0.5f, 0f, 0f); // local offset forward
                 shape.rotation = Vector3.zero;
                 shape.scale = new Vector3(currentRange, Mathf.Max(0.01f, currentWidth), 1f);
 
+                // Run particles in local space so they spawn relative to the start and respect rotation
                 var main = SpecialParticles.main;
                 main.gravityModifier = 0f;
-                main.simulationSpace = ParticleSystemSimulationSpace.World;
+                main.simulationSpace = ParticleSystemSimulationSpace.Local;
 
+                // Velocity in local space along +X (particle system rotated to beam direction)
                 var vel = SpecialParticles.velocityOverLifetime;
                 vel.enabled = true;
-                vel.space = ParticleSystemSimulationSpace.World;
-                vel.x = new ParticleSystem.MinMaxCurve(dir.x * particleSpeed);
-                vel.y = new ParticleSystem.MinMaxCurve(dir.y * particleSpeed);
+                vel.space = ParticleSystemSimulationSpace.Local;
+                vel.x = new ParticleSystem.MinMaxCurve(particleSpeed);
+                vel.y = new ParticleSystem.MinMaxCurve(0f);
                 vel.z = new ParticleSystem.MinMaxCurve(0f);
 
                 var emission = SpecialParticles.emission;
@@ -228,6 +234,11 @@ public class LazerBOOM : MonoBehaviour
         foreach (var h in hits)
         {
             if (h.collider == null) continue;
+
+            // ignore player's collider and anything attached to the beam origin so the beam won't stop on the player
+            if (h.collider.CompareTag("Player")) continue;
+            if (beamOrigin != null && (h.collider.transform.IsChildOf(beamOrigin) || h.collider.gameObject == beamOrigin.gameObject)) continue;
+
             float d = h.distance;
             if (d < bestDist)
             {
@@ -235,11 +246,6 @@ public class LazerBOOM : MonoBehaviour
                 {
                     firstEnemy = h;
                     bestDist = d;
-                    continue;
-                }
-
-                if (h.collider.CompareTag("Player"))
-                {
                     continue;
                 }
 
