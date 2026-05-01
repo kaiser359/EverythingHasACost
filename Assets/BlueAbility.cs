@@ -216,11 +216,11 @@ public class BlueAbility : MonoBehaviour
     }
     private void Update()
     {
-        //    for testing: press F to activate ability
-       
-        
-          //  ActivateAbility();
-        
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ActivateAbility();
+        }        
             if (cooldown > 0) cooldown -= Time.deltaTime;
             if (shieldDuration > 0 ) shieldDuration -= Time.deltaTime;
 
