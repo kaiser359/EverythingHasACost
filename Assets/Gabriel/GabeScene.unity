@@ -10575,7 +10575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.45
+      value: -2.512
       objectReference: {fileID: 0}
     - target: {fileID: 2208801816227658286, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10613,6 +10613,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3458587237348484508, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4492077214966187195, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
       value: 4
@@ -10624,6 +10632,22 @@ PrefabInstance:
     - target: {fileID: 6472705509876903387, guid: 98375287f2cba814384723480383ba74, type: 3}
       propertyPath: m_Name
       value: FireBallBlast
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700682434472164954, guid: 98375287f2cba814384723480383ba74, type: 3}
+      propertyPath: m_Intensity
+      value: 1.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
