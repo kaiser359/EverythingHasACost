@@ -17,14 +17,21 @@ public class Store : MonoBehaviour
         
     }
     public void StartStore() { 
-
-
+        if (tutorialFirstInteract)
+        {
+            gameObject.GetComponent<Dialogue>().CStartDialogue();
+        }
 
         Time.timeScale = 0f; // Pause the game while the store is open
         storePanel.SetActive(true); // Show the store panel when the player interacts with the store
 
     }
     public void ExitStore() { 
+        if (tutorialFirstInteract)
+        {
+            gameObject.GetComponent<Dialogue>().CStartDialogue();
+            tutorialFirstInteract = false;
+        }
         storePanel.SetActive(false); // Hide the store panel when the player exits the store
         Time.timeScale = 1f; // Resume the game when the store is closed
 
