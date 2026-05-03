@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
 
     private void Awake()
     {
-        money.money = 10000;
+        money.money = 500;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
