@@ -85,6 +85,12 @@ public class InteractDialogue : MonoBehaviour
             background.GetComponent<Image>().color = color;
             yield return null;
         }
+
+        // ensure final position and color are set
+        dialoguePanel.transform.localPosition = new Vector3(dialoguePanel.transform.localPosition.x, 0, dialoguePanel.transform.localPosition.z);
+        Color finalColor = background.GetComponent<Image>().color;
+        finalColor.a = 0.3f;
+        background.GetComponent<Image>().color = finalColor;
     }
 
     IEnumerator CDeactivatePanel()

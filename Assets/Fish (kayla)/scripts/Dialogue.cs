@@ -55,7 +55,7 @@ public class Dialogue : MonoBehaviour
             if (SceneManager.GetActiveScene().isLoaded)
             {
                 Debug.Log("Dialogue.Start: Active scene already loaded; invoking OnSceneLoaded.");
-                CStartDialogue();
+                StartCoroutine(COnSceneLoaded());
             }
 
             //// Also attempt to start immediately once InteractDialogue is available.
@@ -63,18 +63,20 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void CStartDialogue()
-    {
-        StartCoroutine(StartDialogue());
-    }
-
-    IEnumerator StartDialogue()
+    IEnumerator COnSceneLoaded()
     {
         // delay cuz apparently doing it on startup is Bad
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
 
+        Debug.Log("Dialogue.COnSceneLoaded: Attempting to start dialogue.");
         GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
         startDialogue();
+    }
+
+    public void StartDialogue()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
+        //startDialogue();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -84,7 +86,7 @@ public class Dialogue : MonoBehaviour
 
         Debug.Log("Dialogue.OnSceneLoaded: Scene loaded, attempting to start dialogue.");
 
-        CStartDialogue();
+        StartDialogue();
 
         //GameObject.FindGameObjectWithTag("Player").GetComponent<InteractDialogue>().StartDialogue(gameObject);
         //startDialogue();
