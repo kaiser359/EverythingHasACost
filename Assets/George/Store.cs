@@ -8,6 +8,8 @@ public class Store : MonoBehaviour
     [SerializeField] private bool tutorialFirstInteract = false;
     private Dialogue dialogue; // reference to dialogue if needed
 
+    public bool justLeftStore = false; //reference for pause menu to know whether to show or not, should be set to false by pause menu once it checks this
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,7 +45,7 @@ public class Store : MonoBehaviour
 
     public void StartStore() {
         // just dont do anything if dialogue is active, should only be the case for the tutorial store
-        if (dialogue.dialogueActive || storePanel.activeSelf)
+        if ((tutorialFirstInteract && dialogue.dialogueActive) || storePanel.activeSelf)
         {
             return;
         }
@@ -65,6 +67,7 @@ public class Store : MonoBehaviour
 
         storePanel.SetActive(false); // Hide the store panel when the player exits the store
         Time.timeScale = 1f; // Resume the game when the store is closed
+        justLeftStore = true;
 
         if (tutorialFirstInteract)
         {

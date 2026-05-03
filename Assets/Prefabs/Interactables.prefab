@@ -501,6 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storePanel: {fileID: 4792782404263019813}
   tutorialFirstInteract: 0
+  justLeftStore: 0
 --- !u!1 &325322955012529170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storePanel: {fileID: 602966090900624002}
   tutorialFirstInteract: 0
+  justLeftStore: 0
 --- !u!95 &471360819904538920
 Animator:
   serializedVersion: 7
@@ -3173,7 +3175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310848fafe47d1c429625e43c19d9b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeScreenUI: {fileID: 0}
+  UpgradeScreenUI: {fileID: 5063853437523477329}
   Buttons: []
 --- !u!1 &3215721291667339701
 GameObject:
@@ -4805,7 +4807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6714369015438526544, guid: 794b679c7ac360c4e949a2ad64a8a3c7, type: 3}
+  m_Sprite: {fileID: -1075596937905349125, guid: d1c55b654a1d0074f941786777112309, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
