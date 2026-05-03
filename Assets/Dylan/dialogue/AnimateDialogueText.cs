@@ -12,7 +12,7 @@ public enum Effect
 
 public class AnimateDialogueText : MonoBehaviour
 {
-    public TMP_Text dialogueText;
+    private TMP_Text dialogueText;
     [HideInInspector] public Dictionary<int, char> effectIndicatorLookup;
 
     private Effect currentEffect;
@@ -20,7 +20,7 @@ public class AnimateDialogueText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //dialogueText = GetComponent<TMP_Text>();
+        dialogueText = GetComponent<TMP_Text>();
     }
 
     private void Wave(Vector3[] vertices, int vertexIndex, int charIndex)

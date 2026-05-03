@@ -5,20 +5,37 @@ public class Cooldown
 {
     private readonly float cooldownTime;
     private float lastUsedTime;
+    private readonly bool usesRealTime;
 
-    public Cooldown(float cooldownTime)
+    public Cooldown(float cooldownTime, bool usesRealTime = false)
     {
         this.cooldownTime = cooldownTime;
         this.lastUsedTime = -cooldownTime; // Initialize to allow immediate use
+
+        this.usesRealTime = usesRealTime; // if true, cooldown is based on real time (ignoring time scale); if false, it uses game time
     }
     public bool IsReady()
     {
-        return Time.time >= lastUsedTime + cooldownTime;
+        if (usesRealTime)
+        {
+            return Time.realtimeSinceStartup >= lastUsedTime + cooldownTime;
+        }
+        else
+        {
+            return Time.time >= lastUsedTime + cooldownTime;
+        }
     }
 
     public void Use()
     {
-        lastUsedTime = Time.time;
+        if (usesRealTime)
+        {
+            lastUsedTime = Time.realtimeSinceStartup;
+        }
+        else
+        {
+            lastUsedTime = Time.time;
+        }
     }
 }
 
