@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 5753944280914130433}
   m_Layer: 5
   m_Name: StorePanel
-  m_TagString: Untagged
+  m_TagString: shopui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4748,7 +4748,7 @@ GameObject:
   - component: {fileID: 3965898945607915982}
   m_Layer: 5
   m_Name: BankPanel
-  m_TagString: Untagged
+  m_TagString: bankui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
