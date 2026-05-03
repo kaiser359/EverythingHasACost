@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalPlayerInfo : MonoBehaviour
 {
@@ -26,4 +28,13 @@ public class GlobalPlayerInfo : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-}
+    public void godMode() { 
+    Money.money = 9500;
+    }
+    private void Update()
+    {
+        if (Money.money == 10000) {
+            SceneManager.LoadScene("Win");
+        }
+    }
+}   
