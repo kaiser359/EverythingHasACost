@@ -7,19 +7,21 @@ public class Pause : MonoBehaviour
     private GameObject store;
     private GameObject bank;
 
-    private void Start()
+    void Start()
     {
         pauseMenu.SetActive(false);
     }
-    private void Update()
+    void Update()
     {
-        store = GameObject.Find("StorePanel");
-        bank = GameObject.Find("BankPanel");
-        
+        /*store = GameObject.FindWithTag("shopui");
+        Debug.Log(store);
+        bank = GameObject.FindWithTag("bankui");
+        Debug.Log(bank);*/
+
     }
     public void PauseGame()
     {
-        if (pauseMenu != null && !pauseMenu.activeSelf && !store.activeSelf && !bank.activeSelf) { 
+        if (pauseMenu != null && !pauseMenu.activeSelf && !GameObject.FindWithTag("shopui").activeSelf && !GameObject.FindWithTag("bankui").activeSelf) { 
             Debug.Log("paused"); 
             pauseMenu.SetActive(true); 
             Time.timeScale = 0; }

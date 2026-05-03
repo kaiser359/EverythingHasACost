@@ -12,6 +12,8 @@ TagManager:
   - SpawnPoint
   - Elevator
   - NPC
+  - shopui
+  - bankui
   layers:
   - Default
   - TransparentFX
