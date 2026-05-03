@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +15,15 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        /*store = GameObject.FindWithTag("shopui");
-        Debug.Log(store);
-        bank = GameObject.FindWithTag("bankui");
-        Debug.Log(bank);*/
+        Debug.Log("justLeftStore: " + FindAnyObjectByType<Store>().justLeftStore);
 
     }
     public void PauseGame()
     {
-        if (pauseMenu != null && !pauseMenu.activeSelf && !GameObject.FindWithTag("shopui").activeSelf && !GameObject.FindWithTag("bankui").activeSelf) { 
+        if (pauseMenu != null && !pauseMenu.activeSelf && !FindAnyObjectByType<Store>().justLeftStore) { 
             Debug.Log("paused"); 
             pauseMenu.SetActive(true); 
             Time.timeScale = 0; }
+        else { FindAnyObjectByType<Store>().justLeftStore = false; }
     }
 }
