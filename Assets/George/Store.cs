@@ -35,7 +35,7 @@ public class Store : MonoBehaviour
         }
 
         // delay until panel deactivates
-        yield return new WaitForSecondsRealtime(0.5f);
+        //yield return new WaitForSecondsRealtime(0.5f);
 
         Time.timeScale = 0;
         storePanel.SetActive(true);

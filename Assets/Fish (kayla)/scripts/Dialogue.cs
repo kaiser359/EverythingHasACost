@@ -38,7 +38,7 @@ public class Dialogue : MonoBehaviour
     public float speed = 0.04f;
     private int index;
 
-    public bool dialogueActive = false;
+    [HideInInspector] public bool dialogueActive = false;
     private int dialogSet = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
