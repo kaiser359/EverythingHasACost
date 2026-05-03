@@ -21,7 +21,7 @@ public class ElevatorInteract : MonoBehaviour
             // tutorial level just loads the next scene
             if (isTutorial)
             {
-                SceneManager.LoadScene("Level 1");
+                SceneManager.LoadSceneAsync("Level 1");
                 return;
             }
 
