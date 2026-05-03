@@ -42,7 +42,13 @@ public class Store : MonoBehaviour
     }
 
     public void StartStore() {
-        if (tutorialFirstInteract || dialogue.dialogueActive)
+        // just dont do anything if dialogue is active, should only be the case for the tutorial store
+        if (dialogue.dialogueActive || storePanel.activeSelf)
+        {
+            return;
+        }
+
+        if (tutorialFirstInteract)
         {
             dialogue.StartDialogue();
             StartCoroutine(WaitToStartStore());
