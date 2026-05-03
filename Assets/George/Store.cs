@@ -34,14 +34,17 @@ public class Store : MonoBehaviour
             yield return null;
         }
 
+        // delay until panel deactivates
+        yield return new WaitForSecondsRealtime(0.5f);
+
         Time.timeScale = 0;
         storePanel.SetActive(true);
     }
 
     public void StartStore() {
-        if (tutorialFirstInteract)
+        if (tutorialFirstInteract || dialogue.dialogueActive)
         {
-            dialogue.CStartDialogue();
+            dialogue.StartDialogue();
             StartCoroutine(WaitToStartStore());
         }
         else
@@ -52,12 +55,14 @@ public class Store : MonoBehaviour
 
     }
     public void ExitStore() { 
+        Debug.Log("Exiting store...");
+
         storePanel.SetActive(false); // Hide the store panel when the player exits the store
         Time.timeScale = 1f; // Resume the game when the store is closed
 
         if (tutorialFirstInteract)
         {
-            dialogue.CStartDialogue();
+            dialogue.StartDialogue();
             tutorialFirstInteract = false;
         }
     }
