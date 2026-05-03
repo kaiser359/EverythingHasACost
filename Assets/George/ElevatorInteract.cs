@@ -23,6 +23,8 @@ public class ElevatorInteract : MonoBehaviour
                     gS.Money.money = 50;
             }
             gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
+            gS.floor++;
+            //play elevator cutscene
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
