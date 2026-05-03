@@ -77,45 +77,6 @@ public class AnimateDialogueText : MonoBehaviour
         {
             var charInfo = textInfo.characterInfo[i];
 
-            //// skip effect indicators
-            //// effect indicator start
-            //if (charInfo.character == '{')
-            //{
-            //    isReadingEffect = true;
-            //    break;
-            //}
-
-            //if (charInfo.character == '}')
-            //{
-            //    isReadingEffect = false;
-            //    break;
-            //}
-
-            //// reading effect indicator
-            //if (isReadingEffect)
-            //{
-            //    switch (charInfo.character)
-            //    {
-            //        case 'w':
-            //            currentEffect = Effect.Wave;
-            //            break;
-            //        case 's':
-            //            currentEffect = Effect.Shake;
-            //            break;
-            //        default:
-            //            currentEffect = Effect.None;
-            //            break;
-            //    }
-
-            //    break;
-            //}
-
-            //// debug where effects are placed in the text
-            //foreach (KeyValuePair<int, char> entry in effectIndicatorLookup)
-            //{
-            //    Debug.Log("effect at " + entry.Key + ": " + entry.Value);
-            //}
-
             // switch current effect based on the effect indicator lookup
             if (effectIndicatorLookup.TryGetValue(i, out char effectIndicator))
             {
@@ -142,7 +103,6 @@ public class AnimateDialogueText : MonoBehaviour
             // skip characters that don't have an effect
             if (currentEffect == Effect.None)
                 continue;
-
 
             var vertexIndex = charInfo.vertexIndex;
             var materialIndex = charInfo.materialReferenceIndex;
