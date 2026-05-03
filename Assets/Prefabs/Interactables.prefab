@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storePanel: {fileID: 4792782404263019813}
+  tutorialFirstInteract: 0
 --- !u!1 &325322955012529170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storePanel: {fileID: 602966090900624002}
+  tutorialFirstInteract: 0
 --- !u!95 &471360819904538920
 Animator:
   serializedVersion: 7
