@@ -30,7 +30,7 @@ public class AnimateDialogueText : MonoBehaviour
         float waveAmplitude = 5f;
 
         float offsetY = Mathf.Sin(Time.unscaledTime * waveFrequency + charIndex) * waveAmplitude;
-        Debug.Log("offsetY: " + offsetY);
+        //Debug.Log("offsetY: " + offsetY);
 
         // effect application
         vertices[vertexIndex + 0].y += offsetY;
@@ -119,7 +119,7 @@ public class AnimateDialogueText : MonoBehaviour
             // switch current effect based on the effect indicator lookup
             if (effectIndicatorLookup.TryGetValue(i, out char effectIndicator))
             {
-                Debug.Log("effect indicator at " + i + ": " + effectIndicator);
+                //Debug.Log("effect indicator at " + i + ": " + effectIndicator);
 
                 switch (effectIndicator)
                 {

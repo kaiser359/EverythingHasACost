@@ -11,6 +11,9 @@ public class InteractDialogue : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject[] characterClose;
     public Animator[] animators;
+
+
+
     void Start()
     {
         // make transparent

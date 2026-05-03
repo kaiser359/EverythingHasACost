@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class StoreInteract : MonoBehaviour
 {
@@ -13,17 +14,34 @@ public class StoreInteract : MonoBehaviour
     void Update()
     {
     }
-    public void Interact()
+    public void Interact(InputAction.CallbackContext ctx)
     {
+        // activate only once
+        if (!ctx.started)
+        {
+            return;
+        }
+
+        Debug.Log("notice me senpai");
         if(Store != null)
         {
             Store.GetComponent<Store>().StartStore();
         }
     }
-    public void LeaveStore() {
-        if (Store != null) {
-            Store.GetComponent<Store>().storePanel.SetActive(false);
-            Time.timeScale = 1f;
+    public void LeaveStore(InputAction.CallbackContext ctx)
+    {
+        // activate only once
+        if (!ctx.started)
+        {
+            return;
+        }
+
+        Debug.Log("notice me senpai2");
+        if (Store != null)
+        {
+            Store.GetComponent<Store>().ExitStore();
+            //Store.GetComponent<Store>().storePanel.SetActive(false);
+            //Time.timeScale = 1f;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

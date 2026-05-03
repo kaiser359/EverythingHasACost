@@ -147,7 +147,7 @@ public class Dialogue : MonoBehaviour
             }
             if (letter == '{')
             {
-                Debug.Log("i exist");
+                //Debug.Log("i exist");
                 isReadingTag = true;
                 continue;
             }
