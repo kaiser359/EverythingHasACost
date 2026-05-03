@@ -19,6 +19,9 @@ public class Pause : MonoBehaviour
     }
     public void PauseGame()
     {
-        if (pauseMenu != null && !pauseMenu.activeSelf && !store.activeSelf && !bank.activeSelf) { Debug.Log("paused"); pauseMenu.SetActive(true); Time.timeScale = 0; }
+        if (pauseMenu != null && !pauseMenu.activeSelf && !store.activeSelf && !bank.activeSelf) { 
+            Debug.Log("paused"); 
+            pauseMenu.SetActive(true); 
+            Time.timeScale = 0; }
     }
 }
