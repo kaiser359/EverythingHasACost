@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,12 +43,12 @@ public class SceneTransition : MonoBehaviour
 
     public void SwitchScene(string sceneName)
     {
+        TransitionSetActive(true);
+
         // start the transition to the next scene
-        StartCoroutine(CStart(sceneName));
         StartCoroutine(CSidesEnter());
         StartCoroutine(CTextEnter());
-
-        TransitionSetActive(true);
+        StartCoroutine(CStart(sceneName));
     }
 
     // start transitioning to the next scene
@@ -59,10 +57,9 @@ public class SceneTransition : MonoBehaviour
         // idk something about delay
         yield return null;
 
-        UnityEngine.UI.Image progressBar = progress.GetComponent<UnityEngine.UI.Image>();
-        //progressBar.enabled = true; // Show the progress bar
+        yield return new WaitForSeconds(transitionDuration); // Wait for the initial transition to complete
 
-        text.GetComponent<TextLoop>().enabled = true; // Start the text loop effect
+        UnityEngine.UI.Image progressBar = progress.GetComponent<UnityEngine.UI.Image>();
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
@@ -99,6 +96,8 @@ public class SceneTransition : MonoBehaviour
     {
         // idk something about delay
         yield return null;
+
+        text.GetComponent<TextLoop>().enabled = true; // Start the text loop effect
 
         float startTime = Time.unscaledTime;
         while (Time.unscaledTime < startTime + 2 * transitionDuration)

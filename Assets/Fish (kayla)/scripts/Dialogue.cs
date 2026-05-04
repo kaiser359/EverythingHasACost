@@ -176,7 +176,7 @@ public class Dialogue : MonoBehaviour
         Names currentChar = lines[index].name;
         dialogueText.text = currentChar.ToString().Replace('_', ' ') + ": ";
 
-        Debug.Log(filteredText);
+        //Debug.Log(filteredText);
 
         bool isReadingRichTextTag = false;
         string RichTextTag = "";
@@ -228,7 +228,7 @@ public class Dialogue : MonoBehaviour
         // if current dialogue text < length of line, finish line
         if (dialogueText.text.Length < filteredText.Length + lines[index].name.ToString().Length + 2)
         {
-            Debug.Log("finish line");
+            //Debug.Log("finish line");
 
             StopAllCoroutines();
             dialogueText.text = lines[index].name.ToString().Replace('_', ' ') + ": " + filteredText;
@@ -242,21 +242,21 @@ public class Dialogue : MonoBehaviour
             int currentChar = (int)lines[index].name;
             FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().StartListening();
             //FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", false);
-            Debug.Log(currentChar + "now listening" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
+            //Debug.Log(currentChar + "now listening" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
 
             index++;
             currentChar = (int)lines[index].name;
             GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[currentChar];
             charCloseUp.SetActive(true);
             //FindAnyObjectByType<InteractDialogue>().animators[currentChar].SetBool("talking", true);
-            Debug.Log(currentChar + "now talking" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
+            //Debug.Log(currentChar + "now talking" + FindAnyObjectByType<InteractDialogue>().animators[currentChar].GetBool("talking"));
             StartCoroutine(Type());
             FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().StartTalking();
             FindAnyObjectByType<InteractDialogue>().animators[currentChar].gameObject.GetComponent<AnimateDialogue>().Jump();
         }
         else
         {
-            Debug.Log("leave dialogue");
+            //Debug.Log("leave dialogue");
 
             StopAllCoroutines();
             FindAnyObjectByType<InteractDialogue>().LeaveDialogue();
