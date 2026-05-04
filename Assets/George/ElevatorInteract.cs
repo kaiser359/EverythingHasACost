@@ -8,10 +8,13 @@ public class ElevatorInteract : MonoBehaviour
 
     public bool isTutorial = false;
 
+    private TMPro.TextMeshPro lvlText;
+
     // Update is called once per frame
 
     void Start()
     {
+        lvlText = GameObject.Find("LevelText").GetComponent<TMPro.TextMeshPro>();
         gS = FindFirstObjectByType<GlobalPlayerInfo>();
     }
     public void Interact()
@@ -35,6 +38,8 @@ public class ElevatorInteract : MonoBehaviour
             }
             gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
             gS.floor++;
+
+            lvlText.text = "Level " + gS.floor;
             //play elevator cutscene
         }
     }
