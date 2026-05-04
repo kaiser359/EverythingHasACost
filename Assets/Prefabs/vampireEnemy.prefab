@@ -111,7 +111,7 @@ MonoBehaviour:
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   playerWashere: {fileID: 0}
   level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
-  detectionRange: 15
+  detectionRange: 17
   chaseRange: 60
   chaseSpeed: 9
   wanderRadius: 2
