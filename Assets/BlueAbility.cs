@@ -221,22 +221,7 @@ public class BlueAbility : MonoBehaviour
     }
     private void Update()
     {
-        if ( Did = false && lightCooldown <= 0)
-        {
-            lightCooldown -= Time.deltaTime;
-            LightShield.pointLightInnerRadius = Random.Range(0.5f, 2f);
-            Did = true;
-            Debug.LogError("there will be light");
-        }
-        if (Did == true)
-        {
-            lightCooldown += Time.deltaTime;
-
-        }
-        if(lightCooldown >= 0.1f)
-        {
-            Did = false;
-        }
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             ActivateAbility();

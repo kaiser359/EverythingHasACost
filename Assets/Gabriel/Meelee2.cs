@@ -174,7 +174,7 @@ public class Meelee2 : MonoBehaviour
                 Vector3 end = origin + (Vector3)dir.normalized * detectionRange;
 
               
-                RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, detectionRange);
+                RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, detectionRange, LayerMask.GetMask("Player"));
                 if (hit.collider != null)
                 {
                  

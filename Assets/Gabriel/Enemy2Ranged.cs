@@ -151,7 +151,7 @@ public class Enemy2Ranged : MonoBehaviour
                 if (lineRenderer != null)
                     lineRenderer.enabled = false;
             }
-            else 
+            else //animator
             {
                 if (lineRenderer != null)
                 {
