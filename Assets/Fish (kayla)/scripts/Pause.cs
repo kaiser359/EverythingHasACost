@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
@@ -15,15 +16,27 @@ public class Pause : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("justLeftStore: " + FindAnyObjectByType<Store>().justLeftStore);
+        store = GameObject.Find("Store");
+        bank = GameObject.Find("Bank");
+        Debug.Log("store:" + store + " bank:" + bank);
 
     }
-    public void PauseGame()
+    public void PauseGame(InputAction.CallbackContext ctx)
     {
-        if (pauseMenu != null && !pauseMenu.activeSelf && !FindAnyObjectByType<Store>().justLeftStore) { 
+        if (!ctx.started) return;
+
+        if ((store.CompareTag("Shop") && store.GetComponent<Store>().justLeftStore) || (bank.CompareTag("Shop") && bank.GetComponent<Store>().justLeftStore))
+        {
+            Debug.Log("just left store, not pausing");
+            store.GetComponent<Store>().justLeftStore = false; 
+            bank.GetComponent<Store>().justLeftStore = false;
+            return;
+        }
+        else if (pauseMenu != null && !pauseMenu.activeSelf && !store.GetComponent<Store>().justLeftStore && !bank.GetComponent<Store>().justLeftStore) 
+        { 
             Debug.Log("paused"); 
             pauseMenu.SetActive(true); 
-            Time.timeScale = 0; }
-        else { FindAnyObjectByType<Store>().justLeftStore = false; }
+            Time.timeScale = 0; 
+        }
     }
 }
