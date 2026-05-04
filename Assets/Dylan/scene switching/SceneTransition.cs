@@ -45,12 +45,12 @@ public class SceneTransition : MonoBehaviour
 
     public void SwitchScene(string sceneName)
     {
-        TransitionSetActive(true);
-
         // start the transition to the next scene
         StartCoroutine(CStart(sceneName));
         StartCoroutine(CSidesEnter());
         StartCoroutine(CTextEnter());
+
+        TransitionSetActive(true);
     }
 
     // start transitioning to the next scene
