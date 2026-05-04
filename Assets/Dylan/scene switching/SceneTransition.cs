@@ -138,8 +138,8 @@ public class SceneTransition : MonoBehaviour
             float t = (Time.unscaledTime - startTime) / transitionDuration;
             float sinin_t = 1 - Mathf.Cos(t * Mathf.PI * 0.5f); // Ease-in sine function for smooth transition
 
-            leftSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(Vector3.zero, new Vector3(-Screen.width, 0, 0), sinin_t);
-            rightSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(Vector3.zero, new Vector3(Screen.width, 0, 0), sinin_t);
+            leftSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(Vector3.zero, new Vector3(-Screen.width*1.5f, 0, 0), sinin_t);
+            rightSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(Vector3.zero, new Vector3(Screen.width*1.5f, 0, 0), sinin_t);
             progress.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(Vector3.zero, new Vector3(0, -30, 0), sinin_t);
 
             yield return null; // Wait until the next frame
@@ -162,5 +162,8 @@ public class SceneTransition : MonoBehaviour
 
             yield return null; // Wait until the next frame
         }
+
+        // disable everything after the transition is complete to prevent it from interfering with the new scene
+        TransitionSetActive(false);
     }
 }
