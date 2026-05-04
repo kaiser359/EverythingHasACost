@@ -7674,6 +7674,7 @@ MonoBehaviour:
   BankBag2: {fileID: 0}
   BankBag3: {fileID: 0}
   aimDir: 0
+  floor: 1
 --- !u!114 &960184569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10959,9 +10960,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 960184574}
     m_Modifications:
+    - target: {fileID: 1586060746887191540, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1935077316706043299, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
       propertyPath: m_Name
       value: BlueBloodBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678925977648634356, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678925977648634356, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 8093061293859579485, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
       propertyPath: LightShield
@@ -10969,7 +10982,7 @@ PrefabInstance:
       objectReference: {fileID: 2108066409}
     - target: {fileID: 8093061293859579485, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
       propertyPath: lightCooldown
-      value: -0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9137729114966969189, guid: f0bc69162d6b80e479e96aa14b47d90a, type: 3}
       propertyPath: m_LocalPosition.x
