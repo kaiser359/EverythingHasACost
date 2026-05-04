@@ -57,7 +57,7 @@ public class SceneTransition : MonoBehaviour
         // idk something about delay
         yield return null;
 
-        yield return new WaitForSeconds(transitionDuration); // Wait for the initial transition to complete
+        yield return new WaitForSeconds(2*transitionDuration); // Wait for the initial transition to complete
 
         UnityEngine.UI.Image progressBar = progress.GetComponent<UnityEngine.UI.Image>();
 
