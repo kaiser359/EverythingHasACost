@@ -136,7 +136,7 @@ public class EnemyCombat1 : MonoBehaviour
     {
         if (playerTransform == null) return false;
         Vector2 dir = (playerTransform.position - transform.position).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectionRange, LayerMask.GetMask("Default"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, detectionRange, LayerMask.GetMask("Player"));
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
@@ -202,9 +202,9 @@ public class EnemyCombat1 : MonoBehaviour
                         else if (!hit.collider.isTrigger)
                         {
                             // stop at the collision point (small offset so we don't overlap)
-                            Vector3 stopPos = (Vector3)hit.point - (Vector3)moveDir.normalized * 0.01f;
-                            rb.MovePosition(stopPos);
-                            break;
+                           // Vector3 stopPos = (Vector3)hit.point - (Vector3)moveDir.normalized * 0.01f;
+                            //rb.MovePosition(stopPos);
+                            //break;
                         }
                     }
                 }
