@@ -9,6 +9,8 @@ public class Invisibledash : MonoBehaviour
     public StarRatings star;
     public float _cooldownTimer = 0f;
     public AudioClip dashSound;
+    //public Rigidbody2D rb;
+    public ParticleSystem particle;
 
     void Update()
     {
@@ -66,13 +68,14 @@ public class Invisibledash : MonoBehaviour
                 float remaining = toTarget.magnitude;
                 if (remaining > 0.001f)
                     rb.AddForce(toTarget.normalized * remaining * 100f);
+             //   particle.Play();
             }
             else
             {
                 // use player rb. to prevent teleporting through walls.
-                p.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
+                rb.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
             }
-
+            
             yield return null;
         }
 
