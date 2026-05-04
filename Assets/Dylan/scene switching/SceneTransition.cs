@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     [SerializeField] private bool fromTransition;
-    [SerializeField] private float transitionDuration = 1f;
+    public float transitionDuration = 1f;
 
     private GameObject leftSide;
     private GameObject rightSide;
@@ -49,6 +49,20 @@ public class SceneTransition : MonoBehaviour
         StartCoroutine(CSidesEnter());
         StartCoroutine(CTextEnter());
         StartCoroutine(CStart(sceneName));
+    }
+
+    public void NormalTransitionIn()
+    {
+        TransitionSetActive(true);
+
+        // start the transition to the next scene
+        StartCoroutine(CSidesEnter());
+    }
+
+    public void NormalTransitionOut()
+    {
+        // start the transition to the next scene
+        StartCoroutine(CSidesExit());
     }
 
     // start transitioning to the next scene
