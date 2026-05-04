@@ -604,6 +604,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transition
       objectReference: {fileID: 0}
+    - target: {fileID: 5291711652749807454, guid: c12dd497e7d608545969e11d48a95b5b, type: 3}
+      propertyPath: fromTransition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858266730988428628, guid: c12dd497e7d608545969e11d48a95b5b, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
