@@ -43,20 +43,20 @@ public class SceneTransition : MonoBehaviour
 
     public void SwitchScene(string sceneName)
     {
-        TransitionSetActive(true);
-
         // start the transition to the next scene
         StartCoroutine(CSidesEnter());
         StartCoroutine(CTextEnter());
         StartCoroutine(CStart(sceneName));
+
+        TransitionSetActive(true);
     }
 
     public void NormalTransitionIn()
     {
-        TransitionSetActive(true);
-
         // start the transition to the next scene
         StartCoroutine(CSidesEnter());
+
+        TransitionSetActive(true);
     }
 
     public void NormalTransitionOut()
@@ -98,8 +98,8 @@ public class SceneTransition : MonoBehaviour
             float t = (Time.unscaledTime - startTime) / transitionDuration;
             float sinout_t = Mathf.Sin(t * Mathf.PI * 0.5f); // Ease-out sine function for smooth transition
 
-            leftSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(-Screen.width, 0, 0), Vector3.zero, sinout_t);
-            rightSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(Screen.width, 0, 0), Vector3.zero, sinout_t);
+            leftSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(-Screen.width*1.5f, 0, 0), Vector3.zero, sinout_t);
+            rightSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(Screen.width*1.5f, 0, 0), Vector3.zero, sinout_t);
             progress.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(0, -30, 0), Vector3.zero, sinout_t);
 
             yield return null; // Wait until the next frame
@@ -144,6 +144,11 @@ public class SceneTransition : MonoBehaviour
 
             yield return null; // Wait until the next frame
         }
+
+        yield return new WaitForSeconds(transitionDuration); // extra delay to ensure the transition is fully off-screen
+
+        // disable everything after the transition is complete to prevent it from interfering with the new scene
+        TransitionSetActive(false);
     }
 
     IEnumerator CTextExit()
@@ -162,8 +167,5 @@ public class SceneTransition : MonoBehaviour
 
             yield return null; // Wait until the next frame
         }
-
-        // disable everything after the transition is complete to prevent it from interfering with the new scene
-        TransitionSetActive(false);
     }
 }

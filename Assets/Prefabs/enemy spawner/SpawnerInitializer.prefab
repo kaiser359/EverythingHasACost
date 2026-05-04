@@ -54,3 +54,11 @@ MonoBehaviour:
   - difficultyLevel: 2
     enemies:
     - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
+  - difficultyLevel: 2
+    enemies:
+    - {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
+  - difficultyLevel: 1
+    enemies:
+    - {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
+    - {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}
+    - {fileID: 7431460907705484842, guid: dc70025a2e8877a428eb4a48d46a49d9, type: 3}

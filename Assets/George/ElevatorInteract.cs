@@ -45,7 +45,7 @@ public class ElevatorInteract : MonoBehaviour
         gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
         gS.floor++;
 
-        yield return new WaitForSeconds(3f); // delay for cutscene
+        yield return new WaitForSeconds(2*transition.transitionDuration); // delay for cutscene
 
         transition.NormalTransitionIn();
 

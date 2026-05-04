@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fromTransition: 0
-  transitionDuration: 1
+  transitionDuration: 2
 --- !u!1 &537700265129149259
 GameObject:
   m_ObjectHideFlags: 0
