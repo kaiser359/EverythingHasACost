@@ -20,7 +20,7 @@ public class ElevatorInteract : MonoBehaviour
     {
         yield return null;
 
-        SceneTransition transition = GameObject.FindGameObjectWithTag("LayerTransition").GetComponent<SceneTransition>();
+        LayerTransition transition = GameObject.FindGameObjectWithTag("LayerTransition").GetComponent<LayerTransition>();
 
         transition.NormalTransitionIn();
 
