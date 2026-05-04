@@ -26,6 +26,9 @@ public class TextLoop : MonoBehaviour
             currentIndex = (currentIndex + 1) % textLoop.Length;
             dialogueText.text = textLoop[currentIndex];
 
+            // update mesh to reflect changes to text
+            dialogueText.GetComponent<TextWave>().UpdateText();
+
             // reset cooldown
             effectCooldown.Use();
         }

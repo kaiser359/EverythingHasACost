@@ -15,6 +15,7 @@ TagManager:
   - shopui
   - bankui
   - Transition
+  - LayerTransition
   layers:
   - Default
   - TransparentFX

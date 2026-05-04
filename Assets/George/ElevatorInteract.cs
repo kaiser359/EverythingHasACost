@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,48 @@ public class ElevatorInteract : MonoBehaviour
     {
         gS = FindFirstObjectByType<GlobalPlayerInfo>();
     }
+
+    IEnumerator LayerSwitch()
+    {
+        yield return null;
+
+        LayerTransition transition = GameObject.FindGameObjectWithTag("LayerTransition").GetComponent<LayerTransition>();
+
+        transition.NormalTransitionIn();
+
+        yield return new WaitForSeconds(transition.transitionDuration); // delay until transition is fully in
+        yield return new WaitForSeconds(0.5f); // extra delay
+
+        // switch ui here
+
+        transition.NormalTransitionOut();
+
+        // elevator cutscene here
+
+        // game logic
+        FindFirstObjectByType<DungeonController>().RegenerateDungeon();
+        transform.position = Vector3.zero;
+        if (gS.Money.money > 50)
+        {
+            gS.Money.money = Mathf.FloorToInt(gS.Money.money * (1 - gS.levelTax));
+            if (gS.Money.money < 50)
+                gS.Money.money = 50;
+        }
+        gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
+        gS.floor++;
+
+        yield return new WaitForSeconds(2*transition.transitionDuration); // delay for cutscene
+
+        transition.NormalTransitionIn();
+
+        yield return new WaitForSeconds(transition.transitionDuration); // delay until transition is fully in
+        yield return new WaitForSeconds(0.5f); // extra delay
+
+        // switch ui here
+
+        transition.NormalTransitionOut();
+    }
+
     public void Interact()
     {
         if (Elevator != null)
@@ -25,16 +68,20 @@ public class ElevatorInteract : MonoBehaviour
                 return;
             }
 
-            FindFirstObjectByType<DungeonController>().RegenerateDungeon();
-            transform.position = Vector3.zero;
-            if (gS.Money.money > 50)
-            {
-                gS.Money.money = Mathf.FloorToInt(gS.Money.money * (1 - gS.levelTax));
-                if (gS.Money.money < 50)
-                    gS.Money.money = 50;
-            }
-            gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
-            gS.floor++;
+            StartCoroutine(LayerSwitch());
+
+            //FindFirstObjectByType<SceneTransition>().NormalTransitionIn();
+
+            //FindFirstObjectByType<DungeonController>().RegenerateDungeon();
+            //transform.position = Vector3.zero;
+            //if (gS.Money.money > 50)
+            //{
+            //    gS.Money.money = Mathf.FloorToInt(gS.Money.money * (1 - gS.levelTax));
+            //    if (gS.Money.money < 50)
+            //        gS.Money.money = 50;
+            //}
+            //gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
+            //gS.floor++;
             //play elevator cutscene
         }
     }
