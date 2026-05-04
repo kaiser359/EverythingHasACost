@@ -22,7 +22,6 @@ public class StoreInteract : MonoBehaviour
             return;
         }
 
-        Debug.Log("notice me senpai");
         if(Store != null)
         {
             Store.GetComponent<Store>().StartStore();
@@ -36,7 +35,6 @@ public class StoreInteract : MonoBehaviour
             return;
         }
 
-        Debug.Log("notice me senpai2");
         if (Store != null)
         {
             Store.GetComponent<Store>().ExitStore();

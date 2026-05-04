@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-
     public void SwitchScene(string scene)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+        FindAnyObjectByType<SceneTransition>().SwitchScene(scene);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
+
     public void QuitGame()
     {
         Application.Quit();
