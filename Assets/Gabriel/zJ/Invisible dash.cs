@@ -8,6 +8,7 @@ public class Invisibledash : MonoBehaviour
     public float cooldown = 5f;
     public StarRatings star;
     public float _cooldownTimer = 0f;
+    public Collider2D secondcol;
     public AudioClip dashSound;
     //public Rigidbody2D rb;
     public ParticleSystem particle;
@@ -55,14 +56,19 @@ public class Invisibledash : MonoBehaviour
         var rb = p.GetComponent<Rigidbody2D>();
         var col = p.GetComponent<Collider2D>();
 
-        if (col != null) col.enabled = false;
+        if (col != null)
+        {
+            secondcol.enabled = true;
+            col.enabled = false;
+            
+        }
 
         Vector2 target = (Vector2)p.transform.position + direction.normalized * distance;
 
         float time = 0f;
         while (time < duration)
         {
-            time += Time.deltaTime * 2;
+            time += Time.deltaTime;
 
             if (rb != null)
             {
@@ -72,8 +78,12 @@ public class Invisibledash : MonoBehaviour
             }
             yield return null;
         }
-        if (col != null) col.enabled = true;
-        yield return null;
+        if (col != null)
+        {
+            col.enabled = true;
+            secondcol.enabled = false;
+        }
+            yield return null;
         }
 
         

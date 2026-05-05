@@ -111,7 +111,7 @@ MonoBehaviour:
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   playerWashere: {fileID: 0}
   level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
-  detectionRange: 17
+  detectionRange: 5
   chaseRange: 60
   chaseSpeed: 9
   wanderRadius: 2
@@ -122,7 +122,7 @@ MonoBehaviour:
   dashDuration: 0.2
   touchDamageToMoney: 10
   knockbackForce: 5
-  dashOvershoot: 6
+  dashOvershoot: 2
   dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}
 --- !u!61 &3958107506301483019
 BoxCollider2D:
