@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f7d1fd276fa7d48b5a123c3c2529e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 3
+  dashDistance: 5
   dashDuration: 0.1
   cooldown: 0.6
   star: {fileID: 11400000, guid: 66d6612321307354596e093e10ed0463, type: 2}
