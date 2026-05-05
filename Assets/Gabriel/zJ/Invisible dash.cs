@@ -15,10 +15,10 @@ public class Invisibledash : MonoBehaviour
     void Update()
     {
         if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
-        if (Input.GetKey(KeyCode.K))
-        {
-            ActivateAbility();
-        }
+        //if (Input.GetKey(KeyCode.K))
+        //{
+        //    ActivateAbility();
+        //}
     }
     private void Start()
     {
