@@ -2284,18 +2284,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Generation
       objectReference: {fileID: 0}
-    - target: {fileID: 4973956150540200675, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
-      propertyPath: 'roomSetEntries.Array.data[1].set.normalCluster.top.Array.data[3]'
-      value: 
-      objectReference: {fileID: 835757171014195735, guid: d2599355a46691446b49ad53ff4696ed, type: 3}
-    - target: {fileID: 4973956150540200675, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
-      propertyPath: 'roomSetEntries.Array.data[1].set.normalCluster.left.Array.data[4]'
-      value: 
-      objectReference: {fileID: 835757171014195735, guid: d2599355a46691446b49ad53ff4696ed, type: 3}
-    - target: {fileID: 4973956150540200675, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
-      propertyPath: 'roomSetEntries.Array.data[1].set.normalCluster.bottom.Array.data[5]'
-      value: 
-      objectReference: {fileID: 835757171014195735, guid: d2599355a46691446b49ad53ff4696ed, type: 3}
     - target: {fileID: 5066571512689733509, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
       propertyPath: m_ShadowMesh.m_Mesh
       value: 
