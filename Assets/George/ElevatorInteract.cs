@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class ElevatorInteract : MonoBehaviour
@@ -32,7 +33,7 @@ public class ElevatorInteract : MonoBehaviour
 
         transition.NormalTransitionOut();
 
-        yield return new WaitForSecondsRealtime(0.5f); // delay until transition is fully out
+        yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay until transition is fully out
 
         // elevator cutscene here
         transition.ElevatorSwitchFloors(gS.floor);
@@ -66,8 +67,11 @@ public class ElevatorInteract : MonoBehaviour
         Time.timeScale = 1f; // unpause game
     }
 
-    public void Interact()
+    public void Interact(InputAction.CallbackContext ctx)
     {
+        // only interact once
+        if (!ctx.started) return;
+
         if (Elevator != null)
         {
             // tutorial level just loads the next scene
@@ -78,20 +82,6 @@ public class ElevatorInteract : MonoBehaviour
             }
 
             StartCoroutine(LayerSwitch());
-
-            //FindFirstObjectByType<SceneTransition>().NormalTransitionIn();
-
-            //FindFirstObjectByType<DungeonController>().RegenerateDungeon();
-            //transform.position = Vector3.zero;
-            //if (gS.Money.money > 50)
-            //{
-            //    gS.Money.money = Mathf.FloorToInt(gS.Money.money * (1 - gS.levelTax));
-            //    if (gS.Money.money < 50)
-            //        gS.Money.money = 50;
-            //}
-            //gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
-            //gS.floor++;
-            //play elevator cutscene
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
