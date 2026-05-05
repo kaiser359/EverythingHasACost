@@ -8,6 +8,7 @@ public class Invisibledash : MonoBehaviour
     public float cooldown = 5f;
     public StarRatings star;
     public float _cooldownTimer = 0f;
+    public Collider2D secondcol;
     public AudioClip dashSound;
     //public Rigidbody2D rb;
     public ParticleSystem particle;
@@ -52,27 +53,26 @@ public class Invisibledash : MonoBehaviour
         var p = GameObject.FindWithTag("Player");
         if (p == null) yield break;
 
-        var rb = p.GetComponent<Rigidbody2D>();
-        var col = p.GetComponent<Collider2D>();
+        Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
 
-        if (col != null) col.enabled = false;
+        // 1. DONT disable the collider here! 
+        // If you need to ignore enemies, change the layer instead:
+        // p.layer = LayerMask.NameToLayer("DashingPlayer"); 
 
-        Vector2 target = (Vector2)p.transform.position + direction.normalized * distance;
+        // 2. Calculate speed based on your distance/duration
+        float dashSpeed = distance / duration;
+        rb.linearVelocity = direction.normalized * dashSpeed;
 
-        float time = 0f;
-        while (time < duration)
+        // 3. Wait for the duration using FixedUpdate for physics consistency
+        float elapsed = 0;
+        while (elapsed < duration)
         {
-            time += Time.deltaTime * 2;
-
-            if (rb != null)
-            {
-              
-                float dashSpeed = distance / duration;
-                rb.linearVelocity = direction.normalized * dashSpeed ;
-            }
-            yield return null;
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
-        if (col != null) col.enabled = true;
+
+        // 4. Reset velocity and Layer
+        rb.linearVelocity = Vector2.zero;
         yield return null;
         }
 
