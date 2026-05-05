@@ -26,4 +26,10 @@ public class Buttons : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
     }
+
+    public void CanvasOn(GameObject canvas)
+    {
+        canvas.SetActive(!canvas.activeSelf);
+        Debug.Log("Canvas active: " + canvas.activeSelf);
+    }
 }
