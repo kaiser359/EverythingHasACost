@@ -1993,6 +1993,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5733697518938915994, guid: bae16d879c16e1044827389a45891b94, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733697518938915994, guid: bae16d879c16e1044827389a45891b94, type: 3}
       propertyPath: m_TileAssetArray.Array.data[1].m_Data
       value: 
       objectReference: {fileID: 11400000, guid: c30a8154442624a439f53a83f26404be, type: 2}

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d5735053b38fb3743ade096764844c97
+guid: 5c00cd85adb6c8b48b43424ab9a18639
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3049156038503702094
-    second: elevator door_0
+      213: -6235935674339446209
+    second: elevator_door_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: elevator door_0
+      name: elevator_door_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 120
-        height: 135
+        width: 1920
+        height: 1280
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b1ef34fcb83fa5d0800000000000000
-      internalID: -3049156038503702094
+      spriteID: f32bfc82b818579a0800000000000000
+      internalID: -6235935674339446209
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2db7923785dafec408a36c9eb9d291e7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      elevator door_0: -3049156038503702094
+      elevator_door_0: -6235935674339446209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

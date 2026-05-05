@@ -171,7 +171,7 @@ public class RoomSpawner : MonoBehaviour
             //Debug.Log("CHECKING WALL: " + transform.position + " / DIRECTION: " + wallChecks[i]);
 
             // exclude rooms that have a door in the direction of an adjacent wall
-            if (Physics2D.Raycast((Vector2)transform.position + wallChecks[i], wallChecks[i], 0.02f, LayerMask.GetMask("Walls")))
+            if (Physics2D.Raycast((Vector2)transform.position + wallChecks[i], wallChecks[i], 0.05f, LayerMask.GetMask("Walls")))
             {
                 //Debug.Log("WALL CHECK HIT: " + transform.position + " / DIRECTION: " + (i + 1));
                 roomsSpawnable = roomsSpawnable.Except(roomClass[i]).ToArray();

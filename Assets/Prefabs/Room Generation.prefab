@@ -367,7 +367,7 @@ TilemapCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
+  m_ExtrusionFactor: 1
   m_UseDelaunayMesh: 0
 --- !u!114 &7471701967190393429
 MonoBehaviour:
@@ -777,10 +777,6 @@ PrefabInstance:
     - target: {fileID: 5574719895582612847, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
-      propertyPath: enemyClusters.Array.size
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7752821256147611024, guid: 9054db4f2fb183a4b8ae2a07ab6af0af, type: 3}
       propertyPath: enemyClusters.Array.data[2].difficultyLevel
