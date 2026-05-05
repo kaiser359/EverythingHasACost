@@ -8,7 +8,6 @@ public class Invisibledash : MonoBehaviour
     public float cooldown = 5f;
     public StarRatings star;
     public float _cooldownTimer = 0f;
-    public Collider2D secondcol;
     public AudioClip dashSound;
     //public Rigidbody2D rb;
     public ParticleSystem particle;
@@ -16,8 +15,7 @@ public class Invisibledash : MonoBehaviour
     void Update()
     {
         if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
-        //if (Input.GetKey(KeyCode.K))
-        //{
+        //if (Input.GetKey(KeyCode.K)){
         //    ActivateAbility();
         //}
     }
@@ -25,13 +23,13 @@ public class Invisibledash : MonoBehaviour
     {
         cooldown -= (star.StartRating/100f);
     }
-   
+    // Public activation entrypoint
     public void ActivateAbility()
     {
         if (_cooldownTimer > 0f) return;
         _cooldownTimer = cooldown;
 
-       
+        // determine dash direction from player movement if possible
         var player = GameObject.FindWithTag("Player");
         if (player == null) return;
 
@@ -53,29 +51,34 @@ public class Invisibledash : MonoBehaviour
         var p = GameObject.FindWithTag("Player");
         if (p == null) yield break;
 
-        Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
+        var rb = p.GetComponent<Rigidbody2D>();
+        var col = p.GetComponent<Collider2D>();
 
-        // 1. DONT disable the collider here! 
-        // If you need to ignore enemies, change the layer instead:
-        // p.layer = LayerMask.NameToLayer("DashingPlayer"); 
+        if (col != null) col.enabled = false;
 
-        // 2. Calculate speed based on your distance/duration
-        float dashSpeed = distance / duration;
-        rb.linearVelocity = direction.normalized * dashSpeed;
+        Vector2 target = (Vector2)p.transform.position + direction.normalized * distance;
 
-        // 3. Wait for the duration using FixedUpdate for physics consistency
-        float elapsed = 0;
-        while (elapsed < duration)
+        float time = 0f;
+        while (time < duration)
         {
-            elapsed += Time.fixedDeltaTime;
-            yield return new WaitForFixedUpdate();
+            time += Time.deltaTime;
+            if (rb != null)
+            {
+                var toTarget = (target - (Vector2)p.transform.position);
+                float remaining = toTarget.magnitude;
+                if (remaining > 0.001f)
+                    rb.AddForce(toTarget.normalized * remaining * 100f);
+             //   particle.Play();
+            }
+            else
+            {
+                // use player rb. to prevent teleporting through walls.
+                rb.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
+            }
+            
+            yield return null;
         }
 
-        // 4. Reset velocity and Layer
-        rb.linearVelocity = Vector2.zero;
-        yield return null;
-        }
-
-        
+        if (col != null) col.enabled = true;
     }
-
+}
