@@ -8,7 +8,6 @@ public class Invisibledash : MonoBehaviour
     public float cooldown = 5f;
     public StarRatings star;
     public float _cooldownTimer = 0f;
-    public Collider2D secondcol;
     public AudioClip dashSound;
     //public Rigidbody2D rb;
     public ParticleSystem particle;
@@ -16,8 +15,7 @@ public class Invisibledash : MonoBehaviour
     void Update()
     {
         if (_cooldownTimer > 0f) _cooldownTimer -= Time.deltaTime;
-        //if (Input.GetKey(KeyCode.K))
-        //{
+        //if (Input.GetKey(KeyCode.K)){
         //    ActivateAbility();
         //}
     }
@@ -25,13 +23,13 @@ public class Invisibledash : MonoBehaviour
     {
         cooldown -= (star.StartRating/100f);
     }
-   
+    // Public activation entrypoint
     public void ActivateAbility()
     {
         if (_cooldownTimer > 0f) return;
         _cooldownTimer = cooldown;
 
-       
+        // determine dash direction from player movement if possible
         var player = GameObject.FindWithTag("Player");
         if (player == null) return;
 
@@ -56,12 +54,7 @@ public class Invisibledash : MonoBehaviour
         var rb = p.GetComponent<Rigidbody2D>();
         var col = p.GetComponent<Collider2D>();
 
-        if (col != null)
-        {
-            secondcol.enabled = true;
-            col.enabled = false;
-            
-        }
+        if (col != null) col.enabled = false;
 
         Vector2 target = (Vector2)p.transform.position + direction.normalized * distance;
 
@@ -69,23 +62,23 @@ public class Invisibledash : MonoBehaviour
         while (time < duration)
         {
             time += Time.deltaTime;
-
             if (rb != null)
             {
-              
-                float dashSpeed = distance / duration;
-                rb.linearVelocity = direction.normalized * dashSpeed ;
+                var toTarget = (target - (Vector2)p.transform.position);
+                float remaining = toTarget.magnitude;
+                if (remaining > 0.001f)
+                    rb.AddForce(toTarget.normalized * remaining * 100f);
+             //   particle.Play();
             }
-            yield return null;
-        }
-        if (col != null)
-        {
-            col.enabled = true;
-            secondcol.enabled = false;
-        }
+            else
+            {
+                // use player rb. to prevent teleporting through walls.
+                rb.transform.position = Vector2.MoveTowards(p.transform.position, target, (distance / duration) * Time.deltaTime);
+            }
+            
             yield return null;
         }
 
-        
+        if (col != null) col.enabled = true;
     }
-
+}
