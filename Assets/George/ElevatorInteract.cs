@@ -28,6 +28,7 @@ public class ElevatorInteract : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f); // extra delay
 
         // switch ui here
+        transition.ElevatorSetActive(true, gS.floor);
 
         transition.NormalTransitionOut();
 
@@ -54,6 +55,7 @@ public class ElevatorInteract : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f); // extra delay
 
         // switch ui here
+        transition.ElevatorSetActive(false, gS.floor);
 
         transition.NormalTransitionOut();
     }

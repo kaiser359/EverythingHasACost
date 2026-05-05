@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class LayerTransition : MonoBehaviour
@@ -20,14 +21,21 @@ public class LayerTransition : MonoBehaviour
         rightSide = transform.GetChild(3).gameObject;
 
         TransitionSetActive(false);
+        ElevatorSetActive(false);
     }
 
     private void TransitionSetActive(bool enabled)
     {
-        elevatorUI.SetActive(enabled);
-        floorText.SetActive(enabled);
         leftSide.SetActive(enabled);
         rightSide.SetActive(enabled);
+    }
+
+    public void ElevatorSetActive(bool enabled, int floor = 0)
+    {
+        elevatorUI.SetActive(enabled);
+        floorText.SetActive(enabled);
+
+        floorText.GetComponent<TMP_Text>().text = floor.ToString().PadLeft(3, '0');
     }
 
     public void NormalTransitionIn()
@@ -46,7 +54,7 @@ public class LayerTransition : MonoBehaviour
 
     public void ElevatorSwitchFloors(int floor)
     {
-        // ...
+        StartCoroutine(CElevatorSwitchFloors(floor));
     }
 
     IEnumerator CElevatorSwitchFloors(int floor)
@@ -55,13 +63,24 @@ public class LayerTransition : MonoBehaviour
         yield return null;
 
         float startTime = Time.unscaledTime;
+
+        //// initial
+        //floorText.GetComponent<UnityEngine.UI.Text>().text = floor.ToString().PadLeft(3, '0');
+
         while (Time.unscaledTime < startTime + transitionDuration)
         {
             float t = (Time.unscaledTime - startTime) / transitionDuration;
-            float sinout_t = Mathf.Sin(t * Mathf.PI * 0.5f); // Ease-out sine function for smooth transition
 
-            leftSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(-Screen.width * 1.5f, 0, 0), Vector3.zero, sinout_t);
-            rightSide.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(Screen.width * 1.5f, 0, 0), Vector3.zero, sinout_t);
+            if (0 < t && t < 0.1f) { floorText.SetActive(false); }
+            else if (0.1f <= t && t < 0.25f) { floorText.SetActive(true); }
+            else if (0.25f <= t && t < 0.4f) { floorText.SetActive(false); }
+            else if (0.4f <= t)
+            {
+                floorText.SetActive(true);
+
+                // final
+                floorText.GetComponent<TMP_Text>().text = (floor + 1).ToString().PadLeft(3, '0');
+            }
 
             yield return null; // Wait until the next frame
         }
