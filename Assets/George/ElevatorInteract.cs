@@ -24,14 +24,15 @@ public class ElevatorInteract : MonoBehaviour
 
         transition.NormalTransitionIn();
 
-        yield return new WaitForSeconds(transition.transitionDuration); // delay until transition is fully in
-        yield return new WaitForSeconds(0.5f); // extra delay
+        yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay until transition is fully in
+        yield return new WaitForSecondsRealtime(0.5f); // extra delay
 
         // switch ui here
 
         transition.NormalTransitionOut();
 
         // elevator cutscene here
+        transition.ElevatorSwitchFloors(gS.floor);
 
         // game logic
         FindFirstObjectByType<DungeonController>().RegenerateDungeon();
@@ -45,12 +46,12 @@ public class ElevatorInteract : MonoBehaviour
         gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
         gS.floor++;
 
-        yield return new WaitForSeconds(2*transition.transitionDuration); // delay for cutscene
+        yield return new WaitForSecondsRealtime(2*transition.transitionDuration); // delay for cutscene
 
         transition.NormalTransitionIn();
 
-        yield return new WaitForSeconds(transition.transitionDuration); // delay until transition is fully in
-        yield return new WaitForSeconds(0.5f); // extra delay
+        yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay until transition is fully in
+        yield return new WaitForSecondsRealtime(0.5f); // extra delay
 
         // switch ui here
 
