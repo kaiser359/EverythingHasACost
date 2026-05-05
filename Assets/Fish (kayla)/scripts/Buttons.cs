@@ -4,7 +4,7 @@ public class Buttons : MonoBehaviour
 {
     public void SwitchScene(string scene)
     {
-        FindAnyObjectByType<SceneTransition>().SwitchScene(scene);
+        GameObject.FindGameObjectWithTag("Transition").GetComponent<SceneTransition>().SwitchScene(scene);
         //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 

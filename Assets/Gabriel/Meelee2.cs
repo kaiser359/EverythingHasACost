@@ -136,7 +136,7 @@ public class Meelee2 : MonoBehaviour
     {
         if (playerTransform == null) return false;
         Vector2 direction = playerTransform.position - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, detectionRange);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, detectionRange, LayerMask.GetMask("Player"));
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             return true; 

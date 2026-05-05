@@ -157,9 +157,17 @@ public class EnemyCombat1 : MonoBehaviour
             playerRb = playerTransform.GetComponent<Rigidbody2D>();
         }
         // disable physics collisions between this enemy and the player while dashing
-        foreach (var ec in enemyColls)
+        // also set enemy colliders to triggers so the dash bypasses any collider (walls, obstacles, etc.)
+        bool[] originalIsTrigger = new bool[enemyColls.Length];
+        for (int i = 0; i < enemyColls.Length; i++)
+        {
+            var ec = enemyColls[i];
+            if (ec == null) continue;
+            originalIsTrigger[i] = ec.isTrigger;
+            ec.isTrigger = true;
             foreach (var pc in playerColls)
-                if (ec != null && pc != null) Physics2D.IgnoreCollision(ec, pc, true);
+                if (pc != null) Physics2D.IgnoreCollision(ec, pc, true);
+        }
 
         animator.SetTrigger("Dashing");
         // use provided duration (already adjusted by level)
@@ -229,10 +237,16 @@ public class EnemyCombat1 : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
 
-        // re-enable collisions between enemy and player
-        foreach (var ec in enemyColls)
+        // re-enable collisions between enemy and player and restore original collider trigger states
+        for (int i = 0; i < enemyColls.Length; i++)
+        {
+            var ec = enemyColls[i];
+            if (ec == null) continue;
             foreach (var pc in playerColls)
-                if (ec != null && pc != null) Physics2D.IgnoreCollision(ec, pc, false);
+                if (pc != null) Physics2D.IgnoreCollision(ec, pc, false);
+            // restore original isTrigger state
+            ec.isTrigger = originalIsTrigger.Length > i ? originalIsTrigger[i] : ec.isTrigger;
+        }
 
         isDashing = false;
     }

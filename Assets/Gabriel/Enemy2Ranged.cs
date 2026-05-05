@@ -65,6 +65,7 @@ public class Enemy2Ranged : MonoBehaviour
         {
             lineRenderer.positionCount = 2;
             lineRenderer.enabled = false;
+            lineRenderer.useWorldSpace = true;
         }
         rb = GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -262,7 +263,7 @@ public class Enemy2Ranged : MonoBehaviour
 
             animator.SetBool("Lazer", false);
             animator.speed = 1;
-            timerTohit = 0;
+            timerTohit = 0f;
             activationTimer = 0f;
             laserActive = false;
             // Wandering
