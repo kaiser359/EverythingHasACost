@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d66cd30ce33a5e40b5c6532a6320828, type: 3}
   m_Name: EnemyLazerStats
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 120
   speed: 5
   atkDamage: 10
   resistance: 10
   atkSpeed: 1
-  dropAmount: 100
+  dropAmount: 160

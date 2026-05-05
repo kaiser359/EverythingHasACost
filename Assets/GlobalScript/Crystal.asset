@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d66cd30ce33a5e40b5c6532a6320828, type: 3}
   m_Name: Crystal
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 80
   speed: 3
   atkDamage: 2
   resistance: 0
