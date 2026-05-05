@@ -9276,7 +9276,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147484159
+    m_Bits: 2147485183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -11054,26 +11054,6 @@ PrefabInstance:
     - target: {fileID: 4131553321552813515, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653735071601092590, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Parameters.textureScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653735071601092590, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Parameters.textureScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653735071601092590, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653735071601092590, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.1275278
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653735071601092590, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.16666666
       objectReference: {fileID: 0}
     - target: {fileID: 8162974563615339022, guid: bdd9d7ec4e8f4ab49b939f86c0370255, type: 3}
       propertyPath: m_Name

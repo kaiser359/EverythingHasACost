@@ -68,11 +68,12 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _LazerEdgeSmoothness: 10
-    - _LazerThickness: 6.76
+    - _LazerScale: 5
+    - _LazerThickness: -0.54
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 4.0472026, g: 4.0472026, b: 4.0472026, a: 1}
+    - _Color: {r: 3.907241, g: 0.78054065, b: 0.6082027, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _lazerSpeed: {r: -0.56, g: 0, b: 0, a: 0}
+    - _lazerSpeed: {r: -1.04, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
