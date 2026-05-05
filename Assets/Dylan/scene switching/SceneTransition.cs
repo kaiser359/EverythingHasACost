@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] private bool fromTransition;
+    public static bool fromTransition = false;
     public float transitionDuration = 1f;
 
     private GameObject leftSide;
@@ -43,12 +43,15 @@ public class SceneTransition : MonoBehaviour
 
     public void SwitchScene(string sceneName)
     {
+        StopAllCoroutines();
+
         // start the transition to the next scene
         StartCoroutine(CSidesEnter());
         StartCoroutine(CTextEnter());
         StartCoroutine(CStart(sceneName));
 
         TransitionSetActive(true);
+        fromTransition = true; // set the static variable to indicate that the next scene should transition in
     }
 
     public void NormalTransitionIn()
