@@ -10,10 +10,14 @@ public class LayerTransition : MonoBehaviour
     private GameObject floorText;
     private GameObject leftSide;
     private GameObject rightSide;
+    public AudioClip elevatorDing;
+    public AudioClip elevatorDoor;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         // find the child objects for the left and right sides of the transition, the progress bar, and the text
         elevatorUI = transform.GetChild(0).gameObject;
         floorText = transform.GetChild(1).gameObject;
@@ -64,6 +68,7 @@ public class LayerTransition : MonoBehaviour
 
         float startTime = Time.unscaledTime;
 
+        audioSource.PlayOneShot(elevatorDing);
         //// initial
         //floorText.GetComponent<UnityEngine.UI.Text>().text = floor.ToString().PadLeft(3, '0');
 
@@ -92,6 +97,8 @@ public class LayerTransition : MonoBehaviour
         yield return null;
 
         float startTime = Time.unscaledTime;
+        audioSource.PlayOneShot(elevatorDoor);
+
         while (Time.unscaledTime < startTime + transitionDuration)
         {
             float t = (Time.unscaledTime - startTime) / transitionDuration;
