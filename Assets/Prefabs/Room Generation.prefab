@@ -216,9 +216,9 @@ GameObject:
   - component: {fileID: 7124802188120311324}
   - component: {fileID: 1429703251567301261}
   - component: {fileID: 3093107625230186776}
-  - component: {fileID: 7471701967190393429}
-  - component: {fileID: 8829064425206155283}
-  - component: {fileID: 1920974524236656396}
+  - component: {fileID: 5066571512689733509}
+  - component: {fileID: 4914963642905265579}
+  - component: {fileID: 4998249777362032281}
   m_Layer: 6
   m_Name: walls
   m_TagString: Untagged
@@ -367,9 +367,9 @@ TilemapCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 1
+  m_ExtrusionFactor: 0.001
   m_UseDelaunayMesh: 0
---- !u!114 &7471701967190393429
+--- !u!114 &5066571512689733509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,7 +397,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   m_ShapePathHash: 0
   m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 1920974524236656396}
+  m_ShadowShape2DComponent: {fileID: 4998249777362032281}
   m_ShadowShape2DProvider:
     rid: 3713972670796398669
   m_ShadowCastingSource: 2
@@ -415,14 +415,14 @@ MonoBehaviour:
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 1920974524236656396}
+  m_PreviousShadowShape2DSource: {fileID: 4998249777362032281}
   references:
     version: 2
     RefIds:
     - rid: 3713972670796398669
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
---- !u!50 &8829064425206155283
+--- !u!50 &4914963642905265579
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &1920974524236656396
+--- !u!66 &4998249777362032281
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
