@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 766bb89e41dcbf249a8cf5415d3691bc
+guid: 94d6b50ff2aa9d6418cd8e6734020f35
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4198972775108417999
-    second: spriteatlas_0
+      213: -1202843904700069933
+    second: Screenshot 2026-05-05 160938_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spriteatlas_0
+      name: Screenshot 2026-05-05 160938_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 459
-        height: 242
+        width: 1254
+        height: 749
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc99fd9ed7fb54a30800000000000000
-      internalID: 4198972775108417999
+      spriteID: 3d7cb1477d3ae4fe0800000000000000
+      internalID: -1202843904700069933
       vertices: []
       indices: 
       edges: []
@@ -160,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      spriteatlas_0: 4198972775108417999
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
