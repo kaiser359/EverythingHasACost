@@ -2307,6 +2307,7 @@ GameObject:
   - component: {fileID: 2990637502623656967}
   - component: {fileID: 2952632420631132958}
   - component: {fileID: 187523992752287384}
+  - component: {fileID: 8686546541260103337}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -2584,6 +2585,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b9ec3b68-98b0-4a62-9a87-bfd15ba7ce22
     m_ActionName: 'Player/GodMode[/Keyboard/g]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8686546541260103337}
+        m_TargetAssemblyTypeName: TeleportElevator, Assembly-CSharp
+        m_MethodName: Tele
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e28d228a-e52a-44e0-b128-bc3fbc26772d
+    m_ActionName: 'Player/teleport[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2618,6 +2635,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2588339694201626860}
+--- !u!114 &8686546541260103337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3705209963401216978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f593a157d019fd44afbe30a8256ac94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4490205025231755062}
 --- !u!1 &3766291758366263626
 GameObject:
   m_ObjectHideFlags: 0

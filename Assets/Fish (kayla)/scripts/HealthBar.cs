@@ -31,10 +31,10 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
 
-        cam = FindAnyObjectByType<CinemachineCamera>();
+        cam = FindFirstObjectByType<CinemachineCamera>();
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         //postProcess = FindObjectOfType<Volume>();
-        postProcessProfile = FindAnyObjectByType<Volume>().profile;
+        postProcessProfile = FindFirstObjectByType<Volume>().profile;
         postProcessProfile.TryGet(out Vignette vignette);
         postProcessProfile.TryGet(out MotionBlur mb);
         blackOverlay.enabled = false;

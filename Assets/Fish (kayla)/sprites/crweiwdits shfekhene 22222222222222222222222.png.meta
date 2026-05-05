@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: baef9dcf5309b4d449bbc09e4c974810
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2574093748871447658
+    second: crweiwdits shfekhene 22222222222222222222222_0
+  - first:
+      213: 7413752715024756639
+    second: crweiwdits shfekhene 22222222222222222222222_1
+  - first:
+      213: -5735585932212457308
+    second: crweiwdits shfekhene 22222222222222222222222_2
+  - first:
+      213: 2690737289474240977
+    second: crweiwdits shfekhene 22222222222222222222222_3
+  - first:
+      213: 5008666784911462732
+    second: crweiwdits shfekhene 22222222222222222222222_4
+  - first:
+      213: 6982892255288046633
+    second: crweiwdits shfekhene 22222222222222222222222_5
+  - first:
+      213: -5162545119174519440
+    second: crweiwdits shfekhene 22222222222222222222222_6
+  - first:
+      213: -465350490255303703
+    second: crweiwdits shfekhene 22222222222222222222222_7
+  - first:
+      213: 94867635465568302
+    second: crweiwdits shfekhene 22222222222222222222222_8
+  - first:
+      213: 8139149821876439478
+    second: crweiwdits shfekhene 22222222222222222222222_9
+  - first:
+      213: 156721492433240611
+    second: crweiwdits shfekhene 22222222222222222222222_10
+  - first:
+      213: -8467268086414072700
+    second: crweiwdits shfekhene 22222222222222222222222_11
+  - first:
+      213: -5084901170425609148
+    second: crweiwdits shfekhene 22222222222222222222222_12
+  - first:
+      213: 6090539847715822900
+    second: crweiwdits shfekhene 22222222222222222222222_13
+  - first:
+      213: -4473266522698201199
+    second: crweiwdits shfekhene 22222222222222222222222_14
+  - first:
+      213: 7989065445735258323
+    second: crweiwdits shfekhene 22222222222222222222222_15
+  - first:
+      213: 8739269612795887187
+    second: crweiwdits shfekhene 22222222222222222222222_16
+  - first:
+      213: 1325318911135287116
+    second: crweiwdits shfekhene 22222222222222222222222_17
+  - first:
+      213: -4269796860751701768
+    second: crweiwdits shfekhene 22222222222222222222222_18
+  - first:
+      213: 4596163377069540999
+    second: crweiwdits shfekhene 22222222222222222222222_19
+  - first:
+      213: 7998586112456052987
+    second: crweiwdits shfekhene 22222222222222222222222_20
+  - first:
+      213: 2264716074233830283
+    second: crweiwdits shfekhene 22222222222222222222222_21
+  - first:
+      213: -1183208465552386278
+    second: crweiwdits shfekhene 22222222222222222222222_22
+  - first:
+      213: -1602001315188195512
+    second: crweiwdits shfekhene 22222222222222222222222_23
+  - first:
+      213: 4410945490170728747
+    second: crweiwdits shfekhene 22222222222222222222222_24
+  - first:
+      213: 7637531417328498913
+    second: crweiwdits shfekhene 22222222222222222222222_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crweiwdits shfekhene 22222222222222222222222_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64490060a409b320800000000000000
+      internalID: 2574093748871447658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 042089c71319c2947bc523c4af5785c6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crweiwdits shfekhene 22222222222222222222222_0: 2574093748871447658
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1185,7 +1185,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.255
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1442,6 +1442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984529046}
   - component: {fileID: 1984529045}
+  - component: {fileID: 1984529047}
   m_Layer: 0
   m_Name: Global Volume
   m_TagString: Untagged
@@ -1481,6 +1482,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984529047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984529044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ff2ca37f2f9e44a87cfc7e8114cd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flicker: 1
+  glitch: 1
+  gv: {fileID: 1984529045}
 --- !u!1 &2029111995
 GameObject:
   m_ObjectHideFlags: 0
