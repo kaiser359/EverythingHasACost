@@ -65,9 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f7d1fd276fa7d48b5a123c3c2529e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 6
+  dashDistance: 10
   dashDuration: 0.18
   cooldown: 0.6
   star: {fileID: 11400000, guid: 66d6612321307354596e093e10ed0463, type: 2}
   _cooldownTimer: 0
   dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}
+  particle: {fileID: 0}
