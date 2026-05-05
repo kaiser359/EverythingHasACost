@@ -3277,6 +3277,8 @@ MonoBehaviour:
   Elevator: {fileID: 0}
   gS: {fileID: 0}
   isTutorial: 0
+  elevatorUse: {fileID: 0}
+  elevatorDing: {fileID: 8300000, guid: cfc048bcc4960fd41a5cd028e1a4d650, type: 3}
 --- !u!114 &7574471918292029350
 MonoBehaviour:
   m_ObjectHideFlags: 0
