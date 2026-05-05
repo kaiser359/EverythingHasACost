@@ -10,6 +10,8 @@ public class ElevatorInteract : MonoBehaviour
 
     public bool isTutorial = false;
 
+    private bool switching = false;
+
     [Header("Audio")]
     [SerializeField] private AudioClip elevatorUse;
     [SerializeField] private AudioClip elevatorDing;
@@ -97,6 +99,8 @@ public class ElevatorInteract : MonoBehaviour
         // only interact once
         if (!ctx.started) return;
 
+        if (switching) return;
+
         if (Elevator != null)
         {
             // tutorial level just loads the next scene
@@ -107,6 +111,7 @@ public class ElevatorInteract : MonoBehaviour
             }
 
             StartCoroutine(LayerSwitch());
+            switching = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
