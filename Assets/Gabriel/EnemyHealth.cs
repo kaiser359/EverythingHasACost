@@ -65,7 +65,7 @@ public class EnemyHealth : MonoBehaviour
         //particles.GetComponent<ParticleSystem>().Play();
         Instantiate(damageParticles, transform.position, Quaternion.identity, transform);
         Debug.Log("hhhhnghhng");
-
+        
     }
 
    
