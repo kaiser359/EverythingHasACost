@@ -53,37 +53,27 @@ public class Invisibledash : MonoBehaviour
         var p = GameObject.FindWithTag("Player");
         if (p == null) yield break;
 
-        var rb = p.GetComponent<Rigidbody2D>();
-        var col = p.GetComponent<Collider2D>();
+        Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
 
-        if (col != null)
+        // 1. DONT disable the collider here! 
+        // If you need to ignore enemies, change the layer instead:
+        // p.layer = LayerMask.NameToLayer("DashingPlayer"); 
+
+        // 2. Calculate speed based on your distance/duration
+        float dashSpeed = distance / duration;
+        rb.linearVelocity = direction.normalized * dashSpeed;
+
+        // 3. Wait for the duration using FixedUpdate for physics consistency
+        float elapsed = 0;
+        while (elapsed < duration)
         {
-            secondcol.enabled = true;
-            col.enabled = false;
-            
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
-        Vector2 target = (Vector2)p.transform.position + direction.normalized * distance;
-
-        float time = 0f;
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-
-            if (rb != null)
-            {
-              
-                float dashSpeed = distance / duration;
-                rb.linearVelocity = direction.normalized * dashSpeed ;
-            }
-            yield return null;
-        }
-        if (col != null)
-        {
-            col.enabled = true;
-            secondcol.enabled = false;
-        }
-            yield return null;
+        // 4. Reset velocity and Layer
+        rb.linearVelocity = Vector2.zero;
+        yield return null;
         }
 
         
