@@ -32,6 +32,8 @@ public class ElevatorInteract : MonoBehaviour
 
         transition.NormalTransitionOut();
 
+        yield return new WaitForSecondsRealtime(0.5f); // delay until transition is fully out
+
         // elevator cutscene here
         transition.ElevatorSwitchFloors(gS.floor);
 
@@ -47,6 +49,8 @@ public class ElevatorInteract : MonoBehaviour
         gS.Money.bankMoney = Mathf.FloorToInt(gS.Money.bankMoney * (1 + gS.bankRate));
         gS.floor++;
 
+        Time.timeScale = 0f; // pause game for cutscene
+
         yield return new WaitForSecondsRealtime(2*transition.transitionDuration); // delay for cutscene
 
         transition.NormalTransitionIn();
@@ -58,6 +62,8 @@ public class ElevatorInteract : MonoBehaviour
         transition.ElevatorSetActive(false, gS.floor);
 
         transition.NormalTransitionOut();
+
+        Time.timeScale = 1f; // unpause game
     }
 
     public void Interact()
