@@ -11,8 +11,7 @@ public enum Names
     Vinny = 1,
     Slim = 2,
     Ivanna = 3,
-    Casino_Guy = 4,
-    Duchess_Malveina = 5,
+    Duchess_Malveina = 4,
 }
 
 [Serializable]
@@ -115,6 +114,7 @@ public class Dialogue : MonoBehaviour
 
         GameObject charCloseUp = FindAnyObjectByType<InteractDialogue>().characterClose[0];
         //FindAnyObjectByType<InteractDialogue>().ActivatePanel();
+        Debug.Log((int)lines[0].name); // testing !! :3c
         FindAnyObjectByType<InteractDialogue>().characterClose[(int)lines[0].name].SetActive(true);
         //FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].SetBool("talking", true);
         FindAnyObjectByType<InteractDialogue>().animators[(int)lines[0].name].gameObject.GetComponent<AnimateDialogue>().StartTalking();
