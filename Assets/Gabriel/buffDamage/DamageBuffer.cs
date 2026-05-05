@@ -14,8 +14,10 @@ public class DamageBuffer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
+        playerInfo = FindAnyObjectByType<GlobalPlayerInfo>();
         normalBullet = playerInfo.bulletPrefab;
         originakmoveSpeed = playerInfo.moveSpeed;
+        
     }
     // Update is called once per frame
     void Update()

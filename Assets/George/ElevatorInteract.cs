@@ -10,11 +10,35 @@ public class ElevatorInteract : MonoBehaviour
 
     public bool isTutorial = false;
 
+    private bool switching = false;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip elevatorUse;
+    [SerializeField] private AudioClip elevatorDing;
+
     // Update is called once per frame
 
     void Start()
     {
         gS = FindFirstObjectByType<GlobalPlayerInfo>();
+    }
+
+    private void UseElevatorSFX()
+    {
+        if (elevatorUse == null) return;
+
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        audioSource.PlayOneShot(elevatorUse);
+    }
+
+    private void ElevatorFinishSFX()
+    {
+        if (elevatorDing == null) return;
+
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+
+        audioSource.PlayOneShot(elevatorDing);
     }
 
     IEnumerator LayerSwitch()
@@ -24,6 +48,7 @@ public class ElevatorInteract : MonoBehaviour
         LayerTransition transition = GameObject.FindGameObjectWithTag("LayerTransition").GetComponent<LayerTransition>();
 
         transition.NormalTransitionIn();
+        UseElevatorSFX();
 
         yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay until transition is fully in
         yield return new WaitForSecondsRealtime(0.5f); // extra delay
@@ -52,9 +77,10 @@ public class ElevatorInteract : MonoBehaviour
 
         Time.timeScale = 0f; // pause game for cutscene
 
-        yield return new WaitForSecondsRealtime(2*transition.transitionDuration); // delay for cutscene
+        yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay for cutscene
 
         transition.NormalTransitionIn();
+        UseElevatorSFX();
 
         yield return new WaitForSecondsRealtime(transition.transitionDuration); // delay until transition is fully in
         yield return new WaitForSecondsRealtime(0.5f); // extra delay
@@ -63,6 +89,7 @@ public class ElevatorInteract : MonoBehaviour
         transition.ElevatorSetActive(false, gS.floor);
 
         transition.NormalTransitionOut();
+        ElevatorFinishSFX();
 
         Time.timeScale = 1f; // unpause game
     }
@@ -71,6 +98,8 @@ public class ElevatorInteract : MonoBehaviour
     {
         // only interact once
         if (!ctx.started) return;
+
+        if (switching) return;
 
         if (Elevator != null)
         {
@@ -82,6 +111,7 @@ public class ElevatorInteract : MonoBehaviour
             }
 
             StartCoroutine(LayerSwitch());
+            switching = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
