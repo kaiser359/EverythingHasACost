@@ -75,6 +75,7 @@ MonoBehaviour:
   dashDuration: 0.4
   dashDamage: 25
   damageRadius: 1.06
+  bluebagcol: {fileID: 8124467698411112349}
   cooldown: 0
   Shield: {fileID: 5652191182098170770}
   shieldHealth: 50
@@ -92,7 +93,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935077316706043299}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -119,8 +120,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.05393982, y: 0.04714203}
-  m_Radius: 1.3563919
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &8031521633512692321
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,19 +163,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2893042482058769739, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       propertyPath: m_Size.x
-      value: 12.33576
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2893042482058769739, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       propertyPath: m_Size.y
-      value: 19.796732
-      objectReference: {fileID: 0}
-    - target: {fileID: 2893042482058769739, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.74612904
-      objectReference: {fileID: 0}
-    - target: {fileID: 2893042482058769739, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.7476492
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5357062928605097221, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       propertyPath: m_LocalPosition.x

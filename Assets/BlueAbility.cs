@@ -15,7 +15,7 @@ public class BlueAbility : MonoBehaviour
     public float dashDuration = 0.18f;
     public float dashDamage = 25f;
     public float damageRadius = 0.6f;
-    //public Collider2D bluebagcol;
+    public Collider2D bluebagcol;
     public float cooldown;
     public GameObject Shield;
     public float shieldHealth = 50;
@@ -205,7 +205,7 @@ public class BlueAbility : MonoBehaviour
             yield return null;
         }
         p.GetComponent<Collider2D>().enabled = true;
-        //bluebagcol.enabled = false;
+        bluebagcol.enabled = false;
         yield return null;
     }
 

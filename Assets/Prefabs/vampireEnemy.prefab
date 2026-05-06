@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7335034993930283624}
-  stats: {fileID: 11400000, guid: d66a8e4ca21ea644199a79f87f201fd4, type: 2}
+  stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   playerWashere: {fileID: 0}
   level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
