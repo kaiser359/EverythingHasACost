@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 4131553321552813515}
   - component: {fileID: 1256855312645453853}
   - component: {fileID: 7231387568904963627}
-  - component: {fileID: 8523908765569274534}
   - component: {fileID: 6577255518683078053}
   - component: {fileID: 1236306273054443331}
   - component: {fileID: 2391495097835720838}
@@ -280,18 +279,6 @@ MonoBehaviour:
   timerTohit: 0
   charger: 0
   timer: 5
---- !u!114 &8523908765569274534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8162974563615339022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01c8a5d88f74624c926b4e26e3049dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6577255518683078053
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -168,40 +168,11 @@ public class Enemy2Ranged : MonoBehaviour
                     {
                         end = hit.point;
 
-                        // Knockback
+                        // Damage only (knockback removed)
                         if (hit.collider.CompareTag("Player") && damageTimer <= 0f)
                         {
-                            //money.money -= damagePerTick + (money.money / 100) + (level.levelNumber*10);
                             var playerHealth = hit.collider.GetComponentInChildren<HealthBar>();
                             if (playerHealth != null) playerHealth.TakeDamage(damagePerTick + (money.money / 100) + (level.levelNumber*10));
-
-                           
-                            Rigidbody2D prb = hit.rigidbody != null ? hit.rigidbody : hit.collider.GetComponentInParent<Rigidbody2D>();
-
-                            // compute knockback direction from impact point for better accuracy
-                            Vector2 kbDir = ((Vector2)hit.point - (Vector2)origin).normalized;
-                            if (kbDir.sqrMagnitude < 0.0001f)
-                                kbDir = ((Vector2)hit.collider.transform.position - (Vector2)origin).normalized;
-
-                            if (prb != null)
-                            {
-                                // Try to use a KnockbackOverride component so we can bypass the player's movement script.
-                                var kbOverride = prb.GetComponent<KnockbackOverride>();
-                                if (kbOverride == null)
-                                    kbOverride = prb.gameObject.AddComponent<KnockbackOverride>();
-
-                                // convert impulse to velocity approximation: v = impulse / mass
-                                float mass = Mathf.Max(0.0001f, prb.mass);
-                                Vector2 vel = kbDir * (knockbackForce / mass);
-                                kbOverride.Apply(vel, 0.15f);
-                            }
-                            else
-                            {
-                                // last resort: nudge the transform if there's no Rigidbody2D
-                                if (kbDir.sqrMagnitude > 0.0001f)
-                                    hit.collider.transform.position += (Vector3)(kbDir * (knockbackForce * 0.02f));
-                            }
-
                             damageTimer = damageCooldown;
                         }
                     }
