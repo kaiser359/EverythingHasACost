@@ -977,7 +977,7 @@ MonoBehaviour:
   - {x: -5, y: 1.2, z: 0}
   - {x: -5.2, y: 0, z: 0}
   - {x: -5, y: -1.2, z: 0}
---- !u!43 &677617705
+--- !u!43 &923059959
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2472,7 +2472,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.057137758, g: 0.078942664, b: 0.11320752, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

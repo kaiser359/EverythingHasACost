@@ -75,7 +75,6 @@ MonoBehaviour:
   dashDuration: 0.4
   dashDamage: 25
   damageRadius: 1.06
-  bluebagcol: {fileID: 8124467698411112349}
   cooldown: 0
   Shield: {fileID: 5652191182098170770}
   shieldHealth: 50
@@ -93,7 +92,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935077316706043299}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -120,8 +119,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.05393982, y: 0.04714203}
+  m_Radius: 1.3563919
 --- !u!1 &4850267207762597313
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,9 +231,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7752726758172933224}
-    - targetCorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7312417416070719079}
     - targetCorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       insertIndex: -1
@@ -242,49 +238,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2381779151258456235}
+    - targetCorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3343348947327131725}
   m_SourcePrefab: {fileID: 100100000, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
 --- !u!1 &5652191182098170770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7978557519924639587, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
   m_PrefabInstance: {fileID: 2362448222270502129}
   m_PrefabAsset: {fileID: 0}
---- !u!70 &7752726758172933224
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5652191182098170770}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 9, y: 9}
-  m_Direction: 0
 --- !u!114 &7312417416070719079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5195,6 +5157,52 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!61 &3343348947327131725
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652191182098170770}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.7509651, y: 0.36036348}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 37.5, y: 37.5}
+    newSize: {x: 10.23, y: 11.22}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 11.73193, y: 22.382545}
+  m_EdgeRadius: 0
 --- !u!4 &7678925977648634356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5357062928605097221, guid: 6d100536121cb0549a2b3b869d4746f6, type: 3}
