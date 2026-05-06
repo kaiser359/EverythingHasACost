@@ -23,9 +23,9 @@ public class Pause : MonoBehaviour
     }
     public void PauseGame(InputAction.CallbackContext ctx)
     {
-        if (!ctx.started) return;
+        if (ctx.ReadValue<float>() == 1) return;
 
-        if ((store.CompareTag("Shop") && store.GetComponent<Store>().justLeftStore) || (bank.CompareTag("Shop") && bank.GetComponent<Store>().justLeftStore))
+        if (store.GetComponent<Store>().justLeftStore || bank.GetComponent<Store>().justLeftStore)
         {
             Debug.Log("just left store, not pausing");
             store.GetComponent<Store>().justLeftStore = false; 
