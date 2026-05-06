@@ -197,11 +197,11 @@ public class EnemyCombat1 : MonoBehaviour
                                 float lvl = level != null ? (float)level.levelNumber : 0f;
                                 int baseDmg = stats != null ? stats.atkDamage : touchDamageToMoney;
                                 int dmg = baseDmg + Mathf.RoundToInt(lvl * 10f);
-                                money.money = Mathf.Max(0, money.money - dmg);
+                              //  money.money = Mathf.Max(0, money.money - dmg);
                                 var playerHealth = hit.collider.GetComponent<HealthBar>();
                                 if (playerHealth != null)
                                 {
-                                    playerHealth.TakeDamage(5); // just so the effect happens plus extra base damage.
+                                    playerHealth.TakeDamage(5 + level.levelNumber); // just so the effect happens plus extra base damage.
                                 }
                             }
 

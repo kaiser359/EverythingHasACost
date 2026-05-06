@@ -73,7 +73,7 @@ public class Enemy2Ranged : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            rb.mass = Mathf.Max(rb.mass, 5f);
+            rb.mass = Mathf.Max(rb.mass, 100000f);
         }
     }
 
