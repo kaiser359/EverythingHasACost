@@ -16,6 +16,8 @@ public class HealthBar : MonoBehaviour
     public Money money;
     private CinemachineCamera cam;
     //private Volume postProcess;
+    [SerializeField]
+    private GameObject volume;
     private VolumeProfile postProcessProfile;
     private float ogVignetteIntensity;
     public float fadeDuration = 1f;
@@ -34,7 +36,8 @@ public class HealthBar : MonoBehaviour
         cam = FindFirstObjectByType<CinemachineCamera>();
         cam.GetComponent<CinemachineBasicMultiChannelPerlin>().enabled = false;
         //postProcess = FindObjectOfType<Volume>();
-        postProcessProfile = FindFirstObjectByType<Volume>().profile;
+        volume = GameObject.Find("DamagePP");
+        postProcessProfile = volume.GetComponent<Volume>().profile;
         postProcessProfile.TryGet(out Vignette vignette);
         postProcessProfile.TryGet(out MotionBlur mb);
         blackOverlay.enabled = false;
