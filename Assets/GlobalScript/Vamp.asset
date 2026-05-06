@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d66cd30ce33a5e40b5c6532a6320828, type: 3}
   m_Name: Vamp
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  speed: 0
-  atkDamage: 0
-  resistance: 0
-  atkSpeed: 0
-  dropAmount: 0
+  maxHealth: 75
+  speed: 5
+  atkDamage: 2
+  resistance: 10
+  atkSpeed: 1
+  dropAmount: 75
