@@ -92,6 +92,7 @@ public class ElevatorInteract : MonoBehaviour
         ElevatorFinishSFX();
 
         Time.timeScale = 1f; // unpause game
+        switching = false;
     }
 
     public void Interact(InputAction.CallbackContext ctx)

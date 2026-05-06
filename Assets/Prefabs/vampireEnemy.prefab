@@ -118,11 +118,11 @@ MonoBehaviour:
   wanderSpeed: 0.8
   idleMin: 0.5
   idleMax: 2
-  dashWarmup: 0.75
+  dashWarmup: 1.25
   dashDuration: 0.2
   touchDamageToMoney: 10
-  knockbackForce: 5
-  dashOvershoot: 2
+  knockbackForce: 3
+  dashOvershoot: 3
   dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}
 --- !u!61 &3958107506301483019
 BoxCollider2D:

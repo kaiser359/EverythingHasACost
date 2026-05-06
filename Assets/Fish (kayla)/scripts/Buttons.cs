@@ -5,6 +5,7 @@ public class Buttons : MonoBehaviour
     public void SwitchScene(string scene)
     {
         GameObject.FindGameObjectWithTag("Transition").GetComponent<SceneTransition>().SwitchScene(scene);
+        Time.timeScale = 1.0f; // reset time scale in case we're switching scenes from a paused state
         //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 
