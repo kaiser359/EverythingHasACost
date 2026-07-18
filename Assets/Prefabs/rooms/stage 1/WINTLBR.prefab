@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4903384012740989136, guid: afa13364ceb7b9140b19efa1b81f271e, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903384012740989136, guid: afa13364ceb7b9140b19efa1b81f271e, type: 3}
       propertyPath: m_TileMatrixArray.Array.data[4].m_Data.e00
       value: 0
       objectReference: {fileID: 0}
@@ -82,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4903384012740989136, guid: afa13364ceb7b9140b19efa1b81f271e, type: 3}
       propertyPath: m_Tiles.Array.data[17].second.m_TileMatrixIndex
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6107409605177460216, guid: afa13364ceb7b9140b19efa1b81f271e, type: 3}
       propertyPath: m_Name

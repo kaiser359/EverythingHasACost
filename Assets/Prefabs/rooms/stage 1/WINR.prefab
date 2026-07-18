@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5568737770277852578, guid: 0915f2c2bcf1d5d46845fa010efcb1fe, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6738950840756633738, guid: 0915f2c2bcf1d5d46845fa010efcb1fe, type: 3}
       propertyPath: m_Name
       value: WINR

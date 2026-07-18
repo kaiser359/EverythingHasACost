@@ -128,8 +128,7 @@ public class RoomSpawner : MonoBehaviour
         // room spawning debugging
         //Debug.Log(dungeonController.roomsSpawned);
 
-        // indicate that a room has been spawned
-        spawned = true;
+        
 
         if (openingDirection == 0)
         {
@@ -192,7 +191,8 @@ public class RoomSpawner : MonoBehaviour
             // include rooms that have a door in the direction of other spawn points that this spawn point collides with
             roomsSpawnable = roomsSpawnable.Intersect(roomClass[otherOpeningDirection - 1]).ToArray();
         }
-
+        // indicate that a room has been spawned
+        spawned = true;
         SpawnRoom(roomsSpawnable);
     }
 
@@ -249,7 +249,7 @@ public class RoomSpawner : MonoBehaviour
             //Debug.Log("DESTROYED SPAWN: " + GetComponent<RoomSpawner>().openingDirection + transform.position + " / REASON: HIGHER OPENING DIRECTION");
 
             other.GetComponent<RoomSpawner>().otherOpeningDirections.Add(openingDirection);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

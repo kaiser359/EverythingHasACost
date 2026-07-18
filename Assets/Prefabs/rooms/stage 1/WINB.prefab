@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WINB
       objectReference: {fileID: 0}
+    - target: {fileID: 6608466812062865870, guid: 3b50055c069e885409d17bc765cca072, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7205285740097071310, guid: 3b50055c069e885409d17bc765cca072, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.354366

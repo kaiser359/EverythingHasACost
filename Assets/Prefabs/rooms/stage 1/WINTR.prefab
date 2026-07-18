@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5733697518938915994, guid: bae16d879c16e1044827389a45891b94, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6872386281889616306, guid: bae16d879c16e1044827389a45891b94, type: 3}
       propertyPath: m_Name
       value: WINTR

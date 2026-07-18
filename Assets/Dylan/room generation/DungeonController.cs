@@ -79,6 +79,9 @@ public class DungeonController : MonoBehaviour
         // reset the win condition flag in RoomTemplates
         RoomTemplates.winSpawned = false;
 
+        Invoke("DungeonRegenDelay", 0.01f);
+    }
+    private void DungeonRegenDelay() {
         startSpawner.RegenerateDungeon();
     }
 }

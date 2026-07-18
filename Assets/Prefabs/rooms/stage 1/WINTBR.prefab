@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WINTBR
       objectReference: {fileID: 0}
+    - target: {fileID: 6805751502164052888, guid: e761d48ea91d7b445bb5fa13c441e594, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7366004802004368024, guid: e761d48ea91d7b445bb5fa13c441e594, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9601994

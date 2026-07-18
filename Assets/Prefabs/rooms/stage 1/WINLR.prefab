@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WINLR
       objectReference: {fileID: 0}
+    - target: {fileID: 4021762162873158458, guid: bf83899df0f71b6489fdfa923457ac60, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
