@@ -544,12 +544,24 @@ MonoBehaviour:
       endCluster:
         top:
         - {fileID: 8880608254688663248, guid: b31767d88c032ca4dbe501221af1a6c7, type: 3}
+        - {fileID: 6259471512933114390, guid: 2e43fde4e6fd97d4294957d67dc02a96, type: 3}
+        - {fileID: 4000100997517801267, guid: 0af30029d8da118458b1d6a94e6f94a8, type: 3}
+        - {fileID: 6872386281889616306, guid: bae16d879c16e1044827389a45891b94, type: 3}
         bottom:
         - {fileID: 5438181108298534118, guid: 3b50055c069e885409d17bc765cca072, type: 3}
+        - {fileID: 6259471512933114390, guid: 2e43fde4e6fd97d4294957d67dc02a96, type: 3}
+        - {fileID: 355891014765817261, guid: 1aa7ed84fbbd1e445b57ceecb33d642d, type: 3}
+        - {fileID: 5691321996737459536, guid: 3227e9a85dbc61045a324e5ab35a63e1, type: 3}
         left:
         - {fileID: 9216715912678405070, guid: 10aa5e7143e5c9942b9d1166a7cb060a, type: 3}
+        - {fileID: 4000100997517801267, guid: 0af30029d8da118458b1d6a94e6f94a8, type: 3}
+        - {fileID: 355891014765817261, guid: 1aa7ed84fbbd1e445b57ceecb33d642d, type: 3}
+        - {fileID: 2818578316716514834, guid: bf83899df0f71b6489fdfa923457ac60, type: 3}
         right:
         - {fileID: 6738950840756633738, guid: 0915f2c2bcf1d5d46845fa010efcb1fe, type: 3}
+        - {fileID: 2818578316716514834, guid: bf83899df0f71b6489fdfa923457ac60, type: 3}
+        - {fileID: 6872386281889616306, guid: bae16d879c16e1044827389a45891b94, type: 3}
+        - {fileID: 5691321996737459536, guid: 3227e9a85dbc61045a324e5ab35a63e1, type: 3}
       winCluster:
         top:
         - {fileID: 3713336274376999141, guid: bf29969040448944fbae0c8a444b0254, type: 3}
@@ -601,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomsSpawned: 0
   enemiesSpawned: 0
-  minRooms: 10
+  minRooms: 5
 --- !u!1001 &3954716434105209424
 PrefabInstance:
   m_ObjectHideFlags: 0
