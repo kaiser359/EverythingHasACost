@@ -1,0 +1,13 @@
+diff a/Assets/Scenes/Level 1.unity b/Assets/Scenes/Level 1.unity	(rejected hunks)
+@@ -660,7 +660,10 @@
+     m_RemovedComponents: []
+     m_RemovedGameObjects: []
+     m_AddedGameObjects: []
+-    m_AddedComponents: []
++    m_AddedComponents:
++    - targetCorrespondingSourceObject: {fileID: 5291189673955727909, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
++      insertIndex: -1
++      addedObject: {fileID: 428037493}
+   m_SourcePrefab: {fileID: 100100000, guid: 62f8e825827c34b4a96aa8e12fa32d60, type: 3}
+ --- !u!1 &1064790411
+ GameObject:
