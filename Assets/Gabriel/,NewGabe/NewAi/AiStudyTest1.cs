@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Pathfinding;
 
 /// <summary>
 /// Complex 2D top-down enemy:
@@ -41,6 +42,11 @@ public class AiStudyTest1 : MonoBehaviour
     public float threatTimeThreshold = 0.8f; // seconds until predicted hit to be considered threat
     public float dodgeCooldown = 1.5f; // after a dodge, wait before next dodge
 
+    [Header("Flee")]
+    public string fleeTargetTag = "FleeTarget";
+    public float fleeDistance = 8f;
+    [Range(0f, 1f)] public float lowHealthThreshold = 0.25f;
+
     // Internals
     private Transform playerTransform;
     private Rigidbody2D rb;
@@ -52,9 +58,15 @@ public class AiStudyTest1 : MonoBehaviour
     private float shootTimer;
     private float dodgeTimer;
     private float dodgeCooldownTimer;
-    private bool isDodging;
+    public bool isDodging;
     private Vector2 dodgeTarget;
     private float currentStateStrafeOffset; // used for smooth strafing
+
+    // Pathfinding AI interface (A* project)
+    private IAstarAI ai;
+
+    // Health
+    private EnemyHealth enemyHealth;
 
     void Start()
     {
@@ -66,6 +78,18 @@ public class AiStudyTest1 : MonoBehaviour
         // Auto assign player
         var p = GameObject.FindGameObjectWithTag(playerTag);
         if (p != null) playerTransform = p.transform;
+
+        // Pathfinding AI (required now)
+        ai = GetComponent<IAstarAI>();
+        if (ai != null) {
+            ai.canMove = true;
+            ai.isStopped = false;
+            // ensure default max speed matches chaseSpeed initially
+            ai.maxSpeed = chaseSpeed;
+        }
+
+        // Health component
+        enemyHealth = GetComponent<EnemyHealth>();
 
         PickNewPatrolTarget();
     }
@@ -93,8 +117,19 @@ public class AiStudyTest1 : MonoBehaviour
 
         if (isDodging)
         {
+            // while dodging: pause pathfinding movement if present
+            if (ai != null) ai.isStopped = true;
             PerformDodgeMovement();
             return; // while dodging, skip other behaviors
+        } else {
+            if (ai != null) ai.isStopped = false;
+        }
+
+        // If low health -> flee behavior
+        if (enemyHealth != null && enemyHealth.currentHealth <= enemyHealth.maxHealth * lowHealthThreshold)
+        {
+            HandleFleeBehavior();
+            return;
         }
 
         float playerDist = playerTransform != null ? Vector2.Distance(transform.position, playerTransform.position) : Mathf.Infinity;
@@ -107,10 +142,10 @@ public class AiStudyTest1 : MonoBehaviour
             {
                 StrafeAndShoot();
             }
-            // If within chase range but outside shoot range, move toward player
+            // If within chase range but outside shoot range, move toward player (use pathfinding only)
             else if (playerDist <= chaseRange)
             {
-                MoveTowards(playerTransform.position, chaseSpeed);
+                SetDestination(playerTransform.position, chaseSpeed);
             }
         }
         else
@@ -134,12 +169,17 @@ public class AiStudyTest1 : MonoBehaviour
             return;
         }
 
-        MoveTowards(patrolTarget, patrolSpeed);
+        // Use pathfinding destination for patrol (pathfinding required)
+        SetDestination(patrolTarget, patrolSpeed);
 
-        if (Vector2.Distance(transform.position, patrolTarget) < 0.2f)
+        // Use pathfinding's reachedDestination if available, otherwise just wait (no vector fallback)
+        if (ai != null)
         {
-            isIdling = true;
-            patrolIdleTimer = Random.Range(0.6f, 2.0f);
+            if (ai.reachedDestination)
+            {
+                isIdling = true;
+                patrolIdleTimer = Random.Range(0.6f, 2.0f);
+            }
         }
     }
 
@@ -149,11 +189,24 @@ public class AiStudyTest1 : MonoBehaviour
         patrolTarget = origin + (Vector3)offset;
     }
 
-    // Move toward a target position using Rigidbody2D.MovePosition (physics-friendly)
-    void MoveTowards(Vector2 targetPos, float speed)
+    // Centralized destination setter (uses IAstarAI only; removes direct vector movement fallback)
+    void SetDestination(Vector3 worldTarget, float speed)
     {
-        Vector2 newPos = Vector2.MoveTowards(rb.position, targetPos, speed * Time.deltaTime);
-        rb.MovePosition(newPos);
+        if (ai != null)
+        {
+            // AIPath/IAstarAI expects Vector3
+            ai.destination = worldTarget;
+            ai.canMove = true;
+            ai.isStopped = false;
+
+            // set the agent speed via interface
+            ai.maxSpeed = speed;
+        }
+        else
+        {
+            // No pathfinding component attached — intentionally do nothing.
+            // Ensure this GameObject has an A* movement component (e.g. AIPath) to move.
+        }
     }
 
     // Strafes (side-to-side) while shooting periodic bullets
@@ -174,7 +227,8 @@ public class AiStudyTest1 : MonoBehaviour
 
         Vector2 combined = Vector2.Lerp(strafeTarget, approach, 0.2f);
 
-        MoveTowards(combined, chaseSpeed);
+        // Use pathfinding destination so the agent will path around obstacles
+        SetDestination(new Vector3(combined.x, combined.y, transform.position.z), chaseSpeed);
 
         // Shooting
         if (shootTimer <= 0f && bulletPrefab != null && firePoint != null)
@@ -298,13 +352,15 @@ public class AiStudyTest1 : MonoBehaviour
         return found;
     }
 
-    // Begin dodge movement toward a world position
+    // Begin dodge movement toward a world position (use pathfinding agent to move)
     void StartDodgeTo(Vector2 target)
     {
         isDodging = true;
         dodgeTarget = target;
         dodgeTimer = 0.35f; // maintain dodge for a short window
         dodgeCooldownTimer = dodgeCooldown;
+        // stop AI navigation while dodging
+        if (ai != null) ai.isStopped = true;
     }
 
     void PerformDodgeMovement()
@@ -317,7 +373,50 @@ public class AiStudyTest1 : MonoBehaviour
         if (dodgeTimer <= 0f)
         {
             isDodging = false;
+            if (ai != null) ai.isStopped = false;
         }
+    }
+
+    // Flee logic when low health
+    void HandleFleeBehavior()
+    {
+        // Try to find nearest object with fleeTargetTag
+        Transform target = FindNearestWithTag(fleeTargetTag);
+        if (target != null)
+        {
+            SetDestination(target.position, chaseSpeed);
+            return;
+        }
+
+        // If no flee target exists, run away from player (if available)
+        if (playerTransform != null)
+        {
+            Vector2 dirAway = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
+            Vector3 fleePos = transform.position + (Vector3)(dirAway * fleeDistance);
+            SetDestination(fleePos, chaseSpeed);
+        }
+    }
+
+    // Finds the nearest active GameObject with the specified tag, returns its transform or null
+    Transform FindNearestWithTag(string tag)
+    {
+        if (string.IsNullOrEmpty(tag)) return null;
+        var objs = GameObject.FindGameObjectsWithTag(tag);
+        if (objs == null || objs.Length == 0) return null;
+        Transform best = null;
+        float bestDist = float.PositiveInfinity;
+        Vector2 self = transform.position;
+        foreach (var go in objs)
+        {
+            if (go == null) continue;
+            float d = Vector2.SqrMagnitude((Vector2)go.transform.position - self);
+            if (d < bestDist)
+            {
+                bestDist = d;
+                best = go.transform;
+            }
+        }
+        return best;
     }
 
     // Debug drawing for editor

@@ -6,7 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class EnemyHealth : MonoBehaviour
 {
     
-    [SerializeField]private float currentHealth;
+    [SerializeField]public float currentHealth;
     public float timer = 0f;
     public EnemyStats stats;
     public float maxHealth;

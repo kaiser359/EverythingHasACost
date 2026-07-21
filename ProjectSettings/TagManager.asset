@@ -16,6 +16,7 @@ TagManager:
   - bankui
   - Transition
   - LayerTransition
+  - Heal
   layers:
   - Default
   - TransparentFX
