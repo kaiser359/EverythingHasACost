@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   moveSpeed: 5
-  attackCooldown: 0.5
+  attackCooldown: 0.75
   bulletPrefab: {fileID: 7788881273321816011, guid: b47fcb892517bc44ca1892475faaa584, type: 3}
   rotationSpeed: 720
   rotationOffset: 180
@@ -88,3 +88,4 @@ MonoBehaviour:
   BankBag2: {fileID: 1935077316706043299, guid: 08e3050acdf6e400eba8f06009e5f0b7, type: 3}
   BankBag3: {fileID: 1935077316706043299, guid: 08e3050acdf6e400eba8f06009e5f0b7, type: 3}
   aimDir: 0
+  floor: 1
