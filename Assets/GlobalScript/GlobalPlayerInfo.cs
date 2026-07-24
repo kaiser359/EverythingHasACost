@@ -5,7 +5,7 @@ public class GlobalPlayerInfo : MonoBehaviour
 {
     public Camera mainCamera;
     public float moveSpeed = 5f;
-    public float attackCooldown = 0.5f;
+    public float attackCooldown = 0.75f;
     public GameObject bulletPrefab;
     public float rotationSpeed = 720f;
     public float rotationOffset = 0f;
