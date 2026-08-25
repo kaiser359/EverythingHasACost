@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 21378507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0.01, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 191370308}
   - component: {fileID: 191370307}
   - component: {fileID: 191370309}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Circle
   m_TagString: Heal
   m_Icon: {fileID: 0}
@@ -1439,11 +1439,16 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 576
+  healItemLayer:
+    serializedVersion: 2
+    m_Bits: 0
   playerTag: Player
+  healItemTag: Heal
   detectionRange: 21.6
-  shootRange: 10.25
-  chaseRange: 16.4
-  patrolRadius: 13.12
+  shootRange: 11.13
+  closeRangeDistance: 4.84
+  chaseRange: 15.5
+  patrolRadius: 15.5
   patrolSpeed: 2.85
   chaseSpeed: 16.3
   dodgeSpeed: 6
@@ -1451,13 +1456,16 @@ MonoBehaviour:
   strafeAmplitude: 1.61
   strafeSpeed: 3.12
   shootCooldown: 0.6
-  bulletSpeed: 12
-  bulletDetectRadius: 6.1
+  bulletSpeed: 13
+  healDetectRadius: 7.76
+  healStayRange: 5.83
+  healthRetreateThreshold: 0.66
+  bulletDetectRadius: 6.63
   threatTimeThreshold: 0.56
   dodgeCooldown: 1.25
   fleeTargetTag: Heal
-  fleeDistance: 8
-  lowHealthThreshold: 0.25
+  fleeDistance: 3.15
+  lowHealthThreshold: 0.35
   isDodging: 0
 --- !u!61 &473791741
 BoxCollider2D:
@@ -7371,7 +7379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 621833347}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: AttackPoint
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
@@ -8744,15 +8752,15 @@ PrefabInstance:
       objectReference: {fileID: 960184568}
     - target: {fileID: 1340624422449010668, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2242374159336780110, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3745743215047631995, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4033939270907055523, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_Name
@@ -8808,7 +8816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623468906257632544, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -162195868218585035, guid: 4a7687a87a4464de2921280c87da157f, type: 3}
@@ -9090,6 +9098,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2118865159}
+  - {fileID: 1420703396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &960184580
@@ -9265,7 +9274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986840339}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: AttackPoint
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
@@ -9437,7 +9446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1045926508}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: AttackPoint
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
@@ -10604,13 +10613,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420703393}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.63, y: 5.24, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2107896190}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 960184574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420703397
 MonoBehaviour:
@@ -11099,9 +11108,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 960184574}
     m_Modifications:
+    - target: {fileID: 727508359611959607, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2400598295959439538, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
       propertyPath: m_Name
       value: YellowBloodBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400598295959439538, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3273506991382689262, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11142,6 +11159,22 @@ PrefabInstance:
     - target: {fileID: 3273506991382689262, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678704859319995870, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753672011313930608, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188000355764552568, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971618123544102249, guid: fae65624f50973e40a7fa8f4d0415660, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11884,7 +11917,7 @@ MonoBehaviour:
   money: {fileID: 11400000, guid: 81905186c37a9784e8c2fce819952887, type: 2}
   volume: {fileID: 0}
   fadeDuration: 1
-  dimmy: {fileID: 960184566}
+  dimmy: {fileID: 0}
   blackOverlay: {fileID: 670806644}
   hurt: {fileID: 0}
 --- !u!4 &1938506532
@@ -12119,7 +12152,7 @@ GameObject:
   - component: {fileID: 2118865159}
   - component: {fileID: 2118865161}
   - component: {fileID: 2118865160}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13078,6 +13111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nomnomfira
       objectReference: {fileID: 0}
+    - target: {fileID: 5173209819422476293, guid: 72606ba3b78120244b0a567f28331665, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13285,7 +13322,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1420703396}
   - {fileID: 309185765}
   - {fileID: 1255071556}
   - {fileID: 1938506532}

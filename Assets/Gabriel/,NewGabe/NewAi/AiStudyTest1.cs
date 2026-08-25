@@ -2,28 +2,22 @@ using System.Collections;
 using UnityEngine;
 using Pathfinding;
 
-/// <summary>
-/// Complex 2D top-down enemy:
-/// - Auto-assigns player on spawn (GameObject tagged "Player").
-/// - Patrols when player is far.
-/// - Chases + strafes + shoots when in shooting range (with cooldown).
-/// - Detects incoming bullets using 2D overlap/casts (Collider2D aware).
-/// - Attempts to dodge or use nearby walls (obstacles) as cover.
-/// - Dodge has its own cooldown to avoid constant dodging.
-/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class AiStudyTest1 : MonoBehaviour
 {
     [Header("References")]
     public Transform firePoint;
-    public GameObject bulletPrefab; // Prefab must have Rigidbody2D
+    public GameObject bulletPrefab;
     public LayerMask bulletLayer;
     public LayerMask obstacleLayer;
+    public LayerMask healItemLayer;
     public string playerTag = "Player";
+    public string healItemTag = "HealItem";
 
     [Header("Ranges & Movement")]
     public float detectionRange = 12f;
     public float shootRange = 9f;
+    public float closeRangeDistance = 3f;
     public float chaseRange = 14f;
     public float patrolRadius = 6f;
     public float patrolSpeed = 1.0f;
@@ -37,36 +31,36 @@ public class AiStudyTest1 : MonoBehaviour
     public float shootCooldown = 1.2f;
     public float bulletSpeed = 12f;
 
+    [Header("Healing")]
+    public float healDetectRadius = 8f;
+    public float healStayRange = 1.5f;
+    public float healthRetreateThreshold = 0.75f;
+
     [Header("Bullet Threat Detection")]
-    public float bulletDetectRadius = 6f; // search radius for nearby projectiles
-    public float threatTimeThreshold = 0.8f; // seconds until predicted hit to be considered threat
-    public float dodgeCooldown = 1.5f; // after a dodge, wait before next dodge
+    public float bulletDetectRadius = 6f;
+    public float threatTimeThreshold = 0.8f;
+    public float dodgeCooldown = 1.5f;
 
     [Header("Flee")]
     public string fleeTargetTag = "FleeTarget";
     public float fleeDistance = 8f;
     [Range(0f, 1f)] public float lowHealthThreshold = 0.25f;
 
-    // Internals
     private Transform playerTransform;
     private Rigidbody2D rb;
     private Vector3 origin;
     private Vector3 patrolTarget;
     private float patrolIdleTimer;
     private bool isIdling;
-
     private float shootTimer;
     private float dodgeTimer;
     private float dodgeCooldownTimer;
     public bool isDodging;
     private Vector2 dodgeTarget;
-    private float currentStateStrafeOffset; // used for smooth strafing
-
-    // Pathfinding AI interface (A* project)
     private IAstarAI ai;
-
-    // Health
     private EnemyHealth enemyHealth;
+    private Collider2D nearestHealItemCollider;
+    private bool isAtHealLocation;
 
     void Start()
     {
@@ -75,87 +69,183 @@ public class AiStudyTest1 : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        // Auto assign player
         var p = GameObject.FindGameObjectWithTag(playerTag);
         if (p != null) playerTransform = p.transform;
 
-        // Pathfinding AI (required now)
         ai = GetComponent<IAstarAI>();
-        if (ai != null) {
+        if (ai != null)
+        {
             ai.canMove = true;
             ai.isStopped = false;
-            // ensure default max speed matches chaseSpeed initially
             ai.maxSpeed = chaseSpeed;
         }
 
-        // Health component
         enemyHealth = GetComponent<EnemyHealth>();
-
         PickNewPatrolTarget();
     }
 
     void Update()
     {
-        // Timers
         shootTimer -= Time.deltaTime;
         dodgeTimer -= Time.deltaTime;
         dodgeCooldownTimer -= Time.deltaTime;
 
-        // If player got destroyed or not set, try to find again
         if (playerTransform == null)
         {
             var p = GameObject.FindGameObjectWithTag(playerTag);
             if (p != null) playerTransform = p.transform;
         }
 
-        // Always check for incoming bullets first (high priority)
-        bool foundThreat = false;
         if (dodgeCooldownTimer <= 0f)
-        {
-            foundThreat = DetectAndReactToIncomingBullets();
-        }
+            DetectAndReactToIncomingBullets();
 
         if (isDodging)
         {
-            // while dodging: pause pathfinding movement if present
             if (ai != null) ai.isStopped = true;
             PerformDodgeMovement();
-            return; // while dodging, skip other behaviors
-        } else {
+            return;
+        }
+        else
+        {
             if (ai != null) ai.isStopped = false;
         }
 
-        // If low health -> flee behavior
         if (enemyHealth != null && enemyHealth.currentHealth <= enemyHealth.maxHealth * lowHealthThreshold)
         {
             HandleFleeBehavior();
             return;
         }
 
+        if (IsSeekingHeal())
+        {
+            HandleHealBehavior();
+            return;
+        }
+
         float playerDist = playerTransform != null ? Vector2.Distance(transform.position, playerTransform.position) : Mathf.Infinity;
 
-        // If player is within detection range, engage
         if (playerTransform != null && playerDist <= detectionRange)
         {
-            // If within shooting range, strafe and shoot
             if (playerDist <= shootRange)
             {
-                StrafeAndShoot();
+                if (HasLineOfSightToPlayer())
+                {
+                    if (playerDist <= closeRangeDistance)
+                        ShootSpreadPattern();
+                    else
+                        ShootAtPlayer();
+                }
+                StrafeTowardPlayer();
             }
-            // If within chase range but outside shoot range, move toward player (use pathfinding only)
             else if (playerDist <= chaseRange)
-            {
                 SetDestination(playerTransform.position, chaseSpeed);
-            }
         }
         else
         {
-            // Patrol behavior
             Patrol();
         }
     }
 
-    // Patrol: pick random point in patrolRadius around origin and move there, with idle
+    bool IsSeekingHeal()
+    {
+        if (enemyHealth == null) return false;
+
+        float currentHealthPercent = enemyHealth.currentHealth / enemyHealth.maxHealth;
+
+        if (currentHealthPercent >= healthRetreateThreshold && isAtHealLocation)
+        {
+            isAtHealLocation = false;
+            nearestHealItemCollider = null;
+            return false;
+        }
+
+        if (currentHealthPercent <= 0.5f && nearestHealItemCollider == null && !isAtHealLocation)
+        {
+            DetectNearestHealItem();
+        }
+
+        return nearestHealItemCollider != null;
+    }
+
+    void DetectNearestHealItem()
+    {
+        Collider2D[] healItems = Physics2D.OverlapCircleAll(transform.position, healDetectRadius, healItemLayer);
+        
+        if (healItems == null || healItems.Length == 0) return;
+
+        Collider2D bestHeal = null;
+        float bestDist = float.PositiveInfinity;
+        Vector2 selfPos = transform.position;
+
+        foreach (var healCol in healItems)
+        {
+            if (healCol == null || !healCol.CompareTag(healItemTag)) continue;
+
+            float d = Vector2.SqrMagnitude((Vector2)healCol.transform.position - selfPos);
+            if (d < bestDist)
+            {
+                bestDist = d;
+                bestHeal = healCol;
+            }
+        }
+
+        nearestHealItemCollider = bestHeal;
+    }
+
+    void HandleHealBehavior()
+    {
+        if (nearestHealItemCollider == null) return;
+
+        Vector2 healPos = nearestHealItemCollider.transform.position;
+        float distToHeal = Vector2.Distance(transform.position, healPos);
+
+        if (distToHeal <= healStayRange)
+        {
+            isAtHealLocation = true;
+            if (ai != null)
+            {
+                ai.isStopped = true;
+                ai.destination = transform.position;
+            }
+            
+            if (playerTransform != null && HasLineOfSightToPlayer())
+            {
+                float playerDist = Vector2.Distance(transform.position, playerTransform.position);
+                if (playerDist <= shootRange)
+                {
+                    if (playerDist <= closeRangeDistance)
+                        ShootSpreadPattern();
+                    else
+                        ShootAtPlayer();
+                }
+            }
+        }
+        else
+        {
+            isAtHealLocation = false;
+            if (ai != null) ai.isStopped = false;
+            SetDestination(healPos, chaseSpeed);
+        }
+    }
+
+    bool HasLineOfSightToPlayer()
+    {
+        if (playerTransform == null) return false;
+        
+        Vector2 dirToPlayer = (playerTransform.position - firePoint.position).normalized;
+        float distToPlayer = Vector2.Distance(firePoint.position, playerTransform.position);
+        
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dirToPlayer, distToPlayer);
+        
+        if (hit.collider == null)
+            return true;
+        
+        if (hit.collider.CompareTag(playerTag))
+            return true;
+        
+        return false;
+    }
+
     void Patrol()
     {
         if (isIdling)
@@ -169,17 +259,12 @@ public class AiStudyTest1 : MonoBehaviour
             return;
         }
 
-        // Use pathfinding destination for patrol (pathfinding required)
         SetDestination(patrolTarget, patrolSpeed);
 
-        // Use pathfinding's reachedDestination if available, otherwise just wait (no vector fallback)
-        if (ai != null)
+        if (ai != null && ai.reachedDestination)
         {
-            if (ai.reachedDestination)
-            {
-                isIdling = true;
-                patrolIdleTimer = Random.Range(0.6f, 2.0f);
-            }
+            isIdling = true;
+            patrolIdleTimer = Random.Range(0.6f, 2.0f);
         }
     }
 
@@ -189,66 +274,71 @@ public class AiStudyTest1 : MonoBehaviour
         patrolTarget = origin + (Vector3)offset;
     }
 
-    // Centralized destination setter (uses IAstarAI only; removes direct vector movement fallback)
     void SetDestination(Vector3 worldTarget, float speed)
     {
         if (ai != null)
         {
-            // AIPath/IAstarAI expects Vector3
             ai.destination = worldTarget;
             ai.canMove = true;
             ai.isStopped = false;
-
-            // set the agent speed via interface
             ai.maxSpeed = speed;
-        }
-        else
-        {
-            // No pathfinding component attached — intentionally do nothing.
-            // Ensure this GameObject has an A* movement component (e.g. AIPath) to move.
         }
     }
 
-    // Strafes (side-to-side) while shooting periodic bullets
-    void StrafeAndShoot()
+    void StrafeTowardPlayer()
     {
         if (playerTransform == null) return;
 
-        // Face toward player (for external visuals/aiming)
         Vector2 toPlayer = (playerTransform.position - transform.position).normalized;
-
-        // Strafe offset perpendicular to aim
         Vector2 perp = new Vector2(-toPlayer.y, toPlayer.x);
-        currentStateStrafeOffset = Mathf.Sin(Time.time * strafeSpeed) * strafeAmplitude;
+        float strafeOffset = Mathf.Sin(Time.time * strafeSpeed) * strafeAmplitude;
 
-        Vector2 strafeTarget = (Vector2)transform.position + perp * currentStateStrafeOffset;
-        // Also slowly slide toward/away to maintain engagement distance
+        Vector2 strafeTarget = (Vector2)transform.position + perp * strafeOffset;
         Vector2 approach = (Vector2)transform.position + toPlayer * 0.1f;
-
         Vector2 combined = Vector2.Lerp(strafeTarget, approach, 0.2f);
 
-        // Use pathfinding destination so the agent will path around obstacles
         SetDestination(new Vector3(combined.x, combined.y, transform.position.z), chaseSpeed);
-
-        // Shooting
-        if (shootTimer <= 0f && bulletPrefab != null && firePoint != null)
-        {
-            ShootAtPlayer();
-            shootTimer = shootCooldown;
-        }
     }
 
     void ShootAtPlayer()
     {
-        if (playerTransform == null) return;
+        if (playerTransform == null || shootTimer > 0f) return;
+        if (bulletPrefab == null || firePoint == null) return;
+
         var dir = (playerTransform.position - firePoint.position).normalized;
         GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         var rbBullet = b.GetComponent<Rigidbody2D>();
         if (rbBullet != null) rbBullet.linearVelocity = dir * bulletSpeed;
+        
+        shootTimer = shootCooldown;
     }
 
-    // Detect nearby projectiles (using OverlapCircleAll) and attempt to dodge or use cover.
-    // Returns true when a threat was found and reaction initiated.
+    void ShootSpreadPattern()
+    {
+        if (playerTransform == null || shootTimer > 0f) return;
+        if (bulletPrefab == null || firePoint == null) return;
+
+        Vector2 dirToPlayer = (playerTransform.position - firePoint.position).normalized;
+        Vector2 perpDir = new Vector2(-dirToPlayer.y, dirToPlayer.x).normalized;
+
+        Vector2[] directions = new Vector2[4]
+        {
+            dirToPlayer,
+            perpDir,
+            -perpDir,
+            (dirToPlayer + perpDir).normalized
+        };
+
+        foreach (var dir in directions)
+        {
+            GameObject b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            var rbBullet = b.GetComponent<Rigidbody2D>();
+            if (rbBullet != null) rbBullet.linearVelocity = dir * bulletSpeed;
+        }
+
+        shootTimer = shootCooldown;
+    }
+
     bool DetectAndReactToIncomingBullets()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, bulletDetectRadius, bulletLayer);
@@ -258,7 +348,6 @@ public class AiStudyTest1 : MonoBehaviour
         {
             if (col == null) continue;
 
-            // get projectile rigidbody to estimate velocity
             var projRb = col.attachedRigidbody;
             if (projRb == null) continue;
 
@@ -266,19 +355,15 @@ public class AiStudyTest1 : MonoBehaviour
             Vector2 v = projRb.linearVelocity;
             if (v.sqrMagnitude < 0.01f) continue;
 
-            // project time to nearest approach: t = dot(e - b, v) / |v|^2
             Vector2 eMinusB = (Vector2)selfPos - bPos;
             float t = Vector2.Dot(eMinusB, v) / v.sqrMagnitude;
-            if (t <= 0f || t > threatTimeThreshold) continue; // not an imminent forward threat
+            if (t <= 0f || t > threatTimeThreshold) continue;
 
-            // predicted closest point
             Vector2 predicted = bPos + v * t;
             float distAtClosest = Vector2.Distance(predicted, selfPos);
 
-            // if predicted closest approach is small enough consider it a threat
             if (distAtClosest <= 0.6f)
             {
-                // try to find cover behind an obstacle
                 if (TryFindCoverAgainstProjectile(bPos, v, out Vector2 coverTarget))
                 {
                     StartDodgeTo(coverTarget);
@@ -286,9 +371,7 @@ public class AiStudyTest1 : MonoBehaviour
                 }
                 else
                 {
-                    // no cover found -> dodge perpendicular to projectile travel
                     Vector2 perp = new Vector2(-v.y, v.x).normalized;
-                    // choose the side with more free space
                     Vector2 candidateA = selfPos + perp * dodgeDistance;
                     Vector2 candidateB = selfPos - perp * dodgeDistance;
                     bool aFree = !Physics2D.Raycast(selfPos, (candidateA - selfPos).normalized, dodgeDistance, obstacleLayer);
@@ -304,43 +387,32 @@ public class AiStudyTest1 : MonoBehaviour
         return false;
     }
 
-    // Try to find a nearby obstacle (obstacleLayer) that can act as cover from bullet origin.
-    // If found, returns a point on the safe side of the obstacle to move toward.
     bool TryFindCoverAgainstProjectile(Vector2 bulletPos, Vector2 bulletVelocity, out Vector2 outCoverPoint)
     {
         outCoverPoint = Vector2.zero;
-        float searchRadius = 6f;
-        Collider2D[] obstacles = Physics2D.OverlapCircleAll(transform.position, searchRadius, obstacleLayer);
+        Collider2D[] obstacles = Physics2D.OverlapCircleAll(transform.position, 6f, obstacleLayer);
         if (obstacles == null || obstacles.Length == 0) return false;
 
         Vector2 selfPos = transform.position;
         float bestScore = float.MaxValue;
         bool found = false;
+
         foreach (var obs in obstacles)
         {
             if (obs == null) continue;
 
-            // get closest point on obstacle to this enemy
             Vector2 coverPoint = obs.ClosestPoint(selfPos);
-
-            // check whether obstacle blocks the line from bullet to coverPoint
             Vector2 dirFromBullet = (coverPoint - bulletPos);
             float dist = dirFromBullet.magnitude;
             if (dist <= 0.05f) continue;
 
             RaycastHit2D hit = Physics2D.Raycast(bulletPos, dirFromBullet.normalized, dist + 0.01f, obstacleLayer | bulletLayer);
-            if (hit.collider == null) continue;
+            if (hit.collider == null || hit.collider != obs) continue;
 
-            // ensure the hit collider is the obstacle (i.e., the bullet would hit obstacle before reaching coverPoint)
-            if (hit.collider != obs) continue;
-
-            // now compute how safe the coverPoint is by how far it is from predicted bullet path
-            // pick the side of obstacle that places obstacle between bullet and enemy
-            Vector2 dirBulletToEnemy = (selfPos - bulletPos).normalized;
             Vector2 normal = (coverPoint - (Vector2)obs.bounds.center).normalized;
-            Vector2 safePoint = coverPoint + normal * 0.3f; // step a bit behind the obstacle
+            Vector2 safePoint = coverPoint + normal * 0.3f;
 
-            float score = Vector2.Distance(selfPos, safePoint); // prefer closer safe spots
+            float score = Vector2.Distance(selfPos, safePoint);
             if (score < bestScore)
             {
                 bestScore = score;
@@ -352,20 +424,17 @@ public class AiStudyTest1 : MonoBehaviour
         return found;
     }
 
-    // Begin dodge movement toward a world position (use pathfinding agent to move)
     void StartDodgeTo(Vector2 target)
     {
         isDodging = true;
         dodgeTarget = target;
-        dodgeTimer = 0.35f; // maintain dodge for a short window
+        dodgeTimer = 0.35f;
         dodgeCooldownTimer = dodgeCooldown;
-        // stop AI navigation while dodging
         if (ai != null) ai.isStopped = true;
     }
 
     void PerformDodgeMovement()
     {
-        // Move quickly toward dodgeTarget while timer active
         Vector2 newPos = Vector2.MoveTowards(rb.position, dodgeTarget, dodgeSpeed * Time.deltaTime);
         rb.MovePosition(newPos);
 
@@ -377,18 +446,14 @@ public class AiStudyTest1 : MonoBehaviour
         }
     }
 
-    // Flee logic when low health
     void HandleFleeBehavior()
     {
-        // Try to find nearest object with fleeTargetTag
         Transform target = FindNearestWithTag(fleeTargetTag);
         if (target != null)
         {
             SetDestination(target.position, chaseSpeed);
             return;
         }
-
-        // If no flee target exists, run away from player (if available)
         if (playerTransform != null)
         {
             Vector2 dirAway = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
@@ -397,15 +462,16 @@ public class AiStudyTest1 : MonoBehaviour
         }
     }
 
-    // Finds the nearest active GameObject with the specified tag, returns its transform or null
     Transform FindNearestWithTag(string tag)
     {
         if (string.IsNullOrEmpty(tag)) return null;
         var objs = GameObject.FindGameObjectsWithTag(tag);
         if (objs == null || objs.Length == 0) return null;
+
         Transform best = null;
         float bestDist = float.PositiveInfinity;
         Vector2 self = transform.position;
+
         foreach (var go in objs)
         {
             if (go == null) continue;
@@ -419,16 +485,17 @@ public class AiStudyTest1 : MonoBehaviour
         return best;
     }
 
-    // Debug drawing for editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, bulletDetectRadius);
-
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, patrolRadius);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, shootRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, closeRangeDistance);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, healDetectRadius);
     }
 }
