@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6997576576164708990}
   - component: {fileID: 4047033587790130695}
   - component: {fileID: 8393382955216851110}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: GhostSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +123,11 @@ GameObject:
   - component: {fileID: 1364515728211527597}
   - component: {fileID: 3347025618146597565}
   - component: {fileID: 1160969609961471028}
-  - component: {fileID: 1880765463373544506}
   - component: {fileID: 991434294474934147}
-  m_Layer: 3
+  - component: {fileID: 6371198553186556631}
+  - component: {fileID: 5612854346573652892}
+  - component: {fileID: 4554835409294626815}
+  m_Layer: 2
   m_Name: ghostEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -296,33 +298,6 @@ MonoBehaviour:
   deathCoin: {fileID: 8300000, guid: 703221ecff6b691428fd0174d680b2d6, type: 3}
   damageParticles: {fileID: 8679902715512333001, guid: 6fdd0014229bf4b4fbc400064eafbb4e, type: 3}
   deathParticles: {fileID: 8679902715512333001, guid: b36290eb4e2404544882480656587328, type: 3}
---- !u!114 &1880765463373544506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7431460907705484842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74729e4a925685f4ea95d010d8774e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: e2b4aa843c418124e9ddd91e8d8a1a2b, type: 2}
-  bulletPrefab: {fileID: 2673675828705272267, guid: 35ee4b3a12ed9394795a08f728770bc3, type: 3}
-  bulletsCount: 4
-  projectileSpeed: 2
-  spawnRadius: 0.5
-  angleIncrementPerShot: 15
-  detectionRange: 5
-  chaseRange: 7
-  chaseSpeed: 14
-  wanderRadius: 1
-  wanderSpeed: 0.8
-  idleMin: 1
-  idleMax: 3
-  level: {fileID: 11400000, guid: a1f17cdd4245e0f489a96be517c75e8a, type: 2}
-  shootSound: {fileID: 8300000, guid: 11cbb697f4e48f14396f8de038fb6fe7, type: 3}
 --- !u!82 &991434294474934147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -420,3 +395,111 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6371198553186556631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431460907705484842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &5612854346573652892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431460907705484842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 0.99
+  height: 2
+  canMove: 1
+  maxSpeed: 4.07
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 1
+  enableRotation: 1
+  autoRepath:
+    mode: 2
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 720
+  slowdownDistance: 0.22
+  pickNextWaypointDist: 1
+  endReachedDistance: 0.18
+  alwaysDrawGizmos: 1
+  slowWhenNotFacingTarget: 0
+  whenCloseToDestination: 0
+  constrainInsideGraph: 1
+--- !u!114 &4554835409294626815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431460907705484842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80458d004152fd8459e05ffd4d4907ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 6997576576164708990}
+  bulletPrefab: {fileID: 2673675828705272267, guid: 35ee4b3a12ed9394795a08f728770bc3, type: 3}
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  playerTag: Player
+  detectionRange: 26.4
+  shootRange: 15.7
+  closeRangeDistance: 5.12
+  chaseRange: 17.1
+  patrolRadius: 18.8
+  patrolSpeed: 2.85
+  chaseSpeed: 17
+  dodgeSpeed: 6
+  dodgeDistance: 3.86
+  strafeAmplitude: 1.61
+  strafeSpeed: 3.12
+  shootCooldown: 0.6
+  bulletSpeed: 13
+  bulletDetectRadius: 7.43
+  threatTimeThreshold: 0.56
+  dodgeCooldown: 1.25
+  isDodging: 0

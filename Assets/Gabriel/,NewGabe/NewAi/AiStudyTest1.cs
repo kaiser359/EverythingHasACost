@@ -10,9 +10,8 @@ public class AiStudyTest1 : MonoBehaviour
     public GameObject bulletPrefab;
     public LayerMask bulletLayer;
     public LayerMask obstacleLayer;
-    public LayerMask healItemLayer;
     public string playerTag = "Player";
-    public string healItemTag = "HealItem";
+  
 
     [Header("Ranges & Movement")]
     public float detectionRange = 12f;
@@ -31,20 +30,10 @@ public class AiStudyTest1 : MonoBehaviour
     public float shootCooldown = 1.2f;
     public float bulletSpeed = 12f;
 
-    [Header("Healing")]
-    public float healDetectRadius = 8f;
-    public float healStayRange = 1.5f;
-    public float healthRetreateThreshold = 0.75f;
-
     [Header("Bullet Threat Detection")]
     public float bulletDetectRadius = 6f;
     public float threatTimeThreshold = 0.8f;
     public float dodgeCooldown = 1.5f;
-
-    [Header("Flee")]
-    public string fleeTargetTag = "FleeTarget";
-    public float fleeDistance = 8f;
-    [Range(0f, 1f)] public float lowHealthThreshold = 0.25f;
 
     private Transform playerTransform;
     private Rigidbody2D rb;
@@ -59,8 +48,6 @@ public class AiStudyTest1 : MonoBehaviour
     private Vector2 dodgeTarget;
     private IAstarAI ai;
     private EnemyHealth enemyHealth;
-    private Collider2D nearestHealItemCollider;
-    private bool isAtHealLocation;
 
     void Start()
     {
@@ -76,6 +63,7 @@ public class AiStudyTest1 : MonoBehaviour
         if (ai != null)
         {
             ai.canMove = true;
+            ai.canSearch = true;
             ai.isStopped = false;
             ai.maxSpeed = chaseSpeed;
         }
@@ -110,18 +98,6 @@ public class AiStudyTest1 : MonoBehaviour
             if (ai != null) ai.isStopped = false;
         }
 
-        if (enemyHealth != null && enemyHealth.currentHealth <= enemyHealth.maxHealth * lowHealthThreshold)
-        {
-            HandleFleeBehavior();
-            return;
-        }
-
-        if (IsSeekingHeal())
-        {
-            HandleHealBehavior();
-            return;
-        }
-
         float playerDist = playerTransform != null ? Vector2.Distance(transform.position, playerTransform.position) : Mathf.Infinity;
 
         if (playerTransform != null && playerDist <= detectionRange)
@@ -134,8 +110,12 @@ public class AiStudyTest1 : MonoBehaviour
                         ShootSpreadPattern();
                     else
                         ShootAtPlayer();
+                    StrafeTowardPlayer();
                 }
-                StrafeTowardPlayer();
+                else
+                {
+                    SetDestination(playerTransform.position, chaseSpeed);
+                }
             }
             else if (playerDist <= chaseRange)
                 SetDestination(playerTransform.position, chaseSpeed);
@@ -143,88 +123,6 @@ public class AiStudyTest1 : MonoBehaviour
         else
         {
             Patrol();
-        }
-    }
-
-    bool IsSeekingHeal()
-    {
-        if (enemyHealth == null) return false;
-
-        float currentHealthPercent = enemyHealth.currentHealth / enemyHealth.maxHealth;
-
-        if (currentHealthPercent >= healthRetreateThreshold && isAtHealLocation)
-        {
-            isAtHealLocation = false;
-            nearestHealItemCollider = null;
-            return false;
-        }
-
-        if (currentHealthPercent <= 0.5f && nearestHealItemCollider == null && !isAtHealLocation)
-        {
-            DetectNearestHealItem();
-        }
-
-        return nearestHealItemCollider != null;
-    }
-
-    void DetectNearestHealItem()
-    {
-        Collider2D[] healItems = Physics2D.OverlapCircleAll(transform.position, healDetectRadius, healItemLayer);
-        
-        if (healItems == null || healItems.Length == 0) return;
-
-        Collider2D bestHeal = null;
-        float bestDist = float.PositiveInfinity;
-        Vector2 selfPos = transform.position;
-
-        foreach (var healCol in healItems)
-        {
-            if (healCol == null || !healCol.CompareTag(healItemTag)) continue;
-
-            float d = Vector2.SqrMagnitude((Vector2)healCol.transform.position - selfPos);
-            if (d < bestDist)
-            {
-                bestDist = d;
-                bestHeal = healCol;
-            }
-        }
-
-        nearestHealItemCollider = bestHeal;
-    }
-
-    void HandleHealBehavior()
-    {
-        if (nearestHealItemCollider == null) return;
-
-        Vector2 healPos = nearestHealItemCollider.transform.position;
-        float distToHeal = Vector2.Distance(transform.position, healPos);
-
-        if (distToHeal <= healStayRange)
-        {
-            isAtHealLocation = true;
-            if (ai != null)
-            {
-                ai.isStopped = true;
-                ai.destination = transform.position;
-            }
-            
-            if (playerTransform != null && HasLineOfSightToPlayer())
-            {
-                float playerDist = Vector2.Distance(transform.position, playerTransform.position);
-                if (playerDist <= shootRange)
-                {
-                    if (playerDist <= closeRangeDistance)
-                        ShootSpreadPattern();
-                    else
-                        ShootAtPlayer();
-                }
-            }
-        }
-        else
-        {
-            isAtHealLocation = false;
-            if (ai != null) ai.isStopped = false;
-            SetDestination(healPos, chaseSpeed);
         }
     }
 
@@ -280,6 +178,7 @@ public class AiStudyTest1 : MonoBehaviour
         {
             ai.destination = worldTarget;
             ai.canMove = true;
+            ai.canSearch = true;
             ai.isStopped = false;
             ai.maxSpeed = speed;
         }
@@ -446,22 +345,6 @@ public class AiStudyTest1 : MonoBehaviour
         }
     }
 
-    void HandleFleeBehavior()
-    {
-        Transform target = FindNearestWithTag(fleeTargetTag);
-        if (target != null)
-        {
-            SetDestination(target.position, chaseSpeed);
-            return;
-        }
-        if (playerTransform != null)
-        {
-            Vector2 dirAway = ((Vector2)transform.position - (Vector2)playerTransform.position).normalized;
-            Vector3 fleePos = transform.position + (Vector3)(dirAway * fleeDistance);
-            SetDestination(fleePos, chaseSpeed);
-        }
-    }
-
     Transform FindNearestWithTag(string tag)
     {
         if (string.IsNullOrEmpty(tag)) return null;
@@ -495,7 +378,5 @@ public class AiStudyTest1 : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, shootRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, closeRangeDistance);
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, healDetectRadius);
     }
 }
