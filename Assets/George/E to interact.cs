@@ -23,7 +23,9 @@ public class Etointeract : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        interactableObject = collision.gameObject; // Store the reference to the interactable object
+        if (collision.gameObject.tag != "room Light"){
+            interactableObject = collision.gameObject; // Store the reference to the interactable object
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -2450,7 +2450,7 @@ GameObject:
   - component: {fileID: 1767651410217851924}
   m_Layer: 0
   m_Name: room light
-  m_TagString: Untagged
+  m_TagString: room Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

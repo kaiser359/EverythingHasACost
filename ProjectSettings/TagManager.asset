@@ -17,6 +17,7 @@ TagManager:
   - Transition
   - LayerTransition
   - Heal
+  - room Light
   layers:
   - Default
   - TransparentFX
