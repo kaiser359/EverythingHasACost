@@ -527,7 +527,7 @@ MonoBehaviour:
     m_Bits: 64
   playerTag: Player
   detectionRange: 42.3
-  shootRange: 12.2
+  shootRange: 11.8
   chaseRange: 42
   keepAwayDistance: 8
   patrolRadius: 6
@@ -673,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0.0017623901
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
@@ -685,11 +685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.76326007
+      value: 0.5208284
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 0.4053095
+      value: 0.238653
       objectReference: {fileID: 0}
     - target: {fileID: 623549889732042911, guid: 0f1392c5721787148af520d546d825ed, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].value
