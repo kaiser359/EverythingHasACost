@@ -492,12 +492,12 @@ MonoBehaviour:
   chaseRange: 17.1
   patrolRadius: 18.8
   patrolSpeed: 2.85
-  chaseSpeed: 17
+  chaseSpeed: 14.1
   dodgeSpeed: 6
   dodgeDistance: 3.86
   strafeAmplitude: 1.61
-  strafeSpeed: 3.12
-  shootCooldown: 0.6
+  strafeSpeed: 2.47
+  shootCooldown: 1.23
   bulletSpeed: 13
   bulletDetectRadius: 7.43
   threatTimeThreshold: 0.56

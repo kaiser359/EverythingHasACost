@@ -25,7 +25,7 @@ public class scannerscript : MonoBehaviour
                 // Get current dimensions and node size
                 int currentWidth = gridGraph.width;
                 int currentDepth = gridGraph.depth;
-                float nodeSize = gridGraph.nodeSize;
+                float nodeSize = 0.35f;
                 
                 // Calculate new dimensions by adding 300
                 int newWidth = currentWidth + 300;

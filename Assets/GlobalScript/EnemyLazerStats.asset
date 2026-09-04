@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 120
   speed: 5
-  atkDamage: 10
+  atkDamage: 150
   resistance: 10
   atkSpeed: 1
   dropAmount: 160

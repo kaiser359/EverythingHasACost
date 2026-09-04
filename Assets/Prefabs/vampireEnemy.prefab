@@ -120,7 +120,7 @@ MonoBehaviour:
   idleMax: 2
   dashWarmup: 1.25
   dashDuration: 0.2
-  touchDamageToMoney: 10
+  touchDamageToMoney: 150
   knockbackForce: 3
   dashOvershoot: 3
   dashSound: {fileID: 8300000, guid: 7612783f372f0eb429176f0ae52fa420, type: 3}

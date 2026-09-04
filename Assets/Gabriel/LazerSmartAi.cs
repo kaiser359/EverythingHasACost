@@ -7,6 +7,7 @@ public class LazerSmartAi : MonoBehaviour
 {
     [Header("References")]
     public LineRenderer laserLineRenderer;
+    public LineRenderer laserLineRendererWarning;
     public Transform firePoint;
     public LayerMask obstacleLayer;
     public string playerTag = "Player";
@@ -27,6 +28,7 @@ public class LazerSmartAi : MonoBehaviour
     public float maxLaserDistance = 50f;
     public int maxLaserBounces = 3;
     public float laserActiveDuration = 5f;
+    public float laserWarningDuration = 3f;
 
     private Transform playerTransform;
     private Rigidbody2D rb;
@@ -42,6 +44,8 @@ public class LazerSmartAi : MonoBehaviour
     private Vector2 laserDirection;
     private List<Vector2> laserPathPoints;
     private HashSet<Collider2D> laserHitObjects;
+    private bool isWarningActive;
+    private float warningTimer;
     private const int laserDamage = 1;
 
     void Start()
@@ -70,7 +74,15 @@ public class LazerSmartAi : MonoBehaviour
             laserLineRenderer.endWidth = 0.1f;
         }
 
+        if (laserLineRendererWarning == null)
+        {
+            laserLineRendererWarning = gameObject.AddComponent<LineRenderer>();
+            laserLineRendererWarning.startWidth = 0.1f;
+            laserLineRendererWarning.endWidth = 0.1f;
+        }
+
         isLaserActive = false;
+        isWarningActive = false;
         laserPathPoints = new List<Vector2>();
         laserHitObjects = new HashSet<Collider2D>();
         PickNewPatrolTarget();
@@ -91,9 +103,16 @@ public class LazerSmartAi : MonoBehaviour
         if (isLaserActive)
         {
             StopMovement();
+            FreezeRigidbody();
+        }
+        else if (isWarningActive)
+        {
+            StopMovement();
+            FreezeRigidbody();
         }
         else if (playerTransform != null && playerDist <= detectionRange)
         {
+            UnfreezeRigidbody();
             if (playerDist <= shootRange)
             {
                 ShootLaser();
@@ -105,9 +124,11 @@ public class LazerSmartAi : MonoBehaviour
         }
         else
         {
+            UnfreezeRigidbody();
             Patrol();
         }
 
+        UpdateWarningLaser();
         UpdateLaser();
     }
 
@@ -168,6 +189,22 @@ public class LazerSmartAi : MonoBehaviour
         }
     }
 
+    void FreezeRigidbody()
+    {
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
+    void UnfreezeRigidbody()
+    {
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
     void ShootLaser()
     {
         if (playerTransform == null || shootTimer > 0f) return;
@@ -178,13 +215,10 @@ public class LazerSmartAi : MonoBehaviour
 
         laserDirection = (targetPos - (Vector2)firePoint.position).normalized;
         CalculateLaserPath();
-        
-        isLaserActive = true;
-        currentLaserExtension = 0f;
-        laserActiveTimer = laserActiveDuration;
-        laserHitObjects.Clear();
 
-        shootTimer = shootCooldown;
+        isWarningActive = true;
+        warningTimer = laserWarningDuration;
+        shootTimer = laserWarningDuration + shootCooldown;
     }
 
     private void CalculateLaserPath()
@@ -215,6 +249,50 @@ public class LazerSmartAi : MonoBehaviour
                 laserPathPoints.Add(currentPos + currentDir * distanceRemaining);
                 break;
             }
+        }
+    }
+
+    private void UpdateWarningLaser()
+    {
+        if (!isWarningActive)
+        {
+            laserLineRendererWarning.positionCount = 0;
+            return;
+        }
+
+        warningTimer -= Time.deltaTime;
+
+        if (warningTimer <= 0f)
+        {
+            isWarningActive = false;
+            laserLineRendererWarning.positionCount = 0;
+
+            isLaserActive = true;
+            currentLaserExtension = 0f;
+            laserActiveTimer = laserActiveDuration;
+            laserHitObjects.Clear();
+            return;
+        }
+
+        DisplayWarningLaser();
+    }
+
+    private void DisplayWarningLaser()
+    {
+        if (laserPathPoints.Count < 2)
+            return;
+     
+        System.Collections.Generic.List<Vector3> displayPoints = new System.Collections.Generic.List<Vector3>();
+
+        for (int i = 0; i < laserPathPoints.Count; i++)
+        {
+            displayPoints.Add(laserPathPoints[i]);
+        }
+
+        laserLineRendererWarning.positionCount = displayPoints.Count;
+        for (int i = 0; i < displayPoints.Count; i++)
+        {
+            laserLineRendererWarning.SetPosition(i, displayPoints[i]);
         }
     }
 
