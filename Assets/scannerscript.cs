@@ -25,11 +25,11 @@ public class scannerscript : MonoBehaviour
                 // Get current dimensions and node size
                 int currentWidth = gridGraph.width;
                 int currentDepth = gridGraph.depth;
-                float nodeSize = 0.35f;
+                float nodeSize = 0.64f;
                 
                 // Calculate new dimensions by adding 300
-                int newWidth = currentWidth + 300;
-                int newDepth = currentDepth + 300;
+                int newWidth = currentWidth + 200;
+                int newDepth = currentDepth + 200;
                 
                 // Use SetDimensions to properly update the grid
                 gridGraph.SetDimensions(newWidth, newDepth, nodeSize);

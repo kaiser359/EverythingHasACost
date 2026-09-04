@@ -884,6 +884,9 @@ namespace Unity.VisualScripting.Generated.Aot
 	// StarRatings.op_Implicit
 	// StarRatings.op_Equality
 	// StarRatings.op_Inequality
+	// lightController.op_Implicit
+	// lightController.op_Equality
+	// lightController.op_Inequality
 	// scannerscript.op_Implicit
 	// scannerscript.op_Equality
 	// scannerscript.op_Inequality
@@ -11364,6 +11367,41 @@ namespace Unity.VisualScripting.Generated.Aot
 		// StarRatings.op_Inequality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void StarRatings_op_Inequality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 != arg1);
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// lightController.op_Implicit
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void lightController_op_Implicit()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			bool conversion = ((bool)(arg0));
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// lightController.op_Equality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void lightController_op_Equality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 == arg1);
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// lightController.op_Inequality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void lightController_op_Inequality()
 		{
 			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
 			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
